@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:waristmate_app/controllers/calculator_controller.dart';
 import 'screen/calculator_screen.dart';
 
 void main() {
-  runApp(const WaristmateApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => CalculatorController(),
+      child: const WaristmateApp(),
+    ),
+  );
 }
 
 class WaristmateApp extends StatelessWidget {
