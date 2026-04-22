@@ -54,6 +54,36 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 });
               },
             ),
+            const Text("Jumlah anak laki-laki:"),
+            Slider(
+              value: _jmlAnakLaki.toDouble(),
+              min: 0,
+              max: 10,
+              divisions: 10,
+              label: _jmlAnakLaki.toString(),
+              onChanged: (val) => setState(() => _jmlAnakLaki = val.toInt()),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _eksekusiHitung,
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(double.infinity, 50),
+              ),
+              child: const Text("Hitung"),
+            ),
+            const Divider(height: 40),
+            Expanded(
+              child: ListView(
+                children: _hasilHitung.entries.map((entry) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(entry.key),
+                      trailing: Text("Rp ${entry.value.toStringAsFixed(0)}"),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
           ],
         ),
       ),
