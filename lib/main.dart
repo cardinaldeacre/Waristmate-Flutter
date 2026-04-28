@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
-import 'screen/calculator_screen.dart';
+import 'screen/calculator_wrapper.dart';
 
 void main() {
   runApp(
@@ -23,15 +23,17 @@ class WaristmateApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.white,
+        fontFamily: 'Gabarito',
         brightness: Brightness.light,
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.white,
+        fontFamily: 'Gabarito',
         brightness: Brightness.dark,
       ),
       themeMode: ThemeMode.system,
-      home: const CalculatorScreen(),
+      home: const CalculatrorWrapper(),
     );
   }
 }
