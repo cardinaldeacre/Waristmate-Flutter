@@ -15,11 +15,23 @@ class Step1 extends StatelessWidget {
     const Color primaryGreen = Color(0xFF157B5D);
     const Color darkGreen = Color(0xFF105C46);
 
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          Row(
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 16,
+            top: 20,
+            bottom: 14,
+          ),
+          decoration: BoxDecoration(
+            color: primaryGreen,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+          ),
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
@@ -42,26 +54,22 @@ class Step1 extends StatelessWidget {
               const Text(
                 "Kalkulator",
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: primaryGreen,
+                  color: Colors.white,
                 ),
               ),
               Image.asset('assets/images/logo_white.png', width: 40),
             ],
           ),
-          const SizedBox(height: 20),
+        ),
 
-          // main card
-          Expanded(
+        // main card
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Flexible(
             child: Container(
-              padding: const EdgeInsets.only(
-                top: 20,
-                left: 15,
-                right: 15,
-                bottom: 100,
-              ),
-              height: 100,
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: primaryGreen,
                 borderRadius: BorderRadius.circular(20),
@@ -72,9 +80,8 @@ class Step1 extends StatelessWidget {
                   children: [
                     const Text(
                       "Silahkan isi masing-masing kolom sesuai dengan label keterangan tertulis",
-                      style: TextStyle(color: Colors.white, fontSize: 14),
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
-                    const SizedBox(height: 6),
 
                     // input harta
                     _buildInputLabel("Harta yang ditinggalkan"),
@@ -83,7 +90,6 @@ class Step1 extends StatelessWidget {
                           calc.updateTirkah(double.tryParse(val) ?? 0),
                     ),
 
-                    const SizedBox(height: 6),
                     _buildInputLabel("Muwarrits (yang meninggal)"),
                     RadioGroup<String>(
                       groupValue: calc.muwarrits,
@@ -100,7 +106,11 @@ class Step1 extends StatelessWidget {
                           ),
                           const Text(
                             "Laki-laki",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           const SizedBox(width: 20),
 
@@ -110,7 +120,11 @@ class Step1 extends StatelessWidget {
                           ),
                           const Text(
                             "Perempuan",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -139,7 +153,7 @@ class Step1 extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,
-                        vertical: 10,
+                        vertical: 4,
                       ),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -158,14 +172,17 @@ class Step1 extends StatelessWidget {
               ),
             ),
           ),
+        ),
 
-          Row(
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
             children: [
               Expanded(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryGreen,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -173,7 +190,11 @@ class Step1 extends StatelessWidget {
                   onPressed: null,
                   child: const Text(
                     "Kembali",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
@@ -182,7 +203,7 @@ class Step1 extends StatelessWidget {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryGreen,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -190,14 +211,18 @@ class Step1 extends StatelessWidget {
                   onPressed: onNext,
                   child: const Text(
                     "Selanjutnya",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -208,7 +233,7 @@ class Step1 extends StatelessWidget {
         label,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 16,
+          fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -216,26 +241,34 @@ class Step1 extends StatelessWidget {
   }
 
   Widget _buildTextField({required Function(String) onChanged}) {
-    return TextField(
-      keyboardType: TextInputType.number,
-      onChanged: onChanged,
-      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-      style: const TextStyle(
-        fontWeight: FontWeight.bold,
-        color: Color(0xFF105C46),
-      ),
-      decoration: InputDecoration(
-        prefixText: "Rp. ",
-        prefixStyle: const TextStyle(
+    return SizedBox(
+      height: 40,
+      child: TextField(
+        keyboardType: TextInputType.number,
+        onChanged: onChanged,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
+          fontSize: 18,
           color: Color(0xFF105C46),
         ),
-        filled: true,
-        fillColor: Colors.white,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide.none,
+        decoration: InputDecoration(
+          prefixText: "Rp. ",
+          prefixStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Color(0xFF105C46),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 0,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide.none,
+          ),
         ),
       ),
     );
