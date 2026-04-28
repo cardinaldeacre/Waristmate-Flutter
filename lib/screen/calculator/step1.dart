@@ -66,10 +66,10 @@ class Step1 extends StatelessWidget {
 
         // main card
         Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(20),
           child: Flexible(
             child: Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
                 color: primaryGreen,
                 borderRadius: BorderRadius.circular(20),
