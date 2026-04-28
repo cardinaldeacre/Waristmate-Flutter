@@ -70,6 +70,11 @@ class CalculatorController extends ChangeNotifier {
     calculateIrts();
   }
 
+  void updateMuwarrits(String val) {
+    muwarrits = val;
+    notifyListeners();
+  }
+
   String get formattedIrst {
     return NumberFormat.currency(
       locale: 'id_ID',

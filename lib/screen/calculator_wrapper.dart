@@ -18,12 +18,12 @@ class _CalculatrorWrapperState extends State<CalculatrorWrapper> {
     );
   }
 
-  void _prevPage() {
-    _pageController.previousPage(
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  }
+  // void _prevPage() {
+  //   _pageController.previousPage(
+  //     duration: const Duration(milliseconds: 300),
+  //     curve: Curves.easeInOut,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
