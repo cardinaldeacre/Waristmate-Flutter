@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:waristmate_app/logic/formatter.dart';
 import '../../controllers/calculator_controller.dart';
+// import 'package:intl/intl.dart';
 
 class Step1 extends StatelessWidget {
   final VoidCallback onNext;
@@ -12,7 +13,7 @@ class Step1 extends StatelessWidget {
   Widget build(BuildContext context) {
     final calc = Provider.of<CalculatorController>(context);
 
-    const Color primaryGreen = Color(0xFF157B5D);
+    const Color primaryGreen = Color.fromARGB(255, 23, 126, 104);
     const Color darkGreen = Color(0xFF105C46);
 
     return Column(
@@ -86,8 +87,13 @@ class Step1 extends StatelessWidget {
                     // input harta
                     _buildInputLabel("Harta yang ditinggalkan"),
                     _buildTextField(
-                      onChanged: (val) =>
-                          calc.updateTirkah(double.tryParse(val) ?? 0),
+                      onChanged: (val) {
+                        String cleanVal = val
+                            .replaceAll('.', '')
+                            .replaceAll(',', '');
+                        int parsedVal = int.tryParse(cleanVal) ?? 0;
+                        calc.updateTirkah(parsedVal);
+                      },
                     ),
 
                     _buildInputLabel("Muwarrits (yang meninggal)"),
@@ -132,20 +138,35 @@ class Step1 extends StatelessWidget {
 
                     _buildInputLabel("Biaya pengurusan jenazah"),
                     _buildTextField(
-                      onChanged: (val) =>
-                          calc.updateTajhiz(double.tryParse(val) ?? 0),
+                      onChanged: (val) {
+                        String cleanVal = val
+                            .replaceAll('.', '')
+                            .replaceAll(',', '');
+                        int parsedVal = int.tryParse(cleanVal) ?? 0;
+                        calc.updateTajhiz(parsedVal);
+                      },
                     ),
 
                     _buildInputLabel("Hutang dari muwarrits"),
                     _buildTextField(
-                      onChanged: (val) =>
-                          calc.updateHutang(double.tryParse(val) ?? 0),
+                      onChanged: (val) {
+                        String cleanVal = val
+                            .replaceAll('.', '')
+                            .replaceAll(',', '');
+                        int parsedVal = int.tryParse(cleanVal) ?? 0;
+                        calc.updateHutang(parsedVal);
+                      },
                     ),
 
-                    _buildInputLabel("Wasiat (maksimal 1/3 harta)"),
+                    _buildInputLabel("Wasiat (maksimal 1/3 sisa harta)"),
                     _buildTextField(
-                      onChanged: (val) =>
-                          calc.updateWasiat(double.tryParse(val) ?? 0),
+                      onChanged: (val) {
+                        String cleanVal = val
+                            .replaceAll('.', '')
+                            .replaceAll(',', '');
+                        int parsedVal = int.tryParse(cleanVal) ?? 0;
+                        calc.updateWasiat(parsedVal);
+                      },
                     ),
 
                     _buildInputLabel("Sisa harta yang diwariskan (Irts)"),
@@ -210,7 +231,7 @@ class Step1 extends StatelessWidget {
                   ),
                   onPressed: onNext,
                   child: const Text(
-                    "Selanjutnya",
+                    "Lanjut",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -246,7 +267,7 @@ class Step1 extends StatelessWidget {
       child: TextField(
         keyboardType: TextInputType.number,
         onChanged: onChanged,
-        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        inputFormatters: [CurrencyFormatter()],
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,

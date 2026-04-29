@@ -3,13 +3,13 @@ import 'package:intl/intl.dart';
 import 'package:waristmate_app/logic/hajb_validator.dart';
 
 class CalculatorController extends ChangeNotifier {
-  double nTirkah = 0;
-  double nHutang = 0;
-  double nWasiat = 0;
-  double nTajhiz = 0;
-  double nIrst = 0;
+  int nTirkah = 0;
+  int nHutang = 0;
+  int nWasiat = 0;
+  int nTajhiz = 0;
+  int nIrst = 0;
   String muwarrits = '';
-  double totalashobah = 0;
+  int totalashobah = 0;
   List<dynamic> masalah = [];
   bool nilaiAyah = false;
   bool nilaiIbu = false;
@@ -36,8 +36,8 @@ class CalculatorController extends ChangeNotifier {
   int nilaiAnakLakiPamanSekakek = 0;
 
   void calculateIrts() {
-    double sisaHarta = nTirkah - nHutang - nTajhiz;
-    double maxWasiat = sisaHarta / 3;
+    int sisaHarta = nTirkah - nHutang - nTajhiz;
+    int maxWasiat = sisaHarta > 0 ? sisaHarta ~/ 3 : 0;
 
     if (nWasiat > maxWasiat) {
       nWasiat = maxWasiat;
@@ -50,22 +50,22 @@ class CalculatorController extends ChangeNotifier {
   }
 
   // setter
-  void updateTirkah(double val) {
+  void updateTirkah(int val) {
     nTirkah = val;
     calculateIrts();
   }
 
-  void updateHutang(double val) {
+  void updateHutang(int val) {
     nHutang = val;
     calculateIrts();
   }
 
-  void updateTajhiz(double val) {
+  void updateTajhiz(int val) {
     nTajhiz = val;
     calculateIrts();
   }
 
-  void updateWasiat(double val) {
+  void updateWasiat(int val) {
     nWasiat = val;
     calculateIrts();
   }
