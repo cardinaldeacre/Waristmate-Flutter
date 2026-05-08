@@ -4,10 +4,21 @@ import 'package:waristmate_app/logic/formatter.dart';
 import '../../controllers/calculator_controller.dart';
 // import 'package:intl/intl.dart';
 
-class Step1 extends StatelessWidget {
+class Step1 extends StatefulWidget {
   final VoidCallback onNext;
-
   const Step1({super.key, required this.onNext});
+
+  @override
+  State<Step1> createState() => _Step1State();
+}
+
+class _Step1State extends State<Step1> {
+  final TextEditingController _wasiatController = TextEditingController();
+  @override
+  void dispose() {
+    _wasiatController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -160,12 +171,41 @@ class Step1 extends StatelessWidget {
 
                     _buildInputLabel("Wasiat (maksimal 1/3 sisa harta)"),
                     _buildTextField(
+                      controller: _wasiatController,
                       onChanged: (val) {
                         String cleanVal = val
                             .replaceAll('.', '')
                             .replaceAll(',', '');
                         int parsedVal = int.tryParse(cleanVal) ?? 0;
-                        calc.updateWasiat(parsedVal);
+
+                        String? notip = calc.updateWasiat(parsedVal);
+                        if (notip != null) {
+                          _wasiatController.text = calc.nWasiat.toString();
+                          _wasiatController
+                              .selection = TextSelection.fromPosition(
+                            TextPosition(offset: _wasiatController.text.length),
+                          );
+
+                          ScaffoldMessenger.of(context).clearSnackBars();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(notip),
+                              backgroundColor: Colors.red[700],
+                              duration: const Duration(seconds: 3),
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              margin: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).size.height -
+                                    180, // Angka 180 bisa kamu atur-atur sendiri posisinya
+                                left: 20,
+                                right: 20,
+                              ),
+                            ),
+                          );
+                        }
                       },
                     ),
 
@@ -181,7 +221,7 @@ class Step1 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        calc.formattedIrst,
+                        calc.formatRupiah(calc.nIrst),
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -229,7 +269,7 @@ class Step1 extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  onPressed: onNext,
+                  onPressed: widget.onNext,
                   child: const Text(
                     "Lanjut",
                     style: TextStyle(
@@ -261,10 +301,14 @@ class Step1 extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField({required Function(String) onChanged}) {
+  Widget _buildTextField({
+    required Function(String) onChanged,
+    TextEditingController? controller,
+  }) {
     return SizedBox(
       height: 40,
       child: TextField(
+        controller: controller,
         keyboardType: TextInputType.number,
         onChanged: onChanged,
         inputFormatters: [CurrencyFormatter()],
