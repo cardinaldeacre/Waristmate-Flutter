@@ -36,14 +36,6 @@ class CalculatorController extends ChangeNotifier {
   int nilaiAnakLakiPamanSekakek = 0;
 
   void calculateIrts() {
-    int sisaHarta = nTirkah - nHutang - nTajhiz;
-    int maxWasiat = sisaHarta > 0 ? sisaHarta ~/ 3 : 0;
-
-    if (nWasiat > maxWasiat) {
-      nWasiat = maxWasiat;
-      // snackbar maksmal 1/3
-    }
-
     nIrst = nTirkah - nHutang - nWasiat - nTajhiz;
     // info UI udah update data
     notifyListeners();
@@ -65,9 +57,22 @@ class CalculatorController extends ChangeNotifier {
     calculateIrts();
   }
 
-  void updateWasiat(int val) {
+  String? updateWasiat(int val) {
     nWasiat = val;
+
+    int sisaHarta = nTirkah - nHutang - nTajhiz;
+    int maxWasiat = sisaHarta > 0 ? sisaHarta ~/ 3 : 0;
+
+    String? notip;
+
+    if (nWasiat > maxWasiat) {
+      nWasiat = maxWasiat;
+
+      notip =
+          "Wasiat tidak boleh lebih dari 1/3 sisa harta (${formatRupiah(nWasiat)}).";
+    }
     calculateIrts();
+    return notip;
   }
 
   void updateMuwarrits(String val) {
@@ -75,208 +80,11 @@ class CalculatorController extends ChangeNotifier {
     notifyListeners();
   }
 
-  String get formattedIrst {
+  String formatRupiah(int angka) {
     return NumberFormat.currency(
       locale: 'id_ID',
       symbol: 'Rp ',
       decimalDigits: 0,
-    ).format(nIrst);
-  }
-
-  // penghalang
-  // kakek
-  String? get penghalangKakek {
-    return HajbValidator.penghalangKakek(adaAyah: nilaiAyah);
-  }
-
-  // nenek
-  String? get penghalangNenek {
-    return HajbValidator.penghalangNenek(adaIbu: nilaiIbu);
-  }
-
-  // cucu laki-laki
-  String? get penghalangCucuLaki {
-    return HajbValidator.penghalangCucuLaki(jmlAnakLaki: nilaiAnaklaki);
-  }
-
-  // cucu perempuan
-  String? get penghalangCucuPerempuan {
-    return HajbValidator.penghalangCucuPerempuan(
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-    );
-  }
-
-  // saudara kandung
-  String? get penghalangSaudaraKandung {
-    return HajbValidator.penghalangSaudaraKandung(
-      adaAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-    );
-  }
-
-  // saudari kandung
-  String? get penghalangSaudaraPerempuan {
-    return HajbValidator.penghalangSaudaraPerempuanKandung(
-      adaAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuperempuan,
-    );
-  }
-
-  // saudara seayah
-  String? get penghalangSaudaraSeayah {
-    return HajbValidator.penghalangSaudaraSeayah(
-      adaAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
-      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuperempuan,
-    );
-  }
-
-  // saudara seayah
-  String? get penghalangSaudariSeayah {
-    return HajbValidator.penghalangSaudaraSeayah(
-      adaAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
-      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuperempuan,
-    );
-  }
-
-  // saudara seibu
-  String? get penghalangSaudaraSeibu {
-    return HajbValidator.penghalangSaudaraSeibu(
-      adaAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuperempuan,
-    );
-  }
-
-  // anak laki saudara kandung
-  String? get penghalangAnakLakiSaudaraKandung {
-    return HajbValidator.penghalangAnakLakiSaudaraKandung(
-      adaAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
-      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuperempuan,
-      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
-      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
-    );
-  }
-
-  // anak laki saudara seayah
-  String? get penghalangAnakLakiSaudaraSeayah {
-    return HajbValidator.penghalangAnakLakiSaudaraSeayah(
-      adaAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
-      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuperempuan,
-      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
-      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
-      jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
-    );
-  }
-
-  // paman sekandung
-  String? get penghalangPamanSekandung {
-    return HajbValidator.penghalangPamanSekandung(
-      adaAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
-      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuperempuan,
-      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
-      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
-      jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
-      jmlAnakLakiSaudaraSeayah: nilaiAnakLakiSaudaraSeayah,
-    );
-  }
-
-  // paman sekakek
-  String? get penghalangPamanSekakek {
-    return HajbValidator.penghalangPamanSekakek(
-      adaAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
-      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuperempuan,
-      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
-      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
-      jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
-      jmlAnakLakiSaudaraSeayah: nilaiAnakLakiSaudaraSeayah,
-      jmlPamanSekandung: nilaiPamanKandungAyah,
-    );
-  }
-
-  // anak laki paman sekandung
-  String? get penghalangAnakLakiPamanSekandung {
-    return HajbValidator.penghalangAnakLakiPamanKandung(
-      adaAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
-      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuperempuan,
-      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
-      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
-      jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
-      jmlAnakLakiSaudaraSeayah: nilaiAnakLakiSaudaraSeayah,
-      jmlPamanSekandung: nilaiPamanKandungAyah,
-      jmlPamanSekakek: nilaiPamanSekakekAyah,
-    );
-  }
-
-  // anak laki paman sekakek
-  String? get penghalangAnakLakiPamanSekakek {
-    return HajbValidator.penghalangAnakLakiPamanSekakek(
-      adaAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
-      jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
-      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuperempuan,
-      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
-      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
-      jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
-      jmlAnakLakiSaudaraSeayah: nilaiAnakLakiSaudaraSeayah,
-      jmlPamanSekandung: nilaiPamanKandungAyah,
-      jmlPamanSekakek: nilaiPamanSekakekAyah,
-      jmlAnakLakiPamanSekandung: nilaiAnakLakiPamanKandung,
-    );
+    ).format(angka);
   }
 }
