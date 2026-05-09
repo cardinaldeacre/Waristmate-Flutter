@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:waristmate_app/logic/hajb_validator.dart';
 
 class CalculatorController extends ChangeNotifier {
   int nTirkah = 0;
@@ -86,5 +85,35 @@ class CalculatorController extends ChangeNotifier {
       symbol: 'Rp ',
       decimalDigits: 0,
     ).format(angka);
+  }
+
+  void updateAyah(bool val) {
+    nilaiAyah = val;
+    notifyListeners();
+  }
+
+  void updateIbu(bool val) {
+    nilaiIbu = val;
+    notifyListeners();
+  }
+
+  void updateSuami(bool val) {
+    nilaiSuami = val;
+    notifyListeners();
+  }
+
+  void updateIstri(int val) {
+    nilaiIstri = val;
+    notifyListeners();
+  }
+
+  void updateAnakLaki(int val) {
+    nilaiAnaklaki = val;
+    notifyListeners();
+  }
+
+  void updateAnakPerempuan(int val) {
+    nilaiAnakPerempuan = val;
+    notifyListeners();
   }
 }
