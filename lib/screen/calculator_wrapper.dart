@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waristmate_app/screen/calculator/step2.dart';
 import 'calculator/step1.dart';
 
 class CalculatrorWrapper extends StatefulWidget {
@@ -18,12 +19,12 @@ class _CalculatrorWrapperState extends State<CalculatrorWrapper> {
     );
   }
 
-  // void _prevPage() {
-  //   _pageController.previousPage(
-  //     duration: const Duration(milliseconds: 300),
-  //     curve: Curves.easeInOut,
-  //   );
-  // }
+  void _prevPage() {
+    _pageController.previousPage(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class _CalculatrorWrapperState extends State<CalculatrorWrapper> {
           physics: const NeverScrollableScrollPhysics(),
           children: [
             Step1(onNext: _nextPage),
-            // Step2(onNext: _nextPage, onBack: _prevPage),
+            Step2(onNext: _nextPage, onBack: _prevPage),
             // Step3(onBack: _prevPage),
           ],
         ),
