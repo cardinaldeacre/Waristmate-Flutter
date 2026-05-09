@@ -91,8 +91,9 @@ class _Step2State extends State<Step2> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
+                    const Divider(color: Colors.white, height: 32),
 
-                    const SizedBox(height: 20),
+                    // const SizedBox(height: 10),
                     const Text(
                       "Orang Tua",
                       style: TextStyle(
@@ -127,6 +128,19 @@ class _Step2State extends State<Step2> {
                         onChanged: (value) => calc.updateSuami(value!),
                       ),
 
+                    const Divider(color: Colors.white, height: 32),
+                    const SizedBox(height: 2),
+
+                    const Text(
+                      "Anak Kandung",
+                      style: TextStyle(
+                        fontSize: 17.5,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+
+                    const SizedBox(height: 8),
                     _buildCounterRow(
                       label: "Jumlah Anak Laki-laki",
                       value: calc.nilaiAnaklaki,
@@ -288,7 +302,7 @@ class _Step2State extends State<Step2> {
           borderRadius: BorderRadius.circular(5),
         ),
         activeColor: Colors.white,
-        checkColor: const Color(0xFF105C46),
+        checkColor: Colors.teal[600],
         contentPadding: EdgeInsets.zero,
         visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
         onChanged: onChanged,
