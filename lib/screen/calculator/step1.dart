@@ -59,7 +59,7 @@ class _Step1State extends State<Step1> {
                   "1 dari 9",
                   style: TextStyle(
                     color: Colors.white,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -67,7 +67,7 @@ class _Step1State extends State<Step1> {
                 "Kalkulator",
                 style: TextStyle(
                   fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   color: Colors.white,
                 ),
               ),
@@ -81,7 +81,7 @@ class _Step1State extends State<Step1> {
           padding: const EdgeInsets.all(20),
           child: Flexible(
             child: Container(
-              padding: const EdgeInsets.all(18),
+              padding: const EdgeInsets.all(17.5),
               decoration: BoxDecoration(
                 color: primaryGreen,
                 borderRadius: BorderRadius.circular(20),
@@ -92,7 +92,11 @@ class _Step1State extends State<Step1> {
                   children: [
                     const Text(
                       "Silahkan isi masing-masing kolom sesuai dengan label keterangan tertulis",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17.5,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
 
                     // input harta
@@ -126,7 +130,7 @@ class _Step1State extends State<Step1> {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           const SizedBox(width: 20),
@@ -140,7 +144,7 @@ class _Step1State extends State<Step1> {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
@@ -198,8 +202,7 @@ class _Step1State extends State<Step1> {
                               ),
                               margin: EdgeInsets.only(
                                 bottom:
-                                    MediaQuery.of(context).size.height -
-                                    180, // Angka 180 bisa kamu atur-atur sendiri posisinya
+                                    MediaQuery.of(context).size.height - 17.50,
                                 left: 20,
                                 right: 20,
                               ),
@@ -223,8 +226,8 @@ class _Step1State extends State<Step1> {
                       child: Text(
                         calc.formatRupiah(calc.nIrst),
                         style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 17.5,
                         ),
                       ),
                     ),
@@ -253,7 +256,7 @@ class _Step1State extends State<Step1> {
                     "Kembali",
                     style: TextStyle(
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       fontSize: 16,
                     ),
                   ),
@@ -274,7 +277,7 @@ class _Step1State extends State<Step1> {
                     "Lanjut",
                     style: TextStyle(
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       fontSize: 16,
                     ),
                   ),
@@ -294,8 +297,8 @@ class _Step1State extends State<Step1> {
         label,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
+          fontSize: 17.5,
+          fontWeight: FontWeight.w600,
         ),
       ),
     );
@@ -313,15 +316,15 @@ class _Step1State extends State<Step1> {
         onChanged: onChanged,
         inputFormatters: [CurrencyFormatter()],
         style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          fontSize: 17.5,
           color: Color(0xFF105C46),
         ),
         decoration: InputDecoration(
           prefixText: "Rp. ",
           prefixStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            fontSize: 17.5,
             color: Color(0xFF105C46),
           ),
           filled: true,
