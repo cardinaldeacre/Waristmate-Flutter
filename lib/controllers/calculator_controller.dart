@@ -77,6 +77,16 @@ class CalculatorController extends ChangeNotifier {
   void updateMuwarrits(String val) {
     muwarrits = val;
     notifyListeners();
+
+    if (muwarrits == 'Perempuan') {
+      nilaiIstri = 0;
+      notifyListeners();
+    }
+
+    if (muwarrits == 'Laki-laki') {
+      nilaiSuami = false;
+      notifyListeners();
+    }
   }
 
   String formatRupiah(int angka) {
