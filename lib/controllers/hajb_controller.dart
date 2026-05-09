@@ -2,12 +2,185 @@ import 'package:waristmate_app/logic/hajb_validator.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
 
 extension HajbController on CalculatorController {
+  void sinkronisasiHajb() {
+    // kakek
+    if (HajbValidator.kakekTerhalang(adaAyah: nilaiAyah)) {
+      nilaiKakek = false;
+    }
+
+    if (HajbValidator.nenekTerhalang(adaIbu: nilaiIbu)) {
+      nilaiNenekIbu = 0;
+      nilaiNenekAyah = 0;
+    }
+
+    if (HajbValidator.cucuLakiTerhalang(jmlAnakLaki: nilaiAnaklaki)) {
+      nilaiCuculaki = 0;
+    }
+
+    if (HajbValidator.cucuPerempuanTerhalang(
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+    )) {
+      nilaiCucuperempuan = 0;
+    }
+
+    if (HajbValidator.saudaraKandungTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      adaKakek: nilaiKakek,
+    )) {
+      nilaiSaudaraLakiKandung = 0;
+    }
+
+    if (HajbValidator.saudaraPerempuanKandungTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuperempuan,
+    )) {
+      nilaiSaudaraPerempuanKandung = 0;
+    }
+
+    if (HajbValidator.saudaraSeayahTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
+      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuperempuan,
+    )) {
+      nilaiSaudaraLakiSeayah = 0;
+    }
+
+    if (HajbValidator.saudariSeayahTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      adaKakek: nilaiKakek,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
+      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuperempuan,
+    )) {
+      nilaiSaudaraPerempuanSeayah = 0;
+    }
+
+    if (HajbValidator.saudaraSeibuTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      adaKakek: nilaiKakek,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuperempuan,
+    )) {
+      nilaiSaudaraLakiSeibu = 0;
+    }
+
+    if (HajbValidator.saudariSeibuTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      adaKakek: nilaiKakek,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuperempuan,
+    )) {
+      nilaiSaudaraPerempuanSeibu = 0;
+    }
+
+    if (HajbValidator.anakLakiSaudaraKandungTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      adaKakek: nilaiKakek,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
+      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuperempuan,
+      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
+      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
+    )) {
+      nilaiAnakLakiSaudaraKandung = 0;
+    }
+
+    if (HajbValidator.anakLakiSaudaraSeayahTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      adaKakek: nilaiKakek,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
+      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuperempuan,
+      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
+      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
+      jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
+    )) {
+      nilaiAnakLakiSaudaraSeayah = 0;
+    }
+
+    if (HajbValidator.pamanSekandungTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      adaKakek: nilaiKakek,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
+      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuperempuan,
+      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
+      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
+      jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
+      jmlAnakLakiSaudaraSeayah: nilaiAnakLakiSaudaraSeayah,
+    )) {
+      nilaiPamanKandungAyah = 0;
+    }
+
+    if (HajbValidator.pamanSekakekTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      adaKakek: nilaiKakek,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
+      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuperempuan,
+      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
+      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
+      jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
+      jmlAnakLakiSaudaraSeayah: nilaiAnakLakiSaudaraSeayah,
+      jmlPamanSekandung: nilaiPamanKandungAyah,
+    )) {
+      nilaiPamanSekakekAyah = 0;
+    }
+
+    if (HajbValidator.anakLakiPamanSekandungTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      adaKakek: nilaiKakek,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
+      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuperempuan,
+      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
+      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
+      jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
+      jmlAnakLakiSaudaraSeayah: nilaiAnakLakiSaudaraSeayah,
+      jmlPamanSekandung: nilaiPamanKandungAyah,
+      jmlPamanSekakek: nilaiPamanSekakekAyah,
+    )) {
+      nilaiAnakLakiPamanKandung = 0;
+    }
+  }
+
   // kakek
   String? get penghalangKakek {
     return HajbValidator.penghalangKakek(adaAyah: nilaiAyah);
   }
 
-  // nenek
   String? get penghalangNenek {
     return HajbValidator.penghalangNenek(adaIbu: nilaiIbu);
   }
@@ -41,7 +214,6 @@ extension HajbController on CalculatorController {
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
     );
@@ -53,22 +225,20 @@ extension HajbController on CalculatorController {
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
     );
   }
 
-  // saudara seayah
+  // saudari seayah
   String? get penghalangSaudariSeayah {
-    return HajbValidator.penghalangSaudaraSeayah(
+    return HajbValidator.penghalangSaudariSeayah(
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
@@ -94,7 +264,7 @@ extension HajbController on CalculatorController {
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
       adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
@@ -110,7 +280,7 @@ extension HajbController on CalculatorController {
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
       adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
@@ -127,7 +297,7 @@ extension HajbController on CalculatorController {
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
       adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
@@ -145,7 +315,7 @@ extension HajbController on CalculatorController {
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
       adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
@@ -159,12 +329,12 @@ extension HajbController on CalculatorController {
 
   // anak laki paman sekandung
   String? get penghalangAnakLakiPamanSekandung {
-    return HajbValidator.penghalangAnakLakiPamanKandung(
+    return HajbValidator.penghalangAnakLakiPamanSeKandung(
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
       adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
@@ -184,7 +354,7 @@ extension HajbController on CalculatorController {
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
       adaKakek: nilaiKakek,
-      jmlSaudaraLakiKandung: nilaiSaudaraLakiKKandung,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,

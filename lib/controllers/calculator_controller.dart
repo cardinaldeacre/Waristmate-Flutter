@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:waristmate_app/controllers/hajb_controller.dart';
 
 class CalculatorController extends ChangeNotifier {
   int nTirkah = 0;
@@ -21,12 +22,12 @@ class CalculatorController extends ChangeNotifier {
   bool nilaiKakek = false;
   int nilaiNenekAyah = 0;
   int nilaiNenekIbu = 0;
-  int nilaiSaudaraLakiKKandung = 0;
+  int nilaiSaudaraLakiKandung = 0;
   int nilaiSaudaraPerempuanKandung = 0;
   int nilaiSaudaraLakiSeayah = 0;
   int nilaiSaudaraPerempuanSeayah = 0;
   int nilaiSaudaraLakiSeibu = 0;
-  int nilaiSaudaraperempuanseIbu = 0;
+  int nilaiSaudaraPerempuanSeibu = 0;
   int nilaiAnakLakiSaudaraKandung = 0;
   int nilaiAnakLakiSaudaraSeayah = 0;
   int nilaiPamanKandungAyah = 0;
@@ -99,31 +100,37 @@ class CalculatorController extends ChangeNotifier {
 
   void updateAyah(bool val) {
     nilaiAyah = val;
+    sinkronisasiHajb();
     notifyListeners();
   }
 
   void updateIbu(bool val) {
     nilaiIbu = val;
+    sinkronisasiHajb();
     notifyListeners();
   }
 
   void updateSuami(bool val) {
     nilaiSuami = val;
+    sinkronisasiHajb();
     notifyListeners();
   }
 
   void updateIstri(int val) {
     nilaiIstri = val;
+    sinkronisasiHajb();
     notifyListeners();
   }
 
   void updateAnakLaki(int val) {
     nilaiAnaklaki = val;
+    sinkronisasiHajb();
     notifyListeners();
   }
 
   void updateAnakPerempuan(int val) {
     nilaiAnakPerempuan = val;
+    sinkronisasiHajb();
     notifyListeners();
   }
 }
