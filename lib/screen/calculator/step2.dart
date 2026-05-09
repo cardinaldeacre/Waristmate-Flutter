@@ -93,8 +93,6 @@ class _Step2State extends State<Step2> {
                     ),
 
                     const SizedBox(height: 20),
-                    // const Divider(color: Colors.white, height: 1, thickness: 3),
-                    // const SizedBox(height: 5),
                     const Text(
                       "Orang Tua",
                       style: TextStyle(
@@ -104,60 +102,30 @@ class _Step2State extends State<Step2> {
                       ),
                     ),
 
-                    CheckboxListTile(
-                      title: const Text(
-                        "Ayah",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17.5,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                    _buildCheckboxTile(
+                      title: "Ayah",
                       value: calc.nilaiAyah,
-                      checkboxShape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      activeColor: Colors.white,
-                      checkColor: darkGreen,
-                      contentPadding: EdgeInsets.zero,
-                      visualDensity: const VisualDensity(
-                        horizontal: -4,
-                        vertical: -4,
-                      ),
-                      onChanged: (value) {
-                        calc.updateAyah(value!);
-                      },
+                      onChanged: (value) => calc.updateAyah(value!),
                     ),
-
-                    CheckboxListTile(
-                      title: const Text(
-                        "Ibu",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17.5,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                    _buildCheckboxTile(
+                      title: "Ibu",
                       value: calc.nilaiIbu,
-                      checkboxShape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      activeColor: Colors.white,
-                      checkColor: darkGreen,
-                      contentPadding: EdgeInsets.zero,
-                      visualDensity: VisualDensity(
-                        horizontal: -4,
-                        vertical: -4,
-                      ),
-                      onChanged: (value) {
-                        calc.updateIbu(value!);
-                      },
+                      onChanged: (value) => calc.updateIbu(value!),
                     ),
 
-                    // const Divider(color: Colors.white, height: 1, thickness: 3),
-                    if (calc.muwarrits == 'Laki-laki') ...[
-                      const SizedBox(height: 20),
-                    ],
+                    if (calc.muwarrits == 'Laki-laki')
+                      _buildCounterRow(
+                        label: "Jumlah Istri",
+                        value: calc.nilaiIstri,
+                        max: 4,
+                        onChanged: (value) => calc.updateIstri(value),
+                      ),
+                    if (calc.muwarrits == 'Perempuan')
+                      _buildCheckboxTile(
+                        title: "Suami",
+                        value: calc.nilaiSuami,
+                        onChanged: (value) => calc.updateSuami(value!),
+                      ),
 
                     _buildCounterRow(
                       label: "Jumlah Anak Laki-laki",
@@ -294,6 +262,37 @@ class _Step2State extends State<Step2> {
           ],
         ),
       ],
+    );
+  }
+
+  Widget _buildCheckboxTile({
+    required String title,
+    required bool value,
+    required Function(bool?) onChanged,
+    double scale = 1,
+  }) {
+    return Transform.scale(
+      scale: scale,
+      alignment: Alignment.centerLeft,
+      child: CheckboxListTile(
+        title: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 17.5,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        value: value,
+        checkboxShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+        ),
+        activeColor: Colors.white,
+        checkColor: const Color(0xFF105C46),
+        contentPadding: EdgeInsets.zero,
+        visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+        onChanged: onChanged,
+      ),
     );
   }
 
