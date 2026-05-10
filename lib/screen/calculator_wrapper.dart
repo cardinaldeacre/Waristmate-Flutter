@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:waristmate_app/screen/calculator/step2.dart';
 import 'calculator/step1.dart';
 
-class CalculatrorWrapper extends StatefulWidget {
-  const CalculatrorWrapper({super.key});
+class CalculatorWrapper extends StatefulWidget {
+  const CalculatorWrapper({super.key});
 
   @override
-  State<CalculatrorWrapper> createState() => _CalculatrorWrapperState();
+  State<CalculatorWrapper> createState() => _CalculatorWrapperState();
 }
 
-class _CalculatrorWrapperState extends State<CalculatrorWrapper> {
+class _CalculatorWrapperState extends State<CalculatorWrapper> {
   final PageController _pageController = PageController();
 
   void _nextPage() {
@@ -30,6 +30,7 @@ class _CalculatrorWrapperState extends State<CalculatrorWrapper> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: PageView(
           controller: _pageController,
