@@ -133,4 +133,16 @@ class CalculatorController extends ChangeNotifier {
     sinkronisasiHajb();
     notifyListeners();
   }
+
+  void updateCucuLaki(int val) {
+    nilaiCuculaki = val;
+    sinkronisasiHajb();
+    notifyListeners();
+  }
+
+  void updateCucuPerempuan(int val) {
+    nilaiCucuperempuan = val;
+    sinkronisasiHajb();
+    notifyListeners();
+  }
 }
