@@ -60,7 +60,7 @@ class HajbValidator {
   }
 
   // saudara kandung
-  static String? penghalangSaudaraKandung({
+  static String? penghalangSaudaraLakiKandung({
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlCucuLaki,
@@ -76,13 +76,13 @@ class HajbValidator {
     return null;
   }
 
-  static bool saudaraKandungTerhalang({
+  static bool saudaraLakiKandungTerhalang({
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlCucuLaki,
     required bool adaKakek,
   }) {
-    return penghalangSaudaraKandung(
+    return penghalangSaudaraLakiKandung(
           adaAyah: adaAyah,
           jmlAnakLaki: jmlAnakLaki,
           jmlCucuLaki: jmlCucuLaki,

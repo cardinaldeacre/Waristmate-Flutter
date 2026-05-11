@@ -24,7 +24,7 @@ extension HajbController on CalculatorController {
       nilaiCucuperempuan = 0;
     }
 
-    if (HajbValidator.saudaraKandungTerhalang(
+    if (HajbValidator.saudaraLakiKandungTerhalang(
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
@@ -199,8 +199,8 @@ extension HajbController on CalculatorController {
   }
 
   // saudara kandung
-  String? get penghalangSaudaraKandung {
-    return HajbValidator.penghalangSaudaraKandung(
+  String? get penghalangSaudaraLakiKandung {
+    return HajbValidator.penghalangSaudaraLakiKandung(
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
