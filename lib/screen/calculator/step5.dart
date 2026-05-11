@@ -107,7 +107,7 @@ class _Step5State extends State<Step5> {
                     const SizedBox(height: 8),
 
                     _buildCounterRow(
-                      label: "Saudara Laki-laki",
+                      label: "Saudara Laki-laki Kandung",
                       value: calc.nilaiSaudaraLakiKandung,
                       max: 50,
                       onChanged: (v) => calc.updateSaudaraLakiKandung(v),
@@ -126,7 +126,7 @@ class _Step5State extends State<Step5> {
                     ),
 
                     _buildCounterRow(
-                      label: "Saudara Perempuan",
+                      label: "Saudara Perempuan Kandung",
                       value: calc.nilaiSaudaraPerempuanKandung,
                       max: 50,
                       onChanged: (v) => calc.updateSaudaraPerempuanKandung(v),
