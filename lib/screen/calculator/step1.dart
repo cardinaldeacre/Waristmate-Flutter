@@ -218,7 +218,7 @@ class _Step1State extends State<Step1> {
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,
-                        vertical: 4,
+                        vertical: 7,
                       ),
                       decoration: BoxDecoration(
                         color: Colors.white,
