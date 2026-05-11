@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'calculator/step1.dart';
 import 'calculator/step2.dart';
 import 'calculator/step3.dart';
+import 'calculator/step4.dart';
 
 class CalculatorWrapper extends StatefulWidget {
   const CalculatorWrapper({super.key});
@@ -40,6 +41,7 @@ class _CalculatorWrapperState extends State<CalculatorWrapper> {
             Step1(onNext: _nextPage),
             Step2(onNext: _nextPage, onBack: _prevPage),
             Step3(onNext: _nextPage, onBack: _prevPage),
+            Step4(onNext: _nextPage, onBack: _prevPage),
           ],
         ),
       ),
