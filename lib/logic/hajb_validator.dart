@@ -43,7 +43,7 @@ class HajbValidator {
     if (jmlAnakLaki > 0) {
       return "Anak Laki-Laki";
     } else if (jmlAnakPerempuan > 1) {
-      return "Anak Perempuan";
+      return "Anak Perempuan Lebih dari 1";
     }
     return null;
   }
@@ -106,9 +106,9 @@ class HajbValidator {
     } else if (jmlCucuLaki > 0) {
       return "Cucu Laki-Laki";
     } else if (jmlAnakPerempuan > 1) {
-      return "Anak Perempuan";
+      return "Anak Perempuan Lebih dari 1";
     } else if (jmlCucuPerempuan > 1) {
-      return "Cucu Perempuan";
+      return "Cucu Perempuan Lebih dari 1";
     }
     return null;
   }
