@@ -9,8 +9,8 @@ extension HajbController on CalculatorController {
     }
 
     if (HajbValidator.nenekTerhalang(adaIbu: nilaiIbu)) {
-      nilaiNenekIbu = 0;
-      nilaiNenekAyah = 0;
+      nilaiNenekIbu = false;
+      nilaiNenekAyah = false;
     }
 
     if (HajbValidator.cucuLakiTerhalang(jmlAnakLaki: nilaiAnaklaki)) {
