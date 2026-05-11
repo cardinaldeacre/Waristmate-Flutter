@@ -58,7 +58,6 @@ extension HajbController on CalculatorController {
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
       jmlAnakPerempuan: nilaiAnakPerempuan,
@@ -71,7 +70,6 @@ extension HajbController on CalculatorController {
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
     )) {
@@ -82,7 +80,6 @@ extension HajbController on CalculatorController {
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
     )) {
@@ -249,7 +246,6 @@ extension HajbController on CalculatorController {
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
     );

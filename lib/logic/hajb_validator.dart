@@ -208,7 +208,6 @@ class HajbValidator {
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlCucuLaki,
-    required bool adaKakek,
     required int jmlSaudaraLakiKandung,
     required int jmlSaudaraPerempuanKandung,
     required int jmlAnakPerempuan,
@@ -231,7 +230,6 @@ class HajbValidator {
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlAnakPerempuan,
-    required bool adaKakek,
     required int jmlCucuLaki,
     required int jmlCucuPerempuan,
   }) {
@@ -241,8 +239,6 @@ class HajbValidator {
       return "Anak Laki-Laki";
     } else if (jmlAnakPerempuan > 0) {
       return "Anak Perempuan";
-    } else if (adaKakek) {
-      return "Kakek";
     } else if (jmlCucuLaki > 0) {
       return "Cucu Laki-Laki";
     } else if (jmlCucuPerempuan > 0) {
@@ -255,7 +251,6 @@ class HajbValidator {
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlAnakPerempuan,
-    required bool adaKakek,
     required int jmlCucuLaki,
     required int jmlCucuPerempuan,
   }) {
@@ -263,7 +258,6 @@ class HajbValidator {
           adaAyah: adaAyah,
           jmlAnakLaki: jmlAnakLaki,
           jmlAnakPerempuan: jmlAnakPerempuan,
-          adaKakek: adaKakek,
           jmlCucuLaki: jmlCucuLaki,
           jmlCucuPerempuan: jmlCucuPerempuan,
         ) !=
@@ -275,7 +269,6 @@ class HajbValidator {
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlAnakPerempuan,
-    required bool adaKakek,
     required int jmlCucuLaki,
     required int jmlCucuPerempuan,
   }) {
@@ -285,8 +278,6 @@ class HajbValidator {
       return "Anak Laki-Laki";
     } else if (jmlAnakPerempuan > 0) {
       return "Anak Perempuan";
-    } else if (adaKakek) {
-      return "Kakek";
     } else if (jmlCucuLaki > 0) {
       return "Cucu Laki-Laki";
     } else if (jmlCucuPerempuan > 0) {
@@ -299,7 +290,6 @@ class HajbValidator {
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlAnakPerempuan,
-    required bool adaKakek,
     required int jmlCucuLaki,
     required int jmlCucuPerempuan,
   }) {
@@ -307,7 +297,6 @@ class HajbValidator {
           adaAyah: adaAyah,
           jmlAnakLaki: jmlAnakLaki,
           jmlAnakPerempuan: jmlAnakPerempuan,
-          adaKakek: adaKakek,
           jmlCucuLaki: jmlCucuLaki,
           jmlCucuPerempuan: jmlCucuPerempuan,
         ) !=
