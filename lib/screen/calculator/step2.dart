@@ -152,6 +152,9 @@ class _Step2State extends State<Step2> {
                       value: calc.nilaiAnakPerempuan,
                       onChanged: (value) => calc.updateAnakPerempuan(value),
                     ),
+
+                    const Divider(color: Colors.white, height: 32),
+                    const SizedBox(height: 2),
                   ],
                 ),
               ),
