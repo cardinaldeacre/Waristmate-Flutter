@@ -64,7 +64,6 @@ class HajbValidator {
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlCucuLaki,
-    required bool adaKakek,
   }) {
     if (adaAyah) {
       return "Ayah";
@@ -80,13 +79,11 @@ class HajbValidator {
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlCucuLaki,
-    required bool adaKakek,
   }) {
     return penghalangSaudaraLakiKandung(
           adaAyah: adaAyah,
           jmlAnakLaki: jmlAnakLaki,
           jmlCucuLaki: jmlCucuLaki,
-          adaKakek: adaKakek,
         ) !=
         null;
   }

@@ -28,7 +28,6 @@ extension HajbController on CalculatorController {
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
     )) {
       nilaiSaudaraLakiKandung = 0;
     }
@@ -204,7 +203,6 @@ extension HajbController on CalculatorController {
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
-      adaKakek: nilaiKakek,
     );
   }
 
