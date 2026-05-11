@@ -60,6 +60,7 @@ class _Step1State extends State<Step1> {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
+                    fontSize: 15,
                   ),
                 ),
               ),
