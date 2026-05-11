@@ -1,0 +1,390 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:waristmate_app/controllers/calculator_controller.dart';
+import 'package:waristmate_app/logic/hajb_validator.dart';
+import 'package:waristmate_app/widgets/custom_thumb_shape.dart';
+
+class Step6 extends StatefulWidget {
+  final VoidCallback onNext;
+  final VoidCallback onBack;
+
+  const Step6({super.key, required this.onNext, required this.onBack});
+
+  @override
+  State<Step6> createState() => _Step6State();
+}
+
+class _Step6State extends State<Step6> {
+  @override
+  Widget build(BuildContext context) {
+    final calc = Provider.of<CalculatorController>(context);
+
+    const Color primaryGreen = Color.fromARGB(255, 23, 126, 104);
+    const Color darkGreen = Color(0xFF105C46);
+
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 16,
+            top: 20,
+            bottom: 14,
+          ),
+          decoration: BoxDecoration(
+            color: primaryGreen,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: darkGreen,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Text(
+                  "6 dari 9",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+              const Text(
+                "Kalkulator",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              Image.asset('assets/images/logo_white.png', width: 40),
+            ],
+          ),
+        ),
+
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Flexible(
+            child: Container(
+              padding: const EdgeInsets.all(17.5),
+              decoration: BoxDecoration(
+                color: primaryGreen,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
+                      style: TextStyle(
+                        fontSize: 17.5,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const Divider(color: Colors.white, height: 32),
+
+                    const Text(
+                      "Saudara Seayah",
+                      style: TextStyle(
+                        fontSize: 17.5,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+
+                    const SizedBox(height: 8),
+
+                    _buildCounterRow(
+                      label: "Saudara Laki-laki Seayah",
+                      value: calc.nilaiSaudaraLakiSeayah,
+                      max: 50,
+                      onChanged: (v) => calc.updateSaudaraLakiSeayah(v),
+                      isMahjub: HajbValidator.saudaraLakiSeayahTerhalang(
+                        adaAyah: calc.nilaiAyah,
+                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                        jmlCucuLaki: calc.nilaiCuculaki,
+                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                        jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
+                        jmlSaudaraPerempuanKandung:
+                            calc.nilaiSaudaraPerempuanKandung,
+                      ),
+                      infoHajb: HajbValidator.penghalangSaudaraLakiSeayah(
+                        adaAyah: calc.nilaiAyah,
+                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                        jmlCucuLaki: calc.nilaiCuculaki,
+                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                        jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
+                        jmlSaudaraPerempuanKandung:
+                            calc.nilaiSaudaraPerempuanKandung,
+                      ),
+                    ),
+
+                    _buildCounterRow(
+                      label: "Saudara Perempuan Seayah",
+                      value: calc.nilaiSaudaraPerempuanSeayah,
+                      max: 50,
+                      onChanged: (v) => calc.updateSaudaraPerempuanSeayah(v),
+                      isMahjub: HajbValidator.saudaraPerempuanSeayahTerhalang(
+                        adaAyah: calc.nilaiAyah,
+                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                        jmlCucuLaki: calc.nilaiCuculaki,
+                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                        jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
+                        jmlSaudaraPerempuanKandung:
+                            calc.nilaiSaudaraPerempuanKandung,
+                      ),
+                      infoHajb: HajbValidator.penghalangSaudaraPerempuanSeayah(
+                        adaAyah: calc.nilaiAyah,
+                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                        jmlCucuLaki: calc.nilaiCuculaki,
+                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                        jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
+                        jmlSaudaraPerempuanKandung:
+                            calc.nilaiSaudaraPerempuanKandung,
+                      ),
+                    ),
+
+                    const Divider(color: Colors.white, height: 32),
+                    const SizedBox(height: 2),
+
+                    const Text(
+                      "Saudara Seibu",
+                      style: TextStyle(
+                        fontSize: 17.5,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+
+                    const SizedBox(height: 8),
+
+                    _buildCounterRow(
+                      label: "Saudara Laki-Laki Seibu",
+                      value: calc.nilaiSaudaraLakiSeibu,
+                      max: 50,
+                      onChanged: (v) => calc.updateSaudaraLakiSeibu(v),
+                      isMahjub: HajbValidator.saudaraLakiSeibuTerhalang(
+                        adaAyah: calc.nilaiAyah,
+                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                        jmlCucuLaki: calc.nilaiCuculaki,
+                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                      ),
+                      infoHajb: HajbValidator.penghalangSaudaraLakiSeibu(
+                        adaAyah: calc.nilaiAyah,
+                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                        jmlCucuLaki: calc.nilaiCuculaki,
+                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                      ),
+                    ),
+
+                    _buildCounterRow(
+                      label: "Saudara Perempuan Seibu",
+                      value: calc.nilaiSaudaraPerempuanSeibu,
+                      max: 50,
+                      onChanged: (v) => calc.updateSaudaraPerempuanSeibu(v),
+                      isMahjub: HajbValidator.saudaraPerempuanSeibuTerhalang(
+                        adaAyah: calc.nilaiAyah,
+                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                        jmlCucuLaki: calc.nilaiCuculaki,
+                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                      ),
+                      infoHajb: HajbValidator.penghalangSaudaraPerempuanSeibu(
+                        adaAyah: calc.nilaiAyah,
+                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                        jmlCucuLaki: calc.nilaiCuculaki,
+                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                      ),
+                    ),
+
+                    const Divider(color: Colors.white, height: 32),
+                    const SizedBox(height: 2),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: primaryGreen,
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: widget.onBack,
+                  child: const Text(
+                    "Kembali",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: primaryGreen,
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: widget.onNext,
+                  child: const Text(
+                    "Lanjut",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCounterRow({
+    required String label,
+    required int value,
+    required Function(int) onChanged,
+    required String? infoHajb,
+    required bool isMahjub,
+    int max = 50,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "$label ($value)",
+          style: const TextStyle(
+            fontSize: 17.5,
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(height: 8),
+
+        if (isMahjub)
+          Container(
+            margin: const EdgeInsets.only(bottom: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: Colors.red[400],
+              border: Border.all(color: Colors.red),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              children: [
+                const Icon(Icons.info_outline, color: Colors.white70, size: 17),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    "Terhalang oleh $infoHajb",
+                    style: const TextStyle(color: Colors.white, fontSize: 17),
+                  ),
+                ),
+              ],
+            ),
+          )
+        else
+          Row(
+            children: [
+              _containerBorder(
+                size: 30,
+                borderRadius: 10,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(12),
+                  onTap: value > 0 ? () => onChanged(value - 1) : null,
+                  child: const Center(
+                    child: Icon(Icons.remove, color: Colors.white, size: 17.5),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                    trackHeight: 17.5,
+                    thumbShape: CustomThumbShape(),
+                    activeTrackColor: Colors.white,
+                    inactiveTrackColor: Colors.white24,
+                    thumbColor: Colors.white,
+                    overlayColor: Colors.white12,
+                  ),
+                  child: Slider(
+                    value: value.toDouble(),
+                    min: 0,
+                    max: max.toDouble(),
+                    onChanged: (double newValue) {
+                      onChanged(newValue.toInt());
+                    },
+                  ),
+                ),
+              ),
+              _containerBorder(
+                size: 30,
+                borderRadius: 10,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(12),
+                  onTap: value < max ? () => onChanged(value + 1) : null,
+                  child: const Center(
+                    child: Icon(Icons.add, color: Colors.white, size: 17.5),
+                  ),
+                ),
+              ),
+            ],
+          ),
+      ],
+    );
+  }
+
+  Widget _containerBorder({
+    required Widget child,
+    double size = 44,
+    double borderRadius = 16,
+  }) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 23, 126, 104),
+        border: Border.all(color: Colors.white, width: 2),
+        borderRadius: BorderRadius.circular(borderRadius),
+      ),
+      child: child,
+    );
+  }
+}
