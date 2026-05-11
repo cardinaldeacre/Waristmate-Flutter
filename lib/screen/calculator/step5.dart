@@ -113,7 +113,6 @@ class _Step5State extends State<Step5> {
                       onChanged: (v) => calc.updateSaudaraLakiKandung(v),
                       isMahjub: HajbValidator.saudaraLakiKandungTerhalang(
                         adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlCucuLaki: calc.nilaiCuculaki,
                       ),
@@ -121,7 +120,6 @@ class _Step5State extends State<Step5> {
                         adaAyah: calc.nilaiAyah,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlCucuLaki: calc.nilaiCuculaki,
-                        adaKakek: calc.nilaiKakek,
                       ),
                     ),
 
