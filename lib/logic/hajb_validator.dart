@@ -131,7 +131,7 @@ class HajbValidator {
   }
 
   // saudara seayah
-  static String? penghalangSaudaraSeayah({
+  static String? penghalangSaudaraLakiSeayah({
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlCucuLaki,
@@ -155,7 +155,7 @@ class HajbValidator {
     return null;
   }
 
-  static bool saudaraSeayahTerhalang({
+  static bool saudaraLakiSeayahTerhalang({
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlCucuLaki,
@@ -164,7 +164,7 @@ class HajbValidator {
     required int jmlAnakPerempuan,
     required int jmlCucuPerempuan,
   }) {
-    return penghalangSaudaraSeayah(
+    return penghalangSaudaraLakiSeayah(
           adaAyah: adaAyah,
           jmlAnakLaki: jmlAnakLaki,
           jmlCucuLaki: jmlCucuLaki,
@@ -177,7 +177,7 @@ class HajbValidator {
   }
 
   // saudari seayah
-  static String? penghalangSaudariSeayah({
+  static String? penghalangSaudaraPerempuanSeayah({
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlCucuLaki,
@@ -207,7 +207,7 @@ class HajbValidator {
     return null;
   }
 
-  static bool saudariSeayahTerhalang({
+  static bool saudaraPerempuanSeayahTerhalang({
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlCucuLaki,
@@ -217,7 +217,7 @@ class HajbValidator {
     required int jmlAnakPerempuan,
     required int jmlCucuPerempuan,
   }) {
-    return penghalangSaudariSeayah(
+    return penghalangSaudaraPerempuanSeayah(
           adaAyah: adaAyah,
           jmlAnakLaki: jmlAnakLaki,
           jmlCucuLaki: jmlCucuLaki,
@@ -230,7 +230,7 @@ class HajbValidator {
   }
 
   // saudara seibu
-  static String? penghalangSaudaraSeibu({
+  static String? penghalangSaudaraLakiSeibu({
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlAnakPerempuan,
@@ -254,7 +254,7 @@ class HajbValidator {
     return null;
   }
 
-  static bool saudaraSeibuTerhalang({
+  static bool saudaraLakiSeibuTerhalang({
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlAnakPerempuan,
@@ -262,7 +262,7 @@ class HajbValidator {
     required int jmlCucuLaki,
     required int jmlCucuPerempuan,
   }) {
-    return penghalangSaudaraSeibu(
+    return penghalangSaudaraLakiSeibu(
           adaAyah: adaAyah,
           jmlAnakLaki: jmlAnakLaki,
           jmlAnakPerempuan: jmlAnakPerempuan,
@@ -274,7 +274,7 @@ class HajbValidator {
   }
 
   // saudari seibu
-  static String? penghalangSaudariSeibu({
+  static String? penghalangSaudaraPerempuanSeibu({
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlAnakPerempuan,
@@ -298,7 +298,7 @@ class HajbValidator {
     return null;
   }
 
-  static bool saudariSeibuTerhalang({
+  static bool saudaraPerempuanSeibuTerhalang({
     required bool adaAyah,
     required int jmlAnakLaki,
     required int jmlAnakPerempuan,
@@ -306,7 +306,7 @@ class HajbValidator {
     required int jmlCucuLaki,
     required int jmlCucuPerempuan,
   }) {
-    return penghalangSaudariSeibu(
+    return penghalangSaudaraPerempuanSeibu(
           adaAyah: adaAyah,
           jmlAnakLaki: jmlAnakLaki,
           jmlAnakPerempuan: jmlAnakPerempuan,
