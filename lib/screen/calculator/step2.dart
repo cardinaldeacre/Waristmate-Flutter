@@ -143,13 +143,13 @@ class _Step2State extends State<Step2> {
 
                     const SizedBox(height: 8),
                     _buildCounterRow(
-                      label: "Jumlah Anak Laki-laki",
+                      label: "Anak Laki-laki",
                       value: calc.nilaiAnaklaki,
                       onChanged: (value) => calc.updateAnakLaki(value),
                     ),
 
                     _buildCounterRow(
-                      label: "Jumlah Anak Perempuan",
+                      label: "Anak Perempuan",
                       value: calc.nilaiAnakPerempuan,
                       onChanged: (value) => calc.updateAnakPerempuan(value),
                     ),
