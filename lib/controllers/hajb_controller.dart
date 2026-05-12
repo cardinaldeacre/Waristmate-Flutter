@@ -170,6 +170,26 @@ extension HajbController on CalculatorController {
     )) {
       nilaiAnakLakiPamanKandung = 0;
     }
+
+    if (HajbValidator.anakLakiPamanSekakekTerhalang(
+      adaAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnaklaki,
+      jmlCucuLaki: nilaiCuculaki,
+      adaKakek: nilaiKakek,
+      jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
+      jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuperempuan,
+      jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
+      jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
+      jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
+      jmlAnakLakiSaudaraSeayah: nilaiAnakLakiSaudaraSeayah,
+      jmlPamanKandung: nilaiPamanKandung,
+      jmlPamanSekakek: nilaiPamanSekakek,
+      jmlAnakLakiPamanSekandung: nilaiAnakLakiPamanKandung,
+    )) {
+      nilaiAnakLakiPamanSekakek = 0;
+    }
   }
 
   // kakek
