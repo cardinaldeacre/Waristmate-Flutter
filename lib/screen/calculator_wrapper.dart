@@ -7,6 +7,7 @@ import 'calculator/step5.dart';
 import 'calculator/step6.dart';
 import 'calculator/step7.dart';
 import 'calculator/step8.dart';
+import 'calculator/step9.dart';
 
 class CalculatorWrapper extends StatefulWidget {
   const CalculatorWrapper({super.key});
@@ -50,6 +51,7 @@ class _CalculatorWrapperState extends State<CalculatorWrapper> {
             Step6(onNext: _nextPage, onBack: _prevPage),
             Step7(onNext: _nextPage, onBack: _prevPage),
             Step8(onNext: _nextPage, onBack: _prevPage),
+            Step9(onNext: _nextPage, onBack: _prevPage),
           ],
         ),
       ),
