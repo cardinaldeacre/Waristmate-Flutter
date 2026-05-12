@@ -439,7 +439,7 @@ class HajbValidator {
   }
 
   // paman sekandung
-  static String? penghalangPamanSekandung({
+  static String? penghalangPamanKandung({
     required bool adaAyah,
     required int jmlAnakLaki,
     required bool adaKakek,
@@ -482,7 +482,7 @@ class HajbValidator {
     return null;
   }
 
-  static bool pamanSekandungTerhalang({
+  static bool pamanKandungTerhalang({
     required bool adaAyah,
     required int jmlAnakLaki,
     required bool adaKakek,
@@ -496,7 +496,7 @@ class HajbValidator {
     required int jmlAnakLakiSaudaraKandung,
     required int jmlAnakLakiSaudaraSeayah,
   }) {
-    return penghalangPamanSekandung(
+    return penghalangPamanKandung(
           adaAyah: adaAyah,
           jmlAnakLaki: jmlAnakLaki,
           adaKakek: adaKakek,
@@ -527,7 +527,7 @@ class HajbValidator {
     required int jmlSaudaraPerempuanSeayah,
     required int jmlAnakLakiSaudaraKandung,
     required int jmlAnakLakiSaudaraSeayah,
-    required int jmlPamanSekandung,
+    required int jmlPamanKandung,
   }) {
     if (adaAyah) {
       return "Ayah";
@@ -554,7 +554,7 @@ class HajbValidator {
       return "Anak Laki Saudara Laki-Laki Kandung";
     } else if (jmlAnakLakiSaudaraSeayah > 0) {
       return "Anak Laki Saudara Laki-Laki Seayah";
-    } else if (jmlPamanSekandung > 0) {
+    } else if (jmlPamanKandung > 0) {
       return "Paman Sekandung";
     }
     return null;
@@ -573,7 +573,7 @@ class HajbValidator {
     required int jmlSaudaraPerempuanSeayah,
     required int jmlAnakLakiSaudaraKandung,
     required int jmlAnakLakiSaudaraSeayah,
-    required int jmlPamanSekandung,
+    required int jmlPamanKandung,
   }) {
     return penghalangPamanSekakek(
           adaAyah: adaAyah,
@@ -588,7 +588,7 @@ class HajbValidator {
           jmlSaudaraPerempuanSeayah: jmlSaudaraPerempuanSeayah,
           jmlAnakLakiSaudaraKandung: jmlAnakLakiSaudaraKandung,
           jmlAnakLakiSaudaraSeayah: jmlAnakLakiSaudaraSeayah,
-          jmlPamanSekandung: jmlPamanSekandung,
+          jmlPamanKandung: jmlPamanKandung,
         ) !=
         null;
   }
@@ -607,7 +607,7 @@ class HajbValidator {
     required int jmlSaudaraPerempuanSeayah,
     required int jmlAnakLakiSaudaraKandung,
     required int jmlAnakLakiSaudaraSeayah,
-    required int jmlPamanSekandung,
+    required int jmlPamanKandung,
     required int jmlPamanSekakek,
   }) {
     if (adaAyah) {
@@ -635,7 +635,7 @@ class HajbValidator {
       return "Anak Laki Saudara Laki-Laki Kandung";
     } else if (jmlAnakLakiSaudaraSeayah > 0) {
       return "Anak Laki Saudara Laki-Laki Seayah";
-    } else if (jmlPamanSekandung > 0) {
+    } else if (jmlPamanKandung > 0) {
       return "Paman Sekandung";
     } else if (jmlPamanSekakek > 0) {
       return "Paman Sekakek";
@@ -643,7 +643,7 @@ class HajbValidator {
     return null;
   }
 
-  static bool anakLakiPamanSekandungTerhalang({
+  static bool anakLakiPamanKandungTerhalang({
     required bool adaAyah,
     required int jmlAnakLaki,
     required bool adaKakek,
@@ -656,7 +656,7 @@ class HajbValidator {
     required int jmlSaudaraPerempuanSeayah,
     required int jmlAnakLakiSaudaraKandung,
     required int jmlAnakLakiSaudaraSeayah,
-    required int jmlPamanSekandung,
+    required int jmlPamanKandung,
     required int jmlPamanSekakek,
   }) {
     return penghalangAnakLakiPamanSeKandung(
@@ -672,7 +672,7 @@ class HajbValidator {
           jmlSaudaraPerempuanSeayah: jmlSaudaraPerempuanSeayah,
           jmlAnakLakiSaudaraKandung: jmlAnakLakiSaudaraKandung,
           jmlAnakLakiSaudaraSeayah: jmlAnakLakiSaudaraSeayah,
-          jmlPamanSekandung: jmlPamanSekandung,
+          jmlPamanKandung: jmlPamanKandung,
           jmlPamanSekakek: jmlPamanSekakek,
         ) !=
         null;
@@ -692,7 +692,7 @@ class HajbValidator {
     required int jmlSaudaraPerempuanSeayah,
     required int jmlAnakLakiSaudaraKandung,
     required int jmlAnakLakiSaudaraSeayah,
-    required int jmlPamanSekandung,
+    required int jmlPamanKandung,
     required int jmlPamanSekakek,
     required int jmlAnakLakiPamanSekandung,
   }) {
@@ -721,7 +721,7 @@ class HajbValidator {
       return "Anak Laki Saudara Laki-Laki Kandung";
     } else if (jmlAnakLakiSaudaraSeayah > 0) {
       return "Anak Laki Saudara Laki-Laki Seayah";
-    } else if (jmlPamanSekandung > 0) {
+    } else if (jmlPamanKandung > 0) {
       return "Paman Sekandung";
     } else if (jmlPamanSekakek > 0) {
       return "Paman Sekakek";
@@ -744,7 +744,7 @@ class HajbValidator {
     required int jmlSaudaraPerempuanSeayah,
     required int jmlAnakLakiSaudaraKandung,
     required int jmlAnakLakiSaudaraSeayah,
-    required int jmlPamanSekandung,
+    required int jmlPamanKandung,
     required int jmlPamanSekakek,
     required int jmlAnakLakiPamanSekandung,
   }) {
@@ -761,7 +761,7 @@ class HajbValidator {
           jmlSaudaraPerempuanSeayah: jmlSaudaraPerempuanSeayah,
           jmlAnakLakiSaudaraKandung: jmlAnakLakiSaudaraKandung,
           jmlAnakLakiSaudaraSeayah: jmlAnakLakiSaudaraSeayah,
-          jmlPamanSekandung: jmlPamanSekandung,
+          jmlPamanKandung: jmlPamanKandung,
           jmlPamanSekakek: jmlPamanSekakek,
           jmlAnakLakiPamanSekandung: jmlAnakLakiPamanSekandung,
         ) !=
