@@ -30,8 +30,8 @@ class CalculatorController extends ChangeNotifier {
   int nilaiSaudaraPerempuanSeibu = 0;
   int nilaiAnakLakiSaudaraKandung = 0;
   int nilaiAnakLakiSaudaraSeayah = 0;
-  int nilaiPamanKandungAyah = 0;
-  int nilaiPamanSekakekAyah = 0;
+  int nilaiPamanKandung = 0;
+  int nilaiPamanSekakek = 0;
   int nilaiAnakLakiPamanKandung = 0;
   int nilaiAnakLakiPamanSekakek = 0;
 
@@ -208,6 +208,18 @@ class CalculatorController extends ChangeNotifier {
 
   void updateAnakLakiSaudaraSeayah(int val) {
     nilaiAnakLakiSaudaraSeayah = val;
+    sinkronisasiHajb();
+    notifyListeners();
+  }
+
+  void updatePamanKandung(int val) {
+    nilaiPamanKandung = val;
+    sinkronisasiHajb();
+    notifyListeners();
+  }
+
+  void updatePamanSekakek(int val) {
+    nilaiPamanSekakek = val;
     sinkronisasiHajb();
     notifyListeners();
   }
