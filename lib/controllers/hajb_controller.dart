@@ -322,8 +322,8 @@ extension HajbController on CalculatorController {
   }
 
   // anak laki paman sekandung
-  String? get penghalangAnakLakiPamanSekandung {
-    return HajbValidator.penghalangAnakLakiPamanSeKandung(
+  String? get penghalangAnakLakiPamanKandung {
+    return HajbValidator.penghalangAnakLakiPamanKandung(
       adaAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnaklaki,
       jmlCucuLaki: nilaiCuculaki,
