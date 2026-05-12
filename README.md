@@ -15,10 +15,16 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-### installation command for device
+### connect & installation command for device
 
-flutter run -d [code]
+```
+adb tcpip [5555]
+```
 
-flutter build apk --debug
+```
+adb connect [IP]:[PORT]
+```
 
-adb install -r build/app/outputs/flutter-apk/app-debug.apk
+```
+flutter run -d [IP]:[PORT]
+```
