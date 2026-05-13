@@ -112,8 +112,8 @@ class _Step9State extends State<Step9> {
                       max: 50,
                       onChanged: (v) => calc.updateAnakLakiPamanKandung(v),
                       isMahjub: HajbValidator.anakLakiPamanKandungTerhalang(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
@@ -132,8 +132,8 @@ class _Step9State extends State<Step9> {
                         jmlPamanSekakek: calc.nilaiPamanSekakek,
                       ),
                       infoHajb: HajbValidator.penghalangAnakLakiPamanKandung(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
@@ -159,8 +159,8 @@ class _Step9State extends State<Step9> {
                       max: 50,
                       onChanged: (v) => calc.updateAnakLakiPamanSekakek(v),
                       isMahjub: HajbValidator.anakLakiPamanSekakekTerhalang(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
@@ -181,8 +181,8 @@ class _Step9State extends State<Step9> {
                             calc.nilaiAnakLakiPamanKandung,
                       ),
                       infoHajb: HajbValidator.penghalangAnakLakiPamanSekakek(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
@@ -247,9 +247,14 @@ class _Step9State extends State<Step9> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  onPressed: widget.onNext,
+                  onPressed: () {
+                    final calc = Provider.of<CalculatorController>(
+                      context,
+                      listen: false,
+                    );
+                  },
                   child: const Text(
-                    "Lanjut",
+                    "Hasil",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,

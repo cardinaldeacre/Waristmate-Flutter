@@ -112,8 +112,8 @@ class _Step8State extends State<Step8> {
                       max: 50,
                       onChanged: (v) => calc.updatePamanKandung(v),
                       isMahjub: HajbValidator.pamanKandungTerhalang(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
@@ -130,8 +130,8 @@ class _Step8State extends State<Step8> {
                             calc.nilaiAnakLakiSaudaraSeayah,
                       ),
                       infoHajb: HajbValidator.penghalangPamanKandung(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
@@ -155,8 +155,8 @@ class _Step8State extends State<Step8> {
                       max: 50,
                       onChanged: (v) => calc.updatePamanSekakek(v),
                       isMahjub: HajbValidator.pamanSekakekTerhalang(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
@@ -174,8 +174,8 @@ class _Step8State extends State<Step8> {
                         jmlPamanKandung: calc.nilaiPamanKandung,
                       ),
                       infoHajb: HajbValidator.penghalangPamanSekakek(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,

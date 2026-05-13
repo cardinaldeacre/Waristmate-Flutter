@@ -107,37 +107,37 @@ class _Step4State extends State<Step4> {
 
                     _buildCheckboxTile(
                       title: "Kakek dari Ayah",
-                      value: calc.nilaiKakek,
+                      value: calc.nilaiKakek == 1,
                       onChanged: (v) => calc.updateKakek(v ?? false),
                       infoHajb: HajbValidator.penghalangKakek(
-                        adaAyah: calc.nilaiAyah,
+                        nilaiAyah: calc.nilaiAyah,
                       ),
                       isMahjub: HajbValidator.kakekTerhalang(
-                        adaAyah: calc.nilaiAyah,
+                        nilaiAyah: calc.nilaiAyah,
                       ),
                     ),
 
                     _buildCheckboxTile(
                       title: "Nenek dari Ayah",
-                      value: calc.nilaiNenekAyah,
+                      value: calc.nilaiNenekAyah == 1,
                       onChanged: (v) => calc.updateNenekAyah(v ?? false),
                       infoHajb: HajbValidator.penghalangNenek(
-                        adaIbu: calc.nilaiIbu,
+                        nilaiIbu: calc.nilaiIbu,
                       ),
                       isMahjub: HajbValidator.nenekTerhalang(
-                        adaIbu: calc.nilaiIbu,
+                        nilaiIbu: calc.nilaiIbu,
                       ),
                     ),
 
                     _buildCheckboxTile(
                       title: "Nenek dari Ibu",
-                      value: calc.nilaiNenekIbu,
+                      value: calc.nilaiNenekIbu == 1,
                       onChanged: (v) => calc.updateNenekIbu(v ?? false),
                       infoHajb: HajbValidator.penghalangNenek(
-                        adaIbu: calc.nilaiIbu,
+                        nilaiIbu: calc.nilaiIbu,
                       ),
                       isMahjub: HajbValidator.nenekTerhalang(
-                        adaIbu: calc.nilaiIbu,
+                        nilaiIbu: calc.nilaiIbu,
                       ),
                     ),
 

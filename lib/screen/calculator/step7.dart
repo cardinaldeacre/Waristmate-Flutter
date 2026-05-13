@@ -112,8 +112,8 @@ class _Step7State extends State<Step7> {
                       max: 50,
                       onChanged: (v) => calc.updateAnakLakiSaudaraKandung(v),
                       isMahjub: HajbValidator.anakLakiSaudaraKandungTerhalang(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
@@ -126,8 +126,8 @@ class _Step7State extends State<Step7> {
                             calc.nilaiSaudaraPerempuanSeayah,
                       ),
                       infoHajb: HajbValidator.penghalangAnakLakiSaudaraKandung(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
@@ -147,8 +147,8 @@ class _Step7State extends State<Step7> {
                       max: 50,
                       onChanged: (v) => calc.updateAnakLakiSaudaraSeayah(v),
                       isMahjub: HajbValidator.anakLakiSaudaraSeayahTerhalang(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
@@ -163,8 +163,8 @@ class _Step7State extends State<Step7> {
                             calc.nilaiAnakLakiSaudaraKandung,
                       ),
                       infoHajb: HajbValidator.penghalangAnakLakiSaudaraSeayah(
-                        adaAyah: calc.nilaiAyah,
-                        adaKakek: calc.nilaiKakek,
+                        nilaiAyah: calc.nilaiAyah,
+                        nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnaklaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,

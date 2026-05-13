@@ -106,12 +106,12 @@ class _Step2State extends State<Step2> {
 
                     _buildCheckboxTile(
                       title: "Ayah",
-                      value: calc.nilaiAyah,
+                      value: calc.nilaiAyah == 1,
                       onChanged: (value) => calc.updateAyah(value!),
                     ),
                     _buildCheckboxTile(
                       title: "Ibu",
-                      value: calc.nilaiIbu,
+                      value: calc.nilaiIbu == 1,
                       onChanged: (value) => calc.updateIbu(value!),
                     ),
 
@@ -125,7 +125,7 @@ class _Step2State extends State<Step2> {
                     if (calc.muwarrits == 'Perempuan')
                       _buildCheckboxTile(
                         title: "Suami",
-                        value: calc.nilaiSuami,
+                        value: calc.nilaiSuami == 1,
                         onChanged: (value) => calc.updateSuami(value!),
                       ),
 

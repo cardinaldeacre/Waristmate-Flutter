@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:waristmate_app/controllers/hajb_controller.dart';
+import 'package:waristmate_app/logic/main_calculator.dart';
 
 class CalculatorController extends ChangeNotifier {
   int nTirkah = 0;
@@ -11,17 +12,17 @@ class CalculatorController extends ChangeNotifier {
   String muwarrits = '';
   int totalashobah = 0;
   List<dynamic> masalah = [];
-  bool nilaiAyah = false;
-  bool nilaiIbu = false;
-  bool nilaiSuami = false;
+  int nilaiAyah = 0;
+  int nilaiIbu = 0;
+  int nilaiSuami = 0;
   int nilaiIstri = 0;
   int nilaiAnaklaki = 0;
   int nilaiAnakPerempuan = 0;
   int nilaiCuculaki = 0;
   int nilaiCucuperempuan = 0;
-  bool nilaiKakek = false;
-  bool nilaiNenekAyah = false;
-  bool nilaiNenekIbu = false;
+  int nilaiKakek = 0;
+  int nilaiNenekAyah = 0;
+  int nilaiNenekIbu = 0;
   int nilaiSaudaraLakiKandung = 0;
   int nilaiSaudaraPerempuanKandung = 0;
   int nilaiSaudaraLakiSeayah = 0;
@@ -35,6 +36,11 @@ class CalculatorController extends ChangeNotifier {
   int nilaiAnakLakiPamanKandung = 0;
   int nilaiAnakLakiPamanSekakek = 0;
 
+  int get keturunan =>
+      nilaiAnaklaki + nilaiAnakPerempuan + nilaiCuculaki + nilaiCucuperempuan;
+  int get keturunanPerempuan => nilaiAnakPerempuan + nilaiCucuperempuan;
+  int get keturunanLaki => nilaiAnaklaki + nilaiCuculaki;
+  int get nilaiNenek2 => nilaiNenekAyah + nilaiNenekIbu;
   void calculateIrts() {
     nIrst = nTirkah - nHutang - nWasiat - nTajhiz;
     // info UI udah update data
@@ -85,7 +91,7 @@ class CalculatorController extends ChangeNotifier {
     }
 
     if (muwarrits == 'Laki-laki') {
-      nilaiSuami = false;
+      nilaiSuami = 0;
       notifyListeners();
     }
   }
@@ -99,19 +105,19 @@ class CalculatorController extends ChangeNotifier {
   }
 
   void updateAyah(bool val) {
-    nilaiAyah = val;
+    nilaiAyah = val ? 1 : 0;
     sinkronisasiHajb();
     notifyListeners();
   }
 
   void updateIbu(bool val) {
-    nilaiIbu = val;
+    nilaiIbu = val ? 1 : 0;
     sinkronisasiHajb();
     notifyListeners();
   }
 
   void updateSuami(bool val) {
-    nilaiSuami = val;
+    nilaiSuami = val ? 1 : 0;
     sinkronisasiHajb();
     notifyListeners();
   }
@@ -147,19 +153,19 @@ class CalculatorController extends ChangeNotifier {
   }
 
   void updateKakek(bool val) {
-    nilaiKakek = val;
+    nilaiKakek = val ? 1 : 0;
     sinkronisasiHajb();
     notifyListeners();
   }
 
   void updateNenekAyah(bool val) {
-    nilaiNenekAyah = val;
+    nilaiNenekAyah = val ? 1 : 0;
     sinkronisasiHajb();
     notifyListeners();
   }
 
   void updateNenekIbu(bool val) {
-    nilaiNenekIbu = val;
+    nilaiNenekIbu = val ? 1 : 0;
     sinkronisasiHajb();
     notifyListeners();
   }
@@ -233,6 +239,12 @@ class CalculatorController extends ChangeNotifier {
   void updateAnakLakiPamanSekakek(int val) {
     nilaiAnakLakiPamanSekakek = val;
     sinkronisasiHajb();
+    notifyListeners();
+  }
+
+  void runEngine() {
+    startCounting();
+
     notifyListeners();
   }
 }
