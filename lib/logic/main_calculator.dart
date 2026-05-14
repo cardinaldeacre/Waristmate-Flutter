@@ -1,0 +1,8 @@
+import 'package:waristmate_app/controllers/calculator_controller.dart';
+part 'calculate_special.dart';
+
+extension MainCalculator on CalculatorController {
+  void startCounting() {
+    masalah.clear();
+  }
+}
