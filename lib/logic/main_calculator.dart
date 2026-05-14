@@ -4,5 +4,10 @@ part 'calculate_special.dart';
 extension MainCalculator on CalculatorController {
   void startCounting() {
     masalah.clear();
+    results.clear();
+
+    if (isCalculateSpecial()) {
+      return;
+    }
   }
 }
