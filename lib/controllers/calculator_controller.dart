@@ -12,7 +12,7 @@ class CalculatorController extends ChangeNotifier {
   String muwarrits = '';
   int totalashobah = 0;
   List<dynamic> masalah = [];
-  List<dynamic> results = [];
+  List<Map<String, dynamic>> results = [];
   String kasus = '';
   int nilaiAyah = 0;
   int nilaiIbu = 0;
