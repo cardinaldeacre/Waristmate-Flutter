@@ -12,6 +12,7 @@ class CalculatorController extends ChangeNotifier {
   String muwarrits = '';
   int totalashobah = 0;
   List<dynamic> masalah = [];
+  List<dynamic> results = [];
   int nilaiAyah = 0;
   int nilaiIbu = 0;
   int nilaiSuami = 0;
@@ -38,9 +39,24 @@ class CalculatorController extends ChangeNotifier {
 
   int get keturunan =>
       nilaiAnaklaki + nilaiAnakPerempuan + nilaiCuculaki + nilaiCucuperempuan;
-  int get keturunanPerempuan => nilaiAnakPerempuan + nilaiCucuperempuan;
   int get keturunanLaki => nilaiAnaklaki + nilaiCuculaki;
+  int get keturunanPerempuan => nilaiAnakPerempuan + nilaiCucuperempuan;
   int get nilaiNenek2 => nilaiNenekAyah + nilaiNenekIbu;
+  int get saudara =>
+      nilaiSaudaraLakiKandung +
+      nilaiSaudaraPerempuanKandung +
+      nilaiSaudaraLakiSeayah +
+      nilaiSaudaraPerempuanSeayah +
+      nilaiSaudaraLakiSeibu +
+      nilaiSaudaraPerempuanSeibu;
+  int get saudaraSeayah => nilaiSaudaraLakiSeayah + nilaiSaudaraPerempuanSeayah;
+  int get saudaraSeibu => nilaiSaudaraLakiSeibu + nilaiSaudaraPerempuanSeibu;
+  int get anakSaudara =>
+      nilaiAnakLakiSaudaraKandung + nilaiAnakLakiSaudaraSeayah;
+  int get paman => nilaiPamanKandung + nilaiPamanSekakek;
+  int get anakPaman => nilaiAnakLakiPamanKandung + nilaiAnakLakiPamanSekakek;
+  int get pojok => anakPaman + anakSaudara + paman;
+
   void calculateIrts() {
     nIrst = nTirkah - nHutang - nWasiat - nTajhiz;
     // info UI udah update data
