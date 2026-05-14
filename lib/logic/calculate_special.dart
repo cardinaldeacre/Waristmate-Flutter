@@ -16,7 +16,7 @@ extension CalculateSpecial on CalculatorController {
         saudaraSeibu == 0 &&
         pojok == 0);
 
-    bool isMusyatarakahIbu =
+    bool isMusytarakahIbu =
         (nilaiIbu > 0 &&
         nilaiSuami > 0 &&
         saudaraSeibu > 1 &&
@@ -26,7 +26,7 @@ extension CalculateSpecial on CalculatorController {
         saudaraSeayah == 0 &&
         pojok == 0);
 
-    bool isMusyatarakahNenek =
+    bool isMusytarakahNenek =
         (nilaiIbu > 0 &&
         nilaiSuami > 0 &&
         saudaraSeibu > 1 &&
@@ -78,8 +78,115 @@ extension CalculateSpecial on CalculatorController {
       results.add({'kasus': 'Akdariyah'});
 
       return true;
-    }
+    } else if (isMusytarakahIbu) {
+      hasilKPK = 12;
+      int bagianSuami = totalWarisan * 6 ~/ hasilKPK;
+      int bagianIbu = totalWarisan * 2 ~/ hasilKPK;
+      int bagianSaudaraLakiKandung = totalWarisan * 2 ~/ hasilKPK;
+      int bagianSaudaraPerempuanKandung = totalWarisan * 1 ~/ hasilKPK;
+      int bagianSaudaraSeibu = totalWarisan * 1 ~/ hasilKPK ~/ saudaraSeibu;
 
+      results.add({
+        'ahli_waris': 'Suami',
+        'porsi': '6/12',
+        'nominal': bagianSuami,
+      });
+      results.add({'ahli_waris': 'Ibu', 'porsi': '2/12', 'nominal': bagianIbu});
+      results.add({
+        'ahli_waris': 'Saudara Laki-Kandung',
+        'porsi': '2/12',
+        'nominal': bagianSaudaraLakiKandung,
+      });
+      results.add({
+        'ahli_waris': 'Saudara Perempuan Kandung',
+        'porsi': '1/12',
+        'nominal': bagianSaudaraPerempuanKandung,
+      });
+      results.add({
+        'ahli_waris': 'Saudara Seibu',
+        'porsi': '1/12',
+        'nominal': bagianSaudaraSeibu,
+      });
+      results.add({'kasus': 'Musytarakah'});
+
+      return true;
+    } else if (isMusytarakahNenek) {
+      hasilKPK = 12;
+      int bagianSuami = totalWarisan * 6 ~/ hasilKPK;
+      int bagianNenek = totalWarisan * 2 ~/ hasilKPK;
+      int bagianSaudaraLakiKandung = totalWarisan * 2 ~/ hasilKPK;
+      int bagianSaudaraPerempuanKandung = totalWarisan * 1 ~/ hasilKPK;
+      int bagianSaudaraSeibu = totalWarisan * 1 ~/ hasilKPK ~/ saudaraSeibu;
+
+      results.add({
+        'ahli_waris': 'Suami',
+        'porsi': '6/12',
+        'nominal': bagianSuami,
+      });
+      results.add({
+        'ahli_waris': 'Nenek',
+        'porsi': '2/12',
+        'nominal': bagianNenek,
+      });
+      results.add({
+        'ahli_waris': 'Saudara Laki-Kandung',
+        'porsi': '2/12',
+        'nominal': bagianSaudaraLakiKandung,
+      });
+      results.add({
+        'ahli_waris': 'Saudara Perempuan Kandung',
+        'porsi': '1/12',
+        'nominal': bagianSaudaraPerempuanKandung,
+      });
+      results.add({
+        'ahli_waris': 'Saudara Seibu',
+        'porsi': '1/12',
+        'nominal': bagianSaudaraSeibu,
+      });
+      results.add({'kasus': 'Musytarakah'});
+
+      return true;
+    } else if (isUmriyatainSuami) {
+      hasilKPK = 6;
+      int bagianSuami = totalWarisan * 3 ~/ hasilKPK;
+      int bagianAyah = totalWarisan * 2 ~/ hasilKPK;
+      int bagianIbu = totalWarisan * 1 ~/ hasilKPK;
+
+      results.add({
+        'ahli_waris': 'Suami',
+        'porsi': '3/6',
+        'nominal': bagianSuami,
+      });
+      results.add({
+        'ahli_waris': 'Ayah',
+        'porsi': '2/6',
+        'nominal': bagianAyah,
+      });
+      results.add({'ahli_waris': 'Ibu', 'porsi': '1/6', 'nominal': bagianIbu});
+      results.add({'kasus': 'Umriyatain'});
+
+      return true;
+    } else if (isUmriyatainIstri) {
+      hasilKPK = 12;
+      int bagianIstri = totalWarisan * 3 ~/ hasilKPK;
+      int bagianAyah = totalWarisan * 6 ~/ hasilKPK;
+      int bagianIbu = totalWarisan * 3 ~/ hasilKPK;
+
+      results.add({
+        'ahli_waris': 'Istri',
+        'porsi': '3/12',
+        'nominal': bagianIstri,
+      });
+      results.add({
+        'ahli_waris': 'Ayah',
+        'porsi': '6/12',
+        'nominal': bagianAyah,
+      });
+      results.add({'ahli_waris': 'Ibu', 'porsi': '3/12', 'nominal': bagianIbu});
+      results.add({'kasus': 'Umriyatain'});
+
+      return true;
+    }
     return false;
   }
 }
