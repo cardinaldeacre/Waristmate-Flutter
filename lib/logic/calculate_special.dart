@@ -75,7 +75,7 @@ extension CalculateSpecial on CalculatorController {
         'porsi': '4/27',
         'nominal': bagianSaudaraPerempuanKandung,
       });
-      results.add({'kasus': 'Akdariyah'});
+      kasus = 'Akdariyah';
 
       return true;
     } else if (isMusytarakahIbu) {
@@ -107,7 +107,7 @@ extension CalculateSpecial on CalculatorController {
         'porsi': '1/12',
         'nominal': bagianSaudaraSeibu,
       });
-      results.add({'kasus': 'Musytarakah'});
+      kasus = 'Musytarakah';
 
       return true;
     } else if (isMusytarakahNenek) {
@@ -143,7 +143,7 @@ extension CalculateSpecial on CalculatorController {
         'porsi': '1/12',
         'nominal': bagianSaudaraSeibu,
       });
-      results.add({'kasus': 'Musytarakah'});
+      kasus = 'Musytarakah';
 
       return true;
     } else if (isUmriyatainSuami) {
@@ -163,7 +163,7 @@ extension CalculateSpecial on CalculatorController {
         'nominal': bagianAyah,
       });
       results.add({'ahli_waris': 'Ibu', 'porsi': '1/6', 'nominal': bagianIbu});
-      results.add({'kasus': 'Umriyatain'});
+      kasus = 'Umriyatain';
 
       return true;
     } else if (isUmriyatainIstri) {
@@ -183,7 +183,7 @@ extension CalculateSpecial on CalculatorController {
         'nominal': bagianAyah,
       });
       results.add({'ahli_waris': 'Ibu', 'porsi': '3/12', 'nominal': bagianIbu});
-      results.add({'kasus': 'Umriyatain'});
+      kasus = 'Umriyatain';
 
       return true;
     }
