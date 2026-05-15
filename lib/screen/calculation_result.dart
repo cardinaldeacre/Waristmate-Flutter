@@ -188,7 +188,7 @@ class CalculationResult extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w600,
-                            fontSize: 14,
+                            fontSize: 17,
                           ),
                         ),
                       ),
@@ -217,6 +217,7 @@ class CalculationResult extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
+                          fontSize: 17,
                         ),
                       ),
                     ),
@@ -243,13 +244,11 @@ class CalculationResult extends StatelessWidget {
           Text(
             label,
             style: const TextStyle(
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: FontWeight.w500,
               color: Colors.white70,
             ),
           ),
-
-          const SizedBox(height: 4),
 
           Text(
             value,
@@ -266,7 +265,7 @@ class CalculationResult extends StatelessWidget {
 
   Widget _buildTableCell(String text, {bool isHeader = false}) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: isHeader ? const Color(0xFFE0E0E0) : Colors.white,
         border: Border.all(color: const Color(0xFFBDBDBD)),
@@ -277,7 +276,7 @@ class CalculationResult extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          fontSize: 14,
+          fontSize: 16,
           fontWeight: isHeader ? FontWeight.w600 : FontWeight.w400,
           color: isHeader ? Colors.black87 : Colors.black54,
         ),
