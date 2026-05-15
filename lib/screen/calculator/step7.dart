@@ -116,8 +116,8 @@ class _Step7State extends State<Step7> {
                         nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                        jmlCucuLaki: calc.nilaiCuculaki,
-                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                        jmlCucuLaki: calc.nilaiCucuLaki,
+                        jmlCucuPerempuan: calc.nilaiCucuPerempuan,
                         jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
                         jmlSaudaraPerempuanKandung:
                             calc.nilaiSaudaraPerempuanKandung,
@@ -130,8 +130,8 @@ class _Step7State extends State<Step7> {
                         nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                        jmlCucuLaki: calc.nilaiCuculaki,
-                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                        jmlCucuLaki: calc.nilaiCucuLaki,
+                        jmlCucuPerempuan: calc.nilaiCucuPerempuan,
                         jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
                         jmlSaudaraPerempuanKandung:
                             calc.nilaiSaudaraPerempuanKandung,
@@ -151,8 +151,8 @@ class _Step7State extends State<Step7> {
                         nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                        jmlCucuLaki: calc.nilaiCuculaki,
-                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                        jmlCucuLaki: calc.nilaiCucuLaki,
+                        jmlCucuPerempuan: calc.nilaiCucuPerempuan,
                         jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
                         jmlSaudaraPerempuanKandung:
                             calc.nilaiSaudaraPerempuanKandung,
@@ -167,8 +167,8 @@ class _Step7State extends State<Step7> {
                         nilaiKakek: calc.nilaiKakek,
                         jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                        jmlCucuLaki: calc.nilaiCuculaki,
-                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                        jmlCucuLaki: calc.nilaiCucuLaki,
+                        jmlCucuPerempuan: calc.nilaiCucuPerempuan,
                         jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
                         jmlSaudaraPerempuanKandung:
                             calc.nilaiSaudaraPerempuanKandung,

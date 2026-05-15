@@ -23,8 +23,8 @@ class CalculatorController extends ChangeNotifier {
   int nilaiIstri = 0;
   int nilaiAnakLaki = 0;
   int nilaiAnakPerempuan = 0;
-  int nilaiCuculaki = 0;
-  int nilaiCucuperempuan = 0;
+  int nilaiCucuLaki = 0;
+  int nilaiCucuPerempuan = 0;
   int nilaiKakek = 0;
   int nilaiNenekAyah = 0;
   int nilaiNenekIbu = 0;
@@ -44,10 +44,10 @@ class CalculatorController extends ChangeNotifier {
   int rIbu = 0;
   int rSuami = 0;
   int rIstri = 0;
-  int rAnaklaki = 0;
+  int rAnakLaki = 0;
   int rAnakPerempuan = 0;
-  int rCuculaki = 0;
-  int rCucuperempuan = 0;
+  int rCucuLaki = 0;
+  int rCucuPerempuan = 0;
   int rKakek = 0;
   int rNenekAyah = 0;
   int rNenekIbu = 0;
@@ -65,9 +65,9 @@ class CalculatorController extends ChangeNotifier {
   int rAnakLakiPamanSekakek = 0;
 
   int get keturunan =>
-      nilaiAnakLaki + nilaiAnakPerempuan + nilaiCuculaki + nilaiCucuperempuan;
-  int get keturunanLaki => nilaiAnakLaki + nilaiCuculaki;
-  int get keturunanPerempuan => nilaiAnakPerempuan + nilaiCucuperempuan;
+      nilaiAnakLaki + nilaiAnakPerempuan + nilaiCucuLaki + nilaiCucuPerempuan;
+  int get keturunanLaki => nilaiAnakLaki + nilaiCucuLaki;
+  int get keturunanPerempuan => nilaiAnakPerempuan + nilaiCucuPerempuan;
   int get nilaiNenek2 => nilaiNenekAyah + nilaiNenekIbu;
   int get saudara =>
       nilaiSaudaraLakiKandung +
@@ -184,13 +184,13 @@ class CalculatorController extends ChangeNotifier {
   }
 
   void updateCucuLaki(int val) {
-    nilaiCuculaki = val;
+    nilaiCucuLaki = val;
     sinkronisasiHajb();
     notifyListeners();
   }
 
   void updateCucuPerempuan(int val) {
-    nilaiCucuperempuan = val;
+    nilaiCucuPerempuan = val;
     sinkronisasiHajb();
     notifyListeners();
   }

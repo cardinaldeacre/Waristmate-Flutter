@@ -114,12 +114,12 @@ class _Step5State extends State<Step5> {
                       isMahjub: HajbValidator.saudaraLakiKandungTerhalang(
                         nilaiAyah: calc.nilaiAyah,
                         jmlAnakLaki: calc.nilaiAnakLaki,
-                        jmlCucuLaki: calc.nilaiCuculaki,
+                        jmlCucuLaki: calc.nilaiCucuLaki,
                       ),
                       infoHajb: HajbValidator.penghalangSaudaraLakiKandung(
                         nilaiAyah: calc.nilaiAyah,
                         jmlAnakLaki: calc.nilaiAnakLaki,
-                        jmlCucuLaki: calc.nilaiCuculaki,
+                        jmlCucuLaki: calc.nilaiCucuLaki,
                       ),
                     ),
 
@@ -132,15 +132,15 @@ class _Step5State extends State<Step5> {
                         nilaiAyah: calc.nilaiAyah,
                         jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                        jmlCucuLaki: calc.nilaiCuculaki,
-                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                        jmlCucuLaki: calc.nilaiCucuLaki,
+                        jmlCucuPerempuan: calc.nilaiCucuPerempuan,
                       ),
                       infoHajb: HajbValidator.penghalangSaudaraPerempuanKandung(
                         nilaiAyah: calc.nilaiAyah,
                         jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                        jmlCucuLaki: calc.nilaiCuculaki,
-                        jmlCucuPerempuan: calc.nilaiCucuperempuan,
+                        jmlCucuLaki: calc.nilaiCucuLaki,
+                        jmlCucuPerempuan: calc.nilaiCucuPerempuan,
                       ),
                     ),
 

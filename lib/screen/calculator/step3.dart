@@ -108,7 +108,7 @@ class _Step3State extends State<Step3> {
 
                     _buildCounterRow(
                       label: "Cucu Laki-Laki",
-                      value: calc.nilaiCuculaki,
+                      value: calc.nilaiCucuLaki,
                       max: 50,
                       onChanged: (v) => calc.updateCucuLaki(v),
                       isMahjub: HajbValidator.cucuLakiTerhalang(
@@ -121,7 +121,7 @@ class _Step3State extends State<Step3> {
 
                     _buildCounterRow(
                       label: "Cucu Perempuan",
-                      value: calc.nilaiCucuperempuan,
+                      value: calc.nilaiCucuPerempuan,
                       max: 50,
                       onChanged: (v) => calc.updateCucuPerempuan(v),
                       isMahjub: HajbValidator.cucuPerempuanTerhalang(
