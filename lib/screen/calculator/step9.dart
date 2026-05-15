@@ -115,7 +115,7 @@ class _Step9State extends State<Step9> {
                       isMahjub: HajbValidator.anakLakiPamanKandungTerhalang(
                         nilaiAyah: calc.nilaiAyah,
                         nilaiKakek: calc.nilaiKakek,
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
                         jmlCucuPerempuan: calc.nilaiCucuperempuan,
@@ -135,7 +135,7 @@ class _Step9State extends State<Step9> {
                       infoHajb: HajbValidator.penghalangAnakLakiPamanKandung(
                         nilaiAyah: calc.nilaiAyah,
                         nilaiKakek: calc.nilaiKakek,
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
                         jmlCucuPerempuan: calc.nilaiCucuperempuan,
@@ -162,7 +162,7 @@ class _Step9State extends State<Step9> {
                       isMahjub: HajbValidator.anakLakiPamanSekakekTerhalang(
                         nilaiAyah: calc.nilaiAyah,
                         nilaiKakek: calc.nilaiKakek,
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
                         jmlCucuPerempuan: calc.nilaiCucuperempuan,
@@ -184,7 +184,7 @@ class _Step9State extends State<Step9> {
                       infoHajb: HajbValidator.penghalangAnakLakiPamanSekakek(
                         nilaiAyah: calc.nilaiAyah,
                         nilaiKakek: calc.nilaiKakek,
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
                         jmlCucuPerempuan: calc.nilaiCucuperempuan,

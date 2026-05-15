@@ -112,10 +112,10 @@ class _Step3State extends State<Step3> {
                       max: 50,
                       onChanged: (v) => calc.updateCucuLaki(v),
                       isMahjub: HajbValidator.cucuLakiTerhalang(
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                       ),
                       infoHajb: HajbValidator.penghalangCucuLaki(
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                       ),
                     ),
 
@@ -125,11 +125,11 @@ class _Step3State extends State<Step3> {
                       max: 50,
                       onChanged: (v) => calc.updateCucuPerempuan(v),
                       isMahjub: HajbValidator.cucuPerempuanTerhalang(
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                       ),
                       infoHajb: HajbValidator.penghalangCucuPerempuan(
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                       ),
                     ),

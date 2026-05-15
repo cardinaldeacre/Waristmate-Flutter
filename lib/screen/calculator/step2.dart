@@ -144,7 +144,7 @@ class _Step2State extends State<Step2> {
                     const SizedBox(height: 8),
                     _buildCounterRow(
                       label: "Anak Laki-laki",
-                      value: calc.nilaiAnaklaki,
+                      value: calc.nilaiAnakLaki,
                       onChanged: (value) => calc.updateAnakLaki(value),
                     ),
 

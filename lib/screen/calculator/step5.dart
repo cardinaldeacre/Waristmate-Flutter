@@ -113,12 +113,12 @@ class _Step5State extends State<Step5> {
                       onChanged: (v) => calc.updateSaudaraLakiKandung(v),
                       isMahjub: HajbValidator.saudaraLakiKandungTerhalang(
                         nilaiAyah: calc.nilaiAyah,
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlCucuLaki: calc.nilaiCuculaki,
                       ),
                       infoHajb: HajbValidator.penghalangSaudaraLakiKandung(
                         nilaiAyah: calc.nilaiAyah,
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlCucuLaki: calc.nilaiCuculaki,
                       ),
                     ),
@@ -130,14 +130,14 @@ class _Step5State extends State<Step5> {
                       onChanged: (v) => calc.updateSaudaraPerempuanKandung(v),
                       isMahjub: HajbValidator.saudaraPerempuanKandungTerhalang(
                         nilaiAyah: calc.nilaiAyah,
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
                         jmlCucuPerempuan: calc.nilaiCucuperempuan,
                       ),
                       infoHajb: HajbValidator.penghalangSaudaraPerempuanKandung(
                         nilaiAyah: calc.nilaiAyah,
-                        jmlAnakLaki: calc.nilaiAnaklaki,
+                        jmlAnakLaki: calc.nilaiAnakLaki,
                         jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                         jmlCucuLaki: calc.nilaiCuculaki,
                         jmlCucuPerempuan: calc.nilaiCucuperempuan,

@@ -13,12 +13,12 @@ extension HajbController on CalculatorController {
       nilaiNenekAyah = 0;
     }
 
-    if (HajbValidator.cucuLakiTerhalang(jmlAnakLaki: nilaiAnaklaki)) {
+    if (HajbValidator.cucuLakiTerhalang(jmlAnakLaki: nilaiAnakLaki)) {
       nilaiCuculaki = 0;
     }
 
     if (HajbValidator.cucuPerempuanTerhalang(
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlAnakPerempuan: nilaiAnakPerempuan,
     )) {
       nilaiCucuperempuan = 0;
@@ -26,7 +26,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.saudaraLakiKandungTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
     )) {
       nilaiSaudaraLakiKandung = 0;
@@ -34,7 +34,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.saudaraPerempuanKandungTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
@@ -44,7 +44,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.saudaraLakiSeayahTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
@@ -56,7 +56,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.saudaraPerempuanSeayahTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
@@ -68,7 +68,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.saudaraLakiSeibuTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
@@ -78,7 +78,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.saudaraPerempuanSeibuTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
@@ -88,7 +88,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.anakLakiSaudaraKandungTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
@@ -103,7 +103,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.anakLakiSaudaraSeayahTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
@@ -119,7 +119,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.pamanKandungTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
@@ -136,7 +136,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.pamanSekakekTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
@@ -154,7 +154,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.anakLakiPamanKandungTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
@@ -173,7 +173,7 @@ extension HajbController on CalculatorController {
 
     if (HajbValidator.anakLakiPamanSekakekTerhalang(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
@@ -203,13 +203,13 @@ extension HajbController on CalculatorController {
 
   // cucu laki-laki
   String? get penghalangCucuLaki {
-    return HajbValidator.penghalangCucuLaki(jmlAnakLaki: nilaiAnaklaki);
+    return HajbValidator.penghalangCucuLaki(jmlAnakLaki: nilaiAnakLaki);
   }
 
   // cucu perempuan
   String? get penghalangCucuPerempuan {
     return HajbValidator.penghalangCucuPerempuan(
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlAnakPerempuan: nilaiAnakPerempuan,
     );
   }
@@ -218,7 +218,7 @@ extension HajbController on CalculatorController {
   String? get penghalangSaudaraLakiKandung {
     return HajbValidator.penghalangSaudaraLakiKandung(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
     );
   }
@@ -227,7 +227,7 @@ extension HajbController on CalculatorController {
   String? get penghalangSaudaraPerempuan {
     return HajbValidator.penghalangSaudaraPerempuanKandung(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
@@ -238,7 +238,7 @@ extension HajbController on CalculatorController {
   String? get penghalangSaudaraLakiSeayah {
     return HajbValidator.penghalangSaudaraLakiSeayah(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
@@ -251,7 +251,7 @@ extension HajbController on CalculatorController {
   String? get penghalangSaudaraPerempuanSeayah {
     return HajbValidator.penghalangSaudaraPerempuanSeayah(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
       jmlSaudaraPerempuanKandung: nilaiSaudaraPerempuanKandung,
@@ -264,7 +264,7 @@ extension HajbController on CalculatorController {
   String? get penghalangSaudaraLakiSeibu {
     return HajbValidator.penghalangSaudaraLakiSeibu(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuperempuan,
@@ -275,7 +275,7 @@ extension HajbController on CalculatorController {
   String? get penghalangAnakLakiSaudaraKandung {
     return HajbValidator.penghalangAnakLakiSaudaraKandung(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
@@ -291,7 +291,7 @@ extension HajbController on CalculatorController {
   String? get penghalangAnakLakiSaudaraSeayah {
     return HajbValidator.penghalangAnakLakiSaudaraSeayah(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
@@ -308,7 +308,7 @@ extension HajbController on CalculatorController {
   String? get penghalangPamanSekandung {
     return HajbValidator.penghalangPamanKandung(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
@@ -326,7 +326,7 @@ extension HajbController on CalculatorController {
   String? get penghalangPamanSekakek {
     return HajbValidator.penghalangPamanSekakek(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
@@ -345,7 +345,7 @@ extension HajbController on CalculatorController {
   String? get penghalangAnakLakiPamanKandung {
     return HajbValidator.penghalangAnakLakiPamanKandung(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
@@ -365,7 +365,7 @@ extension HajbController on CalculatorController {
   String? get penghalangAnakLakiPamanSekakek {
     return HajbValidator.penghalangAnakLakiPamanSekakek(
       nilaiAyah: nilaiAyah,
-      jmlAnakLaki: nilaiAnaklaki,
+      jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCuculaki,
       nilaiKakek: nilaiKakek,
       jmlSaudaraLakiKandung: nilaiSaudaraLakiKandung,
