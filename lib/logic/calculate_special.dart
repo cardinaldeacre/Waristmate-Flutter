@@ -3,7 +3,6 @@ part of 'main_calculator.dart';
 extension CalculateSpecial on CalculatorController {
   bool isCalculateSpecial() {
     late int totalWarisan = nIrst;
-    int hasilKPK = 0;
 
     bool isAkdariyah =
         (nilaiKakek > 0 &&
