@@ -11,14 +11,17 @@ class CalculatorController extends ChangeNotifier {
   int nIrst = 0;
   String muwarrits = '';
   int totalashobah = 0;
-  List<dynamic> masalah = [];
   List<Map<String, dynamic>> results = [];
+  List<dynamic> masalah = [];
+  int hasilKPK = 0;
+  int totalRatio = 0;
+  int totalAshobah = 0;
   String kasus = '';
   int nilaiAyah = 0;
   int nilaiIbu = 0;
   int nilaiSuami = 0;
   int nilaiIstri = 0;
-  int nilaiAnaklaki = 0;
+  int nilaiAnakLaki = 0;
   int nilaiAnakPerempuan = 0;
   int nilaiCuculaki = 0;
   int nilaiCucuperempuan = 0;
@@ -37,10 +40,33 @@ class CalculatorController extends ChangeNotifier {
   int nilaiPamanSekakek = 0;
   int nilaiAnakLakiPamanKandung = 0;
   int nilaiAnakLakiPamanSekakek = 0;
+  int rAyah = 0;
+  int rIbu = 0;
+  int rSuami = 0;
+  int rIstri = 0;
+  int rAnaklaki = 0;
+  int rAnakPerempuan = 0;
+  int rCuculaki = 0;
+  int rCucuperempuan = 0;
+  int rKakek = 0;
+  int rNenekAyah = 0;
+  int rNenekIbu = 0;
+  int rSaudaraLakiKandung = 0;
+  int rSaudaraPerempuanKandung = 0;
+  int rSaudaraLakiSeayah = 0;
+  int rSaudaraPerempuanSeayah = 0;
+  int rSaudaraLakiSeibu = 0;
+  int rSaudaraPerempuanSeibu = 0;
+  int rAnakLakiSaudaraKandung = 0;
+  int rAnakLakiSaudaraSeayah = 0;
+  int rPamanKandung = 0;
+  int rPamanSekakek = 0;
+  int rAnakLakiPamanKandung = 0;
+  int rAnakLakiPamanSekakek = 0;
 
   int get keturunan =>
-      nilaiAnaklaki + nilaiAnakPerempuan + nilaiCuculaki + nilaiCucuperempuan;
-  int get keturunanLaki => nilaiAnaklaki + nilaiCuculaki;
+      nilaiAnakLaki + nilaiAnakPerempuan + nilaiCuculaki + nilaiCucuperempuan;
+  int get keturunanLaki => nilaiAnakLaki + nilaiCuculaki;
   int get keturunanPerempuan => nilaiAnakPerempuan + nilaiCucuperempuan;
   int get nilaiNenek2 => nilaiNenekAyah + nilaiNenekIbu;
   int get saudara =>
@@ -146,7 +172,7 @@ class CalculatorController extends ChangeNotifier {
   }
 
   void updateAnakLaki(int val) {
-    nilaiAnaklaki = val;
+    nilaiAnakLaki = val;
     sinkronisasiHajb();
     notifyListeners();
   }
