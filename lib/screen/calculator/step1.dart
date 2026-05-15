@@ -229,6 +229,7 @@ class _Step1State extends State<Step1> {
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 17.5,
+                          color: primaryGreen,
                         ),
                       ),
                     ),
