@@ -51,6 +51,7 @@ class CalculatorController extends ChangeNotifier {
   int rKakek = 0;
   int rNenekAyah = 0;
   int rNenekIbu = 0;
+  int rNenek2 = 0;
   int rSaudaraLakiKandung = 0;
   int rSaudaraPerempuanKandung = 0;
   int rSaudaraLakiSeayah = 0;
