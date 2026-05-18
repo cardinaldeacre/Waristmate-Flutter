@@ -85,5 +85,50 @@ extension CalculateRatio on CalculatorController {
         totalRatio += rCucuPerempuan;
       }
     }
+
+    if (nilaiSaudaraPerempuanKandung > 0) {
+      if (nilaiSaudaraPerempuanKandung == 1 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0) {
+        rSaudaraPerempuanKandung = hasilKPK * (1 ~/ 2);
+        totalRatio += rSaudaraPerempuanKandung;
+      } else if (nilaiSaudaraPerempuanKandung > 1 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0) {
+        rSaudaraPerempuanKandung = hasilKPK * (2 ~/ 3);
+        totalRatio += rSaudaraPerempuanKandung;
+      }
+    }
+
+    if (nilaiSaudaraPerempuanSeayah > 0) {
+      if (nilaiSaudaraPerempuanSeayah == 1 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0) {
+        rSaudaraPerempuanSeayah = hasilKPK * (1 ~/ 2);
+        totalRatio += rSaudaraPerempuanSeayah;
+      } else if (nilaiSaudaraPerempuanSeayah > 1 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0) {
+        rSaudaraPerempuanSeayah = hasilKPK * (2 ~/ 3);
+        totalRatio += rSaudaraPerempuanSeayah;
+      }
+    }
+
+    if (saudaraSeibu > 0) {
+      if (saudaraSeibu == 1) {
+        rSaudaraSeibu = hasilKPK * (1 ~/ 6);
+        totalRatio += rSaudaraSeibu;
+      } else if (saudaraSeibu > 1) {
+        rSaudaraSeibu = hasilKPK * (1 ~/ 3);
+        totalRatio += rSaudaraSeibu;
+      }
+    }
+
+    if ((totalRatio > hasilKPK) ||
+        (totalRatio < hasilKPK && totalAshobah == 0)) {
+      calculateAulRadd();
+    } else if (totalAshobah > 0) {
+      calculateShare();
+    }
   }
 }
