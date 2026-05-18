@@ -9,6 +9,8 @@ class CalculatorController extends ChangeNotifier {
   int nWasiat = 0;
   int nTajhiz = 0;
   int nIrst = 0;
+  late int totalWarisan = nIrst;
+  late int sisaWarisan = totalWarisan;
   String muwarrits = '';
   int totalashobah = 0;
   List<Map<String, dynamic>> results = [];
@@ -58,6 +60,7 @@ class CalculatorController extends ChangeNotifier {
   int rSaudaraPerempuanSeayah = 0;
   int rSaudaraLakiSeibu = 0;
   int rSaudaraPerempuanSeibu = 0;
+  int rSaudaraSeibu = 0;
   int rAnakLakiSaudaraKandung = 0;
   int rAnakLakiSaudaraSeayah = 0;
   int rPamanKandung = 0;
