@@ -3,6 +3,9 @@ part 'calculate_special.dart';
 part 'calculate_masalah.dart';
 part 'calculate_kpk.dart';
 part 'calculate_ratio.dart';
+part 'calculate_aul_radd.dart';
+part 'calculate_ashabah.dart';
+part 'calculate_share.dart';
 
 extension MainCalculator on CalculatorController {
   void startCounting() {
