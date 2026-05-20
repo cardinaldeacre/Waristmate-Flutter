@@ -15,5 +15,7 @@ extension MainCalculator on CalculatorController {
     if (isCalculateSpecial()) {
       return;
     }
+
+    calculateMasalah();
   }
 }

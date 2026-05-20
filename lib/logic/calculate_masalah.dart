@@ -165,6 +165,9 @@ extension CalculateMasalah on CalculatorController {
 
     if (masalah.isNotEmpty) {
       calculateKPK();
+      calculateRatio();
+    } else {
+      calculateAshabah();
     }
   }
 }
