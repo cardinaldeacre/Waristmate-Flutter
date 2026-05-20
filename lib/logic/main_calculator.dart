@@ -19,5 +19,7 @@ extension MainCalculator on CalculatorController {
     }
 
     calculateMasalah();
+
+    return;
   }
 }
