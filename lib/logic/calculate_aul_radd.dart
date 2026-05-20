@@ -9,6 +9,7 @@ extension CalculateAulRadd on CalculatorController {
       hasilKPK = totalRatio;
     } else if (totalRatio < hasilKPK && (nilaiSuami > 0 || nilaiIstri > 0)) {
       // radd pasutri
+      kasus = 'Radd';
       if (nilaiSuami > 0 &&
           (nilaiAyah > 0 ||
               nilaiIbu > 0 ||
@@ -21,10 +22,60 @@ extension CalculateAulRadd on CalculatorController {
           int bagianSuami = totalWarisan * 1 ~/ 4;
           results.add({
             'ahli_waris': 'Suami',
-            'porsi': '$rSuami / $hasilKPK',
+            'porsi': '1/4 total',
+            'nominal': bagianSuami,
+          });
+        } else {
+          masalah.removeWhere((item) => item == 2);
+          calculateKPK();
+          int bagianSuami = totalWarisan * 1 ~/ 2;
+          results.add({
+            'ahli_waris': 'Suami',
+            'porsi': '1/2 total',
             'nominal': bagianSuami,
           });
         }
+      } else {
+        int bagianSuami = totalWarisan * 1;
+        results.add({
+          'ahli_waris': 'Suami',
+          'porsi': '1/1',
+          'nominal': bagianSuami,
+        });
+      }
+
+      if (nilaiIstri > 0 &&
+          (nilaiAyah > 0 ||
+              nilaiIbu > 0 ||
+              keturunan > 0 ||
+              saudara > 0 ||
+              nilaiNenek2 > 0)) {
+        if (keturunan > 0) {
+          masalah.removeWhere((item) => item == 8);
+          calculateKPK();
+          int bagianIstri = totalWarisan * 1 ~/ 8;
+          results.add({
+            'ahli_waris': 'Istri',
+            'porsi': '1/8 total',
+            'nominal': bagianIstri,
+          });
+        } else {
+          masalah.removeWhere((item) => item == 4);
+          calculateKPK();
+          int bagianIstri = totalWarisan * 1 ~/ 4;
+          results.add({
+            'ahli_waris': 'Istri',
+            'porsi': '1/4 total',
+            'nominal': bagianIstri,
+          });
+        }
+      } else {
+        int bagianIstri = totalWarisan * 1;
+        results.add({
+          'ahli_waris': 'Istri',
+          'porsi': '1/1',
+          'nominal': bagianIstri,
+        });
       }
     } else if (totalRatio < hasilKPK && (nilaiSuami == 0 && nilaiIstri == 0)) {
       // radd biasa
@@ -259,6 +310,8 @@ extension CalculateAulRadd on CalculatorController {
           });
         }
       }
+
+      kasus = 'Radd';
     }
   }
 }
