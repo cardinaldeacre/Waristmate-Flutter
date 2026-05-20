@@ -25,6 +25,7 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '1/4 total',
             'nominal': bagianSuami,
           });
+          sisaWarisan -= bagianSuami;
         } else {
           masalah.removeWhere((item) => item == 2);
           calculateKPK();
@@ -34,6 +35,7 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '1/2 total',
             'nominal': bagianSuami,
           });
+          sisaWarisan -= bagianSuami;
         }
       } else {
         int bagianSuami = totalWarisan * 1;
@@ -53,24 +55,26 @@ extension CalculateAulRadd on CalculatorController {
         if (keturunan > 0) {
           masalah.removeWhere((item) => item == 8);
           calculateKPK();
-          int bagianIstri = totalWarisan * 1 ~/ 8;
+          int bagianIstri = totalWarisan * 1 ~/ 8 ~/ nilaiIstri;
           results.add({
             'ahli_waris': 'Istri',
             'porsi': '1/8 total',
             'nominal': bagianIstri,
           });
+          sisaWarisan -= bagianIstri;
         } else {
           masalah.removeWhere((item) => item == 4);
           calculateKPK();
-          int bagianIstri = totalWarisan * 1 ~/ 4;
+          int bagianIstri = totalWarisan * 1 ~/ 4 ~/ nilaiIstri;
           results.add({
             'ahli_waris': 'Istri',
             'porsi': '1/4 total',
             'nominal': bagianIstri,
           });
+          sisaWarisan -= bagianIstri;
         }
       } else {
-        int bagianIstri = totalWarisan * 1;
+        int bagianIstri = totalWarisan * 1 ~/ nilaiIstri;
         results.add({
           'ahli_waris': 'Istri',
           'porsi': '1/1',
@@ -89,7 +93,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rAyah / $hasilKPK',
             'nominal': bagianAyah,
           });
-          sisaWarisan -= bagianAyah;
         }
       }
 
@@ -101,7 +104,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rIbu / $hasilKPK',
             'nominal': bagianIbu,
           });
-          sisaWarisan -= bagianIbu;
         } else {
           int bagianIbu = totalWarisan * rIbu ~/ hasilKPK;
           results.add({
@@ -109,7 +111,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rIbu / $hasilKPK',
             'nominal': bagianIbu,
           });
-          sisaWarisan -= bagianIbu;
         }
       }
 
@@ -121,7 +122,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rKakek / $hasilKPK',
             'nominal': bagianKakek,
           });
-          sisaWarisan -= bagianKakek;
         }
       }
 
@@ -137,7 +137,6 @@ extension CalculateAulRadd on CalculatorController {
           'porsi': '$rNenek2 / $hasilKPK Bersama',
           'nominal': bagianNenek2,
         });
-        sisaWarisan -= bagianNenek2;
       } else if (nilaiNenekAyah > 0 && nilaiNenekIbu == 0) {
         int bagianNenekAyah = totalWarisan * rNenekAyah ~/ hasilKPK;
         results.add({
@@ -145,7 +144,6 @@ extension CalculateAulRadd on CalculatorController {
           'porsi': '$rNenekAyah / $hasilKPK',
           'nominal': bagianNenekAyah,
         });
-        sisaWarisan -= bagianNenekAyah;
       } else if (nilaiNenekIbu > 0 && nilaiNenekAyah == 0) {
         int bagianNenekIbu = totalWarisan * rNenekIbu ~/ hasilKPK;
         results.add({
@@ -153,7 +151,6 @@ extension CalculateAulRadd on CalculatorController {
           'porsi': '$rNenekIbu / $hasilKPK',
           'nominal': bagianNenekIbu,
         });
-        sisaWarisan -= bagianNenekIbu;
       }
 
       if (nilaiAnakPerempuan > 0) {
@@ -165,7 +162,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rAnakPerempuan / $hasilKPK',
             'nominal': bagianAnakPerempuan,
           });
-          sisaWarisan -= bagianAnakPerempuan;
         } else if (nilaiAnakPerempuan == 1 && nilaiAnakLaki == 0) {
           int bagianAnakPerempuan = totalWarisan * rAnakPerempuan ~/ hasilKPK;
           results.add({
@@ -173,7 +169,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rAnakPerempuan / $hasilKPK',
             'nominal': bagianAnakPerempuan,
           });
-          sisaWarisan -= bagianAnakPerempuan;
         }
       }
 
@@ -185,7 +180,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rCucuPerempuan / $hasilKPK',
             'nominal': bagianCucuPerempuan,
           });
-          sisaWarisan -= bagianCucuPerempuan;
         } else if (nilaiCucuPerempuan == 1) {
           int bagianCucuPerempuan = totalWarisan * rCucuPerempuan ~/ hasilKPK;
           results.add({
@@ -193,7 +187,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rCucuPerempuan / $hasilKPK',
             'nominal': bagianCucuPerempuan,
           });
-          sisaWarisan -= bagianCucuPerempuan;
         } else if (nilaiCucuPerempuan > 1) {
           int bagianCucuPerempuan =
               totalWarisan * rCucuPerempuan ~/ hasilKPK ~/ nilaiCucuPerempuan;
@@ -202,7 +195,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rCucuPerempuan / $hasilKPK',
             'nominal': bagianCucuPerempuan,
           });
-          sisaWarisan -= bagianCucuPerempuan;
         }
       }
 
@@ -215,7 +207,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rSaudaraPerempuanKandung / $hasilKPK',
             'nominal': bagianSaudaraPerempuanKandung,
           });
-          sisaWarisan -= bagianSaudaraPerempuanKandung;
         } else if (nilaiSaudaraPerempuanKandung > 1) {
           int bagianSaudaraPerempuanKandung =
               totalWarisan *
@@ -227,7 +218,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rSaudaraPerempuanKandung / $hasilKPK',
             'nominal': bagianSaudaraPerempuanKandung,
           });
-          sisaWarisan -= bagianSaudaraPerempuanKandung;
         }
       }
 
@@ -240,7 +230,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rSaudaraPerempuanSeayah / $hasilKPK',
             'nominal': bagianSaudaraPerempuanSeayah,
           });
-          sisaWarisan -= bagianSaudaraPerempuanSeayah;
         } else if (nilaiSaudaraPerempuanSeayah > 1) {
           int bagianSaudaraPerempuanSeayah =
               totalWarisan *
@@ -252,7 +241,6 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rSaudaraPerempuanSeayah / $hasilKPK',
             'nominal': bagianSaudaraPerempuanSeayah,
           });
-          sisaWarisan -= bagianSaudaraPerempuanSeayah;
         }
       }
 
