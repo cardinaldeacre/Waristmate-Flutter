@@ -2,7 +2,7 @@ part of 'main_calculator.dart';
 
 extension CalculateAulRadd on CalculatorController {
   void calculateAulRadd() {
-    if (totalAshobah > 0 && totalRatio <= hasilKPK) {
+    if (totalAshabah > 0 && totalRatio <= hasilKPK) {
       calculateAshabah();
     } else if (totalRatio > hasilKPK) {
       // aul

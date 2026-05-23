@@ -125,9 +125,9 @@ extension CalculateRatio on CalculatorController {
     }
 
     if ((totalRatio > hasilKPK) ||
-        (totalRatio < hasilKPK && totalAshobah == 0)) {
+        (totalRatio < hasilKPK && totalAshabah == 0)) {
       calculateAulRadd();
-    } else if (totalAshobah > 0) {
+    } else if (totalAshabah > 0) {
       calculateShare();
     }
   }

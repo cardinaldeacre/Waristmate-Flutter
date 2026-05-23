@@ -24,10 +24,10 @@ extension CalculateMasalah on CalculatorController {
       if (nilaiAnakLaki > 0 || nilaiCucuLaki > 0) {
         masalah.add(6);
       } else if (keturunanPerempuan > 0) {
-        totalAshobah = totalAshobah + 2;
+        totalAshabah = totalAshabah + 2;
         masalah.add(6);
       } else {
-        totalAshobah = totalAshobah + 2;
+        totalAshabah = totalAshabah + 2;
       }
     }
 
@@ -43,10 +43,10 @@ extension CalculateMasalah on CalculatorController {
       if (keturunanLaki > 0) {
         masalah.add(6);
       } else if (keturunanPerempuan > 0) {
-        totalAshobah = totalAshobah + 2;
+        totalAshabah = totalAshabah + 2;
         masalah.add(6);
       } else {
-        totalAshobah = totalAshobah + 2;
+        totalAshabah = totalAshabah + 2;
       }
     }
 
@@ -62,12 +62,12 @@ extension CalculateMasalah on CalculatorController {
     }
 
     if (nilaiAnakLaki > 0) {
-      totalAshobah = totalAshobah + 2 * nilaiAnakLaki;
+      totalAshabah = totalAshabah + 2 * nilaiAnakLaki;
     }
 
     if (nilaiAnakPerempuan > 0) {
       if (nilaiAnakLaki > 0) {
-        totalAshobah = totalAshobah + nilaiAnakPerempuan;
+        totalAshabah = totalAshabah + nilaiAnakPerempuan;
       } else if (nilaiAnakPerempuan > 1 && nilaiAnakLaki == 0) {
         masalah.add(3);
       } else if (nilaiAnakPerempuan == 1 && nilaiAnakLaki == 0) {
@@ -76,14 +76,14 @@ extension CalculateMasalah on CalculatorController {
     }
 
     if (nilaiCucuLaki > 0) {
-      totalAshobah = totalAshobah + 2 * nilaiCucuLaki;
+      totalAshabah = totalAshabah + 2 * nilaiCucuLaki;
     }
 
     if (nilaiCucuPerempuan > 0) {
       if (nilaiAnakPerempuan > 0) {
         masalah.add(6);
       } else if (nilaiCucuLaki > 0) {
-        totalAshobah = totalAshobah + nilaiCucuPerempuan;
+        totalAshabah = totalAshabah + nilaiCucuPerempuan;
       } else if (nilaiCucuPerempuan == 1) {
         masalah.add(2);
       } else if (nilaiCucuPerempuan > 1) {
@@ -92,14 +92,14 @@ extension CalculateMasalah on CalculatorController {
     }
 
     if (nilaiSaudaraLakiKandung > 0) {
-      totalAshobah = totalAshobah + 2 * nilaiSaudaraLakiKandung;
+      totalAshabah = totalAshabah + 2 * nilaiSaudaraLakiKandung;
     }
 
     if (nilaiSaudaraPerempuanKandung > 0) {
       if (nilaiSaudaraLakiKandung > 0 ||
           nilaiAnakPerempuan > 0 ||
           nilaiCucuPerempuan > 0) {
-        totalAshobah = totalAshobah + nilaiSaudaraPerempuanKandung;
+        totalAshabah = totalAshabah + nilaiSaudaraPerempuanKandung;
       } else if (nilaiSaudaraPerempuanKandung == 1) {
         masalah.add(2);
       } else if (nilaiSaudaraPerempuanKandung > 1) {
@@ -108,14 +108,14 @@ extension CalculateMasalah on CalculatorController {
     }
 
     if (nilaiSaudaraLakiSeayah > 0) {
-      totalAshobah = totalAshobah + 2 * nilaiSaudaraLakiSeayah;
+      totalAshabah = totalAshabah + 2 * nilaiSaudaraLakiSeayah;
     }
 
     if (nilaiSaudaraPerempuanSeayah > 0) {
       if (nilaiAnakPerempuan > 0 ||
           nilaiCucuPerempuan > 0 ||
           nilaiSaudaraLakiSeayah > 0) {
-        totalAshobah = totalAshobah + nilaiSaudaraPerempuanSeayah;
+        totalAshabah = totalAshabah + nilaiSaudaraPerempuanSeayah;
       } else if (nilaiSaudaraPerempuanSeayah == 0) {
         masalah.add(2);
       } else if (nilaiSaudaraPerempuanSeayah > 1) {
@@ -140,27 +140,27 @@ extension CalculateMasalah on CalculatorController {
     }
 
     if (nilaiAnakLakiSaudaraKandung > 0) {
-      totalAshobah = totalAshobah + 2 * nilaiAnakLakiSaudaraKandung;
+      totalAshabah = totalAshabah + 2 * nilaiAnakLakiSaudaraKandung;
     }
 
     if (nilaiAnakLakiSaudaraSeayah > 0) {
-      totalAshobah = totalAshobah + 2 * nilaiAnakLakiSaudaraSeayah;
+      totalAshabah = totalAshabah + 2 * nilaiAnakLakiSaudaraSeayah;
     }
 
     if (nilaiPamanKandung > 0) {
-      totalAshobah = totalAshobah + 2 * nilaiPamanKandung;
+      totalAshabah = totalAshabah + 2 * nilaiPamanKandung;
     }
 
     if (nilaiPamanSekakek > 0) {
-      totalAshobah = totalAshobah + 2 * nilaiPamanSekakek;
+      totalAshabah = totalAshabah + 2 * nilaiPamanSekakek;
     }
 
     if (nilaiAnakLakiPamanKandung > 0) {
-      totalAshobah = totalAshobah + 2 * nilaiAnakLakiPamanKandung;
+      totalAshabah = totalAshabah + 2 * nilaiAnakLakiPamanKandung;
     }
 
     if (nilaiAnakLakiPamanSekakek > 0) {
-      totalAshobah = totalAshobah + 2 * nilaiAnakLakiPamanSekakek;
+      totalAshabah = totalAshabah + 2 * nilaiAnakLakiPamanSekakek;
     }
 
     if (masalah.isNotEmpty) {
