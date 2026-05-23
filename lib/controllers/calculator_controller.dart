@@ -12,12 +12,11 @@ class CalculatorController extends ChangeNotifier {
   late int totalWarisan = nIrst;
   late int sisaWarisan = totalWarisan;
   String muwarrits = '';
-  int totalashobah = 0;
   List<Map<String, dynamic>> results = [];
   List<int> masalah = [];
   int hasilKPK = 0;
   int totalRatio = 0;
-  int totalAshobah = 0;
+  int totalAshabah = 0;
   String kasus = '';
   int nilaiAyah = 0;
   int nilaiIbu = 0;
