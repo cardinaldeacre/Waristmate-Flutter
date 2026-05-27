@@ -25,7 +25,7 @@ extension CalculateShare on CalculatorController {
     }
 
     if (nilaiAyah > 0) {
-      if (nilaiAnakLaki > 0 || nilaiCucuLaki > 0) {
+      if (keturunanLaki > 0) {
         int bagianAyah = totalWarisan * rAyah ~/ hasilKPK;
         sisaWarisan -= bagianAyah;
         results.add({
@@ -47,7 +47,7 @@ extension CalculateShare on CalculatorController {
     }
 
     if (nilaiKakek > 0) {
-      if (nilaiAnakLaki > 0 || nilaiCucuLaki > 0) {
+      if (keturunanLaki > 0) {
         int bagianKakek = totalWarisan * rKakek ~/ hasilKPK;
         sisaWarisan -= bagianKakek;
         results.add({
@@ -88,53 +88,61 @@ extension CalculateShare on CalculatorController {
     }
 
     if (nilaiAnakPerempuan > 0) {
-      int bagianAnakPerempuan =
-          totalWarisan * rAnakPerempuan ~/ hasilKPK ~/ nilaiAnakPerempuan;
-      sisaWarisan -= bagianAnakPerempuan;
-      results.add({
-        'ahli_waris': 'Anak Perempuan',
-        'porsi': '$rAnakPerempuan / $hasilKPK',
-        'nominal': bagianAnakPerempuan,
-      });
+      if (nilaiAnakLaki == 0) {
+        int bagianAnakPerempuan =
+            totalWarisan * rAnakPerempuan ~/ hasilKPK ~/ nilaiAnakPerempuan;
+        sisaWarisan -= bagianAnakPerempuan;
+        results.add({
+          'ahli_waris': 'Anak Perempuan',
+          'porsi': '$rAnakPerempuan / $hasilKPK',
+          'nominal': bagianAnakPerempuan,
+        });
+      }
     }
 
     if (nilaiCucuPerempuan > 0) {
-      int bagianCucuPerempuan =
-          totalWarisan * rCucuPerempuan ~/ hasilKPK ~/ nilaiCucuPerempuan;
-      sisaWarisan -= bagianCucuPerempuan;
-      results.add({
-        'ahli_waris': 'Cucu Perempuan',
-        'porsi': '$rCucuPerempuan / $hasilKPK',
-        'nominal': bagianCucuPerempuan,
-      });
+      if (nilaiCucuLaki == 0) {
+        int bagianCucuPerempuan =
+            totalWarisan * rCucuPerempuan ~/ hasilKPK ~/ nilaiCucuPerempuan;
+        sisaWarisan -= bagianCucuPerempuan;
+        results.add({
+          'ahli_waris': 'Cucu Perempuan',
+          'porsi': '$rCucuPerempuan / $hasilKPK',
+          'nominal': bagianCucuPerempuan,
+        });
+      }
     }
 
     if (nilaiSaudaraPerempuanKandung > 0) {
-      int bagianSaudaraPerempuanKandung =
-          totalWarisan *
-          rSaudaraPerempuanKandung ~/
-          hasilKPK ~/
-          nilaiSaudaraPerempuanKandung;
-      sisaWarisan -= bagianSaudaraPerempuanKandung;
-      results.add({
-        'ahli_waris': 'Saudara Perempuan Kandung',
-        'porsi': '$rSaudaraPerempuanKandung / $hasilKPK',
-        'nominal': bagianSaudaraPerempuanKandung,
-      });
+      if (nilaiSaudaraLakiKandung == 0) {
+        int bagianSaudaraPerempuanKandung =
+            totalWarisan *
+            rSaudaraPerempuanKandung ~/
+            hasilKPK ~/
+            nilaiSaudaraPerempuanKandung;
+        sisaWarisan -= bagianSaudaraPerempuanKandung;
+        results.add({
+          'ahli_waris': 'Saudara Perempuan Kandung',
+          'porsi': '$rSaudaraPerempuanKandung / $hasilKPK',
+          'nominal': bagianSaudaraPerempuanKandung,
+        });
+      }
     }
 
     if (nilaiSaudaraPerempuanSeayah > 0) {
-      int bagianSaudaraPerempuanSeayah =
-          totalWarisan *
-          rSaudaraPerempuanSeayah ~/
-          hasilKPK ~/
-          nilaiSaudaraPerempuanSeayah;
-      sisaWarisan -= bagianSaudaraPerempuanSeayah;
-      results.add({
-        'ahli_waris': 'Saudara Perempuan Seayah',
-        'porsi': '$rSaudaraPerempuanSeayah / $hasilKPK',
-        'nominal': bagianSaudaraPerempuanSeayah,
-      });
+      if (nilaiSaudaraLakiSeayah == 0) {
+        int bagianSaudaraPerempuanSeayah =
+            totalWarisan *
+            rSaudaraPerempuanSeayah ~/
+            hasilKPK ~/
+            nilaiSaudaraPerempuanSeayah;
+        sisaWarisan -= bagianSaudaraPerempuanSeayah;
+        results.add({
+          'ahli_waris': 'Saudara Perempuan Seayah',
+          'porsi': '$rSaudaraPerempuanSeayah / $hasilKPK',
+          'nominal': bagianSaudaraPerempuanSeayah,
+        });
+      }
     }
 
     if (saudaraSeibu > 0) {
