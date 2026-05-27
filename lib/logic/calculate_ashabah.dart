@@ -10,14 +10,14 @@ extension CalculateAshabah on CalculatorController {
       if (keturunanPerempuan > 0) {
         int bagianAyah = totalWarisan * 1 ~/ 6 + nilaiAshabah * 2;
         results.add({
-          'ahli waris': 'Ayah',
+          'ahli_waris': 'Ayah',
           'porsi': '$rAyah / $hasilKPK + Ashabah',
           'nominal': bagianAyah,
         });
       } else if (keturunanPerempuan == 0) {
         int bagianAyah = nilaiAshabah * 2;
         results.add({
-          'ahli waris': 'Ayah',
+          'ahli_waris': 'Ayah',
           'porsi': 'Ashabah',
           'nominal': bagianAyah,
         });
@@ -28,14 +28,14 @@ extension CalculateAshabah on CalculatorController {
       if (keturunanPerempuan > 0) {
         int bagianKakek = totalWarisan * 1 ~/ 6 + nilaiAshabah * 2;
         results.add({
-          'ahli waris': 'Kakek',
+          'ahli_waris': 'Kakek',
           'porsi': '$rKakek / $hasilKPK + Ashabah',
           'nominal': bagianKakek,
         });
       } else if (keturunanPerempuan == 0) {
         int bagianKakek = nilaiAshabah * 2;
         results.add({
-          'ahli waris': 'Kakek',
+          'ahli_waris': 'Kakek',
           'porsi': 'Ashabah',
           'nominal': bagianKakek,
         });
@@ -45,7 +45,7 @@ extension CalculateAshabah on CalculatorController {
     if (nilaiAnakLaki > 0) {
       int bagianAnakLaki = nilaiAshabah * 2;
       results.add({
-        'ahli waris': 'Anak Laki-laki',
+        'ahli_waris': 'Anak Laki-laki',
         'porsi': 'Ashabah',
         'nominal': bagianAnakLaki,
       });
@@ -55,7 +55,7 @@ extension CalculateAshabah on CalculatorController {
       if (nilaiAnakLaki > 0) {
         int bagianAnakPerempuan = nilaiAshabah;
         results.add({
-          'ahli waris': 'Anak Perempuan',
+          'ahli_waris': 'Anak Perempuan',
           'porsi': 'Ashabah',
           'nominal': bagianAnakPerempuan,
         });
@@ -65,7 +65,7 @@ extension CalculateAshabah on CalculatorController {
     if (nilaiCucuLaki > 0) {
       int bagianCucuLaki = nilaiAshabah * 2;
       results.add({
-        'ahli waris': 'Cucu Laki-laki',
+        'ahli_waris': 'Cucu Laki-laki',
         'porsi': 'Ashabah',
         'nominal': bagianCucuLaki,
       });
@@ -75,7 +75,7 @@ extension CalculateAshabah on CalculatorController {
       if (nilaiCucuLaki > 0) {
         int bagianCucuPerempuan = nilaiAshabah;
         results.add({
-          'ahli waris': 'Cucu Perempuan',
+          'ahli_waris': 'Cucu Perempuan',
           'porsi': 'Ashabah',
           'nominal': bagianCucuPerempuan,
         });
@@ -85,7 +85,7 @@ extension CalculateAshabah on CalculatorController {
     if (nilaiSaudaraLakiKandung > 0) {
       int bagianSaudaraLakiKandung = nilaiAshabah * 2;
       results.add({
-        'ahli waris': 'Saudara Laki-laki Kandung',
+        'ahli_waris': 'Saudara Laki-laki Kandung',
         'porsi': 'Ashabah',
         'nominal': bagianSaudaraLakiKandung,
       });
@@ -97,7 +97,7 @@ extension CalculateAshabah on CalculatorController {
           nilaiCucuPerempuan > 0) {
         int bagianSaudaraPerempuanKandung = nilaiAshabah;
         results.add({
-          'ahli waris': 'Saudara Perempuan Kandung',
+          'ahli_waris': 'Saudara Perempuan Kandung',
           'porsi': 'Ashabah',
           'nominal': bagianSaudaraPerempuanKandung,
         });
@@ -107,7 +107,7 @@ extension CalculateAshabah on CalculatorController {
     if (nilaiSaudaraLakiSeayah > 0) {
       int bagianSaudaraLakiSeayah = nilaiAshabah * 2;
       results.add({
-        'ahli waris': 'Saudara Laki-laki Seayah',
+        'ahli_waris': 'Saudara Laki-laki Seayah',
         'porsi': 'Ashabah',
         'nominal': bagianSaudaraLakiSeayah,
       });
@@ -119,7 +119,7 @@ extension CalculateAshabah on CalculatorController {
           nilaiSaudaraLakiSeayah > 0) {
         int bagianSaudaraPerempuanSeayah = nilaiAshabah;
         results.add({
-          'ahli waris': 'Saudara Perempuan Seayah',
+          'ahli_waris': 'Saudara Perempuan Seayah',
           'porsi': 'Ashabah',
           'nominal': bagianSaudaraPerempuanSeayah,
         });
@@ -129,7 +129,7 @@ extension CalculateAshabah on CalculatorController {
     if (nilaiAnakLakiSaudaraKandung > 0) {
       int bagianAnakLakiSaudaraKandung = nilaiAshabah * 2;
       results.add({
-        'ahli waris': 'Anak Laki-laki Saudara Kandung',
+        'ahli_waris': 'Anak Laki-laki Saudara Kandung',
         'porsi': 'Ashabah',
         'nominal': bagianAnakLakiSaudaraKandung,
       });
@@ -138,7 +138,7 @@ extension CalculateAshabah on CalculatorController {
     if (nilaiAnakLakiSaudaraSeayah > 0) {
       int bagianAnakLakiSaudaraSeayah = nilaiAshabah * 2;
       results.add({
-        'ahli waris': 'Anak Laki-laki Saudara Seayah',
+        'ahli_waris': 'Anak Laki-laki Saudara Seayah',
         'porsi': 'Ashabah',
         'nominal': bagianAnakLakiSaudaraSeayah,
       });
@@ -147,7 +147,7 @@ extension CalculateAshabah on CalculatorController {
     if (nilaiPamanKandung > 0) {
       int bagianPamanKandung = nilaiAshabah * 2;
       results.add({
-        'ahli waris': 'Paman Kandung',
+        'ahli_waris': 'Paman Kandung',
         'porsi': 'Ashabah',
         'nominal': bagianPamanKandung,
       });
@@ -156,7 +156,7 @@ extension CalculateAshabah on CalculatorController {
     if (nilaiPamanSekakek > 0) {
       int bagianPamanSekakek = nilaiAshabah * 2;
       results.add({
-        'ahli waris': 'Paman Sekakek',
+        'ahli_waris': 'Paman Sekakek',
         'porsi': 'Ashabah',
         'nominal': bagianPamanSekakek,
       });
@@ -165,7 +165,7 @@ extension CalculateAshabah on CalculatorController {
     if (nilaiAnakLakiPamanKandung > 0) {
       int bagianAnakLakiPamanKandung = nilaiAshabah * 2;
       results.add({
-        'ahli waris': 'Anak Laki-laki Paman Kandung',
+        'ahli_waris': 'Anak Laki-laki Paman Kandung',
         'porsi': 'Ashabah',
         'nominal': bagianAnakLakiPamanKandung,
       });
@@ -174,7 +174,7 @@ extension CalculateAshabah on CalculatorController {
     if (nilaiAnakLakiPamanSekakek > 0) {
       int bagianAnakLakiPamanSekakek = nilaiAshabah * 2;
       results.add({
-        'ahli waris': 'Anak Laki-laki Paman Sekakek ',
+        'ahli_waris': 'Anak Laki-laki Paman Sekakek ',
         'porsi': 'Ashabah',
         'nominal': bagianAnakLakiPamanSekakek,
       });
