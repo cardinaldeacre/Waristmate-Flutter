@@ -72,9 +72,10 @@ class _Step8State extends State<Step8> {
           ),
         ),
 
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Flexible(
+        // main card
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
             child: Container(
               padding: const EdgeInsets.all(17.5),
               decoration: BoxDecoration(
@@ -82,6 +83,7 @@ class _Step8State extends State<Step8> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
