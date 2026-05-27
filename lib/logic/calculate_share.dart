@@ -25,14 +25,15 @@ extension CalculateShare on CalculatorController {
     }
 
     if (nilaiAyah > 0) {
-      if (nilaiAnakLaki > 0 || nilaiCucuLaki > 0) {}
-      int bagianAyah = totalWarisan * rAyah ~/ hasilKPK;
-      sisaWarisan -= bagianAyah;
-      results.add({
-        'ahli_waris': 'Ayah',
-        'porsi': '$rAyah / $hasilKPK',
-        'nominal': bagianAyah,
-      });
+      if (nilaiAnakLaki > 0 || nilaiCucuLaki > 0) {
+        int bagianAyah = totalWarisan * rAyah ~/ hasilKPK;
+        sisaWarisan -= bagianAyah;
+        results.add({
+          'ahli_waris': 'Ayah',
+          'porsi': '$rAyah / $hasilKPK',
+          'nominal': bagianAyah,
+        });
+      }
     }
 
     if (nilaiIbu > 0) {
