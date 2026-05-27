@@ -3,8 +3,21 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
 
-class CalculationResult extends StatelessWidget {
-  const CalculationResult({super.key});
+class CalculationResult extends StatefulWidget {
+  final VoidCallback onBack;
+  final VoidCallback onHome;
+
+  const CalculationResult({
+    super.key,
+    required this.onBack,
+    required this.onHome,
+  });
+
+  @override
+  State<CalculationResult> createState() => _CalculationResultState();
+}
+
+class _CalculationResultState extends State<CalculationResult> {
   @override
   Widget build(BuildContext context) {
     final calc = Provider.of<CalculatorController>(context);
@@ -172,26 +185,60 @@ class CalculationResult extends StatelessWidget {
 
                     const SizedBox(height: 40),
 
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: primaryGreen,
-                          padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: primaryGreen,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 30,
+                                  vertical: 12,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              onPressed: widget.onBack,
+                              child: const Text(
+                                "Kembali",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                        onPressed: () {},
-                        child: const Text(
-                          "Bingung dengan hasilsnya? Hubungi ahli",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 17,
+
+                          const SizedBox(width: 20),
+
+                          Expanded(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: primaryGreen,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 30,
+                                  vertical: 12,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              onPressed: widget.onHome,
+                              child: const Text(
+                                "Hitung Ulang",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
 
@@ -201,20 +248,17 @@ class CalculationResult extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: primaryGreen,
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 12,
+                          vertical: 14,
+                          horizontal: 22,
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.of(
-                          context,
-                        ).popUntil((route) => route.isFirst);
-                      },
+                      onPressed: () {},
                       child: const Text(
-                        "Hitung Ulang",
+                        "Bingung dengan hasilsnya? Hubungi ahli",
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,

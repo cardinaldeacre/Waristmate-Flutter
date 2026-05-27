@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
 import 'package:waristmate_app/logic/hajb_validator.dart';
 import 'package:waristmate_app/widgets/custom_thumb_shape.dart';
-import 'package:waristmate_app/screen/calculator/calculation_result.dart';
 
 class Step9 extends StatefulWidget {
   final VoidCallback onNext;
@@ -275,12 +274,7 @@ class _Step9State extends State<Step9> {
 
                             calc.runEngine();
 
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const CalculationResult(),
-                              ),
-                            );
+                            widget.onNext();
                           },
                           child: const Text(
                             "Hasil",

@@ -8,6 +8,7 @@ import 'calculator/step6.dart';
 import 'calculator/step7.dart';
 import 'calculator/step8.dart';
 import 'calculator/step9.dart';
+import 'calculator/calculation_result.dart';
 
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({super.key});
@@ -33,6 +34,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     );
   }
 
+  void _home() {
+    _pageController.jumpToPage(0);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +57,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             Step7(onNext: _nextPage, onBack: _prevPage),
             Step8(onNext: _nextPage, onBack: _prevPage),
             Step9(onNext: _nextPage, onBack: _prevPage),
+            CalculationResult(onBack: _prevPage, onHome: _home),
           ],
         ),
       ),
