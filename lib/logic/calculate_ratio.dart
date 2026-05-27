@@ -2,6 +2,8 @@ part of "main_calculator.dart";
 
 extension CalculateRatio on CalculatorController {
   void calculateRatio() {
+    print("calculate ratio");
+    print("hasilKPK: $hasilKPK");
     if (nilaiSuami > 0) {
       if (keturunan > 0) {
         rSuami = hasilKPK * 1 ~/ 4;

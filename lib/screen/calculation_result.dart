@@ -15,6 +15,7 @@ class CalculationResult extends StatelessWidget {
     );
     const Color primaryGreen = Color.fromARGB(255, 23, 126, 104);
     const Color darkGreen = Color(0xFF105C46);
+    print('results' + calc.results.toString());
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -72,6 +73,7 @@ class CalculationResult extends StatelessWidget {
 
             Expanded(
               child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 12,

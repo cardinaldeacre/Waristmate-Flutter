@@ -8,6 +8,7 @@ extension CalculateAulRadd on CalculatorController {
       // aul
       hasilKPK = totalRatio;
       kasus = 'Aul';
+      print("aul");
 
       if (nilaiSuami > 0) {
         int bagianSuami = totalWarisan * rSuami ~/ hasilKPK;
@@ -142,23 +143,7 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rSaudaraSeibu / $hasilKPK Bersama',
             'nominal': bagianSaudaraSeibu,
           });
-        } else if (nilaiSaudaraLakiSeibu == 1) {
-          int bagianSaudaraLakiSeibu =
-              totalWarisan * rSaudaraLakiSeibu ~/ hasilKPK;
-          results.add({
-            'ahli_waris': 'Saudara Laki-Laki Seibu',
-            'porsi': '$rSaudaraLakiSeibu / $hasilKPK',
-            'nominal': bagianSaudaraLakiSeibu,
-          });
-        } else if (nilaiSaudaraPerempuanSeibu == 1) {
-          int bagianSaudaraPerempuanSeibu =
-              totalWarisan * rSaudaraPerempuanSeibu ~/ hasilKPK;
-          results.add({
-            'ahli_waris': 'Saudara Perempuan Seibu',
-            'porsi': '$rSaudaraPerempuanSeibu / $hasilKPK',
-            'nominal': bagianSaudaraPerempuanSeibu,
-          });
-        } else if (nilaiSaudaraLakiSeibu > 1) {
+        } else if (nilaiSaudaraLakiSeibu > 0) {
           int bagianSaudaraLakiSeibu =
               totalWarisan *
               rSaudaraLakiSeibu ~/
@@ -169,11 +154,23 @@ extension CalculateAulRadd on CalculatorController {
             'porsi': '$rSaudaraLakiSeibu / $hasilKPK',
             'nominal': bagianSaudaraLakiSeibu,
           });
+        } else if (nilaiSaudaraPerempuanSeibu > 0) {
+          int bagianSaudaraPerempuanSeibu =
+              totalWarisan *
+              rSaudaraPerempuanSeibu ~/
+              hasilKPK ~/
+              nilaiSaudaraPerempuanSeibu;
+          results.add({
+            'ahli_waris': 'Saudara Perempuan Seibu',
+            'porsi': '$rSaudaraPerempuanSeibu / $hasilKPK',
+            'nominal': bagianSaudaraPerempuanSeibu,
+          });
         }
       }
     } else if (totalRatio < hasilKPK && (nilaiSuami > 0 || nilaiIstri > 0)) {
       // radd pasutri
       kasus = 'Radd';
+      print("radd pasutri");
       if (nilaiSuami > 0 &&
           (nilaiAyah > 0 ||
               nilaiIbu > 0 ||
@@ -201,7 +198,7 @@ extension CalculateAulRadd on CalculatorController {
           });
           sisaWarisan -= bagianSuami;
         }
-      } else {
+      } else if (nilaiSuami > 0) {
         int bagianSuami = totalWarisan * 1;
         results.add({
           'ahli_waris': 'Suami',
@@ -237,7 +234,7 @@ extension CalculateAulRadd on CalculatorController {
           });
           sisaWarisan -= bagianIstri;
         }
-      } else {
+      } else if (nilaiIstri > 0) {
         int bagianIstri = totalWarisan * 1 ~/ nilaiIstri;
         results.add({
           'ahli_waris': 'Istri',
@@ -249,6 +246,7 @@ extension CalculateAulRadd on CalculatorController {
       // radd biasa
       hasilKPK = totalRatio;
       kasus = 'Radd';
+      print("radd biasa");
 
       if (nilaiAyah > 0) {
         if (nilaiAnakLaki > 0 || nilaiCucuLaki > 0) {
