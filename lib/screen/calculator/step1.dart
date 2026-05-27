@@ -77,216 +77,232 @@ class _Step1State extends State<Step1> {
           ),
         ),
 
-        // main card
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Container(
-              padding: const EdgeInsets.all(17.5),
-              decoration: BoxDecoration(
-                color: primaryGreen,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Silahkan isi masing-masing kolom sesuai dengan label keterangan tertulis",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17.5,
-                        fontWeight: FontWeight.w600,
-                      ),
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                // main card
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Container(
+                    padding: const EdgeInsets.all(17.5),
+                    decoration: BoxDecoration(
+                      color: primaryGreen,
+                      borderRadius: BorderRadius.circular(20),
                     ),
-
-                    // input harta
-                    _buildInputLabel("Harta yang ditinggalkan"),
-                    _buildTextField(
-                      onChanged: (val) {
-                        String cleanVal = val
-                            .replaceAll('.', '')
-                            .replaceAll(',', '');
-                        int parsedVal = int.tryParse(cleanVal) ?? 0;
-                        calc.updateTirkah(parsedVal);
-                      },
-                    ),
-
-                    _buildInputLabel("Muwarrits (yang meninggal)"),
-                    RadioGroup<String>(
-                      groupValue: calc.muwarrits,
-                      onChanged: (val) {
-                        if (val != null) {
-                          calc.updateMuwarrits(val);
-                        }
-                      },
-                      child: Row(
+                    child: SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Radio<String>(
-                            value: 'Laki-laki',
-                            fillColor: WidgetStateProperty.all(Colors.white),
-                          ),
                           const Text(
-                            "Laki-laki",
+                            "Silahkan isi masing-masing kolom sesuai dengan label keterangan tertulis",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 17.5,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          const SizedBox(width: 20),
 
-                          Radio<String>(
-                            value: 'Perempuan',
-                            fillColor: WidgetStateProperty.all(Colors.white),
+                          // input harta
+                          _buildInputLabel("Harta yang ditinggalkan"),
+                          _buildTextField(
+                            onChanged: (val) {
+                              String cleanVal = val
+                                  .replaceAll('.', '')
+                                  .replaceAll(',', '');
+                              int parsedVal = int.tryParse(cleanVal) ?? 0;
+                              calc.updateTirkah(parsedVal);
+                            },
                           ),
-                          const Text(
-                            "Perempuan",
-                            style: TextStyle(
+
+                          _buildInputLabel("Muwarrits (yang meninggal)"),
+                          RadioGroup<String>(
+                            groupValue: calc.muwarrits,
+                            onChanged: (val) {
+                              if (val != null) {
+                                calc.updateMuwarrits(val);
+                              }
+                            },
+                            child: Row(
+                              children: [
+                                Radio<String>(
+                                  value: 'Laki-laki',
+                                  fillColor: WidgetStateProperty.all(
+                                    Colors.white,
+                                  ),
+                                ),
+                                const Text(
+                                  "Laki-laki",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const SizedBox(width: 20),
+
+                                Radio<String>(
+                                  value: 'Perempuan',
+                                  fillColor: WidgetStateProperty.all(
+                                    Colors.white,
+                                  ),
+                                ),
+                                const Text(
+                                  "Perempuan",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          _buildInputLabel("Biaya pengurusan jenazah"),
+                          _buildTextField(
+                            onChanged: (val) {
+                              String cleanVal = val
+                                  .replaceAll('.', '')
+                                  .replaceAll(',', '');
+                              int parsedVal = int.tryParse(cleanVal) ?? 0;
+                              calc.updateTajhiz(parsedVal);
+                            },
+                          ),
+
+                          _buildInputLabel("Hutang dari muwarrits"),
+                          _buildTextField(
+                            onChanged: (val) {
+                              String cleanVal = val
+                                  .replaceAll('.', '')
+                                  .replaceAll(',', '');
+                              int parsedVal = int.tryParse(cleanVal) ?? 0;
+                              calc.updateHutang(parsedVal);
+                            },
+                          ),
+
+                          _buildInputLabel("Wasiat (maksimal 1/3 sisa harta)"),
+                          _buildTextField(
+                            controller: _wasiatController,
+                            onChanged: (val) {
+                              String cleanVal = val
+                                  .replaceAll('.', '')
+                                  .replaceAll(',', '');
+                              int parsedVal = int.tryParse(cleanVal) ?? 0;
+
+                              String? notip = calc.updateWasiat(parsedVal);
+                              if (notip != null) {
+                                _wasiatController.text = calc.nWasiat
+                                    .toString();
+                                _wasiatController.selection =
+                                    TextSelection.fromPosition(
+                                      TextPosition(
+                                        offset: _wasiatController.text.length,
+                                      ),
+                                    );
+
+                                ScaffoldMessenger.of(context).clearSnackBars();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(notip),
+                                    backgroundColor: Colors.red[700],
+                                    duration: const Duration(seconds: 3),
+                                    behavior: SnackBarBehavior.floating,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    margin: EdgeInsets.only(
+                                      bottom:
+                                          MediaQuery.of(context).size.height -
+                                          17.50,
+                                      left: 20,
+                                      right: 20,
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+
+                          _buildInputLabel("Sisa harta yang diwariskan (Irts)"),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 7,
+                            ),
+                            decoration: BoxDecoration(
                               color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              calc.formatRupiah(calc.nIrst),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 17.5,
+                                color: primaryGreen,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
+                  ),
+                ),
 
-                    _buildInputLabel("Biaya pengurusan jenazah"),
-                    _buildTextField(
-                      onChanged: (val) {
-                        String cleanVal = val
-                            .replaceAll('.', '')
-                            .replaceAll(',', '');
-                        int parsedVal = int.tryParse(cleanVal) ?? 0;
-                        calc.updateTajhiz(parsedVal);
-                      },
-                    ),
-
-                    _buildInputLabel("Hutang dari muwarrits"),
-                    _buildTextField(
-                      onChanged: (val) {
-                        String cleanVal = val
-                            .replaceAll('.', '')
-                            .replaceAll(',', '');
-                        int parsedVal = int.tryParse(cleanVal) ?? 0;
-                        calc.updateHutang(parsedVal);
-                      },
-                    ),
-
-                    _buildInputLabel("Wasiat (maksimal 1/3 sisa harta)"),
-                    _buildTextField(
-                      controller: _wasiatController,
-                      onChanged: (val) {
-                        String cleanVal = val
-                            .replaceAll('.', '')
-                            .replaceAll(',', '');
-                        int parsedVal = int.tryParse(cleanVal) ?? 0;
-
-                        String? notip = calc.updateWasiat(parsedVal);
-                        if (notip != null) {
-                          _wasiatController.text = calc.nWasiat.toString();
-                          _wasiatController
-                              .selection = TextSelection.fromPosition(
-                            TextPosition(offset: _wasiatController.text.length),
-                          );
-
-                          ScaffoldMessenger.of(context).clearSnackBars();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(notip),
-                              backgroundColor: Colors.red[700],
-                              duration: const Duration(seconds: 3),
-                              behavior: SnackBarBehavior.floating,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              margin: EdgeInsets.only(
-                                bottom:
-                                    MediaQuery.of(context).size.height - 17.50,
-                                left: 20,
-                                right: 20,
-                              ),
+                // navigation buttons
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryGreen,
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
                             ),
-                          );
-                        }
-                      },
-                    ),
-
-                    _buildInputLabel("Sisa harta yang diwariskan (Irts)"),
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 7,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        calc.formatRupiah(calc.nIrst),
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 17.5,
-                          color: primaryGreen,
+                          ),
+                          onPressed: null,
+                          child: const Text(
+                            "Kembali",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryGreen,
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          onPressed: widget.onNext,
+                          child: const Text(
+                            "Lanjut",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            children: [
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryGreen,
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: null,
-                  child: const Text(
-                    "Kembali",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 20),
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryGreen,
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: widget.onNext,
-                  child: const Text(
-                    "Lanjut",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-            ],
           ),
         ),
       ],

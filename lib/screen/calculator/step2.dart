@@ -71,146 +71,154 @@ class _Step2State extends State<Step2> {
           ),
         ),
 
-        //  main card
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Container(
-              padding: const EdgeInsets.all(17.5),
-              decoration: BoxDecoration(
-                color: primaryGreen,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
-                      style: TextStyle(
-                        fontSize: 17.5,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                //  main card
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Container(
+                    padding: const EdgeInsets.all(17.5),
+                    decoration: BoxDecoration(
+                      color: primaryGreen,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
+                            style: TextStyle(
+                              fontSize: 17.5,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const Divider(color: Colors.white, height: 32),
+
+                          // const SizedBox(height: 10),
+                          const Text(
+                            "Orang Tua",
+                            style: TextStyle(
+                              fontSize: 17.5,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+
+                          _buildCheckboxTile(
+                            title: "Ayah",
+                            value: calc.nilaiAyah == 1,
+                            onChanged: (value) => calc.updateAyah(value!),
+                          ),
+                          _buildCheckboxTile(
+                            title: "Ibu",
+                            value: calc.nilaiIbu == 1,
+                            onChanged: (value) => calc.updateIbu(value!),
+                          ),
+
+                          if (calc.muwarrits == 'Laki-laki')
+                            _buildCounterRow(
+                              label: "Jumlah Istri",
+                              value: calc.nilaiIstri,
+                              max: 4,
+                              onChanged: (value) => calc.updateIstri(value),
+                            ),
+                          if (calc.muwarrits == 'Perempuan')
+                            _buildCheckboxTile(
+                              title: "Suami",
+                              value: calc.nilaiSuami == 1,
+                              onChanged: (value) => calc.updateSuami(value!),
+                            ),
+
+                          const Divider(color: Colors.white, height: 32),
+                          const SizedBox(height: 2),
+
+                          const Text(
+                            "Anak Kandung",
+                            style: TextStyle(
+                              fontSize: 17.5,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+
+                          const SizedBox(height: 8),
+                          _buildCounterRow(
+                            label: "Anak Laki-laki",
+                            value: calc.nilaiAnakLaki,
+                            onChanged: (value) => calc.updateAnakLaki(value),
+                          ),
+
+                          _buildCounterRow(
+                            label: "Anak Perempuan",
+                            value: calc.nilaiAnakPerempuan,
+                            onChanged: (value) =>
+                                calc.updateAnakPerempuan(value),
+                          ),
+
+                          const Divider(color: Colors.white, height: 32),
+                          const SizedBox(height: 2),
+                        ],
                       ),
                     ),
-                    const Divider(color: Colors.white, height: 32),
-
-                    // const SizedBox(height: 10),
-                    const Text(
-                      "Orang Tua",
-                      style: TextStyle(
-                        fontSize: 17.5,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-
-                    _buildCheckboxTile(
-                      title: "Ayah",
-                      value: calc.nilaiAyah == 1,
-                      onChanged: (value) => calc.updateAyah(value!),
-                    ),
-                    _buildCheckboxTile(
-                      title: "Ibu",
-                      value: calc.nilaiIbu == 1,
-                      onChanged: (value) => calc.updateIbu(value!),
-                    ),
-
-                    if (calc.muwarrits == 'Laki-laki')
-                      _buildCounterRow(
-                        label: "Jumlah Istri",
-                        value: calc.nilaiIstri,
-                        max: 4,
-                        onChanged: (value) => calc.updateIstri(value),
-                      ),
-                    if (calc.muwarrits == 'Perempuan')
-                      _buildCheckboxTile(
-                        title: "Suami",
-                        value: calc.nilaiSuami == 1,
-                        onChanged: (value) => calc.updateSuami(value!),
-                      ),
-
-                    const Divider(color: Colors.white, height: 32),
-                    const SizedBox(height: 2),
-
-                    const Text(
-                      "Anak Kandung",
-                      style: TextStyle(
-                        fontSize: 17.5,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-
-                    const SizedBox(height: 8),
-                    _buildCounterRow(
-                      label: "Anak Laki-laki",
-                      value: calc.nilaiAnakLaki,
-                      onChanged: (value) => calc.updateAnakLaki(value),
-                    ),
-
-                    _buildCounterRow(
-                      label: "Anak Perempuan",
-                      value: calc.nilaiAnakPerempuan,
-                      onChanged: (value) => calc.updateAnakPerempuan(value),
-                    ),
-
-                    const Divider(color: Colors.white, height: 32),
-                    const SizedBox(height: 2),
-                  ],
+                  ),
                 ),
-              ),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryGreen,
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          onPressed: widget.onBack,
+                          child: const Text(
+                            "Kembali",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryGreen,
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          onPressed: widget.onNext,
+                          child: const Text(
+                            "Lanjut",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            children: [
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryGreen,
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: widget.onBack,
-                  child: const Text(
-                    "Kembali",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 20),
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryGreen,
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: widget.onNext,
-                  child: const Text(
-                    "Lanjut",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-            ],
           ),
         ),
       ],

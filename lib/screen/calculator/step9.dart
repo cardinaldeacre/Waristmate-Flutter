@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
 import 'package:waristmate_app/logic/hajb_validator.dart';
 import 'package:waristmate_app/widgets/custom_thumb_shape.dart';
-import 'package:waristmate_app/screen/calculation_result.dart';
+import 'package:waristmate_app/screen/calculator/calculation_result.dart';
 
 class Step9 extends StatefulWidget {
   final VoidCallback onNext;
@@ -73,209 +73,230 @@ class _Step9State extends State<Step9> {
           ),
         ),
 
-        // main card
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Container(
-              padding: const EdgeInsets.all(17.5),
-              decoration: BoxDecoration(
-                color: primaryGreen,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
-                      style: TextStyle(
-                        fontSize: 17.5,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                // main card
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Container(
+                    padding: const EdgeInsets.all(17.5),
+                    decoration: BoxDecoration(
+                      color: primaryGreen,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
+                            style: TextStyle(
+                              fontSize: 17.5,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const Divider(color: Colors.white, height: 32),
+
+                          const Text(
+                            "Anak Laki-Laki Paman",
+                            style: TextStyle(
+                              fontSize: 17.5,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+
+                          const SizedBox(height: 8),
+
+                          _buildCounterRow(
+                            label: "Anak Laki-laki Paman Kandung",
+                            value: calc.nilaiAnakLakiPamanKandung,
+                            max: 50,
+                            onChanged: (v) =>
+                                calc.updateAnakLakiPamanKandung(v),
+                            isMahjub:
+                                HajbValidator.anakLakiPamanKandungTerhalang(
+                                  nilaiAyah: calc.nilaiAyah,
+                                  nilaiKakek: calc.nilaiKakek,
+                                  jmlAnakLaki: calc.nilaiAnakLaki,
+                                  jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                                  jmlCucuLaki: calc.nilaiCucuLaki,
+                                  jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                                  jmlSaudaraLakiKandung:
+                                      calc.nilaiSaudaraLakiKandung,
+                                  jmlSaudaraPerempuanKandung:
+                                      calc.nilaiSaudaraPerempuanKandung,
+                                  jmlSaudaraLakiSeayah:
+                                      calc.nilaiSaudaraLakiSeayah,
+                                  jmlSaudaraPerempuanSeayah:
+                                      calc.nilaiSaudaraPerempuanSeayah,
+                                  jmlAnakLakiSaudaraKandung:
+                                      calc.nilaiAnakLakiSaudaraKandung,
+                                  jmlAnakLakiSaudaraSeayah:
+                                      calc.nilaiAnakLakiSaudaraSeayah,
+                                  jmlPamanKandung: calc.nilaiPamanKandung,
+                                  jmlPamanSekakek: calc.nilaiPamanSekakek,
+                                ),
+                            infoHajb:
+                                HajbValidator.penghalangAnakLakiPamanKandung(
+                                  nilaiAyah: calc.nilaiAyah,
+                                  nilaiKakek: calc.nilaiKakek,
+                                  jmlAnakLaki: calc.nilaiAnakLaki,
+                                  jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                                  jmlCucuLaki: calc.nilaiCucuLaki,
+                                  jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                                  jmlSaudaraLakiKandung:
+                                      calc.nilaiSaudaraLakiKandung,
+                                  jmlSaudaraPerempuanKandung:
+                                      calc.nilaiSaudaraPerempuanKandung,
+                                  jmlSaudaraLakiSeayah:
+                                      calc.nilaiSaudaraLakiSeayah,
+                                  jmlSaudaraPerempuanSeayah:
+                                      calc.nilaiSaudaraPerempuanSeayah,
+                                  jmlAnakLakiSaudaraKandung:
+                                      calc.nilaiAnakLakiSaudaraKandung,
+                                  jmlAnakLakiSaudaraSeayah:
+                                      calc.nilaiAnakLakiSaudaraSeayah,
+                                  jmlPamanKandung: calc.nilaiPamanKandung,
+                                  jmlPamanSekakek: calc.nilaiPamanSekakek,
+                                ),
+                          ),
+
+                          _buildCounterRow(
+                            label: "Anak Laki-laki Paman Sekakek",
+                            value: calc.nilaiAnakLakiPamanSekakek,
+                            max: 50,
+                            onChanged: (v) =>
+                                calc.updateAnakLakiPamanSekakek(v),
+                            isMahjub:
+                                HajbValidator.anakLakiPamanSekakekTerhalang(
+                                  nilaiAyah: calc.nilaiAyah,
+                                  nilaiKakek: calc.nilaiKakek,
+                                  jmlAnakLaki: calc.nilaiAnakLaki,
+                                  jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                                  jmlCucuLaki: calc.nilaiCucuLaki,
+                                  jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                                  jmlSaudaraLakiKandung:
+                                      calc.nilaiSaudaraLakiKandung,
+                                  jmlSaudaraPerempuanKandung:
+                                      calc.nilaiSaudaraPerempuanKandung,
+                                  jmlSaudaraLakiSeayah:
+                                      calc.nilaiSaudaraLakiSeayah,
+                                  jmlSaudaraPerempuanSeayah:
+                                      calc.nilaiSaudaraPerempuanSeayah,
+                                  jmlAnakLakiSaudaraKandung:
+                                      calc.nilaiAnakLakiSaudaraKandung,
+                                  jmlAnakLakiSaudaraSeayah:
+                                      calc.nilaiAnakLakiSaudaraSeayah,
+                                  jmlPamanKandung: calc.nilaiPamanKandung,
+                                  jmlPamanSekakek: calc.nilaiPamanSekakek,
+                                  jmlAnakLakiPamanSekandung:
+                                      calc.nilaiAnakLakiPamanKandung,
+                                ),
+                            infoHajb:
+                                HajbValidator.penghalangAnakLakiPamanSekakek(
+                                  nilaiAyah: calc.nilaiAyah,
+                                  nilaiKakek: calc.nilaiKakek,
+                                  jmlAnakLaki: calc.nilaiAnakLaki,
+                                  jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                                  jmlCucuLaki: calc.nilaiCucuLaki,
+                                  jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                                  jmlSaudaraLakiKandung:
+                                      calc.nilaiSaudaraLakiKandung,
+                                  jmlSaudaraPerempuanKandung:
+                                      calc.nilaiSaudaraPerempuanKandung,
+                                  jmlSaudaraLakiSeayah:
+                                      calc.nilaiSaudaraLakiSeayah,
+                                  jmlSaudaraPerempuanSeayah:
+                                      calc.nilaiSaudaraPerempuanSeayah,
+                                  jmlAnakLakiSaudaraKandung:
+                                      calc.nilaiAnakLakiSaudaraKandung,
+                                  jmlAnakLakiSaudaraSeayah:
+                                      calc.nilaiAnakLakiSaudaraSeayah,
+                                  jmlPamanKandung: calc.nilaiPamanKandung,
+                                  jmlPamanSekakek: calc.nilaiPamanSekakek,
+                                  jmlAnakLakiPamanSekandung:
+                                      calc.nilaiAnakLakiPamanKandung,
+                                ),
+                          ),
+
+                          const Divider(color: Colors.white, height: 32),
+                          const SizedBox(height: 2),
+                        ],
                       ),
                     ),
-                    const Divider(color: Colors.white, height: 32),
-
-                    const Text(
-                      "Anak Laki-Laki Paman",
-                      style: TextStyle(
-                        fontSize: 17.5,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-
-                    const SizedBox(height: 8),
-
-                    _buildCounterRow(
-                      label: "Anak Laki-laki Paman Kandung",
-                      value: calc.nilaiAnakLakiPamanKandung,
-                      max: 50,
-                      onChanged: (v) => calc.updateAnakLakiPamanKandung(v),
-                      isMahjub: HajbValidator.anakLakiPamanKandungTerhalang(
-                        nilaiAyah: calc.nilaiAyah,
-                        nilaiKakek: calc.nilaiKakek,
-                        jmlAnakLaki: calc.nilaiAnakLaki,
-                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                        jmlCucuLaki: calc.nilaiCucuLaki,
-                        jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                        jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
-                        jmlSaudaraPerempuanKandung:
-                            calc.nilaiSaudaraPerempuanKandung,
-                        jmlSaudaraLakiSeayah: calc.nilaiSaudaraLakiSeayah,
-                        jmlSaudaraPerempuanSeayah:
-                            calc.nilaiSaudaraPerempuanSeayah,
-                        jmlAnakLakiSaudaraKandung:
-                            calc.nilaiAnakLakiSaudaraKandung,
-                        jmlAnakLakiSaudaraSeayah:
-                            calc.nilaiAnakLakiSaudaraSeayah,
-                        jmlPamanKandung: calc.nilaiPamanKandung,
-                        jmlPamanSekakek: calc.nilaiPamanSekakek,
-                      ),
-                      infoHajb: HajbValidator.penghalangAnakLakiPamanKandung(
-                        nilaiAyah: calc.nilaiAyah,
-                        nilaiKakek: calc.nilaiKakek,
-                        jmlAnakLaki: calc.nilaiAnakLaki,
-                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                        jmlCucuLaki: calc.nilaiCucuLaki,
-                        jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                        jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
-                        jmlSaudaraPerempuanKandung:
-                            calc.nilaiSaudaraPerempuanKandung,
-                        jmlSaudaraLakiSeayah: calc.nilaiSaudaraLakiSeayah,
-                        jmlSaudaraPerempuanSeayah:
-                            calc.nilaiSaudaraPerempuanSeayah,
-                        jmlAnakLakiSaudaraKandung:
-                            calc.nilaiAnakLakiSaudaraKandung,
-                        jmlAnakLakiSaudaraSeayah:
-                            calc.nilaiAnakLakiSaudaraSeayah,
-                        jmlPamanKandung: calc.nilaiPamanKandung,
-                        jmlPamanSekakek: calc.nilaiPamanSekakek,
-                      ),
-                    ),
-
-                    _buildCounterRow(
-                      label: "Anak Laki-laki Paman Sekakek",
-                      value: calc.nilaiAnakLakiPamanSekakek,
-                      max: 50,
-                      onChanged: (v) => calc.updateAnakLakiPamanSekakek(v),
-                      isMahjub: HajbValidator.anakLakiPamanSekakekTerhalang(
-                        nilaiAyah: calc.nilaiAyah,
-                        nilaiKakek: calc.nilaiKakek,
-                        jmlAnakLaki: calc.nilaiAnakLaki,
-                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                        jmlCucuLaki: calc.nilaiCucuLaki,
-                        jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                        jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
-                        jmlSaudaraPerempuanKandung:
-                            calc.nilaiSaudaraPerempuanKandung,
-                        jmlSaudaraLakiSeayah: calc.nilaiSaudaraLakiSeayah,
-                        jmlSaudaraPerempuanSeayah:
-                            calc.nilaiSaudaraPerempuanSeayah,
-                        jmlAnakLakiSaudaraKandung:
-                            calc.nilaiAnakLakiSaudaraKandung,
-                        jmlAnakLakiSaudaraSeayah:
-                            calc.nilaiAnakLakiSaudaraSeayah,
-                        jmlPamanKandung: calc.nilaiPamanKandung,
-                        jmlPamanSekakek: calc.nilaiPamanSekakek,
-                        jmlAnakLakiPamanSekandung:
-                            calc.nilaiAnakLakiPamanKandung,
-                      ),
-                      infoHajb: HajbValidator.penghalangAnakLakiPamanSekakek(
-                        nilaiAyah: calc.nilaiAyah,
-                        nilaiKakek: calc.nilaiKakek,
-                        jmlAnakLaki: calc.nilaiAnakLaki,
-                        jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                        jmlCucuLaki: calc.nilaiCucuLaki,
-                        jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                        jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
-                        jmlSaudaraPerempuanKandung:
-                            calc.nilaiSaudaraPerempuanKandung,
-                        jmlSaudaraLakiSeayah: calc.nilaiSaudaraLakiSeayah,
-                        jmlSaudaraPerempuanSeayah:
-                            calc.nilaiSaudaraPerempuanSeayah,
-                        jmlAnakLakiSaudaraKandung:
-                            calc.nilaiAnakLakiSaudaraKandung,
-                        jmlAnakLakiSaudaraSeayah:
-                            calc.nilaiAnakLakiSaudaraSeayah,
-                        jmlPamanKandung: calc.nilaiPamanKandung,
-                        jmlPamanSekakek: calc.nilaiPamanSekakek,
-                        jmlAnakLakiPamanSekandung:
-                            calc.nilaiAnakLakiPamanKandung,
-                      ),
-                    ),
-
-                    const Divider(color: Colors.white, height: 32),
-                    const SizedBox(height: 2),
-                  ],
+                  ),
                 ),
-              ),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryGreen,
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          onPressed: widget.onBack,
+                          child: const Text(
+                            "Kembali",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryGreen,
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          onPressed: () {
+                            final calc = Provider.of<CalculatorController>(
+                              context,
+                              listen: false,
+                            );
+
+                            calc.runEngine();
+
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CalculationResult(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            "Hasil",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            children: [
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryGreen,
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: widget.onBack,
-                  child: const Text(
-                    "Kembali",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 20),
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryGreen,
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: () {
-                    final calc = Provider.of<CalculatorController>(
-                      context,
-                      listen: false,
-                    );
-
-                    calc.runEngine();
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CalculationResult(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    "Hasil",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-            ],
           ),
         ),
       ],
