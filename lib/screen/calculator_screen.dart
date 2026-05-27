@@ -9,14 +9,14 @@ import 'calculator/step7.dart';
 import 'calculator/step8.dart';
 import 'calculator/step9.dart';
 
-class CalculatorWrapper extends StatefulWidget {
-  const CalculatorWrapper({super.key});
+class CalculatorScreen extends StatefulWidget {
+  const CalculatorScreen({super.key});
 
   @override
-  State<CalculatorWrapper> createState() => _CalculatorWrapperState();
+  State<CalculatorScreen> createState() => _CalculatorScreenState();
 }
 
-class _CalculatorWrapperState extends State<CalculatorWrapper> {
+class _CalculatorScreenState extends State<CalculatorScreen> {
   final PageController _pageController = PageController();
 
   void _nextPage() {
