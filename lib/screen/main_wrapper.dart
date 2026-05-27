@@ -63,13 +63,25 @@ class _MainWrapperState extends State<MainWrapper> {
           unselectedItemColor: Colors.white70,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.calculate),
+              icon: ImageIcon(AssetImage('assets/icons/ic_calculate.png')),
               label: 'Kalkulator',
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Modul'),
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Beranda'),
-            BottomNavigationBarItem(icon: Icon(Icons.note), label: 'Catatan'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+            BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage('assets/icons/ic_book.png')),
+              label: 'Modul',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage('assets/icons/ic_home.png')),
+              label: 'Beranda',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage('assets/icons/ic_server_person.png')),
+              label: 'Catatan',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage('assets/icons/ic_person.png')),
+              label: 'Profile',
+            ),
           ],
         ),
       ),
