@@ -169,7 +169,7 @@ class _CalculationResultState extends State<CalculationResult> {
                               return TableRow(
                                 children: [
                                   _buildTableCell(
-                                    item['ahli_waris'].toString(),
+                                    "${item['jumlah']} ${item['ahli_waris']}",
                                   ),
                                   _buildTableCell(item['porsi'].toString()),
                                   _buildTableCell(

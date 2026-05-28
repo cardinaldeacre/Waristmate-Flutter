@@ -58,18 +58,26 @@ extension CalculateSpecial on CalculatorController {
       int bagianKakek = totalWarisan * 8 ~/ hasilKPK;
       int bagianSaudaraPerempuanKandung = totalWarisan * 4 ~/ hasilKPK;
 
-      results.add({'ahli_waris': 'Ibu', 'porsi': '6/27', 'nominal': bagianIbu});
       results.add({
+        'jumlah': nilaiIbu,
+        'ahli_waris': 'Ibu',
+        'porsi': '6/27',
+        'nominal': bagianIbu,
+      });
+      results.add({
+        'jumlah': nilaiSuami,
         'ahli_waris': 'Suami',
         'porsi': '9/27',
         'nominal': bagianSuami,
       });
       results.add({
+        'jumlah': nilaiKakek,
         'ahli_waris': 'Kakek',
         'porsi': '8/27',
         'nominal': bagianKakek,
       });
       results.add({
+        'jumlah': nilaiSaudaraPerempuanKandung,
         'ahli_waris': 'Saudara Perempuan Kandung',
         'porsi': '4/27',
         'nominal': bagianSaudaraPerempuanKandung,
@@ -86,22 +94,31 @@ extension CalculateSpecial on CalculatorController {
       int bagianSaudaraSeibu = totalWarisan * 1 ~/ hasilKPK ~/ saudaraSeibu;
 
       results.add({
+        'jumlah': nilaiSuami,
         'ahli_waris': 'Suami',
         'porsi': '6/12',
         'nominal': bagianSuami,
       });
-      results.add({'ahli_waris': 'Ibu', 'porsi': '2/12', 'nominal': bagianIbu});
       results.add({
+        'jumlah': nilaiIbu,
+        'ahli_waris': 'Ibu',
+        'porsi': '2/12',
+        'nominal': bagianIbu,
+      });
+      results.add({
+        'jumlah': nilaiSaudaraLakiKandung,
         'ahli_waris': 'Saudara Laki-Kandung',
         'porsi': '2/12',
         'nominal': bagianSaudaraLakiKandung,
       });
       results.add({
+        'jumlah': nilaiSaudaraPerempuanKandung,
         'ahli_waris': 'Saudara Perempuan Kandung',
         'porsi': '1/12',
         'nominal': bagianSaudaraPerempuanKandung,
       });
       results.add({
+        'jumlah': saudaraSeibu,
         'ahli_waris': 'Saudara Seibu',
         'porsi': '1/12',
         'nominal': bagianSaudaraSeibu,
@@ -118,26 +135,31 @@ extension CalculateSpecial on CalculatorController {
       int bagianSaudaraSeibu = totalWarisan * 1 ~/ hasilKPK ~/ saudaraSeibu;
 
       results.add({
+        'jumlah': nilaiSuami,
         'ahli_waris': 'Suami',
         'porsi': '6/12',
         'nominal': bagianSuami,
       });
       results.add({
+        'jumlah': nilaiNenekAyah,
         'ahli_waris': 'Nenek',
         'porsi': '2/12',
         'nominal': bagianNenek,
       });
       results.add({
+        'jumlah': nilaiSaudaraLakiKandung,
         'ahli_waris': 'Saudara Laki-Kandung',
         'porsi': '2/12',
         'nominal': bagianSaudaraLakiKandung,
       });
       results.add({
+        'jumlah': nilaiSaudaraPerempuanKandung,
         'ahli_waris': 'Saudara Perempuan Kandung',
         'porsi': '1/12',
         'nominal': bagianSaudaraPerempuanKandung,
       });
       results.add({
+        'jumlah': saudaraSeibu,
         'ahli_waris': 'Saudara Seibu',
         'porsi': '1/12',
         'nominal': bagianSaudaraSeibu,
@@ -152,16 +174,23 @@ extension CalculateSpecial on CalculatorController {
       int bagianIbu = totalWarisan * 1 ~/ hasilKPK;
 
       results.add({
+        'jumlah': nilaiSuami,
         'ahli_waris': 'Suami',
         'porsi': '3/6',
         'nominal': bagianSuami,
       });
       results.add({
+        'jumlah': nilaiAyah,
         'ahli_waris': 'Ayah',
         'porsi': '2/6',
         'nominal': bagianAyah,
       });
-      results.add({'ahli_waris': 'Ibu', 'porsi': '1/6', 'nominal': bagianIbu});
+      results.add({
+        'jumlah': nilaiIbu,
+        'ahli_waris': 'Ibu',
+        'porsi': '1/6',
+        'nominal': bagianIbu,
+      });
       kasus = 'Umriyatain';
 
       return true;
@@ -172,16 +201,23 @@ extension CalculateSpecial on CalculatorController {
       int bagianIbu = totalWarisan * 3 ~/ hasilKPK;
 
       results.add({
+        'jumlah': nilaiIstri,
         'ahli_waris': 'Istri',
         'porsi': '3/12',
         'nominal': bagianIstri,
       });
       results.add({
+        'jumlah': nilaiAyah,
         'ahli_waris': 'Ayah',
         'porsi': '6/12',
         'nominal': bagianAyah,
       });
-      results.add({'ahli_waris': 'Ibu', 'porsi': '3/12', 'nominal': bagianIbu});
+      results.add({
+        'jumlah': nilaiIbu,
+        'ahli_waris': 'Ibu',
+        'porsi': '3/12',
+        'nominal': bagianIbu,
+      });
       kasus = 'Umriyatain';
 
       return true;
