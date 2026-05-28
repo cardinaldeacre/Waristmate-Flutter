@@ -87,6 +87,11 @@ class CalculatorController extends ChangeNotifier {
   int get anakPaman => nilaiAnakLakiPamanKandung + nilaiAnakLakiPamanSekakek;
   int get pojok => anakPaman + anakSaudara + paman;
 
+  final tirkahController = TextEditingController();
+  final tajhizController = TextEditingController();
+  final wasiatController = TextEditingController();
+  final hutangController = TextEditingController();
+
   void calculateIrts() {
     nIrst = nTirkah - nHutang - nWasiat - nTajhiz;
     // info UI udah update data
@@ -334,6 +339,21 @@ class CalculatorController extends ChangeNotifier {
     nilaiAnakLakiPamanKandung = 0;
     nilaiAnakLakiPamanSekakek = 0;
 
+    tirkahController.clear();
+    tajhizController.clear();
+    wasiatController.clear();
+    hutangController.clear();
+
     notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    tirkahController.dispose();
+    tirkahController.dispose();
+    tajhizController.dispose();
+    wasiatController.dispose();
+    hutangController.dispose();
+    super.dispose();
   }
 }

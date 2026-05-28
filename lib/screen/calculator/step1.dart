@@ -108,6 +108,7 @@ class _Step1State extends State<Step1> {
                           // input harta
                           _buildInputLabel("Harta yang ditinggalkan"),
                           _buildTextField(
+                            controller: calc.tirkahController,
                             onChanged: (val) {
                               String cleanVal = val
                                   .replaceAll('.', '')
@@ -163,6 +164,7 @@ class _Step1State extends State<Step1> {
 
                           _buildInputLabel("Biaya pengurusan jenazah"),
                           _buildTextField(
+                            controller: calc.tajhizController,
                             onChanged: (val) {
                               String cleanVal = val
                                   .replaceAll('.', '')
@@ -174,6 +176,7 @@ class _Step1State extends State<Step1> {
 
                           _buildInputLabel("Hutang dari muwarrits"),
                           _buildTextField(
+                            controller: calc.hutangController,
                             onChanged: (val) {
                               String cleanVal = val
                                   .replaceAll('.', '')
@@ -185,7 +188,7 @@ class _Step1State extends State<Step1> {
 
                           _buildInputLabel("Wasiat (maksimal 1/3 sisa harta)"),
                           _buildTextField(
-                            controller: _wasiatController,
+                            controller: calc.wasiatController,
                             onChanged: (val) {
                               String cleanVal = val
                                   .replaceAll('.', '')
@@ -194,14 +197,15 @@ class _Step1State extends State<Step1> {
 
                               String? notip = calc.updateWasiat(parsedVal);
                               if (notip != null) {
-                                _wasiatController.text = calc.nWasiat
+                                calc.wasiatController.text = calc.nWasiat
                                     .toString();
-                                _wasiatController.selection =
-                                    TextSelection.fromPosition(
-                                      TextPosition(
-                                        offset: _wasiatController.text.length,
-                                      ),
-                                    );
+                                calc
+                                    .wasiatController
+                                    .selection = TextSelection.fromPosition(
+                                  TextPosition(
+                                    offset: calc.wasiatController.text.length,
+                                  ),
+                                );
 
                                 ScaffoldMessenger.of(context).clearSnackBars();
                                 ScaffoldMessenger.of(context).showSnackBar(
