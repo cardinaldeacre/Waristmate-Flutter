@@ -183,7 +183,9 @@ extension CalculateAulRadd on CalculatorController {
           });
         }
       }
-    } else if (totalRatio < hasilKPK && (nilaiSuami > 0 || nilaiIstri > 0)) {
+    } else if (totalRatio < hasilKPK &&
+        (nilaiSuami > 0 || nilaiIstri > 0) &&
+        totalAshabah == 0) {
       // radd pasutri
       kasus = 'Radd';
       print("radd pasutri");
@@ -200,7 +202,7 @@ extension CalculateAulRadd on CalculatorController {
           results.add({
             'jumlah': nilaiSuami,
             'ahli_waris': 'Suami',
-            'porsi': '1/4 total',
+            'porsi': '1 / 4 (total)',
             'nominal': bagianSuami,
           });
           sisaWarisan -= bagianSuami;
@@ -211,7 +213,7 @@ extension CalculateAulRadd on CalculatorController {
           results.add({
             'jumlah': nilaiSuami,
             'ahli_waris': 'Suami',
-            'porsi': '1/2 total',
+            'porsi': '1 / 2 (total)',
             'nominal': bagianSuami,
           });
           sisaWarisan -= bagianSuami;
@@ -221,7 +223,7 @@ extension CalculateAulRadd on CalculatorController {
         results.add({
           'jumlah': nilaiSuami,
           'ahli_waris': 'Suami',
-          'porsi': '1/1',
+          'porsi': '1 / 1',
           'nominal': bagianSuami,
         });
       }
@@ -240,7 +242,7 @@ extension CalculateAulRadd on CalculatorController {
           results.add({
             'jumlah': nilaiIstri,
             'ahli_waris': 'Istri',
-            'porsi': '1/8 total',
+            'porsi': '1 / 8 (total)',
             'nominal': bagianIstriPerOrang,
           });
           sisaWarisan -= bagianIstri;
@@ -252,7 +254,7 @@ extension CalculateAulRadd on CalculatorController {
           results.add({
             'jumlah': nilaiIstri,
             'ahli_waris': 'Istri',
-            'porsi': '1/4 total',
+            'porsi': '1 / 4 (total)',
             'nominal': bagianIstriPerOrang,
           });
           sisaWarisan -= bagianIstri;
@@ -262,11 +264,15 @@ extension CalculateAulRadd on CalculatorController {
         results.add({
           'jumlah': nilaiIstri,
           'ahli_waris': 'Istri',
-          'porsi': '1/1',
+          'porsi': '1 / 1',
           'nominal': bagianIstri,
         });
       }
-    } else if (totalRatio < hasilKPK && (nilaiSuami == 0 && nilaiIstri == 0)) {
+
+      calculateRatio2();
+    } else if (totalRatio < hasilKPK &&
+        (nilaiSuami == 0 && nilaiIstri == 0) &&
+        totalAshabah == 0) {
       // radd biasa
       hasilKPK = totalRatio;
       kasus = 'Radd';

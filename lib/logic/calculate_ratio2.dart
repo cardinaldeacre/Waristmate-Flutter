@@ -4,6 +4,9 @@ extension CalculateRatio2 on CalculatorController {
   void calculateRatio2() {
     totalRatio = 0;
 
+    print("calculate ratio 2");
+    print("hasilKPK: $hasilKPK");
+
     if (nilaiAyah > 0) {
       rAyah = hasilKPK * 1 ~/ 6;
       totalRatio += rAyah;
@@ -42,7 +45,7 @@ extension CalculateRatio2 on CalculatorController {
       if (nilaiAnakPerempuan == 1) {
         rAnakPerempuan = hasilKPK * 1 ~/ 2;
         totalRatio += rAnakPerempuan;
-      } else {
+      } else if (nilaiAnakPerempuan > 1) {
         rAnakPerempuan = hasilKPK * 2 ~/ 3;
         totalRatio += rAnakPerempuan;
       }
@@ -55,7 +58,7 @@ extension CalculateRatio2 on CalculatorController {
       } else if (nilaiCucuPerempuan == 1) {
         rCucuPerempuan = hasilKPK * 1 ~/ 2;
         totalRatio += rCucuPerempuan;
-      } else {
+      } else if (nilaiCucuPerempuan > 1) {
         rCucuPerempuan = hasilKPK * 2 ~/ 3;
         totalRatio += rCucuPerempuan;
       }
