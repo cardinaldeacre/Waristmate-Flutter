@@ -196,7 +196,7 @@ extension CalculateSpecial on CalculatorController {
       return true;
     } else if (isUmriyatainIstri) {
       hasilKPK = 12;
-      int bagianIstri = totalWarisan * 3 ~/ hasilKPK;
+      int bagianIstri = totalWarisan * 3 ~/ hasilKPK ~/ nilaiIstri;
       int bagianAyah = totalWarisan * 6 ~/ hasilKPK;
       int bagianIbu = totalWarisan * 3 ~/ hasilKPK;
 
