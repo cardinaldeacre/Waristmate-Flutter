@@ -15,9 +15,9 @@ extension MainCalculator on CalculatorController {
     results.clear();
     hasilKPK = 0;
     totalRatio = 0;
-    totalAshabah = 0;
-    sisaWarisan = 0;
     kasus = '';
+    totalWarisan = nIrst;
+    sisaWarisan = totalWarisan;
 
     if (isCalculateSpecial()) {
       return;

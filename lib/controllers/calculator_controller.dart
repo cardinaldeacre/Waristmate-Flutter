@@ -9,8 +9,8 @@ class CalculatorController extends ChangeNotifier {
   int nWasiat = 0;
   int nTajhiz = 0;
   int nIrst = 0;
-  late int totalWarisan = nIrst;
-  late int sisaWarisan = totalWarisan;
+  int totalWarisan = 0;
+  int sisaWarisan = 0;
   String muwarrits = '';
   List<Map<String, dynamic>> results = [];
   List<int> masalah = [];
@@ -295,6 +295,7 @@ class CalculatorController extends ChangeNotifier {
   }
 
   void resetData() {
+    print("reset data");
     nTirkah = 0;
     nHutang = 0;
     nWasiat = 0;
