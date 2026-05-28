@@ -293,4 +293,46 @@ class CalculatorController extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void resetData() {
+    nTirkah = 0;
+    nHutang = 0;
+    nWasiat = 0;
+    nTajhiz = 0;
+    nIrst = 0;
+    totalWarisan = 0;
+    sisaWarisan = 0;
+    muwarrits = '';
+    results.clear();
+    masalah.clear();
+    hasilKPK = 0;
+    totalRatio = 0;
+    totalAshabah = 0;
+    kasus = '';
+    nilaiAyah = 0;
+    nilaiIbu = 0;
+    nilaiSuami = 0;
+    nilaiIstri = 0;
+    nilaiAnakLaki = 0;
+    nilaiAnakPerempuan = 0;
+    nilaiCucuLaki = 0;
+    nilaiCucuPerempuan = 0;
+    nilaiKakek = 0;
+    nilaiNenekAyah = 0;
+    nilaiNenekIbu = 0;
+    nilaiSaudaraLakiKandung = 0;
+    nilaiSaudaraPerempuanKandung = 0;
+    nilaiSaudaraLakiSeayah = 0;
+    nilaiSaudaraPerempuanSeayah = 0;
+    nilaiSaudaraLakiSeibu = 0;
+    nilaiSaudaraPerempuanSeibu = 0;
+    nilaiAnakLakiSaudaraKandung = 0;
+    nilaiAnakLakiSaudaraSeayah = 0;
+    nilaiPamanKandung = 0;
+    nilaiPamanSekakek = 0;
+    nilaiAnakLakiPamanKandung = 0;
+    nilaiAnakLakiPamanSekakek = 0;
+
+    notifyListeners();
+  }
 }

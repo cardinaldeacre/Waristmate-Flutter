@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'calculator/step1.dart';
 import 'calculator/step2.dart';
 import 'calculator/step3.dart';
@@ -9,6 +10,7 @@ import 'calculator/step7.dart';
 import 'calculator/step8.dart';
 import 'calculator/step9.dart';
 import 'calculator/calculation_result.dart';
+import 'package:waristmate_app/controllers/calculator_controller.dart';
 
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({super.key});
@@ -35,6 +37,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   }
 
   void _home() {
+    Provider.of<CalculatorController>(context, listen: false).resetData();
+
     _pageController.jumpToPage(0);
   }
 

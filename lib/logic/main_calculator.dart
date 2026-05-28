@@ -13,6 +13,11 @@ extension MainCalculator on CalculatorController {
   void startCounting() {
     masalah.clear();
     results.clear();
+    hasilKPK = 0;
+    totalRatio = 0;
+    totalAshabah = 0;
+    sisaWarisan = 0;
+    kasus = '';
 
     if (isCalculateSpecial()) {
       return;
