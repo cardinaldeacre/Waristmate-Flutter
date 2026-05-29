@@ -25,10 +25,7 @@ extension CalculateRatio on CalculatorController {
     }
 
     if (nilaiAyah > 0) {
-      if (nilaiAnakLaki > 0 ||
-          nilaiCucuLaki > 0 ||
-          nilaiAnakPerempuan > 0 ||
-          nilaiCucuPerempuan > 0) {
+      if (keturunanLaki > 0 || keturunanPerempuan > 0) {
         rAyah = hasilKPK * 1 ~/ 6;
         totalRatio += rAyah;
       }
@@ -45,7 +42,7 @@ extension CalculateRatio on CalculatorController {
     }
 
     if (nilaiKakek > 0) {
-      if (keturunanLaki > 0) {
+      if (keturunanLaki > 0 || keturunanPerempuan > 0) {
         rKakek = hasilKPK * 1 ~/ 6;
         totalRatio += rKakek;
       }
@@ -76,13 +73,13 @@ extension CalculateRatio on CalculatorController {
     }
 
     if (nilaiCucuPerempuan > 0) {
-      if (nilaiAnakPerempuan == 1) {
+      if (nilaiAnakPerempuan == 1 && nilaiCucuLaki == 0) {
         rCucuPerempuan = hasilKPK * 1 ~/ 6;
         totalRatio += rCucuPerempuan;
-      } else if (nilaiCucuPerempuan == 1) {
+      } else if (nilaiCucuPerempuan == 1 && nilaiCucuLaki == 0) {
         rCucuPerempuan = hasilKPK * 1 ~/ 2;
         totalRatio += rCucuPerempuan;
-      } else if (nilaiCucuPerempuan > 1) {
+      } else if (nilaiCucuPerempuan > 1 && nilaiCucuLaki == 0) {
         rCucuPerempuan = hasilKPK * 2 ~/ 3;
         totalRatio += rCucuPerempuan;
       }
@@ -91,12 +88,14 @@ extension CalculateRatio on CalculatorController {
     if (nilaiSaudaraPerempuanKandung > 0) {
       if (nilaiSaudaraPerempuanKandung == 1 &&
           nilaiAnakPerempuan == 0 &&
-          nilaiCucuPerempuan == 0) {
+          nilaiCucuPerempuan == 0 &&
+          nilaiSaudaraLakiKandung == 0) {
         rSaudaraPerempuanKandung = hasilKPK * 1 ~/ 2;
         totalRatio += rSaudaraPerempuanKandung;
       } else if (nilaiSaudaraPerempuanKandung > 1 &&
           nilaiAnakPerempuan == 0 &&
-          nilaiCucuPerempuan == 0) {
+          nilaiCucuPerempuan == 0 &&
+          nilaiSaudaraLakiKandung == 0) {
         rSaudaraPerempuanKandung = hasilKPK * 2 ~/ 3;
         totalRatio += rSaudaraPerempuanKandung;
       }
@@ -105,12 +104,14 @@ extension CalculateRatio on CalculatorController {
     if (nilaiSaudaraPerempuanSeayah > 0) {
       if (nilaiSaudaraPerempuanSeayah == 1 &&
           nilaiAnakPerempuan == 0 &&
-          nilaiCucuPerempuan == 0) {
+          nilaiCucuPerempuan == 0 &&
+          nilaiSaudaraLakiSeayah == 0) {
         rSaudaraPerempuanSeayah = hasilKPK * 1 ~/ 2;
         totalRatio += rSaudaraPerempuanSeayah;
       } else if (nilaiSaudaraPerempuanSeayah > 1 &&
           nilaiAnakPerempuan == 0 &&
-          nilaiCucuPerempuan == 0) {
+          nilaiCucuPerempuan == 0 &&
+          nilaiSaudaraLakiSeayah == 0) {
         rSaudaraPerempuanSeayah = hasilKPK * 2 ~/ 3;
         totalRatio += rSaudaraPerempuanSeayah;
       }

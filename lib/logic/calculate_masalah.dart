@@ -51,7 +51,7 @@ extension CalculateMasalah on CalculatorController {
     }
 
     if (nilaiNenekAyah > 0 && nilaiNenekIbu > 0) {
-      masalah.add(12);
+      masalah.add(6);
     } else {
       if (nilaiNenekAyah > 0 && nilaiNenekIbu == 0) {
         masalah.add(6);
@@ -80,10 +80,10 @@ extension CalculateMasalah on CalculatorController {
     }
 
     if (nilaiCucuPerempuan > 0) {
-      if (nilaiAnakPerempuan > 0) {
-        masalah.add(6);
-      } else if (nilaiCucuLaki > 0) {
+      if (nilaiCucuLaki > 0) {
         totalAshabah = totalAshabah + nilaiCucuPerempuan;
+      } else if (nilaiAnakPerempuan == 1) {
+        masalah.add(6);
       } else if (nilaiCucuPerempuan == 1) {
         masalah.add(2);
       } else if (nilaiCucuPerempuan > 1) {
@@ -116,7 +116,9 @@ extension CalculateMasalah on CalculatorController {
           nilaiCucuPerempuan > 0 ||
           nilaiSaudaraLakiSeayah > 0) {
         totalAshabah = totalAshabah + nilaiSaudaraPerempuanSeayah;
-      } else if (nilaiSaudaraPerempuanSeayah == 0) {
+      } else if (nilaiSaudaraPerempuanKandung == 1) {
+        masalah.add(6);
+      } else if (nilaiSaudaraPerempuanSeayah == 1) {
         masalah.add(2);
       } else if (nilaiSaudaraPerempuanSeayah > 1) {
         masalah.add(3);
