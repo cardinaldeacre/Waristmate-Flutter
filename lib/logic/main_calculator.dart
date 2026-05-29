@@ -18,6 +18,7 @@ extension MainCalculator on CalculatorController {
     kasus = '';
     totalWarisan = nIrst;
     sisaWarisan = totalWarisan;
+    nominalAshabah = 0;
 
     if (isCalculateSpecial()) {
       return;

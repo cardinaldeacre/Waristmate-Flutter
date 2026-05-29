@@ -17,6 +17,7 @@ class CalculatorController extends ChangeNotifier {
   int hasilKPK = 0;
   int totalRatio = 0;
   int totalAshabah = 0;
+  int nominalAshabah = 0;
   String kasus = '';
   int nilaiAyah = 0;
   int nilaiIbu = 0;

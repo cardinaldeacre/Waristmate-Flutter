@@ -5,7 +5,7 @@ extension CalculateAshabah on CalculatorController {
     print("calculate ashabah");
     print("sisaWarisan: $sisaWarisan");
     print("totalAshabah: $totalAshabah");
-    late int nominalAshabah = sisaWarisan ~/ totalAshabah;
+    nominalAshabah = sisaWarisan ~/ totalAshabah;
     if (nilaiAyah > 0 && keturunanLaki == 0) {
       if (keturunanPerempuan > 0) {
         int bagianAyah = totalWarisan * 1 ~/ 6 + nominalAshabah * 2;
