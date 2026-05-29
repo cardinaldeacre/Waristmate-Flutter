@@ -266,6 +266,7 @@ class _CalculationResultState extends State<CalculationResult> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),

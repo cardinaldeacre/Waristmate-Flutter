@@ -203,6 +203,7 @@ class _Step4State extends State<Step4> {
                     ],
                   ),
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           ),

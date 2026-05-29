@@ -289,6 +289,7 @@ class _Step9State extends State<Step9> {
                     ],
                   ),
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           ),

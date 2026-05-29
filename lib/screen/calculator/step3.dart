@@ -196,6 +196,7 @@ class _Step3State extends State<Step3> {
                     ],
                   ),
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           ),

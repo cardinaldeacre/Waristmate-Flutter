@@ -217,6 +217,7 @@ class _Step2State extends State<Step2> {
                     ],
                   ),
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           ),

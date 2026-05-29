@@ -260,6 +260,7 @@ class _Step8State extends State<Step8> {
                     ],
                   ),
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           ),
