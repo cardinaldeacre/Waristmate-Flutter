@@ -16,6 +16,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiSuami,
           'ahli_waris': 'Suami',
           'porsi': '$rSuami / $hasilKPK',
+          'nominal_total': bagianSuami,
           'nominal': bagianSuami,
         });
       }
@@ -27,6 +28,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiIstri,
           'ahli_waris': 'Istri',
           'porsi': '$rIstri / $hasilKPK',
+          'nominal_total': bagianIstri,
           'nominal': bagianIstriPerOrang,
         });
       }
@@ -37,6 +39,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiAyah,
           'ahli_waris': 'Ayah',
           'porsi': '$rAyah / $hasilKPK',
+          'nominal_total': bagianAyah,
           'nominal': bagianAyah,
         });
       }
@@ -47,6 +50,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiIbu,
           'ahli_waris': 'Ibu',
           'porsi': '$rIbu / $hasilKPK',
+          'nominal_total': bagianIbu,
           'nominal': bagianIbu,
         });
       }
@@ -57,23 +61,27 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiKakek,
           'ahli_waris': 'Kakek',
           'porsi': '$rKakek / $hasilKPK',
+          'nominal_total': bagianKakek,
           'nominal': bagianKakek,
         });
       }
 
       if (nilaiNenekAyah > 0 && nilaiNenekIbu > 0) {
-        int bagianNenek2 = totalWarisan * rNenek2 ~/ hasilKPK ~/ nilaiNenek2;
+        int bagianNenek2 = totalWarisan * rNenek2 ~/ hasilKPK;
+        int bagianNenek2PerOrang = bagianNenek2 ~/ nilaiNenek2;
         results.add({
           'jumlah': nilaiNenekAyah,
           'ahli_waris': 'Nenek Ayah',
           'porsi': '$rNenek2 / $hasilKPK Bersama',
-          'nominal': bagianNenek2,
+          'nominal_total': bagianNenek2,
+          'nominal': bagianNenek2PerOrang,
         });
         results.add({
           'jumlah': nilaiNenekIbu,
           'ahli_waris': 'Nenek Ibu',
           'porsi': '$rNenek2 / $hasilKPK Bersama',
-          'nominal': bagianNenek2,
+          'nominal_total': bagianNenek2,
+          'nominal': bagianNenek2PerOrang,
         });
       } else if (nilaiNenekAyah > 0 && nilaiNenekIbu == 0) {
         int bagianNenekAyah = totalWarisan * rNenekAyah ~/ hasilKPK;
@@ -81,6 +89,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiNenekAyah,
           'ahli_waris': 'Nenek Ayah',
           'porsi': '$rNenekAyah / $hasilKPK',
+          'nominal_total': bagianNenekAyah,
           'nominal': bagianNenekAyah,
         });
       } else if (nilaiNenekIbu > 0 && nilaiNenekAyah == 0) {
@@ -89,6 +98,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiNenekIbu,
           'ahli_waris': 'Nenek Ibu',
           'porsi': '$rNenekIbu / $hasilKPK',
+          'nominal_total': bagianNenekIbu,
           'nominal': bagianNenekIbu,
         });
       }
@@ -101,6 +111,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiAnakPerempuan,
           'ahli_waris': 'Anak Perempuan',
           'porsi': '$rAnakPerempuan / $hasilKPK',
+          'nominal_total': bagianAnakPerempuan,
           'nominal': bagianAnakPerempuanPerOrang,
         });
       }
@@ -113,6 +124,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiCucuPerempuan,
           'ahli_waris': 'Cucu Perempuan',
           'porsi': '$rCucuPerempuan / $hasilKPK',
+          'nominal_total': bagianCucuPerempuan,
           'nominal': bagianCucuPerempuanPerOrang,
         });
       }
@@ -126,6 +138,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiSaudaraPerempuanKandung,
           'ahli_waris': 'Saudara Perempuan Kandung',
           'porsi': '$rSaudaraPerempuanKandung / $hasilKPK',
+          'nominal_total': bagianSaudaraPerempuanKandung,
           'nominal': bagianSaudaraPerempuanKandungPerOrang,
         });
       }
@@ -139,6 +152,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiSaudaraPerempuanSeayah,
           'ahli_waris': 'Saudara Perempuan Seayah',
           'porsi': '$rSaudaraPerempuanSeayah / $hasilKPK',
+          'nominal_total': bagianSaudaraPerempuanSeayah,
           'nominal': bagianSaudaraPerempuanSeayahPerOrang,
         });
       }
@@ -151,12 +165,14 @@ extension CalculateAulRadd on CalculatorController {
             'jumlah': nilaiSaudaraLakiSeibu,
             'ahli_waris': 'Saudara Laki-Laki Seibu',
             'porsi': '$rSaudaraSeibu / $hasilKPK Bersama',
+            'nominal_total': bagianSaudaraSeibu,
             'nominal': bagianSaudaraSeibuPerOrang,
           });
           results.add({
             'jumlah': nilaiSaudaraPerempuanSeibu,
             'ahli_waris': 'Saudara Perempuan Seibu',
             'porsi': '$rSaudaraSeibu / $hasilKPK Bersama',
+            'nominal_total': bagianSaudaraSeibu,
             'nominal': bagianSaudaraSeibuPerOrang,
           });
         } else if (nilaiSaudaraLakiSeibu > 0) {
@@ -168,6 +184,7 @@ extension CalculateAulRadd on CalculatorController {
             'jumlah': nilaiSaudaraLakiSeibu,
             'ahli_waris': 'Saudara Laki-Laki Seibu',
             'porsi': '$rSaudaraLakiSeibu / $hasilKPK',
+            'nominal_total': bagianSaudaraLakiSeibu,
             'nominal': bagianSaudaraLakiSeibuPerOrang,
           });
         } else if (nilaiSaudaraPerempuanSeibu > 0) {
@@ -179,6 +196,7 @@ extension CalculateAulRadd on CalculatorController {
             'jumlah': nilaiSaudaraPerempuanSeibu,
             'ahli_waris': 'Saudara Perempuan Seibu',
             'porsi': '$rSaudaraPerempuanSeibu / $hasilKPK',
+            'nominal_total': bagianSaudaraPerempuanSeibu,
             'nominal': bagianSaudaraPerempuanSeibuPerOrang,
           });
         }
@@ -203,6 +221,7 @@ extension CalculateAulRadd on CalculatorController {
             'jumlah': nilaiSuami,
             'ahli_waris': 'Suami',
             'porsi': '1 / 4 (total)',
+            'nominal_total': bagianSuami,
             'nominal': bagianSuami,
           });
           sisaWarisan -= bagianSuami;
@@ -214,6 +233,7 @@ extension CalculateAulRadd on CalculatorController {
             'jumlah': nilaiSuami,
             'ahli_waris': 'Suami',
             'porsi': '1 / 2 (total)',
+            'nominal_total': bagianSuami,
             'nominal': bagianSuami,
           });
           sisaWarisan -= bagianSuami;
@@ -224,6 +244,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiSuami,
           'ahli_waris': 'Suami',
           'porsi': '1 / 1',
+          'nominal_total': bagianSuami,
           'nominal': bagianSuami,
         });
       }
@@ -243,6 +264,7 @@ extension CalculateAulRadd on CalculatorController {
             'jumlah': nilaiIstri,
             'ahli_waris': 'Istri',
             'porsi': '1 / 8 (total)',
+            'nominal_total': bagianIstri,
             'nominal': bagianIstriPerOrang,
           });
           sisaWarisan -= bagianIstri;
@@ -255,17 +277,20 @@ extension CalculateAulRadd on CalculatorController {
             'jumlah': nilaiIstri,
             'ahli_waris': 'Istri',
             'porsi': '1 / 4 (total)',
+            'nominal_total': bagianIstri,
             'nominal': bagianIstriPerOrang,
           });
           sisaWarisan -= bagianIstri;
         }
       } else if (nilaiIstri > 0) {
-        int bagianIstri = totalWarisan * 1 ~/ nilaiIstri;
+        int bagianIstri = totalWarisan * 1;
+        int bagianIstriPerOrang = bagianIstri ~/ nilaiIstri;
         results.add({
           'jumlah': nilaiIstri,
           'ahli_waris': 'Istri',
           'porsi': '1 / 1',
-          'nominal': bagianIstri,
+          'nominal_total': bagianIstri,
+          'nominal': bagianIstriPerOrang,
         });
       }
 
@@ -285,6 +310,7 @@ extension CalculateAulRadd on CalculatorController {
             'jumlah': nilaiAyah,
             'ahli_waris': 'Ayah',
             'porsi': '$rAyah / $hasilKPK',
+            'nominal_total': bagianAyah,
             'nominal': bagianAyah,
           });
         }
@@ -296,6 +322,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiIbu,
           'ahli_waris': 'Ibu',
           'porsi': '$rIbu / $hasilKPK',
+          'nominal_total': bagianIbu,
           'nominal': bagianIbu,
         });
       }
@@ -307,24 +334,29 @@ extension CalculateAulRadd on CalculatorController {
             'jumlah': nilaiKakek,
             'ahli_waris': 'Kakek',
             'porsi': '$rKakek / $hasilKPK',
+            'nominal_total': bagianKakek,
             'nominal': bagianKakek,
           });
         }
       }
 
       if (nilaiNenekAyah > 0 && nilaiNenekIbu > 0) {
-        int bagianNenek2 = totalWarisan * rNenek2 ~/ hasilKPK ~/ nilaiNenek2;
+        int bagianNenek = totalWarisan * rNenek2 ~/ hasilKPK;
+        int bagianNenekPerOrang =
+            totalWarisan * rNenek2 ~/ hasilKPK ~/ nilaiNenek2;
         results.add({
           'jumlah': nilaiNenekAyah,
           'ahli_waris': 'Nenek Ayah',
           'porsi': '$rNenek2 / $hasilKPK Bersama',
-          'nominal': bagianNenek2,
+          'nominal_total': bagianNenek,
+          'nominal': bagianNenekPerOrang,
         });
         results.add({
           'jumlah': nilaiNenekIbu,
           'ahli_waris': 'Nenek Ibu',
           'porsi': '$rNenek2 / $hasilKPK Bersama',
-          'nominal': bagianNenek2,
+          'nominal_total': bagianNenek,
+          'nominal': bagianNenekPerOrang,
         });
       } else if (nilaiNenekAyah > 0 && nilaiNenekIbu == 0) {
         int bagianNenekAyah = totalWarisan * rNenekAyah ~/ hasilKPK;
@@ -332,6 +364,7 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiNenekAyah,
           'ahli_waris': 'Nenek Ayah',
           'porsi': '$rNenekAyah / $hasilKPK',
+          'nominal_total': bagianNenekAyah,
           'nominal': bagianNenekAyah,
         });
       } else if (nilaiNenekIbu > 0 && nilaiNenekAyah == 0) {
@@ -340,117 +373,130 @@ extension CalculateAulRadd on CalculatorController {
           'jumlah': nilaiNenekIbu,
           'ahli_waris': 'Nenek Ibu',
           'porsi': '$rNenekIbu / $hasilKPK',
+          'nominal_total': bagianNenekIbu,
           'nominal': bagianNenekIbu,
         });
       }
 
       if (nilaiAnakPerempuan > 0) {
-        int bagianAnakPerempuan =
-            totalWarisan * rAnakPerempuan ~/ hasilKPK ~/ nilaiAnakPerempuan;
+        int bagianAnakPerempuan = totalWarisan * rAnakPerempuan ~/ hasilKPK;
+        int bagianAnakPerempuanPerOrang =
+            bagianAnakPerempuan ~/ nilaiAnakPerempuan;
         results.add({
           'jumlah': nilaiAnakPerempuan,
           'ahli_waris': 'Anak Perempuan',
           'porsi': '$rAnakPerempuan / $hasilKPK',
-          'nominal': bagianAnakPerempuan,
+          'nominal_total': bagianAnakPerempuan,
+          'nominal': bagianAnakPerempuanPerOrang,
         });
       }
 
       if (nilaiCucuPerempuan > 0) {
-        int bagianCucuPerempuan =
-            totalWarisan * rCucuPerempuan ~/ hasilKPK ~/ nilaiCucuPerempuan;
+        int bagianCucuPerempuan = totalWarisan * rCucuPerempuan ~/ hasilKPK;
+        int bagianCucuPerempuanPerOrang =
+            bagianCucuPerempuan ~/ nilaiCucuPerempuan;
         results.add({
           'jumlah': nilaiCucuPerempuan,
           'ahli_waris': 'Cucu Perempuan',
           'porsi': '$rCucuPerempuan / $hasilKPK',
-          'nominal': bagianCucuPerempuan,
+          'nominal_total': bagianCucuPerempuan,
+          'nominal': bagianCucuPerempuanPerOrang,
         });
       }
 
       if (nilaiSaudaraPerempuanKandung > 0) {
         int bagianSaudaraPerempuanKandung =
-            totalWarisan *
-            rSaudaraPerempuanKandung ~/
-            hasilKPK ~/
-            nilaiSaudaraPerempuanKandung;
+            totalWarisan * rSaudaraPerempuanKandung ~/ hasilKPK;
+        int bagianSaudaraPerempuanKandungPerOrang =
+            bagianSaudaraPerempuanKandung ~/ nilaiSaudaraPerempuanKandung;
         results.add({
           'jumlah': nilaiSaudaraPerempuanKandung,
           'ahli_waris': 'Saudara Perempuan Kandung',
           'porsi': '$rSaudaraPerempuanKandung / $hasilKPK',
-          'nominal': bagianSaudaraPerempuanKandung,
+          'nominal_total': bagianSaudaraPerempuanKandung,
+          'nominal': bagianSaudaraPerempuanKandungPerOrang,
         });
       }
 
       if (nilaiSaudaraPerempuanSeayah > 0) {
         int bagianSaudaraPerempuanSeayah =
-            totalWarisan *
-            rSaudaraPerempuanSeayah ~/
-            hasilKPK ~/
-            nilaiSaudaraPerempuanSeayah;
+            totalWarisan * rSaudaraPerempuanSeayah ~/ hasilKPK;
+        int bagianSaudaraPerempuanSeayahPerOrang =
+            bagianSaudaraPerempuanSeayah ~/ nilaiSaudaraPerempuanSeayah;
         results.add({
           'jumlah': nilaiSaudaraPerempuanSeayah,
           'ahli_waris': 'Saudara Perempuan Seayah',
           'porsi': '$rSaudaraPerempuanSeayah / $hasilKPK',
-          'nominal': bagianSaudaraPerempuanSeayah,
+          'nominal_total': bagianSaudaraPerempuanSeayah,
+          'nominal': bagianSaudaraPerempuanSeayahPerOrang,
         });
       }
 
       if (saudaraSeibu > 0) {
         if (nilaiSaudaraLakiSeibu > 0 && nilaiSaudaraPerempuanSeibu > 0) {
-          int bagianSaudaraSeibu =
-              totalWarisan * rSaudaraSeibu ~/ hasilKPK ~/ saudaraSeibu;
+          int bagianSaudaraSeibu = totalWarisan * rSaudaraSeibu ~/ hasilKPK;
+          int bagianSaudaraSeibuPerOrang = bagianSaudaraSeibu ~/ saudaraSeibu;
           results.add({
             'jumlah': saudaraSeibu,
             'ahli_waris': 'Saudara Laki-Laki Seibu',
             'porsi': '$rSaudaraSeibu / $hasilKPK Bersama',
-            'nominal': bagianSaudaraSeibu,
+            'nominal_total': bagianSaudaraSeibu,
+            'nominal': bagianSaudaraSeibuPerOrang,
           });
           results.add({
             'jumlah': nilaiSaudaraPerempuanSeibu,
             'ahli_waris': 'Saudara Perempuan Seibu',
             'porsi': '$rSaudaraSeibu / $hasilKPK Bersama',
-            'nominal': bagianSaudaraSeibu,
+            'nominal_total': bagianSaudaraSeibu,
+            'nominal': bagianSaudaraSeibuPerOrang,
           });
         } else if (nilaiSaudaraLakiSeibu == 1) {
           int bagianSaudaraLakiSeibu =
               totalWarisan * rSaudaraLakiSeibu ~/ hasilKPK;
+          int bagianSaudaraLakiSeibuPerOrang =
+              bagianSaudaraLakiSeibu ~/ nilaiSaudaraLakiSeibu;
           results.add({
             'jumlah': nilaiSaudaraLakiSeibu,
             'ahli_waris': 'Saudara Laki-Laki Seibu',
             'porsi': '$rSaudaraLakiSeibu / $hasilKPK',
-            'nominal': bagianSaudaraLakiSeibu,
+            'nominal_total': bagianSaudaraLakiSeibu,
+            'nominal': bagianSaudaraLakiSeibuPerOrang,
           });
         } else if (nilaiSaudaraPerempuanSeibu == 1) {
           int bagianSaudaraPerempuanSeibu =
               totalWarisan * rSaudaraPerempuanSeibu ~/ hasilKPK;
+          int bagianSaudaraPerempuanSeibuPerOrang =
+              bagianSaudaraPerempuanSeibu ~/ nilaiSaudaraPerempuanSeibu;
           results.add({
             'jumlah': nilaiSaudaraPerempuanSeibu,
             'ahli_waris': 'Saudara Perempuan Seibu',
             'porsi': '$rSaudaraPerempuanSeibu / $hasilKPK',
-            'nominal': bagianSaudaraPerempuanSeibu,
+            'nominal_total': bagianSaudaraPerempuanSeibu,
+            'nominal': bagianSaudaraPerempuanSeibuPerOrang,
           });
         } else if (nilaiSaudaraLakiSeibu > 1) {
           int bagianSaudaraLakiSeibu =
-              totalWarisan *
-              rSaudaraLakiSeibu ~/
-              hasilKPK ~/
-              nilaiSaudaraLakiSeibu;
+              totalWarisan * rSaudaraLakiSeibu ~/ hasilKPK;
+          int bagianSaudaraLakiSeibuPerOrang =
+              bagianSaudaraLakiSeibu ~/ nilaiSaudaraLakiSeibu;
           results.add({
             'jumlah': nilaiSaudaraLakiSeibu,
             'ahli_waris': 'Saudara Laki-Laki Seibu',
             'porsi': '$rSaudaraLakiSeibu / $hasilKPK',
-            'nominal': bagianSaudaraLakiSeibu,
+            'nominal_total': bagianSaudaraLakiSeibu,
+            'nominal': bagianSaudaraLakiSeibuPerOrang,
           });
         } else if (nilaiSaudaraPerempuanSeibu > 1) {
           int bagianSaudaraPerempuanSeibu =
-              totalWarisan *
-              rSaudaraPerempuanSeibu ~/
-              hasilKPK ~/
-              nilaiSaudaraPerempuanSeibu;
+              totalWarisan * rSaudaraPerempuanSeibu ~/ hasilKPK;
+          int bagianSaudaraPerempuanSeibuPerOrang =
+              bagianSaudaraPerempuanSeibu ~/ nilaiSaudaraPerempuanSeibu;
           results.add({
             'jumlah': nilaiSaudaraPerempuanSeibu,
             'ahli_waris': 'Saudara Perempuan Seibu',
             'porsi': '$rSaudaraPerempuanSeibu / $hasilKPK',
-            'nominal': bagianSaudaraPerempuanSeibu,
+            'nominal_total': bagianSaudaraPerempuanSeibu,
+            'nominal': bagianSaudaraPerempuanSeibuPerOrang,
           });
         }
       }
