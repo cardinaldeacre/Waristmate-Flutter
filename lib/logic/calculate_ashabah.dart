@@ -51,7 +51,7 @@ extension CalculateAshabah on CalculatorController {
     }
 
     if (nilaiAnakLaki > 0) {
-      int bagianAnakLaki = nominalAshabah * 2;
+      int bagianAnakLaki = nominalAshabah * 2 * nilaiAnakLaki;
       int bagianAnakLakiPerOrang = bagianAnakLaki ~/ nilaiAnakLaki;
       results.add({
         'jumlah': nilaiAnakLaki,
@@ -64,7 +64,7 @@ extension CalculateAshabah on CalculatorController {
 
     if (nilaiAnakPerempuan > 0) {
       if (nilaiAnakLaki > 0) {
-        int bagianAnakPerempuan = nominalAshabah;
+        int bagianAnakPerempuan = nominalAshabah * nilaiAnakPerempuan;
         int bagianAnakPerempuanPerOrang =
             bagianAnakPerempuan ~/ nilaiAnakPerempuan;
         results.add({
@@ -78,7 +78,7 @@ extension CalculateAshabah on CalculatorController {
     }
 
     if (nilaiCucuLaki > 0) {
-      int bagianCucuLaki = nominalAshabah * 2;
+      int bagianCucuLaki = nominalAshabah * 2 * nilaiCucuLaki;
       int bagianCucuLakiPerOrang = bagianCucuLaki ~/ nilaiCucuLaki;
       results.add({
         'jumlah': nilaiCucuLaki,
@@ -91,7 +91,7 @@ extension CalculateAshabah on CalculatorController {
 
     if (nilaiCucuPerempuan > 0) {
       if (nilaiCucuLaki > 0) {
-        int bagianCucuPerempuan = nominalAshabah;
+        int bagianCucuPerempuan = nominalAshabah * nilaiCucuPerempuan;
         int bagianCucuPerempuanPerOrang =
             bagianCucuPerempuan ~/ nilaiCucuPerempuan;
         results.add({
@@ -105,7 +105,8 @@ extension CalculateAshabah on CalculatorController {
     }
 
     if (nilaiSaudaraLakiKandung > 0) {
-      int bagianSaudaraLakiKandung = nominalAshabah * 2;
+      int bagianSaudaraLakiKandung =
+          nominalAshabah * 2 * nilaiSaudaraLakiKandung;
       int bagianSaudaraLakiKandungPerOrang =
           bagianSaudaraLakiKandung ~/ nilaiSaudaraLakiKandung;
 
@@ -122,7 +123,8 @@ extension CalculateAshabah on CalculatorController {
       if (nilaiSaudaraLakiKandung > 0 ||
           nilaiAnakPerempuan > 0 ||
           nilaiCucuPerempuan > 0) {
-        int bagianSaudaraPerempuanKandung = nominalAshabah;
+        int bagianSaudaraPerempuanKandung =
+            nominalAshabah * nilaiSaudaraPerempuanKandung;
         int bagianSaudaraPerempuanKandungPerOrang =
             bagianSaudaraPerempuanKandung ~/ nilaiSaudaraPerempuanKandung;
         results.add({
@@ -136,7 +138,7 @@ extension CalculateAshabah on CalculatorController {
     }
 
     if (nilaiSaudaraLakiSeayah > 0) {
-      int bagianSaudaraLakiSeayah = nominalAshabah * 2;
+      int bagianSaudaraLakiSeayah = nominalAshabah * 2 * nilaiSaudaraLakiSeayah;
       int bagianSaudaraLakiSeayahPerOrang =
           bagianSaudaraLakiSeayah ~/ nilaiSaudaraLakiSeayah;
       results.add({
@@ -152,7 +154,8 @@ extension CalculateAshabah on CalculatorController {
       if (nilaiAnakPerempuan > 0 ||
           nilaiCucuPerempuan > 0 ||
           nilaiSaudaraLakiSeayah > 0) {
-        int bagianSaudaraPerempuanSeayah = nominalAshabah;
+        int bagianSaudaraPerempuanSeayah =
+            nominalAshabah * nilaiSaudaraPerempuanSeayah;
         int bagianSaudaraPerempuanSeayahPerOrang =
             bagianSaudaraPerempuanSeayah ~/ nilaiSaudaraPerempuanSeayah;
         results.add({
@@ -166,7 +169,8 @@ extension CalculateAshabah on CalculatorController {
     }
 
     if (nilaiAnakLakiSaudaraKandung > 0) {
-      int bagianAnakLakiSaudaraKandung = nominalAshabah * 2;
+      int bagianAnakLakiSaudaraKandung =
+          nominalAshabah * 2 * nilaiAnakLakiSaudaraKandung;
       int bagianAnakLakiSaudaraKandungPerOrang =
           bagianAnakLakiSaudaraKandung ~/ nilaiAnakLakiSaudaraKandung;
       results.add({
@@ -179,7 +183,8 @@ extension CalculateAshabah on CalculatorController {
     }
 
     if (nilaiAnakLakiSaudaraSeayah > 0) {
-      int bagianAnakLakiSaudaraSeayah = nominalAshabah * 2;
+      int bagianAnakLakiSaudaraSeayah =
+          nominalAshabah * 2 * nilaiAnakLakiSaudaraSeayah;
       int bagianAnakLakiSaudaraSeayahPerOrang =
           bagianAnakLakiSaudaraSeayah ~/ nilaiAnakLakiSaudaraSeayah;
       results.add({
@@ -192,7 +197,7 @@ extension CalculateAshabah on CalculatorController {
     }
 
     if (nilaiPamanKandung > 0) {
-      int bagianPamanKandung = nominalAshabah * 2;
+      int bagianPamanKandung = nominalAshabah * 2 * nilaiPamanKandung;
       int bagianPamanKandungPerOrang = bagianPamanKandung ~/ nilaiPamanKandung;
       results.add({
         'jumlah': nilaiPamanKandung,
@@ -204,7 +209,7 @@ extension CalculateAshabah on CalculatorController {
     }
 
     if (nilaiPamanSekakek > 0) {
-      int bagianPamanSekakek = nominalAshabah * 2;
+      int bagianPamanSekakek = nominalAshabah * 2 * nilaiPamanSekakek;
       int bagianPamanSekakekPerOrang = bagianPamanSekakek ~/ nilaiPamanSekakek;
       results.add({
         'jumlah': nilaiPamanSekakek,
@@ -216,7 +221,8 @@ extension CalculateAshabah on CalculatorController {
     }
 
     if (nilaiAnakLakiPamanKandung > 0) {
-      int bagianAnakLakiPamanKandung = nominalAshabah * 2;
+      int bagianAnakLakiPamanKandung =
+          nominalAshabah * 2 * nilaiAnakLakiPamanKandung;
       int bagianAnakLakiPamanKandungPerOrang =
           bagianAnakLakiPamanKandung ~/ nilaiAnakLakiPamanKandung;
       results.add({
@@ -229,7 +235,8 @@ extension CalculateAshabah on CalculatorController {
     }
 
     if (nilaiAnakLakiPamanSekakek > 0) {
-      int bagianAnakLakiPamanSekakek = nominalAshabah * 2;
+      int bagianAnakLakiPamanSekakek =
+          nominalAshabah * 2 * nilaiAnakLakiPamanSekakek;
       int bagianAnakLakiPamanSekakekPerOrang =
           bagianAnakLakiPamanSekakek ~/ nilaiAnakLakiPamanSekakek;
       results.add({
