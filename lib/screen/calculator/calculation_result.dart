@@ -137,6 +137,32 @@ class _CalculationResultState extends State<CalculationResult> {
                     ),
                     const SizedBox(height: 20),
 
+                    if (calc.kasus.isNotEmpty)
+                      Container(
+                        constraints: BoxConstraints(
+                          minWidth: MediaQuery.of(context).size.width,
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                        decoration: BoxDecoration(
+                          color: primaryGreen,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Text(
+                          "Jenis Kasus: ${calc.kasus}",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white70,
+                          ),
+                        ),
+                      ),
+
+                    const SizedBox(height: 20),
+
                     Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey.shade300),
