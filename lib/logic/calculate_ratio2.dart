@@ -42,44 +42,62 @@ extension CalculateRatio2 on CalculatorController {
     }
 
     if (nilaiAnakPerempuan > 0) {
-      if (nilaiAnakPerempuan == 1) {
-        rAnakPerempuan = hasilKPK * 1 ~/ 2;
-        totalRatio += rAnakPerempuan;
-      } else if (nilaiAnakPerempuan > 1) {
+      if (nilaiAnakPerempuan > 1 && nilaiAnakLaki == 0) {
         rAnakPerempuan = hasilKPK * 2 ~/ 3;
+        totalRatio += rAnakPerempuan;
+      } else if (nilaiAnakPerempuan == 1 && nilaiAnakLaki == 0) {
+        rAnakPerempuan = hasilKPK * 1 ~/ 2;
         totalRatio += rAnakPerempuan;
       }
     }
 
     if (nilaiCucuPerempuan > 0) {
-      if (nilaiAnakPerempuan == 1) {
+      if (nilaiAnakPerempuan == 1 && nilaiCucuLaki == 0) {
         rCucuPerempuan = hasilKPK * 1 ~/ 6;
         totalRatio += rCucuPerempuan;
-      } else if (nilaiCucuPerempuan == 1) {
+      } else if (nilaiCucuPerempuan == 1 && nilaiCucuLaki == 0) {
         rCucuPerempuan = hasilKPK * 1 ~/ 2;
         totalRatio += rCucuPerempuan;
-      } else if (nilaiCucuPerempuan > 1) {
+      } else if (nilaiCucuPerempuan > 1 && nilaiCucuLaki == 0) {
         rCucuPerempuan = hasilKPK * 2 ~/ 3;
         totalRatio += rCucuPerempuan;
       }
     }
 
     if (nilaiSaudaraPerempuanKandung > 0) {
-      if (nilaiSaudaraPerempuanKandung == 1) {
+      if (nilaiSaudaraPerempuanKandung == 1 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0 &&
+          nilaiSaudaraLakiKandung == 0) {
         rSaudaraPerempuanKandung = hasilKPK * 1 ~/ 2;
         totalRatio += rSaudaraPerempuanKandung;
-      } else {
+      } else if (nilaiSaudaraPerempuanKandung > 1 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0 &&
+          nilaiSaudaraLakiKandung == 0) {
         rSaudaraPerempuanKandung = hasilKPK * 2 ~/ 3;
         totalRatio += rSaudaraPerempuanKandung;
       }
     }
 
     if (nilaiSaudaraPerempuanSeayah > 0) {
-      if (nilaiSaudaraPerempuanSeayah == 1) {
+      if (nilaiSaudaraPerempuanSeayah == 1 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0 &&
+          nilaiSaudaraLakiSeayah == 0) {
         rSaudaraPerempuanSeayah = hasilKPK * 1 ~/ 2;
         totalRatio += rSaudaraPerempuanSeayah;
-      } else {
+      } else if (nilaiSaudaraPerempuanSeayah > 1 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0 &&
+          nilaiSaudaraLakiSeayah == 0) {
         rSaudaraPerempuanSeayah = hasilKPK * 2 ~/ 3;
+        totalRatio += rSaudaraPerempuanSeayah;
+      } else if (nilaiSaudaraPerempuanKandung == 1 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0 &&
+          nilaiSaudaraLakiSeayah == 0) {
+        rSaudaraPerempuanSeayah = hasilKPK * 1 ~/ 6;
         totalRatio += rSaudaraPerempuanSeayah;
       }
     }

@@ -114,6 +114,12 @@ extension CalculateRatio on CalculatorController {
           nilaiSaudaraLakiSeayah == 0) {
         rSaudaraPerempuanSeayah = hasilKPK * 2 ~/ 3;
         totalRatio += rSaudaraPerempuanSeayah;
+      } else if (nilaiSaudaraPerempuanKandung == 1 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0 &&
+          nilaiSaudaraLakiSeayah == 0) {
+        rSaudaraPerempuanSeayah = hasilKPK * 1 ~/ 6;
+        totalRatio += rSaudaraPerempuanSeayah;
       }
     }
 
