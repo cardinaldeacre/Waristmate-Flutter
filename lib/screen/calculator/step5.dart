@@ -140,17 +140,13 @@ class _Step5State extends State<Step5> {
                                 HajbValidator.saudaraPerempuanKandungTerhalang(
                                   nilaiAyah: calc.nilaiAyah,
                                   jmlAnakLaki: calc.nilaiAnakLaki,
-                                  jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                                   jmlCucuLaki: calc.nilaiCucuLaki,
-                                  jmlCucuPerempuan: calc.nilaiCucuPerempuan,
                                 ),
                             infoHajb:
                                 HajbValidator.penghalangSaudaraPerempuanKandung(
                                   nilaiAyah: calc.nilaiAyah,
                                   jmlAnakLaki: calc.nilaiAnakLaki,
-                                  jmlAnakPerempuan: calc.nilaiAnakPerempuan,
                                   jmlCucuLaki: calc.nilaiCucuLaki,
-                                  jmlCucuPerempuan: calc.nilaiCucuPerempuan,
                                 ),
                           ),
 

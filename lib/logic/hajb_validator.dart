@@ -93,8 +93,6 @@ class HajbValidator {
     required int nilaiAyah,
     required int jmlAnakLaki,
     required int jmlCucuLaki,
-    required int jmlAnakPerempuan,
-    required int jmlCucuPerempuan,
   }) {
     if (nilaiAyah > 0) {
       return "Ayah";
@@ -102,10 +100,6 @@ class HajbValidator {
       return "Anak Laki-Laki";
     } else if (jmlCucuLaki > 0) {
       return "Cucu Laki-Laki";
-    } else if (jmlAnakPerempuan > 1) {
-      return "Anak Perempuan Lebih dari 1";
-    } else if (jmlCucuPerempuan > 1) {
-      return "Cucu Perempuan Lebih dari 1";
     }
     return null;
   }
@@ -114,15 +108,11 @@ class HajbValidator {
     required int nilaiAyah,
     required int jmlAnakLaki,
     required int jmlCucuLaki,
-    required int jmlAnakPerempuan,
-    required int jmlCucuPerempuan,
   }) {
     return penghalangSaudaraPerempuanKandung(
           nilaiAyah: nilaiAyah,
           jmlAnakLaki: jmlAnakLaki,
           jmlCucuLaki: jmlCucuLaki,
-          jmlAnakPerempuan: jmlAnakPerempuan,
-          jmlCucuPerempuan: jmlCucuPerempuan,
         ) !=
         null;
   }
@@ -147,7 +137,7 @@ class HajbValidator {
       return "Saudara Laki-Laki Kandung";
     } else if (jmlSaudaraPerempuanKandung > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Kandung & Anak Perempuan Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     }
     return null;
   }
@@ -187,17 +177,13 @@ class HajbValidator {
       return "Ayah";
     } else if (jmlAnakLaki > 0) {
       return "Anak Laki-Laki";
-    } else if (jmlAnakPerempuan > 1) {
-      return "2 atau lebih Anak Perempuan";
     } else if (jmlCucuLaki > 0) {
       return "Cucu Laki-Laki";
-    } else if (jmlCucuPerempuan > 1) {
-      return "2 atau lebih Cucu Perempuan";
     } else if (jmlSaudaraLakiKandung > 0) {
       return "Saudara Laki-Laki Kandung";
     } else if (jmlSaudaraPerempuanKandung > 0 &&
-        (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Kandung & Keturunan Perempuan Ashabah";
+        (jmlAnakPerempuan == 1 || jmlCucuPerempuan == 1)) {
+      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     } else if (jmlSaudaraPerempuanKandung > 1) {
       return "2 atau lebih Saudara Perempuan Kandung";
     }
@@ -328,15 +314,12 @@ class HajbValidator {
       return "Saudara Laki-Laki Kandung";
     } else if (jmlSaudaraPerempuanKandung > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Kandung & Keturunan Perempuan Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     } else if (jmlSaudaraLakiSeayah > 0) {
       return "Saudara Laki-Laki Seayah";
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Seayah & Keturunan Perempuan Ashabah";
-    } else if (jmlSaudaraPerempuanSeayah > 0 &&
-        jmlSaudaraPerempuanKandung > 0) {
-      return "Saudara Perempuan Seayah & Saudara Perempuan Kandung Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Seayah Ashabah";
     }
     return null;
   }
@@ -394,15 +377,12 @@ class HajbValidator {
       return "Saudara Laki-Laki Kandung";
     } else if (jmlSaudaraPerempuanKandung > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Kandung & Keturunan Perempuan Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     } else if (jmlSaudaraLakiSeayah > 0) {
       return "Saudara Laki-Laki Seayah";
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Seayah & Keturunan Perempuan Ashabah";
-    } else if (jmlSaudaraPerempuanSeayah > 0 &&
-        jmlSaudaraPerempuanKandung > 0) {
-      return "Saudara Perempuan Seayah & Saudara Perempuan Kandung Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Seayah Ashabah";
     } else if (jmlAnakLakiSaudaraKandung > 0) {
       return "AnakLaki Saudara Laki-Laki Kandung";
     }
@@ -465,15 +445,15 @@ class HajbValidator {
       return "Saudara Laki-Laki Kandung";
     } else if (jmlSaudaraPerempuanKandung > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Kandung & Keturunan Perempuan Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Kandung  Ashabah";
     } else if (jmlSaudaraLakiSeayah > 0) {
       return "Saudara Laki-Laki Seayah";
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Seayah & Keturunan Perempuan Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Seayah Ashabah";
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         jmlSaudaraPerempuanKandung > 0) {
-      return "Saudara Perempuan Seayah & Saudara Perempuan Kandung Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     } else if (jmlAnakLakiSaudaraKandung > 0) {
       return "Anak Laki Saudara Laki-Laki Kandung";
     } else if (jmlAnakLakiSaudaraSeayah > 0) {
@@ -541,15 +521,15 @@ class HajbValidator {
       return "Saudara Laki-Laki Kandung";
     } else if (jmlSaudaraPerempuanKandung > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Kandung & Keturunan Perempuan Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Kandung  Ashabah";
     } else if (jmlSaudaraLakiSeayah > 0) {
       return "Saudara Laki-Laki Seayah";
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Seayah & Keturunan Perempuan Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Seayah Ashabah";
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         jmlSaudaraPerempuanKandung > 0) {
-      return "Saudara Perempuan Seayah & Saudara Perempuan Kandung Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     } else if (jmlAnakLakiSaudaraKandung > 0) {
       return "Anak Laki Saudara Laki-Laki Kandung";
     } else if (jmlAnakLakiSaudaraSeayah > 0) {
@@ -622,15 +602,15 @@ class HajbValidator {
       return "Saudara Laki-Laki Kandung";
     } else if (jmlSaudaraPerempuanKandung > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Kandung & Keturunan Perempuan Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Kandung  Ashabah";
     } else if (jmlSaudaraLakiSeayah > 0) {
       return "Saudara Laki-Laki Seayah";
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Seayah & Keturunan Perempuan Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Seayah Ashabah";
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         jmlSaudaraPerempuanKandung > 0) {
-      return "Saudara Perempuan Seayah & Saudara Perempuan Kandung Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     } else if (jmlAnakLakiSaudaraKandung > 0) {
       return "Anak Laki Saudara Laki-Laki Kandung";
     } else if (jmlAnakLakiSaudaraSeayah > 0) {
@@ -708,15 +688,15 @@ class HajbValidator {
       return "Saudara Laki-Laki Kandung";
     } else if (jmlSaudaraPerempuanKandung > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Kandung & Keturunan Perempuan Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Kandung  Ashabah";
     } else if (jmlSaudaraLakiSeayah > 0) {
       return "Saudara Laki-Laki Seayah";
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
-      return "Saudara Perempuan Seayah & Keturunan Perempuan Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Seayah Ashabah";
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         jmlSaudaraPerempuanKandung > 0) {
-      return "Saudara Perempuan Seayah & Saudara Perempuan Kandung Ashabah";
+      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     } else if (jmlAnakLakiSaudaraKandung > 0) {
       return "Anak Laki Saudara Laki-Laki Kandung";
     } else if (jmlAnakLakiSaudaraSeayah > 0) {

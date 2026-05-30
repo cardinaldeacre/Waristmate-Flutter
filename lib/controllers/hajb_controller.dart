@@ -36,8 +36,6 @@ extension HajbController on CalculatorController {
       nilaiAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCucuLaki,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuPerempuan,
     )) {
       nilaiSaudaraPerempuanKandung = 0;
     }
@@ -224,13 +222,11 @@ extension HajbController on CalculatorController {
   }
 
   // saudari kandung
-  String? get penghalangSaudaraPerempuan {
+  String? get penghalangSaudaraPerempuanKandung {
     return HajbValidator.penghalangSaudaraPerempuanKandung(
       nilaiAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCucuLaki,
-      jmlAnakPerempuan: nilaiAnakPerempuan,
-      jmlCucuPerempuan: nilaiCucuPerempuan,
     );
   }
 
