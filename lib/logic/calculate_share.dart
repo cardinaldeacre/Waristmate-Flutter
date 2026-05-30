@@ -13,6 +13,7 @@ extension CalculateShare on CalculatorController {
         'jumlah': nilaiSuami,
         'ahli_waris': 'Suami',
         'porsi': '$rSuami / $hasilKPK',
+        'nominal_total': bagianSuami,
         'nominal': bagianSuami,
       });
     }
@@ -25,6 +26,7 @@ extension CalculateShare on CalculatorController {
         'jumlah': nilaiIstri,
         'ahli_waris': 'Istri',
         'porsi': '$rIstri / $hasilKPK',
+        'nominal_total': bagianIstri,
         'nominal': bagianIstriPerOrang,
       });
     }
@@ -37,6 +39,7 @@ extension CalculateShare on CalculatorController {
           'jumlah': nilaiAyah,
           'ahli_waris': 'Ayah',
           'porsi': '$rAyah / $hasilKPK',
+          'nominal_total': bagianAyah,
           'nominal': bagianAyah,
         });
       }
@@ -49,6 +52,7 @@ extension CalculateShare on CalculatorController {
         'jumlah': nilaiIbu,
         'ahli_waris': 'Ibu',
         'porsi': '$rIbu / $hasilKPK',
+        'nominal_total': bagianIbu,
         'nominal': bagianIbu,
       });
     }
@@ -61,6 +65,7 @@ extension CalculateShare on CalculatorController {
           'jumlah': nilaiKakek,
           'ahli_waris': 'Kakek',
           'porsi': '$rKakek / $hasilKPK',
+          'nominal_total': bagianKakek,
           'nominal': bagianKakek,
         });
       }
@@ -74,12 +79,14 @@ extension CalculateShare on CalculatorController {
         'jumlah': nilaiNenekAyah,
         'ahli_waris': 'Nenek Ayah',
         'porsi': '$rNenek2 / $hasilKPK',
+        'nominal_total': bagianNenek2,
         'nominal': bagianNenekPerOrang,
       });
       results.add({
         'jumlah': nilaiNenekIbu,
         'ahli_waris': 'Nenek Ibu',
         'porsi': '$rNenek2 / $hasilKPK',
+        'nominal_total': bagianNenek2,
         'nominal': bagianNenekPerOrang,
       });
     } else {
@@ -90,6 +97,7 @@ extension CalculateShare on CalculatorController {
           'jumlah': nilaiNenekAyah,
           'ahli_waris': 'Nenek Ayah',
           'porsi': '$rNenekAyah / $hasilKPK',
+          'nominal_total': bagianNenekAyah,
           'nominal': bagianNenekAyah,
         });
       }
@@ -100,6 +108,7 @@ extension CalculateShare on CalculatorController {
           'jumlah': nilaiNenekIbu,
           'ahli_waris': 'Nenek Ibu',
           'porsi': '$rNenekIbu / $hasilKPK',
+          'nominal_total': bagianNenekIbu,
           'nominal': bagianNenekIbu,
         });
       }
@@ -115,6 +124,7 @@ extension CalculateShare on CalculatorController {
           'jumlah': nilaiAnakPerempuan,
           'ahli_waris': 'Anak Perempuan',
           'porsi': '$rAnakPerempuan / $hasilKPK',
+          'nominal_total': bagianAnakPerempuan,
           'nominal': bagianAnakPerempuanPerOrang,
         });
       }
@@ -130,6 +140,7 @@ extension CalculateShare on CalculatorController {
           'jumlah': nilaiCucuPerempuan,
           'ahli_waris': 'Cucu Perempuan',
           'porsi': '$rCucuPerempuan / $hasilKPK',
+          'nominal_total': bagianCucuPerempuan,
           'nominal': bagianCucuPerempuanPerOrang,
         });
       }
@@ -146,6 +157,7 @@ extension CalculateShare on CalculatorController {
           'jumlah': nilaiSaudaraPerempuanKandung,
           'ahli_waris': 'Saudara Perempuan Kandung',
           'porsi': '$rSaudaraPerempuanKandung / $hasilKPK',
+          'nominal_total': bagianSaudaraPerempuanKandung,
           'nominal': bagianSaudaraPerempuanKandungPerOrang,
         });
       }
@@ -162,6 +174,7 @@ extension CalculateShare on CalculatorController {
           'jumlah': nilaiSaudaraPerempuanSeayah,
           'ahli_waris': 'Saudara Perempuan Seayah',
           'porsi': '$rSaudaraPerempuanSeayah / $hasilKPK',
+          'nominal_total': bagianSaudaraPerempuanSeayah,
           'nominal': bagianSaudaraPerempuanSeayahPerOrang,
         });
       }
@@ -176,12 +189,14 @@ extension CalculateShare on CalculatorController {
           'jumlah': nilaiSaudaraLakiSeibu,
           'ahli_waris': 'Saudara Laki-Laki Seibu',
           'porsi': '$rSaudaraSeibu / $hasilKPK Bersama',
+          'nominal_total': bagianSaudaraSeibu,
           'nominal': bagianSaudaraSeibuPerOrang,
         });
         results.add({
           'jumlah': nilaiSaudaraPerempuanSeibu,
           'ahli_waris': 'Saudara Perempuan Seibu',
           'porsi': '$rSaudaraSeibu / $hasilKPK Bersama',
+          'nominal_total': bagianSaudaraSeibu,
           'nominal': bagianSaudaraSeibuPerOrang,
         });
       } else if (nilaiSaudaraLakiSeibu > 0) {
@@ -194,6 +209,7 @@ extension CalculateShare on CalculatorController {
           'jumlah': nilaiSaudaraLakiSeibu,
           'ahli_waris': 'Saudara Laki-Laki Seibu',
           'porsi': '$rSaudaraLakiSeibu / $hasilKPK',
+          'nominal_total': bagianSaudaraLakiSeibu,
           'nominal': bagianSaudaraLakiSeibuPerOrang,
         });
       } else if (nilaiSaudaraPerempuanSeibu > 0) {
@@ -206,6 +222,7 @@ extension CalculateShare on CalculatorController {
           'jumlah': nilaiSaudaraPerempuanSeibu,
           'ahli_waris': 'Saudara Perempuan Seibu',
           'porsi': '$rSaudaraPerempuanSeibu / $hasilKPK',
+          'nominal_total': bagianSaudaraPerempuanSeibu,
           'nominal': bagianSaudaraPerempuanSeibuPerOrang,
         });
       }
