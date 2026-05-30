@@ -102,7 +102,13 @@ extension CalculateRatio on CalculatorController {
     }
 
     if (nilaiSaudaraPerempuanSeayah > 0) {
-      if (nilaiSaudaraPerempuanSeayah == 1 &&
+      if (nilaiSaudaraPerempuanKandung == 1 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0 &&
+          nilaiSaudaraLakiSeayah == 0) {
+        rSaudaraPerempuanSeayah = hasilKPK * 1 ~/ 6;
+        totalRatio += rSaudaraPerempuanSeayah;
+      } else if (nilaiSaudaraPerempuanSeayah == 1 &&
           nilaiAnakPerempuan == 0 &&
           nilaiCucuPerempuan == 0 &&
           nilaiSaudaraLakiSeayah == 0) {
@@ -113,12 +119,6 @@ extension CalculateRatio on CalculatorController {
           nilaiCucuPerempuan == 0 &&
           nilaiSaudaraLakiSeayah == 0) {
         rSaudaraPerempuanSeayah = hasilKPK * 2 ~/ 3;
-        totalRatio += rSaudaraPerempuanSeayah;
-      } else if (nilaiSaudaraPerempuanKandung == 1 &&
-          nilaiAnakPerempuan == 0 &&
-          nilaiCucuPerempuan == 0 &&
-          nilaiSaudaraLakiSeayah == 0) {
-        rSaudaraPerempuanSeayah = hasilKPK * 1 ~/ 6;
         totalRatio += rSaudaraPerempuanSeayah;
       }
     }
@@ -133,11 +133,15 @@ extension CalculateRatio on CalculatorController {
       }
     }
 
+    print("totalRatio: $totalRatio");
+
     if ((totalRatio > hasilKPK) ||
         (totalRatio < hasilKPK && totalAshabah == 0)) {
       calculateAulRadd();
+      print("lanjut ke aul radd");
     } else if (totalAshabah > 0) {
       calculateShare();
+      print("lanjut ke calculate share");
     }
   }
 }
