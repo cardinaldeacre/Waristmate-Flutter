@@ -13,6 +13,7 @@ extension CalculateAshabah on CalculatorController {
           'jumlah': nilaiAyah,
           'ahli_waris': 'Ayah',
           'porsi': '$rAyah / $hasilKPK + Ashabah',
+          'nominal_total': bagianAyah,
           'nominal': bagianAyah,
         });
       } else if (keturunanPerempuan == 0) {
@@ -21,6 +22,7 @@ extension CalculateAshabah on CalculatorController {
           'jumlah': nilaiAyah,
           'ahli_waris': 'Ayah',
           'porsi': 'Ashabah',
+          'nominal_total': bagianAyah,
           'nominal': bagianAyah,
         });
       }
@@ -33,6 +35,7 @@ extension CalculateAshabah on CalculatorController {
           'jumlah': nilaiKakek,
           'ahli_waris': 'Kakek',
           'porsi': '$rKakek / $hasilKPK + Ashabah',
+          'nominal_total': bagianKakek,
           'nominal': bagianKakek,
         });
       } else if (keturunanPerempuan == 0) {
@@ -41,63 +44,77 @@ extension CalculateAshabah on CalculatorController {
           'jumlah': nilaiKakek,
           'ahli_waris': 'Kakek',
           'porsi': 'Ashabah',
+          'nominal_total': bagianKakek,
           'nominal': bagianKakek,
         });
       }
     }
 
     if (nilaiAnakLaki > 0) {
-      int bagianAnakLaki = nominalAshabah * 2 ~/ nilaiAnakLaki;
+      int bagianAnakLaki = nominalAshabah * 2;
+      int bagianAnakLakiPerOrang = bagianAnakLaki ~/ nilaiAnakLaki;
       results.add({
         'jumlah': nilaiAnakLaki,
         'ahli_waris': 'Anak Laki-laki',
         'porsi': 'Ashabah',
-        'nominal': bagianAnakLaki,
+        'nominal_total': bagianAnakLaki,
+        'nominal': bagianAnakLakiPerOrang,
       });
     }
 
     if (nilaiAnakPerempuan > 0) {
       if (nilaiAnakLaki > 0) {
-        int bagianAnakPerempuan = nominalAshabah ~/ nilaiAnakPerempuan;
+        int bagianAnakPerempuan = nominalAshabah;
+        int bagianAnakPerempuanPerOrang =
+            bagianAnakPerempuan ~/ nilaiAnakPerempuan;
         results.add({
           'jumlah': nilaiAnakPerempuan,
           'ahli_waris': 'Anak Perempuan',
           'porsi': 'Ashabah',
-          'nominal': bagianAnakPerempuan,
+          'nominal_total': bagianAnakPerempuan,
+          'nominal': bagianAnakPerempuanPerOrang,
         });
       }
     }
 
     if (nilaiCucuLaki > 0) {
-      int bagianCucuLaki = nominalAshabah * 2 ~/ nilaiCucuLaki;
+      int bagianCucuLaki = nominalAshabah * 2;
+      int bagianCucuLakiPerOrang = bagianCucuLaki ~/ nilaiCucuLaki;
       results.add({
         'jumlah': nilaiCucuLaki,
         'ahli_waris': 'Cucu Laki-laki',
         'porsi': 'Ashabah',
-        'nominal': bagianCucuLaki,
+        'nominal_total': bagianCucuLaki,
+        'nominal': bagianCucuLakiPerOrang,
       });
     }
 
     if (nilaiCucuPerempuan > 0) {
       if (nilaiCucuLaki > 0) {
-        int bagianCucuPerempuan = nominalAshabah ~/ nilaiCucuPerempuan;
+        int bagianCucuPerempuan = nominalAshabah;
+        int bagianCucuPerempuanPerOrang =
+            bagianCucuPerempuan ~/ nilaiCucuPerempuan;
         results.add({
           'jumlah': nilaiCucuPerempuan,
           'ahli_waris': 'Cucu Perempuan',
           'porsi': 'Ashabah',
-          'nominal': bagianCucuPerempuan,
+          'nominal_total': bagianCucuPerempuan,
+          'nominal': bagianCucuPerempuanPerOrang,
         });
       }
     }
 
     if (nilaiSaudaraLakiKandung > 0) {
-      int bagianSaudaraLakiKandung =
-          nominalAshabah * 2 ~/ nilaiSaudaraLakiKandung;
+      int bagianSaudaraLakiKandung = nominalAshabah * 2;
+      int bagianSaudaraLakiKandungPerOrang =
+          bagianSaudaraLakiKandung ~/ nilaiSaudaraLakiKandung;
+
       results.add({
         'jumlah': nilaiSaudaraLakiKandung,
         'ahli_waris': 'Saudara Laki-laki Kandung',
         'porsi': 'Ashabah',
-        'nominal': bagianSaudaraLakiKandung,
+        'nominal_total': bagianSaudaraLakiKandung,
+        'nominal': bagianSaudaraLakiKandungPerOrang,
       });
     }
 
@@ -105,25 +122,29 @@ extension CalculateAshabah on CalculatorController {
       if (nilaiSaudaraLakiKandung > 0 ||
           nilaiAnakPerempuan > 0 ||
           nilaiCucuPerempuan > 0) {
-        int bagianSaudaraPerempuanKandung =
-            nominalAshabah ~/ nilaiSaudaraPerempuanKandung;
+        int bagianSaudaraPerempuanKandung = nominalAshabah;
+        int bagianSaudaraPerempuanKandungPerOrang =
+            bagianSaudaraPerempuanKandung ~/ nilaiSaudaraPerempuanKandung;
         results.add({
           'jumlah': nilaiSaudaraPerempuanKandung,
           'ahli_waris': 'Saudara Perempuan Kandung',
           'porsi': 'Ashabah',
-          'nominal': bagianSaudaraPerempuanKandung,
+          'nominal_total': bagianSaudaraPerempuanKandung,
+          'nominal': bagianSaudaraPerempuanKandungPerOrang,
         });
       }
     }
 
     if (nilaiSaudaraLakiSeayah > 0) {
-      int bagianSaudaraLakiSeayah =
-          nominalAshabah * 2 ~/ nilaiSaudaraLakiSeayah;
+      int bagianSaudaraLakiSeayah = nominalAshabah * 2;
+      int bagianSaudaraLakiSeayahPerOrang =
+          bagianSaudaraLakiSeayah ~/ nilaiSaudaraLakiSeayah;
       results.add({
         'jumlah': nilaiSaudaraLakiSeayah,
         'ahli_waris': 'Saudara Laki-laki Seayah',
         'porsi': 'Ashabah',
-        'nominal': bagianSaudaraLakiSeayah,
+        'nominal_total': bagianSaudaraLakiSeayah,
+        'nominal': bagianSaudaraLakiSeayahPerOrang,
       });
     }
 
@@ -131,78 +152,92 @@ extension CalculateAshabah on CalculatorController {
       if (nilaiAnakPerempuan > 0 ||
           nilaiCucuPerempuan > 0 ||
           nilaiSaudaraLakiSeayah > 0) {
-        int bagianSaudaraPerempuanSeayah =
-            nominalAshabah ~/ nilaiSaudaraPerempuanSeayah;
+        int bagianSaudaraPerempuanSeayah = nominalAshabah;
+        int bagianSaudaraPerempuanSeayahPerOrang =
+            bagianSaudaraPerempuanSeayah ~/ nilaiSaudaraPerempuanSeayah;
         results.add({
           'jumlah': nilaiSaudaraPerempuanSeayah,
           'ahli_waris': 'Saudara Perempuan Seayah',
           'porsi': 'Ashabah',
-          'nominal': bagianSaudaraPerempuanSeayah,
+          'nominal_total': bagianSaudaraPerempuanSeayah,
+          'nominal': bagianSaudaraPerempuanSeayahPerOrang,
         });
       }
     }
 
     if (nilaiAnakLakiSaudaraKandung > 0) {
-      int bagianAnakLakiSaudaraKandung =
-          nominalAshabah * 2 ~/ nilaiAnakLakiSaudaraKandung;
+      int bagianAnakLakiSaudaraKandung = nominalAshabah * 2;
+      int bagianAnakLakiSaudaraKandungPerOrang =
+          bagianAnakLakiSaudaraKandung ~/ nilaiAnakLakiSaudaraKandung;
       results.add({
         'jumlah': nilaiAnakLakiSaudaraKandung,
         'ahli_waris': 'Anak Laki-laki Saudara Kandung',
         'porsi': 'Ashabah',
-        'nominal': bagianAnakLakiSaudaraKandung,
+        'nominal_total': bagianAnakLakiSaudaraKandung,
+        'nominal': bagianAnakLakiSaudaraKandungPerOrang,
       });
     }
 
     if (nilaiAnakLakiSaudaraSeayah > 0) {
-      int bagianAnakLakiSaudaraSeayah =
-          nominalAshabah * 2 ~/ nilaiAnakLakiSaudaraSeayah;
+      int bagianAnakLakiSaudaraSeayah = nominalAshabah * 2;
+      int bagianAnakLakiSaudaraSeayahPerOrang =
+          bagianAnakLakiSaudaraSeayah ~/ nilaiAnakLakiSaudaraSeayah;
       results.add({
         'jumlah': nilaiAnakLakiSaudaraSeayah,
         'ahli_waris': 'Anak Laki-laki Saudara Seayah',
         'porsi': 'Ashabah',
-        'nominal': bagianAnakLakiSaudaraSeayah,
+        'nominal_total': bagianAnakLakiSaudaraSeayah,
+        'nominal': bagianAnakLakiSaudaraSeayahPerOrang,
       });
     }
 
     if (nilaiPamanKandung > 0) {
-      int bagianPamanKandung = nominalAshabah * 2 ~/ nilaiPamanKandung;
+      int bagianPamanKandung = nominalAshabah * 2;
+      int bagianPamanKandungPerOrang = bagianPamanKandung ~/ nilaiPamanKandung;
       results.add({
         'jumlah': nilaiPamanKandung,
         'ahli_waris': 'Paman Kandung',
         'porsi': 'Ashabah',
-        'nominal': bagianPamanKandung,
+        'nominal_total': bagianPamanKandung,
+        'nominal': bagianPamanKandungPerOrang,
       });
     }
 
     if (nilaiPamanSekakek > 0) {
-      int bagianPamanSekakek = nominalAshabah * 2 ~/ nilaiPamanSekakek;
+      int bagianPamanSekakek = nominalAshabah * 2;
+      int bagianPamanSekakekPerOrang = bagianPamanSekakek ~/ nilaiPamanSekakek;
       results.add({
         'jumlah': nilaiPamanSekakek,
         'ahli_waris': 'Paman Sekakek',
         'porsi': 'Ashabah',
-        'nominal': bagianPamanSekakek,
+        'nominal_total': bagianPamanSekakek,
+        'nominal': bagianPamanSekakekPerOrang,
       });
     }
 
     if (nilaiAnakLakiPamanKandung > 0) {
-      int bagianAnakLakiPamanKandung =
-          nominalAshabah * 2 ~/ nilaiAnakLakiPamanKandung;
+      int bagianAnakLakiPamanKandung = nominalAshabah * 2;
+      int bagianAnakLakiPamanKandungPerOrang =
+          bagianAnakLakiPamanKandung ~/ nilaiAnakLakiPamanKandung;
       results.add({
         'jumlah': nilaiAnakLakiPamanKandung,
         'ahli_waris': 'Anak Laki-laki Paman Kandung',
         'porsi': 'Ashabah',
-        'nominal': bagianAnakLakiPamanKandung,
+        'nominal_total': bagianAnakLakiPamanKandung,
+        'nominal': bagianAnakLakiPamanKandungPerOrang,
       });
     }
 
     if (nilaiAnakLakiPamanSekakek > 0) {
-      int bagianAnakLakiPamanSekakek =
-          nominalAshabah * 2 ~/ nilaiAnakLakiPamanSekakek;
+      int bagianAnakLakiPamanSekakek = nominalAshabah * 2;
+      int bagianAnakLakiPamanSekakekPerOrang =
+          bagianAnakLakiPamanSekakek ~/ nilaiAnakLakiPamanSekakek;
       results.add({
         'jumlah': nilaiAnakLakiPamanSekakek,
         'ahli_waris': 'Anak Laki-laki Paman Sekakek ',
         'porsi': 'Ashabah',
-        'nominal': bagianAnakLakiPamanSekakek,
+        'nominal_total': bagianAnakLakiPamanSekakek,
+        'nominal': bagianAnakLakiPamanSekakekPerOrang,
       });
     }
   }

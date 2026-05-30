@@ -173,6 +173,9 @@ class _CalculationResultState extends State<CalculationResult> {
                                   ),
                                   _buildTableCell(item['porsi'].toString()),
                                   _buildTableCell(
+                                    "${formatRp.format(item['nominal_total'])} / orang",
+                                  ),
+                                  _buildTableCell(
                                     "${formatRp.format(item['nominal'])} / orang",
                                   ),
                                 ],
