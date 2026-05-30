@@ -145,11 +145,7 @@ class _CalculationResultState extends State<CalculationResult> {
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Table(
-                          columnWidths: const {
-                            0: IntrinsicColumnWidth(flex: 2),
-                            1: IntrinsicColumnWidth(),
-                            2: IntrinsicColumnWidth(flex: 2),
-                          },
+                          defaultColumnWidth: const IntrinsicColumnWidth(),
                           children: [
                             TableRow(
                               decoration: BoxDecoration(
@@ -158,6 +154,10 @@ class _CalculationResultState extends State<CalculationResult> {
                               children: [
                                 _buildTableCell("Ahli Waris", isHeader: true),
                                 _buildTableCell("Porsi", isHeader: true),
+                                _buildTableCell(
+                                  "Nominal Total",
+                                  isHeader: true,
+                                ),
                                 _buildTableCell(
                                   "Nominal Per-Orang",
                                   isHeader: true,
@@ -173,7 +173,7 @@ class _CalculationResultState extends State<CalculationResult> {
                                   ),
                                   _buildTableCell(item['porsi'].toString()),
                                   _buildTableCell(
-                                    "${formatRp.format(item['nominal_total'])} / orang",
+                                    formatRp.format(item['nominal_total']),
                                   ),
                                   _buildTableCell(
                                     "${formatRp.format(item['nominal'])} / orang",
