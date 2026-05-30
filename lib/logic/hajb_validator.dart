@@ -451,9 +451,6 @@ class HajbValidator {
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
       return "Keturunan Perempuan & Saudara Perempuan Seayah Ashabah";
-    } else if (jmlSaudaraPerempuanSeayah > 0 &&
-        jmlSaudaraPerempuanKandung > 0) {
-      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     } else if (jmlAnakLakiSaudaraKandung > 0) {
       return "Anak Laki Saudara Laki-Laki Kandung";
     } else if (jmlAnakLakiSaudaraSeayah > 0) {
@@ -527,9 +524,6 @@ class HajbValidator {
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
       return "Keturunan Perempuan & Saudara Perempuan Seayah Ashabah";
-    } else if (jmlSaudaraPerempuanSeayah > 0 &&
-        jmlSaudaraPerempuanKandung > 0) {
-      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     } else if (jmlAnakLakiSaudaraKandung > 0) {
       return "Anak Laki Saudara Laki-Laki Kandung";
     } else if (jmlAnakLakiSaudaraSeayah > 0) {
@@ -608,9 +602,6 @@ class HajbValidator {
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
       return "Keturunan Perempuan & Saudara Perempuan Seayah Ashabah";
-    } else if (jmlSaudaraPerempuanSeayah > 0 &&
-        jmlSaudaraPerempuanKandung > 0) {
-      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     } else if (jmlAnakLakiSaudaraKandung > 0) {
       return "Anak Laki Saudara Laki-Laki Kandung";
     } else if (jmlAnakLakiSaudaraSeayah > 0) {
@@ -694,9 +685,6 @@ class HajbValidator {
     } else if (jmlSaudaraPerempuanSeayah > 0 &&
         (jmlAnakPerempuan > 0 || jmlCucuPerempuan > 0)) {
       return "Keturunan Perempuan & Saudara Perempuan Seayah Ashabah";
-    } else if (jmlSaudaraPerempuanSeayah > 0 &&
-        jmlSaudaraPerempuanKandung > 0) {
-      return "Keturunan Perempuan & Saudara Perempuan Kandung Ashabah";
     } else if (jmlAnakLakiSaudaraKandung > 0) {
       return "Anak Laki Saudara Laki-Laki Kandung";
     } else if (jmlAnakLakiSaudaraSeayah > 0) {
