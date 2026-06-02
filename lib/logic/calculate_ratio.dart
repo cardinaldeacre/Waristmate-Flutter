@@ -139,7 +139,7 @@ extension CalculateRatio on CalculatorController {
         (totalRatio < hasilKPK && totalAshabah == 0)) {
       calculateAulRadd();
       print("lanjut ke aul radd");
-    } else if (totalAshabah > 0) {
+    } else if (totalAshabah > 0 || totalRatio == hasilKPK) {
       calculateShare();
       print("lanjut ke calculate share");
     }
