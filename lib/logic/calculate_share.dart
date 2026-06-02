@@ -200,28 +200,27 @@ extension CalculateShare on CalculatorController {
           'nominal': bagianSaudaraSeibuPerOrang,
         });
       } else if (nilaiSaudaraLakiSeibu > 0) {
-        int bagianSaudaraLakiSeibu =
-            totalWarisan * rSaudaraLakiSeibu ~/ hasilKPK;
+        int bagianSaudaraLakiSeibu = totalWarisan * rSaudaraSeibu ~/ hasilKPK;
         int bagianSaudaraLakiSeibuPerOrang =
             bagianSaudaraLakiSeibu ~/ nilaiSaudaraLakiSeibu;
         sisaWarisan -= bagianSaudaraLakiSeibu;
         results.add({
           'jumlah': nilaiSaudaraLakiSeibu,
           'ahli_waris': 'Saudara Laki-Laki Seibu',
-          'porsi': '$rSaudaraLakiSeibu / $hasilKPK',
+          'porsi': '$rSaudaraSeibu / $hasilKPK',
           'nominal_total': bagianSaudaraLakiSeibu,
           'nominal': bagianSaudaraLakiSeibuPerOrang,
         });
       } else if (nilaiSaudaraPerempuanSeibu > 0) {
         int bagianSaudaraPerempuanSeibu =
-            totalWarisan * rSaudaraPerempuanSeibu ~/ hasilKPK;
+            totalWarisan * rSaudaraSeibu ~/ hasilKPK;
         int bagianSaudaraPerempuanSeibuPerOrang =
             bagianSaudaraPerempuanSeibu ~/ nilaiSaudaraPerempuanSeibu;
         sisaWarisan -= bagianSaudaraPerempuanSeibu;
         results.add({
           'jumlah': nilaiSaudaraPerempuanSeibu,
           'ahli_waris': 'Saudara Perempuan Seibu',
-          'porsi': '$rSaudaraPerempuanSeibu / $hasilKPK',
+          'porsi': '$rSaudaraSeibu / $hasilKPK',
           'nominal_total': bagianSaudaraPerempuanSeibu,
           'nominal': bagianSaudaraPerempuanSeibuPerOrang,
         });
@@ -230,6 +229,7 @@ extension CalculateShare on CalculatorController {
 
     print("sisaWarisan: $sisaWarisan");
     if (sisaWarisan > 0) {
+      if (totalAshabah == 0) return;
       calculateAshabah();
     }
   }
