@@ -118,7 +118,9 @@ extension CalculateRaddPasutri on CalculatorController {
       });
     }
 
-    if (nilaiSaudaraPerempuanSeayah > 0) {
+    if (nilaiSaudaraPerempuanSeayah > 0 &&
+        nilaiAnakPerempuan == 0 &&
+        nilaiCucuPerempuan == 0) {
       int bagianSaudaraPerempuanSeayah =
           sisaWarisan * rSaudaraPerempuanSeayah ~/ hasilKPK;
       int bagianSaudaraPerempuanSeayahPerOrang =

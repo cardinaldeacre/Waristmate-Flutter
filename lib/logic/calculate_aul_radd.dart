@@ -143,7 +143,9 @@ extension CalculateAulRadd on CalculatorController {
         });
       }
 
-      if (nilaiSaudaraPerempuanSeayah > 0) {
+      if (nilaiSaudaraPerempuanSeayah > 0 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0) {
         int bagianSaudaraPerempuanSeayah =
             totalWarisan * rSaudaraPerempuanSeayah ~/ hasilKPK;
         int bagianSaudaraPerempuanSeayahPerOrang =
@@ -176,8 +178,7 @@ extension CalculateAulRadd on CalculatorController {
             'nominal': bagianSaudaraSeibuPerOrang,
           });
         } else if (nilaiSaudaraLakiSeibu > 0) {
-          int bagianSaudaraLakiSeibu =
-              totalWarisan * rSaudaraSeibu ~/ hasilKPK;
+          int bagianSaudaraLakiSeibu = totalWarisan * rSaudaraSeibu ~/ hasilKPK;
           int bagianSaudaraLakiSeibuPerOrang =
               bagianSaudaraLakiSeibu ~/ nilaiSaudaraLakiSeibu;
           results.add({
