@@ -78,14 +78,14 @@ extension CalculateShare on CalculatorController {
       results.add({
         'jumlah': nilaiNenekAyah,
         'ahli_waris': 'Nenek Ayah',
-        'porsi': '$rNenek2 / $hasilKPK',
+        'porsi': '$rNenek2 / $hasilKPK Bersama ',
         'nominal_total': bagianNenek2,
         'nominal': bagianNenekPerOrang,
       });
       results.add({
         'jumlah': nilaiNenekIbu,
         'ahli_waris': 'Nenek Ibu',
-        'porsi': '$rNenek2 / $hasilKPK',
+        'porsi': '$rNenek2 / $hasilKPK Bersama ',
         'nominal_total': bagianNenek2,
         'nominal': bagianNenekPerOrang,
       });
@@ -166,7 +166,9 @@ extension CalculateShare on CalculatorController {
     }
 
     if (nilaiSaudaraPerempuanSeayah > 0) {
-      if (nilaiSaudaraLakiSeayah == 0) {
+      if (nilaiSaudaraLakiSeayah == 0 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0) {
         int bagianSaudaraPerempuanSeayah =
             totalWarisan * rSaudaraPerempuanSeayah ~/ hasilKPK;
         int bagianSaudaraPerempuanSeayahPerOrang =
