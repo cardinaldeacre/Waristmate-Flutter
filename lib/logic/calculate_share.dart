@@ -147,7 +147,9 @@ extension CalculateShare on CalculatorController {
     }
 
     if (nilaiSaudaraPerempuanKandung > 0) {
-      if (nilaiSaudaraLakiKandung == 0) {
+      if (nilaiSaudaraLakiKandung == 0 &&
+          nilaiAnakPerempuan == 0 &&
+          nilaiCucuPerempuan == 0) {
         int bagianSaudaraPerempuanKandung =
             totalWarisan * rSaudaraPerempuanKandung ~/ hasilKPK;
         int bagianSaudaraPerempuanKandungPerOrang =
