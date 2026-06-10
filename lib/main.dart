@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waristmate_app/core/config/theme.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
@@ -28,13 +29,13 @@ class WaristmateApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.white,
+        colorSchemeSeed: AppColors.primaryGreen,
         fontFamily: 'Gabarito',
         brightness: Brightness.light,
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.white,
+        colorSchemeSeed: AppColors.primaryGreen,
         fontFamily: 'Gabarito',
         brightness: Brightness.dark,
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/logic/formatter.dart';
 import '../../controllers/calculator_controller.dart';
 // import 'package:intl/intl.dart';
@@ -24,9 +25,6 @@ class _Step1State extends State<Step1> {
   Widget build(BuildContext context) {
     final calc = Provider.of<CalculatorController>(context);
 
-    const Color primaryGreen = Color.fromARGB(255, 23, 126, 104);
-    const Color darkGreen = Color(0xFF105C46);
-
     return Column(
       children: [
         Container(
@@ -37,7 +35,7 @@ class _Step1State extends State<Step1> {
             bottom: 14,
           ),
           decoration: BoxDecoration(
-            color: primaryGreen,
+            color: AppColors.primaryGreen,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
@@ -52,13 +50,13 @@ class _Step1State extends State<Step1> {
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  color: darkGreen,
+                  color: AppColors.darkGreen,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Text(
                   "1 dari 9",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textLight,
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
                   ),
@@ -69,7 +67,7 @@ class _Step1State extends State<Step1> {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w600,
-                  color: Colors.white,
+                  color: AppColors.textLight,
                 ),
               ),
               Image.asset('assets/images/logo_white.png', width: 40),
@@ -88,7 +86,7 @@ class _Step1State extends State<Step1> {
                   child: Container(
                     padding: const EdgeInsets.all(17.5),
                     decoration: BoxDecoration(
-                      color: primaryGreen,
+                      color: AppColors.primaryGreen,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: SingleChildScrollView(
@@ -99,7 +97,7 @@ class _Step1State extends State<Step1> {
                           const Text(
                             "Silahkan isi masing-masing kolom sesuai dengan label keterangan tertulis",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.textLight,
                               fontSize: 17.5,
                               fontWeight: FontWeight.w600,
                             ),
@@ -131,13 +129,13 @@ class _Step1State extends State<Step1> {
                                 Radio<String>(
                                   value: 'Laki-laki',
                                   fillColor: WidgetStateProperty.all(
-                                    Colors.white,
+                                    AppColors.textLight,
                                   ),
                                 ),
                                 const Text(
                                   "Laki-laki",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: AppColors.textLight,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -147,13 +145,13 @@ class _Step1State extends State<Step1> {
                                 Radio<String>(
                                   value: 'Perempuan',
                                   fillColor: WidgetStateProperty.all(
-                                    Colors.white,
+                                    AppColors.textLight,
                                   ),
                                 ),
                                 const Text(
                                   "Perempuan",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: AppColors.textLight,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -238,7 +236,7 @@ class _Step1State extends State<Step1> {
                               vertical: 7,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: AppColors.textLight,
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text(
@@ -246,7 +244,7 @@ class _Step1State extends State<Step1> {
                               style: const TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 17.5,
-                                color: primaryGreen,
+                                color: AppColors.primaryGreen,
                               ),
                             ),
                           ),
@@ -264,7 +262,7 @@ class _Step1State extends State<Step1> {
                       Expanded(
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: primaryGreen,
+                            backgroundColor: AppColors.primaryGreen,
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -274,7 +272,7 @@ class _Step1State extends State<Step1> {
                           child: const Text(
                             "Kembali",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.textLight,
                               fontWeight: FontWeight.w600,
                               fontSize: 16,
                             ),
@@ -285,7 +283,7 @@ class _Step1State extends State<Step1> {
                       Expanded(
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: primaryGreen,
+                            backgroundColor: AppColors.primaryGreen,
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -295,7 +293,7 @@ class _Step1State extends State<Step1> {
                           child: const Text(
                             "Lanjut",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.textLight,
                               fontWeight: FontWeight.w600,
                               fontSize: 16,
                             ),
@@ -320,7 +318,7 @@ class _Step1State extends State<Step1> {
       child: Text(
         label,
         style: const TextStyle(
-          color: Colors.white,
+          color: AppColors.textLight,
           fontSize: 17.5,
           fontWeight: FontWeight.w600,
         ),
@@ -342,17 +340,17 @@ class _Step1State extends State<Step1> {
         style: const TextStyle(
           fontWeight: FontWeight.w600,
           fontSize: 17.5,
-          color: Color(0xFF105C46),
+          color: AppColors.darkGreen,
         ),
         decoration: InputDecoration(
           prefixText: "Rp. ",
           prefixStyle: const TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 17.5,
-            color: Color(0xFF105C46),
+            color: AppColors.darkGreen,
           ),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: AppColors.textLight,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 0,
