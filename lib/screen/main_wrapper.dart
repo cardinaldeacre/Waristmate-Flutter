@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waristmate_app/core/config/theme.dart';
 import 'home_screen.dart';
 import 'calculator_screen.dart';
 import 'modul_screen.dart';
@@ -31,15 +32,12 @@ class _MainWrapperState extends State<MainWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    const Color primaryGreen = Color.fromARGB(255, 23, 126, 104);
-    const Color darkGreen = Color(0xFF105C46);
-
     return Scaffold(
       body: IndexedStack(index: _selectedIndex, children: _screens),
 
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: primaryGreen,
+          color: AppColors.primaryGreen,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -55,7 +53,7 @@ class _MainWrapperState extends State<MainWrapper> {
         child: BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          backgroundColor: darkGreen,
+          backgroundColor: AppColors.darkGreen,
           type: BottomNavigationBarType.fixed,
           showSelectedLabels: false,
           showUnselectedLabels: false,
