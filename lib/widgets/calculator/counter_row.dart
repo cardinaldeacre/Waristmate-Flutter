@@ -7,6 +7,8 @@ class CounterRow extends StatelessWidget {
   final int value;
   final Function(int) onChanged;
   final int max;
+  final bool isMahjub;
+  final String? infoHajb;
 
   const CounterRow({
     super.key,
@@ -14,6 +16,8 @@ class CounterRow extends StatelessWidget {
     required this.value,
     required this.onChanged,
     this.max = 50,
+    this.isMahjub = false,
+    this.infoHajb = "",
   });
 
   @override
@@ -30,52 +34,76 @@ class CounterRow extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        Row(
-          children: [
-            ContainerBorder(
-              size: 30,
-              borderRadius: 10,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(12),
-                onTap: value > 0 ? () => onChanged(value - 1) : null,
-                child: const Center(
-                  child: Icon(Icons.remove, color: Colors.white, size: 17.5),
+
+        if (isMahjub)
+          Container(
+            margin: const EdgeInsets.only(bottom: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: Colors.red[400],
+              border: Border.all(color: Colors.red),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              children: [
+                const Icon(Icons.info_outline, color: Colors.white70, size: 17),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    "Terhalang oleh $infoHajb",
+                    style: const TextStyle(color: Colors.white, fontSize: 17),
+                  ),
+                ),
+              ],
+            ),
+          )
+        else
+          Row(
+            children: [
+              ContainerBorder(
+                size: 30,
+                borderRadius: 10,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(12),
+                  onTap: value > 0 ? () => onChanged(value - 1) : null,
+                  child: const Center(
+                    child: Icon(Icons.remove, color: Colors.white, size: 17.5),
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: SliderTheme(
-                data: SliderTheme.of(context).copyWith(
-                  trackHeight: 17.5,
-                  thumbShape: CustomThumbShape(),
-                  activeTrackColor: Colors.white,
-                  inactiveTrackColor: Colors.white24,
-                  thumbColor: Colors.white,
-                  overlayColor: Colors.white12,
-                ),
-                child: Slider(
-                  value: value.toDouble(),
-                  min: 0,
-                  max: max.toDouble(),
-                  onChanged: (double newValue) {
-                    onChanged(newValue.toInt());
-                  },
-                ),
-              ),
-            ),
-            ContainerBorder(
-              size: 30,
-              borderRadius: 10,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(12),
-                onTap: value < max ? () => onChanged(value + 1) : null,
-                child: const Center(
-                  child: Icon(Icons.add, color: Colors.white, size: 17.5),
+              Expanded(
+                child: SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                    trackHeight: 17.5,
+                    thumbShape: CustomThumbShape(),
+                    activeTrackColor: Colors.white,
+                    inactiveTrackColor: Colors.white24,
+                    thumbColor: Colors.white,
+                    overlayColor: Colors.white12,
+                  ),
+                  child: Slider(
+                    value: value.toDouble(),
+                    min: 0,
+                    max: max.toDouble(),
+                    onChanged: (double newValue) {
+                      onChanged(newValue.toInt());
+                    },
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
+              ContainerBorder(
+                size: 30,
+                borderRadius: 10,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(12),
+                  onTap: value < max ? () => onChanged(value + 1) : null,
+                  child: const Center(
+                    child: Icon(Icons.add, color: Colors.white, size: 17.5),
+                  ),
+                ),
+              ),
+            ],
+          ),
       ],
     );
   }
