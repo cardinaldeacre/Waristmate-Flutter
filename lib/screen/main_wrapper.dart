@@ -50,37 +50,45 @@ class _MainWrapperState extends State<MainWrapper> {
             ),
           ],
         ),
-        child: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          backgroundColor: AppColors.darkGreen,
-          type: BottomNavigationBarType.fixed,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white70,
-          items: const [
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/ic_calculate.png')),
-              label: 'Kalkulator',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/ic_book.png')),
-              label: 'Modul',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/ic_home.png')),
-              label: 'Beranda',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/ic_server_person.png')),
-              label: 'Catatan',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/ic_person.png')),
-              label: 'Profile',
-            ),
-          ],
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+          child: BottomNavigationBar(
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            backgroundColor: AppColors.darkGreen,
+            type: BottomNavigationBarType.fixed,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white70,
+            items: const [
+              BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/icons/ic_calculate.png')),
+                label: 'Kalkulator',
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/icons/ic_book.png')),
+                label: 'Modul',
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/icons/ic_home.png')),
+                label: 'Beranda',
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assets/icons/ic_server_person.png'),
+                ),
+                label: 'Catatan',
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/icons/ic_person.png')),
+                label: 'Profile',
+              ),
+            ],
+          ),
         ),
       ),
     );
