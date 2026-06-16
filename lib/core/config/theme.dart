@@ -5,12 +5,17 @@ class AppColors {
   static const Color darkGreen = Color(0xFF105C46);
 
   static const Color lightGreen = Color(0xFF19CCA3);
+  static const Color lime = Color(0xFF1FCFC3);
   static const Color backgroundClean = Colors.white;
   static const Color cardBackground = Color(0xFFF5F5F5);
 
   static const Color textDark = Color(0xFF1A1A1A);
   static const Color textLight = Colors.white;
   static const Color textMuted = Colors.white70;
+
+  static const Color errorRed = Color(0xFFE53935);
+  static const Color warningYellow = Color(0xFFFFC107);
+  static const Color gold = Color(0xFFF59E0B);
 }
 
 class AppTheme {
