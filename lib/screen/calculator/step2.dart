@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
 import 'package:waristmate_app/widgets/calculator/counter_row.dart';
-import 'package:waristmate_app/widgets/ui/checkbox_tile.dart';
+import 'package:waristmate_app/widgets/calculator/checkbox_tile.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_header.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_nav_button.dart';
