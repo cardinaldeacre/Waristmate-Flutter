@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/core/config/theme.dart';
-import 'package:waristmate_app/logic/formatter.dart';
 import '../../controllers/calculator_controller.dart';
-// import 'package:intl/intl.dart';
+import '../../widgets/ui/input_label.dart';
+import '../../widgets/ui/text_field.dart';
 
 class Step1 extends StatefulWidget {
   final VoidCallback onNext;
@@ -104,8 +104,9 @@ class _Step1State extends State<Step1> {
                           ),
 
                           // input harta
-                          _buildInputLabel("Harta yang ditinggalkan"),
-                          _buildTextField(
+                          const InputLabel(label: "Harta yang ditinggalkan"),
+                          TextFieldCurrency(
+                            label: "Harta yang ditinggalkan",
                             controller: calc.tirkahController,
                             onChanged: (val) {
                               String cleanVal = val
@@ -116,7 +117,7 @@ class _Step1State extends State<Step1> {
                             },
                           ),
 
-                          _buildInputLabel("Muwarrits (yang meninggal)"),
+                          const InputLabel(label: "Muwarrits (yang meninggal)"),
                           RadioGroup<String>(
                             groupValue: calc.muwarrits,
                             onChanged: (val) {
@@ -160,8 +161,9 @@ class _Step1State extends State<Step1> {
                             ),
                           ),
 
-                          _buildInputLabel("Biaya pengurusan jenazah"),
-                          _buildTextField(
+                          const InputLabel(label: "Biaya pengurusan jenazah"),
+                          TextFieldCurrency(
+                            label: "Biaya pengurusan jenazah",
                             controller: calc.tajhizController,
                             onChanged: (val) {
                               String cleanVal = val
@@ -172,8 +174,9 @@ class _Step1State extends State<Step1> {
                             },
                           ),
 
-                          _buildInputLabel("Hutang dari muwarrits"),
-                          _buildTextField(
+                          const InputLabel(label: "Hutang dari muwarrits"),
+                          TextFieldCurrency(
+                            label: "Hutang dari muwarrits",
                             controller: calc.hutangController,
                             onChanged: (val) {
                               String cleanVal = val
@@ -184,8 +187,11 @@ class _Step1State extends State<Step1> {
                             },
                           ),
 
-                          _buildInputLabel("Wasiat (maksimal 1/3 sisa harta)"),
-                          _buildTextField(
+                          const InputLabel(
+                            label: "Wasiat (maksimal 1/3 sisa harta)",
+                          ),
+                          TextFieldCurrency(
+                            label: "Wasiat (maksimal 1/3 sisa harta)",
                             controller: calc.wasiatController,
                             onChanged: (val) {
                               String cleanVal = val
@@ -228,7 +234,9 @@ class _Step1State extends State<Step1> {
                             },
                           ),
 
-                          _buildInputLabel("Sisa harta yang diwariskan (Irts)"),
+                          const InputLabel(
+                            label: "Sisa harta yang diwariskan (Irts)",
+                          ),
                           Container(
                             width: double.infinity,
                             padding: const EdgeInsets.symmetric(
@@ -309,58 +317,6 @@ class _Step1State extends State<Step1> {
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildInputLabel(String label) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0, top: 8.0),
-      child: Text(
-        label,
-        style: const TextStyle(
-          color: AppColors.textLight,
-          fontSize: 17.5,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTextField({
-    required Function(String) onChanged,
-    TextEditingController? controller,
-  }) {
-    return SizedBox(
-      height: 40,
-      child: TextField(
-        controller: controller,
-        keyboardType: TextInputType.number,
-        onChanged: onChanged,
-        inputFormatters: [CurrencyFormatter()],
-        style: const TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: 17.5,
-          color: AppColors.darkGreen,
-        ),
-        decoration: InputDecoration(
-          prefixText: "Rp. ",
-          prefixStyle: const TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 17.5,
-            color: AppColors.darkGreen,
-          ),
-          filled: true,
-          fillColor: AppColors.textLight,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 0,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
-        ),
-      ),
     );
   }
 }
