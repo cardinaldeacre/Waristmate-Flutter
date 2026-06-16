@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/modul/chapter_card.dart';
+import 'package:waristmate_app/widgets/modul/module_header.dart';
 
 class ModulScreen extends StatelessWidget {
   ModulScreen({super.key});
@@ -25,36 +26,7 @@ class ModulScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.only(
-                left: 16,
-                right: 16,
-                top: 20,
-                bottom: 14,
-              ),
-              decoration: BoxDecoration(
-                color: AppColors.primaryGreen,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const SizedBox(width: 40),
-                  const Text(
-                    "Modul Pembelajaran",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textLight,
-                    ),
-                  ),
-                  Image.asset('assets/images/logo_white.png', width: 40),
-                ],
-              ),
-            ),
+            ModuleHeader(),
 
             const SizedBox(height: 5),
 
