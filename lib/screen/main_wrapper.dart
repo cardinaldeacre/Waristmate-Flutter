@@ -5,6 +5,7 @@ import 'calculator_screen.dart';
 import 'modul_screen.dart';
 import 'profile_screen.dart';
 import 'note_screen.dart';
+import 'package:flutter/services.dart';
 
 class MainWrapper extends StatefulWidget {
   const MainWrapper({super.key});
@@ -31,34 +32,35 @@ class _MainWrapperState extends State<MainWrapper> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: AppColors.darkGreen,
+        systemNavigationBarContrastEnforced: false,
+        systemNavigationBarIconBrightness: Brightness.light,
+      ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: IndexedStack(index: _selectedIndex, children: _screens),
 
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: AppColors.primaryGreen,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.1),
-              blurRadius: 10,
-              spreadRadius: 2,
-            ),
-          ],
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
         ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
+        child: Material(
+          color: AppColors.darkGreen,
           child: BottomNavigationBar(
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
-            backgroundColor: AppColors.darkGreen,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
             showUnselectedLabels: false,
