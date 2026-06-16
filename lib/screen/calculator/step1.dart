@@ -4,6 +4,8 @@ import 'package:waristmate_app/core/config/theme.dart';
 import '../../controllers/calculator_controller.dart';
 import '../../widgets/ui/input_label.dart';
 import '../../widgets/ui/text_field.dart';
+import '../../widgets/calculator/calculator_header.dart';
+import '../../widgets/calculator/calculator_nav_button.dart';
 
 class Step1 extends StatefulWidget {
   final VoidCallback onNext;
@@ -27,53 +29,7 @@ class _Step1State extends State<Step1> {
 
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.only(
-            left: 16,
-            right: 16,
-            top: 20,
-            bottom: 14,
-          ),
-          decoration: BoxDecoration(
-            color: AppColors.primaryGreen,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                decoration: BoxDecoration(
-                  color: AppColors.darkGreen,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: const Text(
-                  "1 dari 9",
-                  style: TextStyle(
-                    color: AppColors.textLight,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15,
-                  ),
-                ),
-              ),
-              const Text(
-                "Kalkulator",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textLight,
-                ),
-              ),
-              Image.asset('assets/images/logo_white.png', width: 40),
-            ],
-          ),
-        ),
+        CalculatorHeader(stepInfo: "1"),
 
         Expanded(
           child: SingleChildScrollView(
@@ -262,55 +218,13 @@ class _Step1State extends State<Step1> {
                   ),
                 ),
 
-                // navigation buttons
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primaryGreen,
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                          onPressed: null,
-                          child: const Text(
-                            "Kembali",
-                            style: TextStyle(
-                              color: AppColors.textLight,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primaryGreen,
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                          onPressed: widget.onNext,
-                          child: const Text(
-                            "Lanjut",
-                            style: TextStyle(
-                              color: AppColors.textLight,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                CalculatorNavButton(
+                  onBack: null,
+                  onNext: widget.onNext,
+                  labelBack: "Kembali",
+                  labelNext: "Lanjut",
                 ),
+
                 const SizedBox(height: 20),
               ],
             ),
