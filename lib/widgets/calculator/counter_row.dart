@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:waristmate_app/widgets/custom_thumb_shape.dart';
+import 'package:waristmate_app/widgets/ui/custom_thumb_shape.dart';
 import 'package:waristmate_app/widgets/ui/container_border.dart';
 
 class CounterRow extends StatelessWidget {
