@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:html/dom.dart' as dom;
 import 'package:waristmate_app/widgets/modul/chapter_modal.dart';
 import 'package:waristmate_app/widgets/modul/floating_menu.dart';
+import 'package:waristmate_app/widgets/modul/native_flutter_table.dart';
 
 class MateriScreen extends StatefulWidget {
   final String bab;
@@ -106,7 +106,7 @@ class _MateriScreenState extends State<MateriScreen> {
                         ),
                         customWidgetBuilder: (element) {
                           if (element.localName == 'table') {
-                            return _buildNativeFlutterTable(context, element);
+                            return NativeFlutterTable(tableElement: element);
                           }
 
                           return null;
@@ -143,128 +143,6 @@ class _MateriScreenState extends State<MateriScreen> {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  // Widget _buildFloatingMenu() {
-  //   return Center(
-  //     child: Container(
-  //       padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 12),
-  //       decoration: BoxDecoration(color: Colors.transparent),
-  //       child: Row(
-  //         mainAxisSize: MainAxisSize.min,
-  //         mainAxisAlignment: MainAxisAlignment.center,
-  //         children: [
-  //           _buildCircleButton(Icons.keyboard_arrow_left_rounded, () {
-  //             print("Previous");
-  //           }),
-  //           _buildCircleButton(Icons.menu_rounded, () {
-  //             print("Menu");
-  //           }),
-  //           _buildCircleButton(Icons.keyboard_arrow_right_rounded, () {
-  //             print("Next");
-  //           }),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // Widget _buildCircleButton(IconData icon, VoidCallback onPressed) {
-  //   return GestureDetector(
-  //     onTap: onPressed,
-  //     child: Container(
-  //       margin: const EdgeInsets.symmetric(horizontal: 8),
-  //       padding: const EdgeInsets.all(12),
-  //       decoration: BoxDecoration(
-  //         color: AppColors.primaryGreen,
-  //         shape: BoxShape.circle,
-  //         boxShadow: [
-  //           BoxShadow(
-  //             color: AppColors.primaryGreen.withValues(alpha: 0.4),
-  //             blurRadius: 8,
-  //             offset: const Offset(0, 4),
-  //           ),
-  //         ],
-  //       ),
-  //       child: Icon(icon, color: AppColors.textLight, size: 24),
-  //     ),
-  //   );
-  // }
-
-  Widget _buildNativeFlutterTable(
-    BuildContext context,
-    dom.Element tableElement,
-  ) {
-    final String headerTitle =
-        tableElement.previousElementSibling?.localName == 'h3'
-        ? tableElement.previousElementSibling!.text.trim()
-        : '';
-
-    final List<Map<String, String>> tableData = [];
-    for (final row in tableElement.getElementsByTagName('tr')) {
-      final cells = row.getElementsByTagName('td');
-      if (cells.length == 3) {
-        tableData.add({
-          'key': cells[0].text.trim(),
-          'separator': cells[1].text.trim(),
-          'value': cells[2].text.trim(),
-        });
-      }
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (headerTitle.isNotEmpty) ...[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: Text(
-              headerTitle,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: AppColors.textDark,
-              ),
-            ),
-          ),
-          Table(
-            columnWidths: const {
-              0: FlexColumnWidth(1),
-              1: IntrinsicColumnWidth(),
-              2: FlexColumnWidth(5),
-            },
-            children: tableData.map((data) {
-              return TableRow(
-                children: [
-                  _buildTableCell(data['key']!, isKey: true),
-                  _buildTableCell(data['separator']!, isSeparator: true),
-                  _buildTableCell(data['value']!),
-                ],
-              );
-            }).toList(),
-          ),
-        ],
-      ],
-    );
-  }
-
-  Widget _buildTableCell(
-    String text, {
-    bool isKey = false,
-    bool isSeparator = false,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4),
-      child: Text(
-        text,
-        textAlign: isSeparator ? TextAlign.center : TextAlign.left,
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: isKey ? FontWeight.bold : FontWeight.normal,
-          color: isSeparator ? AppColors.primaryGreen : AppColors.textDark,
         ),
       ),
     );

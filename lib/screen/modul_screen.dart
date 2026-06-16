@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/modul/chapter_card.dart';
-import 'modul/materi_screen.dart';
 
 class ModulScreen extends StatelessWidget {
   ModulScreen({super.key});
