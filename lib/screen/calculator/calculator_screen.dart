@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'calculator/step1.dart';
-import 'calculator/step2.dart';
-import 'calculator/step3.dart';
-import 'calculator/step4.dart';
-import 'calculator/step5.dart';
-import 'calculator/step6.dart';
-import 'calculator/step7.dart';
-import 'calculator/step8.dart';
-import 'calculator/step9.dart';
-import 'calculator/calculation_result.dart';
+import 'step1.dart';
+import 'step2.dart';
+import 'step3.dart';
+import 'step4.dart';
+import 'step5.dart';
+import 'step6.dart';
+import 'step7.dart';
+import 'step8.dart';
+import 'step9.dart';
+import 'calculation_result.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
 
 class CalculatorScreen extends StatefulWidget {

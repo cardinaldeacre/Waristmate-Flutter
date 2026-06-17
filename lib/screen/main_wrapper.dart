@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
-import 'home_screen.dart';
-import 'calculator_screen.dart';
-import 'modul_screen.dart';
-import 'profile_screen.dart';
-import 'note_screen.dart';
+import 'home/home_screen.dart';
+import 'calculator/calculator_screen.dart';
+import 'modul/modul_screen.dart';
+import 'profile/profile_screen.dart';
+import 'note/note_screen.dart';
 import 'package:flutter/services.dart';
 
 class MainWrapper extends StatefulWidget {
