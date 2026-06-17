@@ -12,6 +12,7 @@ class AppColors {
   static const Color textDark = Color(0xFF1A1A1A);
   static const Color textLight = Colors.white;
   static const Color textMuted = Colors.white70;
+  static const Color grey = Color(0xFFD3D1D2);
 
   static const Color errorRed = Color(0xFFE53935);
   static const Color warningYellow = Color(0xFFFFC107);
