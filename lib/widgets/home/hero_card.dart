@@ -42,7 +42,10 @@ class HeroCard extends StatelessWidget {
                 Positioned(
                   top: 80,
                   left: -20,
-                  child: Image.asset('assets/images/3d_coin.png', width: 45),
+                  child: Transform.flip(
+                    flipX: true,
+                    child: Image.asset('assets/images/3d_coin.png', width: 45),
+                  ),
                 ),
 
                 Positioned(
