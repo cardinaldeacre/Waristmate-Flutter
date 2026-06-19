@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/modul/chapter_card.dart';
 import 'package:waristmate_app/widgets/modul/module_header.dart';
+import 'package:waristmate_app/services/modul/materi_service.dart';
 
-class ModulScreen extends StatelessWidget {
-  ModulScreen({super.key});
+class ModulScreen extends StatefulWidget {
+  const ModulScreen({super.key});
 
-  final List<Map<String, String>> chapters = [
-    {"bab": "Bab 1", "title": "Pendahuluan Ilmu Waris"},
-    {"bab": "Bab 2", "title": "Harta Waris"},
-    {"bab": "Bab 3", "title": "Sebab - Sebab Warisan"},
-    {"bab": "Bab 4", "title": "Pembagian Yang Ditentukan"},
-    {"bab": "Bab 5", "title": "Ahli Waris : Ta'sib"},
-    {"bab": "Bab 6", "title": "Ahli Waris : Hajb"},
-    {"bab": "Bab 7", "title": "Tabel Waris"},
-    {"bab": "Bab 8", "title": "Metode Dasar"},
-    {"bab": "Bab 9", "title": "Penyesuaian Al-'Aul"},
-    {"bab": "Bab 10", "title": "Koreksi Masalah"},
-  ];
+  @override
+  State<ModulScreen> createState() => _ModulScreenState();
+}
+
+class _ModulScreenState extends State<ModulScreen> {
+  final MateriService materiService = MateriService();
+  late final Future<List<Map<String, dynamic>>> _materiFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _materiFuture = materiService.fetchLearningModules();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +33,50 @@ class ModulScreen extends StatelessWidget {
             const SizedBox(height: 5),
 
             Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 14,
-                ),
-                physics: const BouncingScrollPhysics(),
-                itemCount: chapters.length,
-                itemBuilder: (context, index) {
-                  return ChapterCard(chapter: chapters[index]);
+              child: FutureBuilder<List<Map<String, dynamic>>>(
+                future: _materiFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  if (snapshot.hasError) {
+                    return Center(
+                      child: Text(
+                        'Error: ${snapshot.error}',
+                        style: const TextStyle(color: Colors.red),
+                      ),
+                    );
+                  }
+
+                  final chapters = snapshot.data ?? [];
+
+                  if (chapters.isEmpty) {
+                    return const Center(
+                      child: Text('Belum ada materi yang tersedia.'),
+                    );
+                  }
+
+                  return ListView.builder(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: chapters.length,
+                    itemBuilder: (context, index) {
+                      final currentChapter = chapters[index];
+
+                      return ChapterCard(
+                        chapter: {
+                          'bab': currentChapter['bab'].toString(),
+                          'title': currentChapter['title'].toString(),
+                          'content_html': currentChapter['content_html']
+                              .toString(),
+                        },
+                      );
+                    },
+                  );
                 },
               ),
             ),

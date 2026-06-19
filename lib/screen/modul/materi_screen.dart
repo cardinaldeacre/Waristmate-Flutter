@@ -4,6 +4,7 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:waristmate_app/widgets/modul/chapter_modal.dart';
 import 'package:waristmate_app/widgets/modul/floating_menu.dart';
 import 'package:waristmate_app/widgets/modul/native_flutter_table.dart';
+import 'package:waristmate_app/widgets/modul/materi_header.dart';
 
 class MateriScreen extends StatefulWidget {
   final String bab;
@@ -39,52 +40,7 @@ class _MateriScreenState extends State<MateriScreen> {
           children: [
             Column(
               children: [
-                Container(
-                  padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 20,
-                    bottom: 14,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryGreen,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(12, 8, 2, 8),
-                          decoration: BoxDecoration(
-                            color: AppColors.darkGreen,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color: AppColors.textLight,
-                            size: 23,
-                          ),
-                        ),
-                      ),
-
-                      Text(
-                        "Modul Pembelajaran",
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.textLight,
-                        ),
-                      ),
-                      Image.asset('assets/images/logo_white.png', width: 40),
-                    ],
-                  ),
-                ),
-
+                MateriHeader(title: widget.title),
                 const SizedBox(height: 5),
 
                 Expanded(
