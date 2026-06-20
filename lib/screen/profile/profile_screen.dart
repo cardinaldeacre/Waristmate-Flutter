@@ -4,6 +4,7 @@ import 'package:waristmate_app/widgets/profile/profile_header.dart';
 import 'package:waristmate_app/widgets/profile/profile_card.dart';
 import 'package:waristmate_app/widgets/profile/preference_card.dart';
 import 'package:waristmate_app/widgets/profile/menu_card.dart';
+import 'package:waristmate_app/widgets/profile/logout_card.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -48,6 +49,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       subtitle: "Cari tahu lebih lanjut tentang aplikasi ini",
                       iconData: Icons.info,
                     ),
+
+                    const SizedBox(height: 16),
+
+                    LogoutCard(),
                   ],
                 ),
               ),
