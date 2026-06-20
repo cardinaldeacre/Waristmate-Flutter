@@ -5,6 +5,9 @@ import 'package:waristmate_app/widgets/profile/profile_card.dart';
 import 'package:waristmate_app/widgets/profile/preference_card.dart';
 import 'package:waristmate_app/widgets/profile/menu_card.dart';
 import 'package:waristmate_app/widgets/profile/logout_card.dart';
+import 'package:waristmate_app/widgets/profile/login_card.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'dart:async';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -14,8 +17,43 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  User? _user;
+
+  late final StreamSubscription<AuthState> _authSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    _user = Supabase.instance.client.auth.currentUser;
+
+    _authSubscription = Supabase.instance.client.auth.onAuthStateChange.listen((
+      data,
+    ) {
+      setState(() {
+        _user = data.session?.user;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _authSubscription.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final isLoggedIn = _user != null;
+
+    final userName = isLoggedIn
+        ? (_user?.userMetadata?['full_name'] ?? "User Waristmate")
+        : "Fulan bin Fulan";
+
+    final userAvatar = isLoggedIn
+        ? (_user?.userMetadata?['avatar_url'] ??
+              "https://ui-avatars.com/api/?name=$userName&background=105C46&color=fff")
+        : "https://ui-avatars.com/api/?name=Fulan&background=cccccc&color=fff";
+
     return Scaffold(
       backgroundColor: AppColors.backgroundClean,
       body: SafeArea(
@@ -28,7 +66,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
-                    ProfileCard(),
+                    if (isLoggedIn)
+                      ProfileCard(
+                        name: userName,
+                        avatarUrl: userAvatar,
+                        isLoggedIn: isLoggedIn,
+                        onEdit: () {
+                          print("Edit profile tapped");
+                        },
+                      )
+                    else
+                      LoginCard(),
 
                     const SizedBox(height: 16),
 
@@ -52,7 +100,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     const SizedBox(height: 16),
 
-                    LogoutCard(),
+                    if (isLoggedIn) LogoutCard(),
                   ],
                 ),
               ),
