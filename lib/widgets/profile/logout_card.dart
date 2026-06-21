@@ -1,8 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:waristmate_app/widgets/ui/custom_alert.dart';
 
 class LogoutCard extends StatelessWidget {
   const LogoutCard({super.key});
+
+  Future<void> _signOut(BuildContext context) async {
+    try {
+      await Supabase.instance.client.auth.signOut();
+
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Successfully signed out!')),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error signing out: $e');
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Error signing out. Please try again.')),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +31,7 @@ class LogoutCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
       decoration: BoxDecoration(
-        color: AppColors.primaryGreen,
+        color: AppColors.errorRed,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -35,7 +56,18 @@ class LogoutCard extends StatelessWidget {
           size: 24,
         ),
         onTap: () {
-          print("logout");
+          CustomAlert.show(
+            context,
+            title: 'Konfirmasi Keluar',
+            message: 'Apakah Anda yakin ingin keluar dari akun ini?',
+            onConfirm: () => _signOut(context),
+            onCancel: () {},
+            icon: Icons.warning_rounded,
+            iconColor: AppColors.errorRed,
+            cancelText: 'Batal',
+            confirmText: 'Keluar',
+            confirmColor: AppColors.errorRed,
+          );
         },
       ),
     );
