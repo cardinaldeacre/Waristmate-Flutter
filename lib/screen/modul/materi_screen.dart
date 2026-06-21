@@ -5,6 +5,7 @@ import 'package:waristmate_app/widgets/modul/chapter_modal.dart';
 import 'package:waristmate_app/widgets/modul/floating_menu.dart';
 import 'package:waristmate_app/widgets/modul/native_flutter_table.dart';
 import 'package:waristmate_app/widgets/modul/materi_header.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MateriScreen extends StatefulWidget {
   final String bab;
@@ -24,6 +25,22 @@ class MateriScreen extends StatefulWidget {
 
 class _MateriScreenState extends State<MateriScreen> {
   bool isMenuOpen = true;
+  double _latinTextSize = 15.0;
+  double _arabicTextSize = 28.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadTextSize();
+  }
+
+  Future<void> _loadTextSize() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _latinTextSize = prefs.getDouble('latin_text_size') ?? 15.0;
+      _arabicTextSize = prefs.getDouble('arabic_text_size') ?? 28.0;
+    });
+  }
 
   void toggleMenu() {
     setState(() {
@@ -55,12 +72,23 @@ class _MateriScreenState extends State<MateriScreen> {
                       ),
                       child: HtmlWidget(
                         widget.contentHtml,
-                        textStyle: const TextStyle(
-                          fontSize: 14,
+                        textStyle: TextStyle(
+                          fontSize: _latinTextSize,
                           height: 1.3,
                           color: AppColors.textDark,
                         ),
                         customWidgetBuilder: (element) {
+                          if (element.attributes['dir'] == 'rtl') {
+                            return Text(
+                              element.text,
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontSize: _arabicTextSize,
+                                height: 1.8,
+                                color: AppColors.textDark,
+                              ),
+                            );
+                          }
                           if (element.localName == 'table') {
                             return NativeFlutterTable(tableElement: element);
                           }
