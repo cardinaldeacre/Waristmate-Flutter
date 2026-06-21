@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/profile/font_slider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferenceCard extends StatefulWidget {
   final String title;
@@ -15,6 +16,28 @@ class PreferenceCard extends StatefulWidget {
 class _PreferenceCardState extends State<PreferenceCard> {
   double _latinTextSize = 15.0;
   double _arabicTextSize = 28.0;
+
+  SharedPreferences? _prefs;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPreferences();
+  }
+
+  Future<void> _loadPreferences() async {
+    _prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _latinTextSize = _prefs!.getDouble('latin_text_size') ?? 15.0;
+      _arabicTextSize = _prefs!.getDouble('arabic_text_size') ?? 28.0;
+    });
+  }
+
+  Future<void> _savePreferences(String key, double value) async {
+    if (_prefs != null) {
+      await _prefs!.setDouble(key, value);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +79,7 @@ class _PreferenceCardState extends State<PreferenceCard> {
               setState(() {
                 _latinTextSize = value;
               });
+              _savePreferences('latin_text_size', value);
             },
           ),
 
@@ -71,6 +95,7 @@ class _PreferenceCardState extends State<PreferenceCard> {
               setState(() {
                 _arabicTextSize = value;
               });
+              _savePreferences('arabic_text_size', value);
             },
           ),
 
