@@ -37,7 +37,7 @@ class ChapterCard extends StatelessWidget {
           highlightColor: AppColors.primaryGreen.withValues(alpha: 0.05),
           onTap: () {
             String dummyHtml = '''
-              <h3 style="font-size: 20px; margin-bottom: 15px;">Definisi</h3>
+              <h3 style="margin-bottom: 15px;">Definisi</h3>
               <table style="width: 100%;">
                 <tr>
                   <td style="width: 25%; color: #177E68; font-weight: bold;">Bahasa</td>
@@ -63,12 +63,12 @@ class ChapterCard extends StatelessWidget {
                   <td>Menyampaikan hak-hak kepada mereka yang berhak.</td>
                 </tr>
               </table>
-              <h3 style="font-size: 20px; margin-bottom: 15px;">Dalil Hukum</h3>
+              <h3 style="margin-bottom: 15px;">Dalil Hukum</h3>
               <div style="text-align: center; margin-bottom: 20px;">
-                <p dir="rtl" style="font-size: 28px; line-height: 1.8; color: #177E68; font-family: serif;">
+                <p dir="rtl" style="line-height: 1.8; color: #177E68;">
                   لِلرِّجَالِ نَصِيبٌ مِّمَّا تَرَكَ الْوَالِدَانِ وَالْأَقْرَبُونَ وَلِلنِّسَاءِ نَصِيبٌ مِّمَّا تَرَكَ الْوَالِدَانِ وَالْأَقْرَبُونَ مِمَّا قَلَّ مِنْهُ أَوْ كَثُرَ ۚ نَصِيبًا مَّفْرُوضًا
                 </p>
-                <p style="font-size: 14px; color: #555; margin-top: 10px;">
+                <p style="color: #555; margin-top: 10px;">
                   Bagi laki-laki ada hak bagian dari harta peninggalan kedua orang tua dan kerabatnya, dan bagi perempuan ada hak bagian (pula) dari harta peninggalan kedua orang tua dan kerabatnya, baik sedikit atau banyak menurut bagian yang telah ditetapkan. [Q.S 4: An-Nisa' (7)].
                 </p>
               </div>

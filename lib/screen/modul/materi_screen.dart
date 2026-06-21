@@ -77,18 +77,17 @@ class _MateriScreenState extends State<MateriScreen> {
                           height: 1.3,
                           color: AppColors.textDark,
                         ),
-                        customWidgetBuilder: (element) {
+                        customStylesBuilder: (element) {
                           if (element.attributes['dir'] == 'rtl') {
-                            return Text(
-                              element.text,
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                fontSize: _arabicTextSize,
-                                height: 1.8,
-                                color: AppColors.textDark,
-                              ),
-                            );
+                            return {
+                              'font-size': '${_arabicTextSize}px',
+                              'font-family': 'Amiri, serif',
+                            };
                           }
+                          return null;
+                        },
+
+                        customWidgetBuilder: (element) {
                           if (element.localName == 'table') {
                             return NativeFlutterTable(tableElement: element);
                           }
