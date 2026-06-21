@@ -71,9 +71,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         name: userName,
                         avatarUrl: userAvatar,
                         isLoggedIn: isLoggedIn,
-                        onEdit: () {
-                          print("Edit profile tapped");
-                        },
                       )
                     else
                       LoginCard(),
