@@ -14,6 +14,7 @@ void main() async {
 
   await Hive.initFlutter();
   await Hive.openBox('materiBox');
+  await Hive.openBox('profileBox');
 
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL']!,
