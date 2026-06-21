@@ -69,6 +69,7 @@ class _PreferenceCardState extends State<PreferenceCard> {
           widget.child,
 
           const Divider(height: 1, color: Colors.white24),
+
           FontSlider(
             title: "Ukuran Teks Latin",
             iconData: Icons.text_format_rounded,
@@ -100,6 +101,16 @@ class _PreferenceCardState extends State<PreferenceCard> {
           ),
 
           const Divider(height: 1, color: Colors.white24),
+
+          const SizedBox(height: 8),
+          Text(
+            "(Pengaturan ukuran teks ini hanya berlaku pada halaman bacaan Modul)",
+            style: const TextStyle(
+              color: AppColors.grey,
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
         ],
       ),
     );
