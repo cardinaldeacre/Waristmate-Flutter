@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/core/config/theme.dart';
-import '../../controllers/calculator_controller.dart';
-import '../../widgets/ui/input_label.dart';
-import '../../widgets/ui/text_field.dart';
-import '../../widgets/calculator/calculator_header.dart';
-import '../../widgets/calculator/calculator_nav_button.dart';
+import 'package:waristmate_app/controllers/calculator_controller.dart';
+import 'package:waristmate_app/widgets/ui/input_label.dart';
+import 'package:waristmate_app/widgets/ui/custom_text_field.dart';
+import 'package:waristmate_app/widgets/ui/read_only_field.dart';
+import 'package:waristmate_app/widgets/calculator/calculator_header.dart';
+import 'package:waristmate_app/widgets/calculator/calculator_nav_button.dart';
 
 class Step1 extends StatefulWidget {
   final VoidCallback onNext;
@@ -61,9 +62,10 @@ class _Step1State extends State<Step1> {
 
                           // input harta
                           const InputLabel(label: "Harta yang ditinggalkan"),
-                          TextFieldCurrency(
+                          CustomTextField(
                             label: "Harta yang ditinggalkan",
                             controller: calc.tirkahController,
+                            isCurrency: true,
                             onChanged: (val) {
                               String cleanVal = val
                                   .replaceAll('.', '')
@@ -118,9 +120,10 @@ class _Step1State extends State<Step1> {
                           ),
 
                           const InputLabel(label: "Biaya pengurusan jenazah"),
-                          TextFieldCurrency(
+                          CustomTextField(
                             label: "Biaya pengurusan jenazah",
                             controller: calc.tajhizController,
+                            isCurrency: true,
                             onChanged: (val) {
                               String cleanVal = val
                                   .replaceAll('.', '')
@@ -131,9 +134,10 @@ class _Step1State extends State<Step1> {
                           ),
 
                           const InputLabel(label: "Hutang dari muwarrits"),
-                          TextFieldCurrency(
+                          CustomTextField(
                             label: "Hutang dari muwarrits",
                             controller: calc.hutangController,
+                            isCurrency: true,
                             onChanged: (val) {
                               String cleanVal = val
                                   .replaceAll('.', '')
@@ -146,9 +150,10 @@ class _Step1State extends State<Step1> {
                           const InputLabel(
                             label: "Wasiat (maksimal 1/3 sisa harta)",
                           ),
-                          TextFieldCurrency(
+                          CustomTextField(
                             label: "Wasiat (maksimal 1/3 sisa harta)",
                             controller: calc.wasiatController,
+                            isCurrency: true,
                             onChanged: (val) {
                               String cleanVal = val
                                   .replaceAll('.', '')
@@ -193,25 +198,8 @@ class _Step1State extends State<Step1> {
                           const InputLabel(
                             label: "Sisa harta yang diwariskan (Irts)",
                           ),
-                          Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 7,
-                            ),
-                            decoration: BoxDecoration(
-                              color: AppColors.textLight,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Text(
-                              calc.formatRupiah(calc.nIrst),
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 17.5,
-                                color: AppColors.primaryGreen,
-                              ),
-                            ),
-                          ),
+
+                          ReadOnlyField(value: calc.formatRupiah(calc.nIrst)),
                         ],
                       ),
                     ),

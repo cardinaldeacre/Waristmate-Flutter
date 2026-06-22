@@ -15,7 +15,7 @@ class MainWrapper extends StatefulWidget {
 }
 
 class _MainWrapperState extends State<MainWrapper> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
 
   final List<Widget> _screens = [
     CalculatorScreen(),
