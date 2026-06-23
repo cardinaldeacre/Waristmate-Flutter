@@ -49,6 +49,7 @@ class DynamicItemCard extends StatelessWidget {
     }
 
     return Container(
+      margin: const EdgeInsets.symmetric(vertical: 4),
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
       decoration: BoxDecoration(
         color: AppColors.backgroundClean,
