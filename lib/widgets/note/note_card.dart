@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:waristmate_app/controllers/note_controller.dart';
+import 'package:waristmate_app/controllers/personal_note_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/note/dynamic_item_card.dart';
 import 'package:waristmate_app/widgets/ui/input_label.dart';
