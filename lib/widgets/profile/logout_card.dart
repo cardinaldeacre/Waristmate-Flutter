@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:waristmate_app/widgets/ui/custom_alert.dart';
@@ -9,6 +10,7 @@ class LogoutCard extends StatelessWidget {
   Future<void> _signOut(BuildContext context) async {
     try {
       await Supabase.instance.client.auth.signOut();
+      await GoogleSignIn().disconnect();
 
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -17,6 +19,7 @@ class LogoutCard extends StatelessWidget {
       }
     } catch (e) {
       debugPrint('Error signing out: $e');
+      await Supabase.instance.client.auth.signOut();
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Error signing out. Please try again.')),

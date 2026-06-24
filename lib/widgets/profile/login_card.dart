@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:waristmate_app/controllers/auth_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:waristmate_app/core/config/auth_config.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginCard extends StatefulWidget {
   const LoginCard({super.key});
@@ -12,76 +11,32 @@ class LoginCard extends StatefulWidget {
 }
 
 class _LoginCardState extends State<LoginCard> {
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
-  Future<void> _signInWithGoogle() async {
-    setState(() {
-      _isLoading = true;
-    });
+  Future<void> _handleGoogleSignIn(BuildContext context) async {
+    final authController = context.read<AuthController>();
 
     try {
-      final GoogleSignIn googleSignIn = GoogleSignIn(
-        clientId: AuthConfig.clientIdForPlatform,
-        scopes: ['email', 'profile'],
-      );
-
-      final googleUser = await googleSignIn.signIn();
-
-      if (googleUser == null) {
-        if (mounted) {
-          setState(() {
-            _isLoading = false;
-          });
+      final success = await authController.signInWithGoogle(context);
+      if (success) {
+        if (context.mounted) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text('Berhasil Login!')));
         }
-        return;
+      } else {
+        if (context.mounted) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text('Sign-in dibatalkan.')));
+        }
       }
-
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-
-      final idToken = googleAuth.idToken;
-      final accessToken = googleAuth.accessToken;
-
-      if (idToken == null || accessToken == null) {
-        throw Exception(
-          'Missing Google ID Token or Access Token, Check your Google Sign-In configuration.',
-        );
-      }
-
-      await Supabase.instance.client.auth.signInWithIdToken(
-        provider: OAuthProvider.google,
-        idToken: idToken,
-        accessToken: accessToken,
-      );
-
-      if (mounted) {
+    } catch (e) {
+      debugPrint('Error signing in: $e');
+      if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Successfully signed in with Google!'),
-            backgroundColor: AppColors.primaryGreen,
-          ),
+          const SnackBar(content: Text('Error signing in. Please try again.')),
         );
-        setState(() {
-          _isLoading = false;
-        });
-      }
-    } catch (error) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error signing in with Google: $error'),
-            backgroundColor: AppColors.errorRed,
-          ),
-        );
-        setState(() {
-          _isLoading = false;
-        });
-      }
-    } finally {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
       }
     }
   }
@@ -115,7 +70,7 @@ class _LoginCardState extends State<LoginCard> {
           ),
           const SizedBox(height: 20),
           ElevatedButton.icon(
-            onPressed: _isLoading ? null : _signInWithGoogle,
+            onPressed: _isLoading ? null : () => _handleGoogleSignIn(context),
             icon: _isLoading
                 ? const SizedBox(
                     width: 16,

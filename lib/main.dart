@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:waristmate_app/controllers/auth_controller.dart';
+import 'package:waristmate_app/controllers/personal_note_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +17,7 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('materiBox');
   await Hive.openBox('profileBox');
+  await Hive.openBox('personalNoteBox');
 
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL']!,
@@ -26,8 +29,12 @@ void main() async {
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => CalculatorController(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AuthController()),
+        ChangeNotifierProvider(create: (context) => CalculatorController()),
+        ChangeNotifierProvider(create: (context) => PersonalNoteController()),
+      ],
       child: const WaristmateApp(),
     ),
   );
