@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final bool isCurrency;
   final double? height;
+  final bool readOnly;
 
   const CustomTextField({
     super.key,
@@ -16,6 +17,7 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.isCurrency = false,
     this.height = 40,
+    this.readOnly = false,
   });
 
   @override
@@ -26,6 +28,7 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         keyboardType: isCurrency ? TextInputType.number : TextInputType.text,
         onChanged: onChanged,
+        readOnly: readOnly,
         inputFormatters: isCurrency ? [CurrencyFormatter()] : [],
         style: const TextStyle(
           fontWeight: FontWeight.w600,
@@ -50,7 +53,7 @@ class CustomTextField extends StatelessWidget {
             borderSide: BorderSide(
               color: AppColors.primaryGreen,
               strokeAlign: BorderSide.strokeAlignOutside,
-              width: 3,
+              width: readOnly ? 1 : 3,
             ),
           ),
         ),

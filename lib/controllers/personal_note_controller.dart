@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:waristmate_app/logic/note_item.dart';
 import 'package:waristmate_app/models/personal_note.dart';
 import 'package:waristmate_app/services/personal_note/personal_note_service.dart';
@@ -126,6 +127,55 @@ class PersonalNoteController extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     }
+  }
+
+  Future<void> getPersonalNote() async {
+    isLoading = true;
+    notifyListeners();
+
+    final user = Supabase.instance.client.auth.currentUser;
+
+    if (user == null) {
+      isLoading = false;
+      notifyListeners();
+      throw Exception('User not logged in');
+    }
+
+    final userId = user.id;
+
+    try {
+      final personalNote = await _personalNoteService.getPersonalNote(userId);
+
+      if (personalNote != null) {
+        cashAssetNominal = personalNote.cashAssetNominal!;
+        wasiatNominal = personalNote.totalWasiatNominal!;
+        wasiatNote = personalNote.wasiatNote!;
+
+        nonCashAssets.clear();
+        personalNote.nonCashAssets?.forEach((name, amount) {
+          final item = DynamicItemModel();
+          item.nameController.text = name;
+          item.amountController.text = amount.toString();
+          nonCashAssets.add(item);
+        });
+
+        debtList.clear();
+        personalNote.debtList?.forEach((name, amount) {
+          final item = DynamicItemModel();
+          item.nameController.text = name;
+          item.amountController.text = amount.toString();
+          debtList.add(item);
+        });
+      }
+    } catch (e) {
+      throw Exception('Failed to fetch personal note: $e');
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+
+    isLoading = false;
+    notifyListeners();
   }
 
   String formatRupiah(int value) {

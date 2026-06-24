@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:waristmate_app/controllers/personal_note_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/note/note_header.dart';
 import 'package:waristmate_app/widgets/note/note_card.dart';
@@ -20,6 +22,8 @@ class _NoteScreenState extends State<NoteScreen> {
   }
 
   void _saveData() {
+    final noteController = context.read<PersonalNoteController>();
+    noteController.savePersonalNote;
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Catatan disimpan!'),
@@ -27,6 +31,11 @@ class _NoteScreenState extends State<NoteScreen> {
       ),
     );
     _toggleEditMode();
+  }
+
+  void _getPersonalNote() {
+    final noteController = context.read<PersonalNoteController>();
+    noteController.getPersonalNote();
   }
 
   @override

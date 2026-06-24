@@ -6,6 +6,7 @@ import 'package:waristmate_app/widgets/ui/container_border.dart';
 class DynamicItemCard extends StatelessWidget {
   final TextEditingController nameController;
   final TextEditingController amountController;
+  final Function(String)? onChanged;
   final bool isEditMode;
   final String nameHint;
   final VoidCallback? onRemove;
@@ -17,28 +18,41 @@ class DynamicItemCard extends StatelessWidget {
     required this.amountController,
     required this.nameHint,
     this.onRemove,
+    this.onChanged,
   });
 
   @override
   Widget build(BuildContext context) {
     if (!isEditMode) {
-      return SizedBox(
-        height: 40,
+      return Container(
+        margin: const EdgeInsets.symmetric(vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          color: AppColors.cardBackground,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(15),
+              blurRadius: 4,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               nameController.text.isEmpty ? '-' : nameController.text,
               style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
                 color: AppColors.primaryGreen,
               ),
             ),
             Text(
               "Rp ${amountController.text.isEmpty ? '0' : amountController.text}",
               style: const TextStyle(
-                fontSize: 14,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: AppColors.primaryGreen,
               ),
@@ -73,6 +87,7 @@ class DynamicItemCard extends StatelessWidget {
                   label: nameHint,
                   isCurrency: false,
                   height: 36,
+                  onChanged: onChanged,
                 ),
                 const SizedBox(height: 4),
                 CustomTextField(
@@ -80,24 +95,27 @@ class DynamicItemCard extends StatelessWidget {
                   label: 'nominal',
                   isCurrency: true,
                   height: 36,
+                  onChanged: onChanged,
                 ),
               ],
             ),
           ),
 
-          const SizedBox(width: 8),
+          if (isEditMode && onRemove != null) ...[
+            const SizedBox(width: 8),
 
-          ContainerBorder(
-            size: 36,
-            borderRadius: 12,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(12),
-              onTap: onRemove,
-              child: const Center(
-                child: Icon(Icons.remove, color: Colors.white, size: 17.5),
+            ContainerBorder(
+              size: 36,
+              borderRadius: 12,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(12),
+                onTap: onRemove,
+                child: const Center(
+                  child: Icon(Icons.remove, color: Colors.white, size: 17.5),
+                ),
               ),
             ),
-          ),
+          ],
         ],
       ),
     );

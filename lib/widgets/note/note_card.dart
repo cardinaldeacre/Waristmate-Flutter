@@ -6,7 +6,6 @@ import 'package:waristmate_app/widgets/note/dynamic_item_card.dart';
 import 'package:waristmate_app/widgets/ui/input_label.dart';
 import 'package:waristmate_app/widgets/ui/custom_text_field.dart';
 import 'package:waristmate_app/widgets/note/add_item_card.dart';
-import 'package:waristmate_app/logic/note_item.dart';
 
 class NoteCard extends StatefulWidget {
   final bool isEditMode;
@@ -18,53 +17,19 @@ class NoteCard extends StatefulWidget {
 }
 
 class _NoteCardState extends State<NoteCard> {
-  final List<DynamicItemModel> _asetList = [];
-  final List<DynamicItemModel> _debtList = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _asetList.add(DynamicItemModel());
-    _debtList.add(DynamicItemModel());
-  }
-
-  @override
-  void dispose() {
-    for (var item in _asetList) {
-      item.dispose();
-    }
-    super.dispose();
-  }
-
-  void _addAset() {
-    setState(() {
-      _asetList.add(DynamicItemModel());
-    });
-  }
-
-  void _removeAset(int index) {
-    setState(() {
-      _asetList[index].dispose();
-      _asetList.removeAt(index);
-    });
-  }
-
-  void _addDebt() {
-    setState(() {
-      _debtList.add(DynamicItemModel());
-    });
-  }
-
-  void _removeDebt(int index) {
-    setState(() {
-      _debtList[index].dispose();
-      _debtList.removeAt(index);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // final noteController = Provider.of<NoteController>(context);
+    final noteController = context.watch<PersonalNoteController>();
+    final bool hasValidAssets = noteController.nonCashAssets.any(
+      (item) =>
+          item.nameController.text.trim().isNotEmpty &&
+          item.amountController.text.trim().isNotEmpty,
+    );
+    final bool hasValidHutang = noteController.debtList.any(
+      (item) =>
+          item.nameController.text.trim().isNotEmpty &&
+          item.amountController.text.trim().isNotEmpty,
+    );
 
     return Expanded(
       child: SingleChildScrollView(
@@ -85,120 +50,140 @@ class _NoteCardState extends State<NoteCard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const InputLabel(label: "Harta yang saya tinggalkan"),
+                    const InputLabel(label: "Total harta bersih"),
                     CustomTextField(
                       label: "Total Harta",
                       isCurrency: true,
-                      onChanged: (val) {
-                        String cleanVal = val
-                            .replaceAll('.', '')
-                            .replaceAll(',', '');
-                      },
+                      readOnly: true,
+                      controller: TextEditingController(
+                        text: noteController
+                            .formatRupiah(noteController.estimasiHartaBersih)
+                            .replaceAll('Rp ', ''),
+                      ),
                     ),
 
-                    const InputLabel(label: "Total Hutang Terkini"),
+                    const InputLabel(label: "Total harta yang saya tinggalkan"),
+                    CustomTextField(
+                      label: "Total Harta",
+                      isCurrency: true,
+                      readOnly: true,
+                      controller: TextEditingController(
+                        text: noteController
+                            .formatRupiah(noteController.totalAssetsNominal)
+                            .replaceAll('Rp ', ''),
+                      ),
+                    ),
+
+                    const InputLabel(label: "Total hutang terkini"),
                     CustomTextField(
                       label: "Total Hutang",
                       isCurrency: true,
-                      onChanged: (val) {
-                        String cleanVal = val
-                            .replaceAll('.', '')
-                            .replaceAll(',', '');
-                      },
+                      readOnly: true,
+                      controller: TextEditingController(
+                        text: noteController
+                            .formatRupiah(noteController.totalDebtsNominal)
+                            .replaceAll('Rp ', ''),
+                      ),
                     ),
 
-                    const InputLabel(label: "Warisan Untuk Dibagikan (1/3)"),
+                    const InputLabel(label: "Warisan untuk dibagikan (1/3)"),
                     CustomTextField(
-                      label: "Total Hutang",
+                      label: "Total Warisan",
                       isCurrency: true,
+                      readOnly: true,
                       onChanged: (val) {
                         String cleanVal = val
                             .replaceAll('.', '')
                             .replaceAll(',', '');
                         int parsedVal = int.tryParse(cleanVal) ?? 0;
-                        // noteController.setHutang(parsedVal);
+                        noteController.setWasiatNominal(parsedVal);
+                        print("Total Warisan: ${noteController.wasiatNominal}");
                       },
                     ),
 
                     const SizedBox(height: 16),
-                    const InputLabel(label: "Aset Tunai"),
+                    const InputLabel(label: "Aset yang saya tinggalkan"),
 
-                    ..._asetList.map(
-                      (item) => DynamicItemCard(
-                        isEditMode: widget.isEditMode,
-                        nameController: item.nameController,
-                        amountController: item.amountController,
-                        nameHint: "Nama Aset",
-                        onRemove: () {
-                          _removeAset(_asetList.indexOf(item));
-                        },
-                      ),
-                    ),
+                    if (widget.isEditMode || hasValidAssets) ...[
+                      ...noteController.nonCashAssets
+                          .asMap()
+                          .entries
+                          .where((entry) {
+                            if (widget.isEditMode) return true;
 
-                    const SizedBox(height: 16),
+                            final item = entry.value;
+                            return item.nameController.text.trim().isNotEmpty ||
+                                item.amountController.text.trim().isNotEmpty;
+                          })
+                          .map((entry) {
+                            final index = entry.key;
+                            final item = entry.value;
 
-                    if (widget.isEditMode)
-                      AddItemCard(
-                        onAdd: () {
-                          _addAset();
-                        },
-                        label: "Tambah Aset Tunai",
-                      ),
-
-                    if (widget.isEditMode)
-                      OutlinedButton.icon(
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: AppColors.primaryGreen,
-                          side: const BorderSide(color: AppColors.primaryGreen),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
-                        icon: const Icon(Icons.add),
-                        label: const Text("Tambah Aset"),
-                        onPressed: () {
-                          print("Tambah row aset");
-                        },
-                      ),
-
-                    const InputLabel(label: "Hutang"),
-
-                    ..._debtList.map(
-                      (item) => DynamicItemCard(
-                        isEditMode: widget.isEditMode,
-                        nameController: item.nameController,
-                        amountController: item.amountController,
-                        nameHint: "Nama Hutang",
-                        onRemove: () {
-                          _removeDebt(_debtList.indexOf(item));
-                        },
-                      ),
-                    ),
+                            return DynamicItemCard(
+                              isEditMode: widget.isEditMode,
+                              nameController: item.nameController,
+                              amountController: item.amountController,
+                              nameHint: "Nama Aset",
+                              onRemove: () {
+                                noteController.removeAssetRow(index);
+                              },
+                              onChanged: (val) {
+                                noteController.updateCalculation();
+                              },
+                            );
+                          }),
+                    ],
 
                     const SizedBox(height: 16),
 
                     if (widget.isEditMode)
                       AddItemCard(
                         onAdd: () {
-                          _addDebt();
+                          noteController.addAssetRow();
+                        },
+                        label: "Tambah Aset",
+                      ),
+
+                    const InputLabel(label: "Hutang yang saya miliki"),
+
+                    if (widget.isEditMode || hasValidHutang) ...[
+                      ...noteController.debtList
+                          .asMap()
+                          .entries
+                          .where((entry) {
+                            if (widget.isEditMode) return true;
+
+                            final item = entry.value;
+                            return item.nameController.text.trim().isNotEmpty ||
+                                item.amountController.text.trim().isNotEmpty;
+                          })
+                          .map((entry) {
+                            final index = entry.key;
+                            final item = entry.value;
+
+                            return DynamicItemCard(
+                              isEditMode: widget.isEditMode,
+                              nameController: item.nameController,
+                              amountController: item.amountController,
+                              nameHint: "Nama Hutang",
+                              onRemove: () {
+                                noteController.removeDebtRow(index);
+                              },
+                              onChanged: (val) {
+                                noteController.updateCalculation();
+                              },
+                            );
+                          }),
+                    ],
+
+                    const SizedBox(height: 16),
+
+                    if (widget.isEditMode)
+                      AddItemCard(
+                        onAdd: () {
+                          noteController.addDebtRow();
                         },
                         label: "Tambah Hutang",
-                      ),
-
-                    if (widget.isEditMode)
-                      OutlinedButton.icon(
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: AppColors.primaryGreen,
-                          side: const BorderSide(color: AppColors.primaryGreen),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
-                        icon: const Icon(Icons.add),
-                        label: const Text("Tambah Hutang"),
-                        onPressed: () {
-                          print("Tambah row hutang");
-                        },
                       ),
 
                     const SizedBox(height: 24),
@@ -210,24 +195,53 @@ class _NoteCardState extends State<NoteCard> {
                     const SizedBox(height: 12),
 
                     if (!widget.isEditMode)
-                      const Text(
-                        "Tolong bagikan warisan sesuai syariat. Untuk Yono, hutangnya tolong dilunasi dari emas yang ada.",
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: AppColors.textDark,
-                          height: 1.5,
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: AppColors.backgroundClean,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Text(
+                          "Tolong bagikan warisan sesuai syariat. Untuk Yono, hutangnya tolong dilunasi dari emas yang ada.",
+                          textAlign: TextAlign.justify,
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: AppColors.textDark,
+                            height: 1.5,
+                          ),
                         ),
                       )
                     else
-                      TextFormField(
-                        initialValue:
-                            "Tolong bagikan warisan sesuai syariat. Untuk Yono, hutangnya tolong dilunasi dari emas yang ada.",
-                        maxLines: 4,
-                        decoration: InputDecoration(
-                          hintText:
-                              "Tuliskan pesan atau rincian wasiat di sini...",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.backgroundClean,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: TextFormField(
+                          initialValue:
+                              "Tolong bagikan warisan sesuai syariat. Untuk Yono, hutangnya tolong dilunasi dari emas yang ada.",
+                          maxLines: 4,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: AppColors.backgroundClean,
+
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide.none,
+                            ),
+
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide.none,
+                            ),
+
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(
+                                color: AppColors.primaryGreen,
+                                width: 2,
+                              ),
+                            ),
                           ),
                         ),
                       ),
