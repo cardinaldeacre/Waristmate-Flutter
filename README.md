@@ -28,3 +28,7 @@ adb connect [IP]:[PORT]
 ```
 flutter run -d [IP]:[PORT]
 ```
+
+### build optimized apk
+
+flutter build apk --split-per-abi
