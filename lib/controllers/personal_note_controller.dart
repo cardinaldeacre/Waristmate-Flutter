@@ -8,6 +8,7 @@ import 'package:waristmate_app/services/personal_note/personal_note_service.dart
 class PersonalNoteController extends ChangeNotifier {
   final PersonalNoteService _personalNoteService = PersonalNoteService();
   final wasiatController = TextEditingController();
+  final wasiatNoteController = TextEditingController();
   final cashAssetController = TextEditingController();
 
   int cashAssetNominal = 0;
@@ -176,7 +177,8 @@ class PersonalNoteController extends ChangeNotifier {
         wasiatController.text = formatRupiah(
           wasiatNominal,
         ).replaceAll('Rp ', '');
-        wasiatNote = personalNote.wasiatNote!;
+        wasiatNote = personalNote.wasiatNote ?? '';
+        wasiatNoteController.text = wasiatNote;
 
         nonCashAssets.clear();
         personalNote.nonCashAssets?.forEach((name, amount) {

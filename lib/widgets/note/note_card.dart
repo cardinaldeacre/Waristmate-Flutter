@@ -247,78 +247,44 @@ class _NoteCardState extends State<NoteCard> {
 
                     const SizedBox(height: 12),
 
-                    if (!widget.isEditMode)
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: AppColors.backgroundClean,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: TextFormField(
-                          readOnly: true,
-                          initialValue: noteController.wasiatNote,
-                          maxLines: 6,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: AppColors.backgroundClean,
-
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide.none,
-                            ),
-
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide.none,
-                            ),
-
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: const BorderSide(
-                                color: AppColors.primaryGreen,
-                                width: 2,
-                              ),
-                            ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.backgroundClean,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: TextFormField(
+                        controller: noteController.wasiatNoteController,
+                        readOnly: !widget.isEditMode,
+                        maxLines: 12,
+                        onChanged: (val) {
+                          noteController.setWasiatNote(val);
+                        },
+                        style: const TextStyle(color: AppColors.primaryGreen),
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: AppColors.backgroundClean,
+                          contentPadding: const EdgeInsets.all(8),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide.none,
                           ),
-                        ),
-                      )
-                    else
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.backgroundClean,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: TextFormField(
-                          initialValue: noteController.wasiatNote,
-                          maxLines: 6,
-                          onChanged: (val) {
-                            noteController.setWasiatNote(val);
-                          },
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: AppColors.backgroundClean,
 
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide.none,
-                            ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide.none,
+                          ),
 
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide.none,
-                            ),
-
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: const BorderSide(
-                                color: AppColors.primaryGreen,
-                                width: 2,
-                              ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: AppColors.primaryGreen,
+                              width: 2,
                             ),
                           ),
                         ),
                       ),
-                    const SizedBox(height: 40),
+                    ),
+                    const SizedBox(height: 16),
                   ],
                 ),
               ),
