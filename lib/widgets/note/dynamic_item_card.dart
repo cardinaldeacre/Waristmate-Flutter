@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/ui/custom_text_field.dart';
 import 'package:waristmate_app/widgets/ui/container_border.dart';
@@ -23,6 +24,15 @@ class DynamicItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String amountText = amountController.text.replaceAll(RegExp(r'[^0-9]'), '');
+    int amountValue = int.tryParse(amountText) ?? 0;
+
+    String formattedAmount = NumberFormat.currency(
+      locale: 'id_ID',
+      symbol: '',
+      decimalDigits: 0,
+    ).format(amountValue);
+
     if (!isEditMode) {
       return Container(
         margin: const EdgeInsets.symmetric(vertical: 4),
@@ -39,18 +49,21 @@ class DynamicItemCard extends StatelessWidget {
           ],
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              nameController.text.isEmpty ? '-' : nameController.text,
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: AppColors.primaryGreen,
+            Expanded(
+              child: Text(
+                nameController.text.isEmpty ? '-' : nameController.text,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.primaryGreen,
+                ),
               ),
             ),
+            const SizedBox(width: 12),
             Text(
-              "Rp ${amountController.text.isEmpty ? '0' : amountController.text}",
+              formattedAmount,
               style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
