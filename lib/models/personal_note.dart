@@ -35,15 +35,20 @@ class PersonalNoteModel {
   factory PersonalNoteModel.fromJson(Map<String, dynamic> json) {
     return PersonalNoteModel(
       userId: json['user_id'],
-      totalAssetsNominal: json['total_assets_nominal'],
-      totalDebtsNominal: json['total_debts_nominal'],
-      totalWasiatNominal: json['total_wasiat_nominal'],
-      cashAssetNominal: json['cash_asset_nominal'],
+      totalAssetsNominal: (json['total_assets_nominal'] as num?)?.toInt(),
+      totalDebtsNominal: (json['total_debts_nominal'] as num?)?.toInt(),
+      totalWasiatNominal: (json['total_wasiat_nominal'] as num?)?.toInt(),
+      cashAssetNominal: (json['cash_asset_nominal'] as num?)?.toInt(),
+
       nonCashAssets: json['non_cash_assets'] != null
-          ? Map<String, int>.from(json['non_cash_assets'])
+          ? (json['non_cash_assets'] as Map<String, dynamic>).map(
+              (key, value) => MapEntry(key, (value as num).toInt()),
+            )
           : null,
       debtList: json['debt_list'] != null
-          ? Map<String, int>.from(json['debt_list'])
+          ? (json['debt_list'] as Map<String, dynamic>).map(
+              (key, value) => MapEntry(key, (value as num).toInt()),
+            )
           : null,
       wasiatNote: json['wasiat_note'],
     );

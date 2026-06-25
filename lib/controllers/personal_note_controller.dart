@@ -7,6 +7,8 @@ import 'package:waristmate_app/services/personal_note/personal_note_service.dart
 
 class PersonalNoteController extends ChangeNotifier {
   final PersonalNoteService _personalNoteService = PersonalNoteService();
+  final wasiatController = TextEditingController();
+  final cashAssetController = TextEditingController();
 
   int cashAssetNominal = 0;
   int wasiatNominal = 0;
@@ -60,6 +62,24 @@ class PersonalNoteController extends ChangeNotifier {
     notifyListeners();
   }
 
+  String? updateWasiat(int val) {
+    wasiatNominal = val;
+
+    int maxWasiat = estimasiHartaBersih > 0 ? estimasiHartaBersih ~/ 3 : 0;
+
+    String? notip;
+
+    if (wasiatNominal > maxWasiat) {
+      wasiatNominal = maxWasiat;
+
+      notip =
+          "Wasiat tidak boleh lebih dari 1/3 sisa harta (${formatRupiah(wasiatNominal)}).";
+    }
+
+    notifyListeners();
+    return notip;
+  }
+
   void addAssetRow() {
     nonCashAssets.add(DynamicItemModel());
     notifyListeners();
@@ -91,6 +111,7 @@ class PersonalNoteController extends ChangeNotifier {
     notifyListeners();
 
     try {
+      updateCalculation();
       Map<String, int> mappedAssets = {};
       for (var item in nonCashAssets) {
         String name = item.nameController.text.trim();
@@ -148,7 +169,13 @@ class PersonalNoteController extends ChangeNotifier {
 
       if (personalNote != null) {
         cashAssetNominal = personalNote.cashAssetNominal!;
+        cashAssetController.text = formatRupiah(
+          cashAssetNominal,
+        ).replaceAll('Rp ', '');
         wasiatNominal = personalNote.totalWasiatNominal!;
+        wasiatController.text = formatRupiah(
+          wasiatNominal,
+        ).replaceAll('Rp ', '');
         wasiatNote = personalNote.wasiatNote!;
 
         nonCashAssets.clear();

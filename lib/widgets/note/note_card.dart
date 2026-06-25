@@ -86,23 +86,26 @@ class _NoteCardState extends State<NoteCard> {
                       ),
                     ),
 
-                    const InputLabel(label: "Warisan untuk dibagikan (1/3)"),
+                    const SizedBox(height: 16),
+                    const Divider(height: 1, color: Colors.white24),
+
+                    const InputLabel(label: "Total aset tunai"),
                     CustomTextField(
-                      label: "Total Warisan",
+                      label: "Total Aset Tunai",
                       isCurrency: true,
-                      readOnly: true,
+                      readOnly: !widget.isEditMode,
+                      controller: noteController.cashAssetController,
                       onChanged: (val) {
                         String cleanVal = val
                             .replaceAll('.', '')
                             .replaceAll(',', '');
                         int parsedVal = int.tryParse(cleanVal) ?? 0;
-                        noteController.setWasiatNominal(parsedVal);
-                        print("Total Warisan: ${noteController.wasiatNominal}");
+                        noteController.setCashAsset(parsedVal);
                       },
                     ),
 
                     const SizedBox(height: 16),
-                    const InputLabel(label: "Aset yang saya tinggalkan"),
+                    const InputLabel(label: "Daftar aset non-tunai"),
 
                     if (widget.isEditMode || hasValidAssets) ...[
                       ...noteController.nonCashAssets
@@ -186,11 +189,61 @@ class _NoteCardState extends State<NoteCard> {
                         label: "Tambah Hutang",
                       ),
 
+                    const InputLabel(label: "Warisan untuk dibagikan (1/3)"),
+                    CustomTextField(
+                      label: "Wasiat (maksimal 1/3 sisa harta)",
+                      controller: noteController.wasiatController,
+                      isCurrency: true,
+                      readOnly: !widget.isEditMode,
+                      onChanged: (val) {
+                        String cleanVal = val
+                            .replaceAll('.', '')
+                            .replaceAll(',', '');
+                        int parsedVal = int.tryParse(cleanVal) ?? 0;
+
+                        String? notip = noteController.updateWasiat(parsedVal);
+                        if (notip != null) {
+                          noteController.wasiatController.text = noteController
+                              .wasiatNominal
+                              .toString();
+                          noteController
+                              .wasiatController
+                              .selection = TextSelection.fromPosition(
+                            TextPosition(
+                              offset:
+                                  noteController.wasiatController.text.length,
+                            ),
+                          );
+
+                          ScaffoldMessenger.of(context).clearSnackBars();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(notip),
+                              backgroundColor: Colors.red[700],
+                              duration: const Duration(seconds: 3),
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              margin: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).size.height - 17.50,
+                                left: 20,
+                                right: 20,
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                    ),
+
                     const SizedBox(height: 24),
                     const Divider(),
                     const SizedBox(height: 16),
 
-                    const InputLabel(label: "Catatan & wasiat"),
+                    const InputLabel(
+                      label: "Catatan seputar warisan dan wasiat",
+                    ),
 
                     const SizedBox(height: 12),
 
@@ -201,13 +254,31 @@ class _NoteCardState extends State<NoteCard> {
                           color: AppColors.backgroundClean,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: const Text(
-                          "Tolong bagikan warisan sesuai syariat. Untuk Yono, hutangnya tolong dilunasi dari emas yang ada.",
-                          textAlign: TextAlign.justify,
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: AppColors.textDark,
-                            height: 1.5,
+                        child: TextFormField(
+                          readOnly: true,
+                          initialValue: noteController.wasiatNote,
+                          maxLines: 6,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: AppColors.backgroundClean,
+
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide.none,
+                            ),
+
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide.none,
+                            ),
+
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(
+                                color: AppColors.primaryGreen,
+                                width: 2,
+                              ),
+                            ),
                           ),
                         ),
                       )
@@ -218,9 +289,11 @@ class _NoteCardState extends State<NoteCard> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
-                          initialValue:
-                              "Tolong bagikan warisan sesuai syariat. Untuk Yono, hutangnya tolong dilunasi dari emas yang ada.",
-                          maxLines: 4,
+                          initialValue: noteController.wasiatNote,
+                          maxLines: 6,
+                          onChanged: (val) {
+                            noteController.setWasiatNote(val);
+                          },
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: AppColors.backgroundClean,
