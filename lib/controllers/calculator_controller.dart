@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:waristmate_app/controllers/hajb_controller.dart';
 import 'package:waristmate_app/logic/main_calculator.dart';
+import 'package:waristmate_app/models/calculation_history.dart';
+import 'package:waristmate_app/services/calculator/calculation_history_service.dart';
 
 class CalculatorController extends ChangeNotifier {
   int nTirkah = 0;
@@ -298,6 +300,34 @@ class CalculatorController extends ChangeNotifier {
     startCounting();
 
     notifyListeners();
+  }
+
+  Future<void> saveCalculationHistory(String userId) async {
+    final history = CalculationHistoryModel(
+      userId: userId,
+      hartaKotor: nTirkah,
+      pengurusan: nTajhiz,
+      hutang: nHutang,
+      wasiat: nWasiat,
+      hartaBersih: nIrst,
+      results: results,
+    );
+
+    try {
+      await CalculationHistoryService().saveCalculation(history);
+    } catch (e) {
+      throw Exception('Gagal menyimpan riwayat perhitungan: $e');
+    }
+  }
+
+  Future<List<CalculationHistoryModel>> getCalculationHistory(
+    String userId,
+  ) async {
+    try {
+      return await CalculationHistoryService().getCalculationHistory(userId);
+    } catch (e) {
+      throw Exception('Gagal mengambil riwayat perhitungan: $e');
+    }
   }
 
   void resetData() {

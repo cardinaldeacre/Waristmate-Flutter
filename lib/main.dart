@@ -18,6 +18,7 @@ void main() async {
   await Hive.openBox('materiBox');
   await Hive.openBox('profileBox');
   await Hive.openBox('personalNoteBox');
+  await Hive.openBox('calculationHistoryBox');
 
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL']!,
