@@ -10,8 +10,9 @@ class CalculationHistoryService {
 
   Future<void> saveCalculation(CalculationHistoryModel history) async {
     try {
-      await _calculationHistoryBox.add(history);
+      await _calculationHistoryBox.add(history.toJson());
       await _supabase.from(_tableName).insert(history.toJson());
+      print('Riwayat perhitungan berhasil disimpan ke Supabase dan Hive.');
     } catch (e) {
       throw Exception('Gagal menyimpan riwayat perhitungan: $e');
     }
@@ -33,24 +34,25 @@ class CalculationHistoryService {
           .map((json) => CalculationHistoryModel.fromJson(json))
           .toList();
     } catch (e) {
-      throw Exception('Gagal mengambil riwayat perhitungan: $e');
-    }
-  }
+      print('Supabase error/offline, mencoba narik dari Hive... ($e)');
 
-  Future<CalculationHistoryModel?> getCalculationById(int id) async {
-    try {
-      final response = await _supabase
-          .from(_tableName)
-          .select()
-          .eq('id', id)
-          .maybeSingle();
+      final localData = _calculationHistoryBox.get(userId);
 
-      if (response != null) {
-        return CalculationHistoryModel.fromJson(response);
+      if (localData != null) {
+        final List<dynamic> rawList = localData as List<dynamic>;
+
+        return rawList
+            .map(
+              (json) => CalculationHistoryModel.fromJson(
+                Map<String, dynamic>.from(json),
+              ),
+            )
+            .toList();
       }
-      return null;
-    } catch (e) {
-      throw Exception('Gagal mengambil perhitungan dengan ID $id: $e');
+
+      throw Exception(
+        'Gagal mengambil riwayat perhitungan. Pastikan ada koneksi internet untuk tarikan pertama.',
+      );
     }
   }
 }

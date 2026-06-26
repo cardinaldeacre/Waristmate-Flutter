@@ -4,6 +4,8 @@ import 'package:waristmate_app/core/config/theme.dart';
 class CalculatorNavButton extends StatelessWidget {
   final VoidCallback? onNext;
   final VoidCallback? onBack;
+  final VoidCallback? onSave;
+  final VoidCallback? onCalculate;
   final String? labelNext;
   final String? labelBack;
 
@@ -11,6 +13,8 @@ class CalculatorNavButton extends StatelessWidget {
     super.key,
     this.onNext,
     this.onBack,
+    this.onSave,
+    this.onCalculate,
     this.labelNext,
     this.labelBack,
   });
@@ -56,7 +60,17 @@ class CalculatorNavButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                onPressed: onNext,
+                onPressed: () {
+                  if (onSave != null) {
+                    onSave?.call();
+                  }
+
+                  if (onCalculate != null) {
+                    onCalculate?.call();
+                  }
+
+                  onNext?.call();
+                },
                 child: Text(
                   labelNext ?? "Lanjut",
                   style: TextStyle(

@@ -21,6 +21,8 @@ extension MainCalculator on CalculatorController {
     totalAshabah = 0;
     nominalAshabah = 0;
 
+    print('Starting calculation...');
+
     if (isCalculateSpecial()) {
       return;
     }
