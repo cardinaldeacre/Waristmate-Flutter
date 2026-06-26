@@ -15,12 +15,6 @@ class NativeFlutterTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String headerTitle =
-        tableElement.previousElementSibling?.localName == 'h3' ||
-            tableElement.previousElementSibling?.localName == 'h2'
-        ? tableElement.previousElementSibling!.text.trim()
-        : '';
-
     final List<Map<String, String>> tableData = [];
     for (final row in tableElement.getElementsByTagName('tr')) {
       final cells = row.getElementsByTagName('td');
