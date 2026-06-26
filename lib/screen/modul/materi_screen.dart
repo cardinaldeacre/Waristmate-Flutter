@@ -82,14 +82,22 @@ class _MateriScreenState extends State<MateriScreen> {
                             return {
                               'font-size': '${_arabicTextSize}px',
                               'font-family': 'Amiri, serif',
+                              'text-align': 'center',
+                              'line-height': '2',
                             };
+                          }
+                          if (element.localName == 'p') {
+                            return {'text-align': 'justify'};
                           }
                           return null;
                         },
 
                         customWidgetBuilder: (element) {
                           if (element.localName == 'table') {
-                            return NativeFlutterTable(tableElement: element);
+                            return NativeFlutterTable(
+                              tableElement: element,
+                              fontSize: _latinTextSize,
+                            );
                           }
 
                           return null;
