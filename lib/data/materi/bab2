@@ -3,7 +3,6 @@
 		<h2>BAB 2 </br>
             HARTA WARISAN</h2>
 	</div>
-
 	<div class="materi2">
 		<h3>Definisi</h3>
 		<table class="definisi">
@@ -21,9 +20,8 @@
 				</td>
 			</tr>
 		</table>
-
 		<div class="rukun-warisan">
-			<h3>Rukun-Rukun Warisan</h3>
+			<h3></br> Rukun-Rukun Warisan</h3>
 			<ul>
 				<li><i>Al-Muwarrits</i> (Yang Meninggal Dunia).</li>
 				<li><i>Al-Warits</i> (Ahli Waris).</li>
@@ -34,16 +32,14 @@
 				tidak ada pembagian harta warisan.
 			</p>
 		</div>
-
 		<div class="syarat-warisan">
-			<h3>Syarat Warisan</h3>
+			<h3></br>Syarat Warisan</h3>
 			<ul class="span-green">
 				<li>Pastinya kematian <i>Al-Muwarrits</i> (pewaris).</li>
 				<li>Pastinya kehidupan ahli waris setelah kematian pewaris, walaupun hanya sesaat.</li>
 				<li>Pengetahuan tentang siapa yang berhak mewarisi.</li>
 			</ul>
 		</div>
-
 		<div class="sebab-warisan">
 			<h3>Sebab-Sebab Mendapat Hak Waris</h3>
 			<ul>
@@ -76,7 +72,6 @@
 				</li>
 			</ul>
 		</div>
-
 		<div class="penghalang-warisan">
 			<h3>Penghalang Warisan</h3>
 			<ul>
@@ -103,7 +98,6 @@
 				</li>
 			</ul>
 		</div>
-
 		<div class="jenis-warisan">
 			<h3>Jenis-Jenis Warisan</h3>
 			<ul>

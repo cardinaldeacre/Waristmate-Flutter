@@ -1,0 +1,179 @@
+<div id="bab-4">
+	<div id="header-bab">
+		<h2>BAB 4</br>
+		PEMBAGIAN YANG DITETAPKAN DALAM ALQURAN</h2>
+	</div>
+
+	<div class="materi4">
+		<h3>FURUDH</h3>
+		<h4 class="furudh-header" style="font-weight: 500">
+			Bagian Furudh yang telah Allah tetapkan di dalam Al-Qur'an ada 6:
+		</h4>
+
+		<ul class="list-furudh">
+			<li><span>1/2</span> (Separuh / Setengah).</li>
+			<li><span>1/4</span> (Seperempat).</li>
+			<li><span>1/8</span> (Seperdelapan).</li>
+			<li><span>2/3</span> (Dua Pertiga).</li>
+			<li><span>1/3</span> (Sepertiga).</li>
+			<li><span>1/6</span> (Seperenam).</li>
+		</ul>
+
+		<div class="list-furudh-detail">
+			<h4><span class="green">Ahli waris dengan hak separuh (1/2)</span></h4>
+			<ul>
+				<li><span>Suami</span>, jika tidak ada keturunan (anak).</li>
+				<li><span>Anak Perempuan</span>, jika sendirian dan tidak ada anak laki-laki.</li>
+				<li>
+					<span>Cucu Perempuan dari anak laki-laki</span>, jika sendirian, tidak ada keturunan
+					laki-laki dan tidak ada cucu laki-laki dari anak laki-laki.
+				</li>
+				<li>
+					<span>Saudari Kandung</span>, jika sendirian, tidak ada keturunan laki-laki, tidak ada
+					ayah dan tidak ada saudara sekandung.
+				</li>
+				<li>
+					<span>Saudari seayah</span>, jika sendirian, tidak ada keturunan laki-laki, tidak ada ayah
+					dan tidak ada saudara seayah.
+				</li>
+			</ul>
+
+			<h4><span class="green">Ahli waris dengan hak seperempat (1/4)</span></h4>
+			<ul>
+				<li><span>Suami</span>, jika istri memiliki keturunan yang mewarisi.</li>
+				<li>
+					<span>Istri atau istri-istri</span>, jika suami tidak memiliki keturunan yang mewarisi.
+				</li>
+			</ul>
+
+			<h4><span class="green">Ahli waris dengan hak seperdelapan (1/8)</span></h4>
+			<ul>
+				<li><span>Istri atau Istri-istri</span>, jika suami memiliki keturunan yang mewarisi.</li>
+			</ul>
+
+			<h4><span class="green">Ahli waris dengan hak dua per tiga (2/3)</span></h4>
+			<ul type="a">
+				<li><span>Dua anak perempuan atau lebih</span>, jika tidak ada anak laki-laki.</li>
+				<li>
+					<span>Dua cucu perempuan atau lebih dari anak laki-laki</span>, jika tidak ada anak
+					laki-laki, anak perempuan dan cucu laki-laki dari anak laki-laki.
+				</li>
+				<li>
+					<span>Dua saudari kandung atau lebih</span>, jika tidak ayah, tidak ada saudara sekandung,
+					dan tidak ada anak laki-laki.
+				</li>
+				<li>
+					<span>Dua saudari seayah atau lebih</span>, jika tidak ayah, tidak ada saudara seayah,
+					tidak ada saudara dan saudari sekandung, dan tidak ada keturunan laki-laki.
+				</li>
+			</ul>
+
+			<h4><span class="green">Ahli waris dengan hak sepertiga (1/3)</span></h4>
+			<ul type="a">
+				<li>
+					<span>Ibu</span>, Apabila yang meninggal tidak memiliki keturunan atau saudara (sekandung
+					ataupun seayah ataupun seibu) yang jumlahnya 2 orang atau lebih.
+				</li>
+				<li>
+					<span>Saudara/i seibu 2 atau lebih</span>, jika mereka tidak terhalang (lihat materi 6:
+					Hajb).
+				</li>
+			</ul>
+
+			<h4><span class="green">Ahli waris dengan hak seperenam (1/6)</span></h4>
+			<ul>
+				<li><span>Ayah</span>, Jika yang meninggal memiliki keturunan ahli waris.</li>
+				<li>
+					<span>Kakek (Ayah Dari Ayah)</span>, jika yang meninggal memiliki keturunan laki-laki dan
+					tidak mempunyai ayah.
+				</li>
+				<li>
+					<span>Ibu</span>, jika yang meninggal memiliki anak, atau anak laki-laki dari anak
+					anaknya, atau saudara (2 ataupun lebih) semuanya laki-laki / perempuan, atau salah satu
+					diantaranya laki-laki dan perempuan (sekandung ataupun sebapak ataupun seibu).
+				</li>
+				<li>
+					<span>Saudari perempuan sebapak (2 orang atau lebih)</span>, jika yang meninggal hanya
+					memiliki 1 saudari perempuan saja tanpa ada saudara laki-laki sekandung.
+				</li>
+				<li>
+					<span>Cucu perempuan dari anak laki-laki (2 orang atau lebih)</span>, Jika yang meninggal
+					hanya memiliki 1 anak perempuan saja tanpa anak laki-laki.
+				</li>
+				<li>
+					<span>Saudara/i seibu</span>, jika sendirian dan tidak terhalang (lihat di materi 6:
+					Hajb).
+				</li>
+				<li><span>Nenek / nenek-nenek</span>, saat tidak ada yang meng-hujubnya.</li>
+			</ul>
+		</div>
+
+		<h4>Tabel Pembagian Ahli Waris</h4>
+		<table class="table-border table-center">
+			<tr>
+				<td>1/2</td>
+				<td>1/4</td>
+				<td>1/8</td>
+				<td>1/3</td>
+				<td>1/6</td>
+				<td>2/3</td>
+			</tr>
+			<tr>
+				<td>Suami</td>
+				<td>Suami</td>
+				<td>Istri (1 atau lebih)</td>
+				<td>Ibu</td>
+				<td>Ayah</td>
+				<td>2 atau lebih Anak Perempuan</td>
+			</tr>
+			<tr>
+				<td>Anak Perempuan</td>
+				<td>Istri (1 atau lebih)</td>
+				<td></td>
+				<td>2 atau lebih Saudara/i Seibu</td>
+				<td>Kakek</td>
+				<td>2 atau lebih Cucu Perempuan</td>
+			</tr>
+			<tr>
+				<td>Cucu Perempuan dari anak laki-laki</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>Ibu</td>
+				<td>2 atau lebih Saudari Sekandung</td>
+			</tr>
+			<tr>
+				<td>Saudari Sekandung</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>Cucu Perempuan dari anak laki-laki</td>
+				<td>2 atau lebih Saudari Seayah</td>
+			</tr>
+			<tr>
+				<td>Saudari Seayah</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>1 atau lebih Saudari Seayah</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>Saudara/i Seibu</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>Nenek / nenek-nenek</td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+</div>

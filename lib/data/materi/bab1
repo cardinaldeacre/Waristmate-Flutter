@@ -114,9 +114,8 @@
 				</p>
 			</div>
 		</div>
-
 		<div class="tirkah">
-			<h3>Tirkah</h3>
+			<h3><br>Tirkah</h3>
 			<table class="tabel-tirkah">
 				<tr>
 					<td>Bahasa</td>
@@ -133,9 +132,8 @@
 				</tr>
 			</table>
 		</div>
-
 		<div class="hak">
-			<h3>Hak-Hak Yang Berkaitan Dengan Tirkah</h3>
+			<h3><br>Hak-Hak Yang Berkaitan Dengan Tirkah</h3>
 			<p>Ada 4 hak yang Berkaitan dengan harta peninggalan si mayit :</p>
 			<div class="list-hak">
 				<ol>
