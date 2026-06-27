@@ -6,8 +6,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 class PreferenceCard extends StatefulWidget {
   final String title;
   final Widget child;
+  final double? heightFactor;
+  final VoidCallback? onFontSizeChanged;
 
-  const PreferenceCard({super.key, required this.title, required this.child});
+  const PreferenceCard({
+    super.key,
+    required this.title,
+    required this.child,
+    this.heightFactor = 1,
+    this.onFontSizeChanged,
+  });
 
   @override
   State<PreferenceCard> createState() => _PreferenceCardState();
@@ -36,12 +44,14 @@ class _PreferenceCardState extends State<PreferenceCard> {
   Future<void> _savePreferences(String key, double value) async {
     if (_prefs != null) {
       await _prefs!.setDouble(key, value);
+      widget.onFontSizeChanged?.call();
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: MediaQuery.of(context).size.height * (widget.heightFactor ?? 1.0),
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(

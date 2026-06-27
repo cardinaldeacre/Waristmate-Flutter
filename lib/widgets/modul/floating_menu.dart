@@ -5,12 +5,16 @@ class FloatingMenu extends StatelessWidget {
   final VoidCallback onPrevious;
   final VoidCallback onNext;
   final VoidCallback onMenu;
+  final VoidCallback onRotate;
+  final VoidCallback onFontSize;
 
   const FloatingMenu({
     super.key,
     required this.onPrevious,
     required this.onNext,
     required this.onMenu,
+    required this.onRotate,
+    required this.onFontSize,
   });
 
   @override
@@ -26,7 +30,9 @@ class FloatingMenu extends StatelessWidget {
               icon: Icons.keyboard_arrow_left_rounded,
               onTap: onPrevious,
             ),
+            CircleButton(icon: Icons.font_download_outlined, onTap: onFontSize),
             CircleButton(icon: Icons.menu_rounded, onTap: onMenu),
+            CircleButton(icon: Icons.screen_rotation, onTap: onRotate),
             CircleButton(
               icon: Icons.keyboard_arrow_right_rounded,
               onTap: onNext,
