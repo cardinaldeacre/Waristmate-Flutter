@@ -89,9 +89,7 @@ class ChapterCard extends StatelessWidget {
                   <h2>Dalil Hukum</h2>
                   <div class="content-ayat">
                     <p dir="rtl">
-                      لِلرِّجَالِ نَصِيْبٌ مِّمَّا تَرَكَ الْوَالِدٰنِ وَالْاَقْرَبُوْنَۖ وَلِلنِّسَاۤءِ
-                      نَصِيْبٌ مِّمَّا تَرَكَ الْوَالِدٰنِ وَالْاَقْرَبُوْنَ مِمَّا قَلَّ مِنْهُ اَوْ كَثُرَ ۗ
-                      نَصِيْبًا مَّفْرُوْضًا
+                    لِّلرِّجَالِ نَصِيبٌ مِّمَّا تَرَكَ ٱلْوَٰلِدَانِ وَٱلْأَقْرَبُونَ وَلِلنِّسَآءِ نَصِيبٌ مِّمَّا تَرَكَ ٱلْوَٰلِدَانِ وَٱلْأَقْرَبُونَ مِمَّا قَلَّ مِنْهُ أَوْ كَثُرَ نَصِيبًا مَّفْرُوضً
                     </p>
                     <p>
                       Bagi laki-laki ada hak bagian dari harta peninggalan kedua orang tua dan kerabatnya, dan
@@ -100,8 +98,7 @@ class ChapterCard extends StatelessWidget {
                       An-Nisa’ (7)].
                     </p>
 
-                    <p dir="rtl">
-                      ۚيُوْصِيْكُمُ اللّٰهُ فِيْٓ اَوْلَادِكُمْ لِلذَّكَرِ مِثْلُ حَظِّ الْاُنْثَيَيْنِ
+                    <p dir="rtl">يُوصِيكُمُ اللَّهُ فِي أَوْلَادِكُمْ لِلذَّكَرِ مِثْلُ حَظِّ الْأُنثَيَيْنِ 
                     </p>
                     <p>
                       Allah mensyariatkan (mewajibkan) kepadamu tentang (pembagian warisan untuk) anak-anakmu,
