@@ -1,7 +1,7 @@
 <div id="bab-1">
 	<div id="header-bab">
-		<h1>BAB 1</h1>
-		<h1>PENGENALAN ILMU FARAIDH</h1>
+		<h2>BAB 1 </br>
+			PENGENALAN ILMU FARAIDH</h2>
 	</div>
 
 	<div class="materi1">
@@ -48,12 +48,12 @@
 		</table>
 
 		<div class="dalil">
-			<h2>Dalil Hukum</h2>
+			<h3>Dalil Hukum</h3>
 			<div class="content-ayat">
 				<p dir="rtl">
-					لِلرِّجَالِ نَصِيْبٌ مِّمَّا تَرَكَ الْوَالِدٰنِ وَالْاَقْرَبُوْنَۖ وَلِلنِّسَاۤءِ
-					نَصِيْبٌ مِّمَّا تَرَكَ الْوَالِدٰنِ وَالْاَقْرَبُوْنَ مِمَّا قَلَّ مِنْهُ اَوْ كَثُرَ ۗ
-					نَصِيْبًا مَّفْرُوْضًا
+					لِّلرِّجَالِ نَصِيبٌ مِّمَّا تَرَكَ ٱلْوَٰلِدَانِ وَٱلْأَقْرَبُونَ وَلِلنِّسَآءِ نَصِيبٌ
+					مِّمَّا تَرَكَ ٱلْوَٰلِدَانِ وَٱلْأَقْرَبُونَ مِمَّا قَلَّ مِنْهُ أَوْ كَثُرَ نَصِيبًا
+					مَّفْرُوضً
 				</p>
 				<p>
 					Bagi laki-laki ada hak bagian dari harta peninggalan kedua orang tua dan kerabatnya, dan
@@ -62,9 +62,7 @@
 					An-Nisa’ (7)].
 				</p>
 
-				<p dir="rtl">
-					ۚيُوْصِيْكُمُ اللّٰهُ فِيْٓ اَوْلَادِكُمْ لِلذَّكَرِ مِثْلُ حَظِّ الْاُنْثَيَيْنِ
-				</p>
+				<p dir="rtl">يُوصِيكُمُ اللَّهُ فِي أَوْلَادِكُمْ لِلذَّكَرِ مِثْلُ حَظِّ الْأُنثَيَيْنِ</p>
 				<p>
 					Allah mensyariatkan (mewajibkan) kepadamu tentang (pembagian warisan untuk) anak-anakmu,
 					(yaitu) bagian seorang anak laki-laki sama dengan bagian dua orang anak perempuan. [Q.S 4:
@@ -89,8 +87,8 @@
 					عَنِ ابْنِ عَبَّاسٍ رَضِيَ اللهُ عَنْهُمَا قَالَ: قَالَ رَسُوْلُ اللهِ صَلَّى اللهُ
 					عَلَيْهِ وَسَلَّمَ:
 					<span>
-						أَلْحِقُوا الفَرائِضَ بأَهْلِها، فَمَا أَبْقَتِ الفَرائِضُ فَلِأَوْلى رَجُلٍ ذَكَرٍ. </span
-					><br />
+						أَلْحِقُوا الفَرائِضَ بأَهْلِها، فَمَا أَبْقَتِ الفَرائِضُ فَلِأَوْلى رَجُلٍ ذَكَرٍ.
+					</span><br />
 					رواه البُخَارِيُّ وَمُسْلِمٌ
 				</p>
 				<p>
@@ -105,8 +103,7 @@
 					عَلَيْهِ وَسَلَّمَ يَقُولُ
 					<br />
 					<span>
-						إِنَّ اللَّهَ قَدْ أَعْطَى كُلَّ ذِي حَقٍّ حَقَّهُ، فَلَا وَصِيَّةَ لِوَارِثٍ </span
-					><br />
+						إِنَّ اللَّهَ قَدْ أَعْطَى كُلَّ ذِي حَقٍّ حَقَّهُ، فَلَا وَصِيَّةَ لِوَارِثٍ </span><br />
 					رواه أبو داود وابن ماجه
 				</p>
 
@@ -138,7 +135,7 @@
 		</div>
 
 		<div class="hak">
-			<h2>Hak-Hak Yang Berkaitan Dengan Tirkah</h2>
+			<h3>Hak-Hak Yang Berkaitan Dengan Tirkah</h3>
 			<p>Ada 4 hak yang Berkaitan dengan harta peninggalan si mayit :</p>
 			<div class="list-hak">
 				<ol>

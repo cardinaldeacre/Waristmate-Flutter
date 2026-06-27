@@ -1,0 +1,119 @@
+<div id="bab-2">
+	<div id="header-bab">
+		<h2>BAB 2 </br>
+            HARTA WARISAN</h2>
+	</div>
+
+	<div class="materi2">
+		<h3>Definisi</h3>
+		<table class="definisi">
+			<tr>
+				<td>Bahasa</td>
+				<td>:</td>
+				<td>Pemindahan kepemilikan sesuatu dari suatu kelompok kepada kelompok lain.</td>
+			</tr>
+			<tr>
+				<td>Istilah</td>
+				<td>:</td>
+				<td>
+					Hak untuk menguasai harta peninggalan orang yang telah meninggal, yang dipastikan dengan
+					kematiannya, atau hak-hak terkait hubungan kekeluargaan atau sebab-sebab lain.
+				</td>
+			</tr>
+		</table>
+
+		<div class="rukun-warisan">
+			<h3>Rukun-Rukun Warisan</h3>
+			<ul>
+				<li><i>Al-Muwarrits</i> (Yang Meninggal Dunia).</li>
+				<li><i>Al-Warits</i> (Ahli Waris).</li>
+				<li><i>Al-Mauruts</i> (Harta Peninggalan).</li>
+			</ul>
+			<p class="span-blue">
+				Jika seseorang tidak memiliki ahli waris, atau dia punya namun tidak memiliki harta maka
+				tidak ada pembagian harta warisan.
+			</p>
+		</div>
+
+		<div class="syarat-warisan">
+			<h3>Syarat Warisan</h3>
+			<ul class="span-green">
+				<li>Pastinya kematian <i>Al-Muwarrits</i> (pewaris).</li>
+				<li>Pastinya kehidupan ahli waris setelah kematian pewaris, walaupun hanya sesaat.</li>
+				<li>Pengetahuan tentang siapa yang berhak mewarisi.</li>
+			</ul>
+		</div>
+
+		<div class="sebab-warisan">
+			<h3>Sebab-Sebab Mendapat Hak Waris</h3>
+			<ul>
+				<li>
+					<p>
+						<span class="span-green">Nasab </span>: <span class="span-blue">Hubungan kekerabatan melalui darah</span>,
+						sebagaimana yang difirmankan oleh Allah: "Dan Kami jadikan para wali dari peninggalan
+						kedua orang tua dan para kerabat" (An-Nisa: 33).
+					</p>
+				</li>
+				<li>
+					<p>
+						<span class="span-green">Nikah </span>: <span class="span-blue">Pernikahan yang sah</span>, walaupun belum
+						ada hubungan suami istri atau khalwat (hubungan intim). Sebagaimana firman Allah: "Dan
+						bagi istri-istri ada bagian dari apa yang mereka tinggalkan" (An-Nisa: 12).
+					</p>
+				</li>
+				<li>
+					<p>
+						<span class="span-green">Wala'</span>: Hak waris jika seseorang yang telah dimerdekakan (<i>ma'toq</i>)
+						meninggal dunia
+						<span class="span-blue">tanpa meninggalkan ahli waris dari jalur keluarganya</span>
+						(misalnya, tidak memiliki anak, orang tua, atau kerabat lainnya), maka hak waris atas
+						peninggalannya
+						<span class="span-blue"
+							>diberikan kepada orang yang memerdekakannya (<i>muharriq</i>)</span
+						>. Sebagaimana sabda Rasulullah: "Barang siapa yang memerdekakan seorang budak, maka
+						dialah yang memiliki hak wala' dari budak tersebut." (Muttafaq 'alayh).
+					</p>
+				</li>
+			</ul>
+		</div>
+
+		<div class="penghalang-warisan">
+			<h3>Penghalang Warisan</h3>
+			<ul>
+				<li>
+					<p>
+						<span class="span-green">Perbudakan</span> : Budak tidak mewarisi dari semua jenis warisan, sebagaimana
+						sabda Rasulullah: "Budak yang menjual dirinya, maka dia tidak mewarisi apa pun kecuali
+						ada syarat tertentu." (HR. Ibnu Majah).
+					</p>
+				</li>
+				<li>
+					<p>
+						<span class="span-green">Pembunuhan</span> : Seorang pembunuh tidak mewarisi harta dari yang terbunuh.
+						Rasulullah bersabda: "Tidak ada warisan bagi seorang pembunuh" (HR. Malik, Ahmad, Ibnu
+						Majah).
+					</p>
+				</li>
+				<li>
+					<p>
+						<span class="span-green">Perbedaan Agama</span> : Tidak ada warisan antara muslim dan kafir, sebagaimana
+						sabda Rasulullah: "Seorang muslim tidak mewarisi dari orang kafir, dan orang kafir tidak
+						mewarisi dari orang muslim" (Muttafaq 'alayh).
+					</p>
+				</li>
+			</ul>
+		</div>
+
+		<div class="jenis-warisan">
+			<h3>Jenis-Jenis Warisan</h3>
+			<ul>
+				<li>
+					<p><span class="span-green">Fardh</span> : bagian yang telah ditentukan secara syariat bagi ahli waris.</p>
+				</li>
+				<li>
+					<p><span class="span-green">Ta'shib</span> : bagian yang tidak ditentukan secara syariat bagi ahli waris.</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
