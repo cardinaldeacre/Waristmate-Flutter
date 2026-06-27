@@ -114,19 +114,54 @@ class _MateriScreenState extends State<MateriScreen> {
                             color: AppColors.textDark,
                           ),
                           customStylesBuilder: (element) {
+                            String greenHexColor =
+                                '#${AppColors.primaryGreen.toARGB32().toRadixString(16).substring(2).padLeft(6, '0')}';
                             if (element.attributes['dir'] == 'rtl') {
-                              String cssHexColor =
-                                  '#${AppColors.primaryGreen.toARGB32().toRadixString(16).substring(2).padLeft(6, '0')}';
                               return {
                                 'font-size': '${_arabicTextSize}px',
                                 'font-family': 'Amiri, serif',
                                 'text-align': 'center',
                                 'line-height': '2',
-                                'color': cssHexColor,
+                                'color': greenHexColor,
                               };
                             }
                             if (element.localName == 'p') {
-                              return {'text-align': 'justify'};
+                              return {
+                                'text-align': 'justify',
+                                'margin': '1px 2px 2px 1px',
+                                'padding': '1px',
+                              };
+                            }
+                            if (element.localName == 'ul' ||
+                                element.localName == 'ol') {
+                              return {'padding': '0px 1px 1px 16px'};
+                            }
+                            if (element.localName == 'i') {
+                              return {
+                                'font-style': 'italic',
+                                'color': greenHexColor,
+                                'font-weight': '500',
+                              };
+                            }
+                            if (element.localName == 'h2') {
+                              return {'text-align': 'center'};
+                            }
+                            if (element.localName == 'h3' ||
+                                element.localName == 'h4') {
+                              return {
+                                'color': greenHexColor,
+                                'margin': '0px',
+                                'padding': '0px',
+                              };
+                            }
+                            if (element.classes.contains('span-blue')) {
+                              return {'color': '#0a4fb6'};
+                            }
+                            if (element.classes.contains('span-green')) {
+                              return {'color': greenHexColor};
+                            }
+                            if (element.classes.contains('orange')) {
+                              return {'color': '#c5681c'};
                             }
                             return null;
                           },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:html/dom.dart' as dom;
 import 'dart:math';
+import 'package:waristmate_app/core/utils/html_utils.dart';
 
 class NativeFlutterTable extends StatelessWidget {
   final dom.Element tableElement;
@@ -20,9 +21,9 @@ class NativeFlutterTable extends StatelessWidget {
       final cells = row.getElementsByTagName('td');
       if (cells.length == 3) {
         tableData.add({
-          'key': cells[0].text.trim(),
-          'separator': cells[1].text.trim(),
-          'value': cells[2].text.trim(),
+          'key': HtmlUtils.cleanText(cells[0].text),
+          'separator': HtmlUtils.cleanText(cells[1].text),
+          'value': HtmlUtils.cleanText(cells[2].text),
         });
       }
     }
@@ -50,7 +51,7 @@ class NativeFlutterTable extends StatelessWidget {
                 ),
                 columnWidths: {
                   0: FlexColumnWidth(1),
-                  1: FlexColumnWidth(0.2),
+                  1: FlexColumnWidth(0.05),
                   2: FlexColumnWidth(5),
                 },
                 children: tableData.map((data) {

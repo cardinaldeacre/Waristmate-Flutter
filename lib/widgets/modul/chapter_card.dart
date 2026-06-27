@@ -37,156 +37,245 @@ class ChapterCard extends StatelessWidget {
           highlightColor: AppColors.primaryGreen.withValues(alpha: 0.05),
           onTap: () {
             String dummyHtml = '''
-            <div id="bab-1">
-              <div id="header-bab">
-                <h1>BAB 1</h1>
-                <h1>PENGENALAN ILMU FARAIDH</h1>
-              </div>
+<div id="bab-3">
+	<div id="header-bab">
+		<h2>BAB 3 </br>
+            SEBAB-SEBAB WARISAN</h2>
+	</div>
+	<div class="materi3">
+		<h3>Pembagian berdasarkan sebab warisan</h3>
+		<p>Melihat dari sebab-sebab warisan yang ada, terdapat tiga bagian pewaris dibagi:</p>
+		<ol style="list-style: none">
+			<li class="list-sebab">
+				<h4><span>A. Kerabat</span></h4>
+				<ul type="square" class="list-kerabat">
+					<li>
+						<p class="poin-kerabat"><i>Asl</i> (Asal-usul/Sesepuh)</p>
+						<ol>
+							<li>
+								<p>Ayah.</p>
+							</li>
+							<li>
+								<p>Ibu.</p>
+							</li>
+							<li>
+								<p>Kakek(dari pihak ayah).</p>
+							</li>
+							<li>
+								<p>Nenek(dari pihak ibu).</p>
+							</li>
+							<li>
+								<p>Nenek(dari pihak ayah, dan seterusnya).</p>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<p class="poin-kerabat"><i>Furu'</i> (Keturunan)</p>
+						<ol>
+							<li>Anak laki-laki.</li>
+							<li>Anak perempuan.</li>
+							<li>Cucu laki-laki / perempuan dari anak laki-laki, dan keturunannya.</li>
+						</ol>
+					</li>
+					<li>
+						<p class="poin-kerabat">Kerabat Dekat</p>
+						<ol>
+							<li>
+								<p>Saudara sekandung.</p>
+							</li>
+							<li>
+								<p>Saudari sekandung.</p>
+							</li>
+							<li>
+								<p>Saudara seayah.</p>
+							</li>
+							<li>
+								<p>Saudari seayah.</p>
+							</li>
+							<li>
+								<p>Saudara seibu.</p>
+							</li>
+							<li>
+								<p>Saudari seibu, dan anak-anak mereka.</p>
+							</li>
+							<li>
+								<p>Anak laki-laki dari saudara sekandung.</p>
+							</li>
+							<li>
+								<p>Anak laki-laki dari saudara seayah.</p>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<p class="poin-kerabat">Kerabat Jauh</p>
+						<ol>
+							<li>
+								<p>Paman sekandungan (saudara kandung dari ayah si mayit / kerabat jauh).</p>
+							</li>
+							<li>
+								<p>Paman seayah (saudara ayah tapi berbeda ibu).</p>
+							</li>
+							<li>
+								<p>Anak laki-laki dari paman sekandung.</p>
+							</li>
+							<li>
+								<p>Anak laki-laki dari paman seayah.</p>
+							</li>
+						</ol>
+					</li>
+				</ul>
+				<h4><span>B. Suami Istri.</span></h4>
+				<h4><span>C. Budak yang dimerdekakan.</span></h4>
+			</li>
+		</ol>
+		<h3>Pembagian ahli waris dari pria dan wanita.</h3>
+		<ul type="square" class="list-ahli-waris">
+			<li>
+				<h4 class="pewaris-pria" style="color: #0a8138; font-weight: 500">
+					Pewaris dari kalanagan <span>Pria</span> sebanyak 15 orang, yaitu:
+				</h4>
+				<ul>
+					<li>
+						<p>Ayah.</p>
+					</li>
+					<li>
+						<p>Kakek.</p>
+					</li>
+					<li>
+						<p>Anak laki-laki.</p>
+					</li>
+					<li>
+						<p>Cucu laki-laki dari Anak laki-laki.</p>
+					</li>
+					<li>
+						<p>Saudara sekandung.</p>
+					</li>
+					<li>
+						<p>Saudara seayah.</p>
+					</li>
+					<li>
+						<p>Saudara seibu.</p>
+					</li>
+					<li>
+						<p>Anak laki-laki dari saudara kandung.</p>
+					</li>
+					<li>
+						<p>Anak laki-laki dari saudara seayah.</p>
+					</li>
+					<li>
+						<p>Paman sekandung.</p>
+					</li>
+					<li>
+						<p>Paman seayah.</p>
+					</li>
+					<li>
+						<p>Anak laki-laki dari paman sekandung.</p>
+					</li>
+					<li>
+						<p>Anak laki-laki dari paman seayah.</p>
+					</li>
+					<li>
+						<p>Suami.</p>
+					</li>
+					<li>
+						<p>Lelaki yang dimerdekakan.</p>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h4 class="pewaris-wanita" style="color: #0a8138; font-weight: 500">
+					Pewaris dari kalangan <span>Wanita</span> sebanyak 10 orang, yaitu:
+				</h4>
+				<ul>
+					<li>
+						<p>Ibu.</p>
+					</li>
+					<li>
+						<p>Nenek dari pihak ibu.</p>
+					</li>
+					<li>
+						<p>Nenek dari pihak ayah.</p>
+					</li>
+					<li>
+						<p>Anak Perempuan.</p>
+					</li>
+					<li>
+						<p>Cucu perempuan dari Anak laki-laki.</p>
+					</li>
+					<li>
+						<p>Saudari sekandung.</p>
+					</li>
+					<li>
+						<p>Saudari seayah.</p>
+					</li>
+					<li>
+						<p>Saudari seibu.</p>
+					</li>
+					<li>
+						<p>Istri.</p>
+					</li>
+					<li>
+						<p>Wanita merdeka.</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<h3>Jenis-jenis ahli waris</h3>
+		<ul class="list-jenis-ahli-waris">
+			<li>
+				<h4>
+					Ahli waris yang memperoleh bagian warisan yang sudah ditentukan (berdasarkan ketentuan
+					syariat):
+				</h4>
+			</li>
 
-              <div class="materi1">
-                <h3>Definisi</h3>
-                <table class="definisi">
-                  <tr>
-                    <td>Bahasa</td>
-                    <td>:</td>
-                    <td>jamak dari kata <i>fardhu</i>, artinya kebijakan.</td>
-                  </tr>
-                  <tr>
-                    <td>Istilah</td>
-                    <td>:</td>
-                    <td>ilmu yang mempelajari bagaimana cara membagi warisan diantara para ahli waris.</td>
-                  </tr>
-                  <tr>
-                    <td>Subjek</td>
-                    <td>:</td>
-                    <td>Warisan.</td>
-                  </tr>
-                  <tr>
-                    <td>Tujuan</td>
-                    <td>:</td>
-                    <td>Menyampaikan hak-hak kepada mereka yang berhak.</td>
-                  </tr>
-                  <tr>
-                    <td>Landasan</td>
-                    <td>:</td>
-                    <td>Al-Quran, Hadits, dan Ijma'.</td>
-                  </tr>
-                  <tr>
-                    <td>Hukum mempelajarinya</td>
-                    <td>:</td>
-                    <td>
-                      <i>Fardhu Kifayah</i>, jika sebagian orang telah memenuhinya, maka beban tersebut menjadi tanggungan yang lain.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Hukum Pelaksanaannya</td>
-                    <td>:</td>
-                    <td><i>Wajib</i>, ketika membagi harta warisan.</td>
-                  </tr>
-                </table>
+			<p>
+				<span>Semua perempuan kecuali budak perempuan yang telah dimerdekakan</span>, dan dari
+				kalangan laki-laki yakni:
+				<span>suami, saudara laki-laki seibu, ayah, dan kakek dalam beberapa kondisi tertentu</span
+				>. Mereka inilah yang disebut sebagai ahli waris yang memiliki bagian warisan yang sudah
+				ditentukan.
+			</p>
 
-                <div class="dalil">
-                  <h2>Dalil Hukum</h2>
-                  <div class="content-ayat">
-                    <p dir="rtl">
-                    لِّلرِّجَالِ نَصِيبٌ مِّمَّا تَرَكَ ٱلْوَٰلِدَانِ وَٱلْأَقْرَبُونَ وَلِلنِّسَآءِ نَصِيبٌ مِّمَّا تَرَكَ ٱلْوَٰلِدَانِ وَٱلْأَقْرَبُونَ مِمَّا قَلَّ مِنْهُ أَوْ كَثُرَ نَصِيبًا مَّفْرُوضً
-                    </p>
-                    <p>
-                      Bagi laki-laki ada hak bagian dari harta peninggalan kedua orang tua dan kerabatnya, dan
-                      bagi perempuan ada hak bagian (pula) dari harta peninggalan kedua orang tua dan
-                      kerabatnya, baik sedikit atau banyak menurut bagian yang telah ditetapkan. [Q.S 4:
-                      An-Nisa’ (7)].
-                    </p>
+			<li>
+				<h4>Pewaris hanya melalui taʿṣīb:</h4>
+			</li>
 
-                    <p dir="rtl">يُوصِيكُمُ اللَّهُ فِي أَوْلَادِكُمْ لِلذَّكَرِ مِثْلُ حَظِّ الْأُنثَيَيْنِ 
-                    </p>
-                    <p>
-                      Allah mensyariatkan (mewajibkan) kepadamu tentang (pembagian warisan untuk) anak-anakmu,
-                      (yaitu) bagian seorang anak laki-laki sama dengan bagian dua orang anak perempuan. [Q.S 4:
-                      An-Nisa’ (11)].
-                    </p>
-                  </div>
+			<p>
+				<span
+					>Semua laki-laki kecuali suami dan saudara laki-laki seibu, dan tidak ada wanita yang
+					mewarisi kecuali budak perempuan yang dimerdekakan </span
+				>. Mereka disebut <span><i>'Asabah</i></span
+				>, dan mereka mewarisi apa yang tersisa setelah bagian tetap didistribusikan.
+			</p>
 
-                  <div class="content-hadits">
-                    <p dir="rtl">
-                      يَا أَبَا هُرَيْرَةَ تَعَلَّمُوا الْفَرَائِضَ وَعَلِّمُوهَا، فَإِنَّهُ نِصْفُ الْعِلْمِ
-                      وَهُوَ يُنْسَى، وَهُوَ أَوَّلُ شَيْءٍ يُنْزَعُ مِنْ أُمَّتِي
-                      <br />
-                      رواه ابن ماجه
-                    </p>
-                    <p>
-                      "Wahai Abu Hurairah, belajarlah ilmu faraidh dan ajarkanlah, karena sesungguhnya ia adalah
-                      setengah dari ilmu. Dan ilmu itu akan dilupakan dan dia adalah ilmu yang pertama kali
-                      dicabut dari umatku.” (HR. Ibnu Majah).
-                    </p>
+			<li>
+				<h4>
+					Terkadang, dapat memperoleh bagian warisan melalui kedua jalur tersebut, bahkan
+					seluruhnya:
+				</h4>
+			</li>
 
-                    <p dir="rtl">
-                      عَنِ ابْنِ عَبَّاسٍ رَضِيَ اللهُ عَنْهُمَا قَالَ: قَالَ رَسُوْلُ اللهِ صَلَّى اللهُ
-                      عَلَيْهِ وَسَلَّمَ:
-                      <span>
-                        أَلْحِقُوا الفَرائِضَ بأَهْلِها، فَمَا أَبْقَتِ الفَرائِضُ فَلِأَوْلى رَجُلٍ ذَكَرٍ. </span
-                      ><br />
-                      رواه البُخَارِيُّ وَمُسْلِمٌ
-                    </p>
-                    <p>
-                      Dari Ibnu Abbas radhiyallahu ‘anhuma, ia berkata: Rasulullah shallallahu ‘alaihi wa sallam
-                      bersabda: "Bagikanlah harta warisan kepada yang berhak (sesuai dengan bagian yang telah
-                      ditentukan), maka jika masih tersisa setelah pembagian warisan tersebut, serahkanlah
-                      kepada kerabat laki-laki terdekat." (HR. Bukhari dan Muslim).
-                    </p>
+			<p>Contohnya adalah ayah dan kakek.</p>
 
-                    <p dir="rtl">
-                      :عَنْ أَبِي أُمَامَةَ رَضِيَ اللهُ عَنْهُ قَالَ: سَمِعْتُ رَسُولَ اللَّهِ صَلَّى اللَّهُ
-                      عَلَيْهِ وَسَلَّمَ يَقُولُ
-                      <br />
-                      <span>
-                        إِنَّ اللَّهَ قَدْ أَعْطَى كُلَّ ذِي حَقٍّ حَقَّهُ، فَلَا وَصِيَّةَ لِوَارِثٍ </span
-                      ><br />
-                      رواه أبو داود وابن ماجه
-                    </p>
+			<li>
+				<h4>
+					Terkadang, dapat memperoleh bagian warisan melalui kedua jalur tersebut, tetapi tidak
+					seluruhnya:
+				</h4>
+				<p>
+					Contohnya adalah
+					<span
+						>anak perempuan, cucu perempuan dari anak laki-laki, saudari sekandung, dan saudari
+						seayah yang lebih anggotanya.</span
+					>.
+				</p>
+			</li>
+		</ul>
+	</div>
+</div>
 
-                    <p>
-                      Dari Abu Umamah radhiyallahu 'anhu, ia berkata: Aku mendengar Rasulullah shallallahu
-                      'alaihi wa sallam bersabda: "Sesungguhnya Allah telah memberikan setiap orang yang berhak
-                      akan haknya, maka tidak ada wasiat untuk ahli waris." (HR. Abu Dawud dan Ibnu Majah).
-                    </p>
-                  </div>
-                </div>
-
-                <div class="tirkah">
-                  <h3>Tirkah</h3>
-                  <table class="tabel-tirkah">
-                    <tr>
-                      <td>Bahasa</td>
-                      <td>:</td>
-                      <td>sumber kata dari <i>Taraka</i>, berarti yang ditinggalkan.</td>
-                    </tr>
-                    <tr>
-                      <td>Istilah</td>
-                      <td>:</td>
-                      <td>
-                        Harta yang tidak boleh diberikan kepada ahli waris sebelum hak-hak yang berkaitan dengan harta peninggalan telah terurus seluruhnya.
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-
-                <div class="hak">
-                  <h2>Hak-Hak Yang Berkaitan Dengan Tirkah</h2>
-                  <p>Ada 4 hak yang Berkaitan dengan harta peninggalan si mayit :</p>
-                  <div class="list-hak">
-                    <ol>
-                      <li>Biaya penyelenggaraan jenazah.</li>
-                      <li>Hutang.</li>
-                      <li>Sepertiga Wasiat atau Kurang kepada anggota keluarga bukan ahli waris.</li>
-                      <li>Pembagian Harta Warisan.</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
-            ''';
-
+''';
             Navigator.push(
               context,
               MaterialPageRoute(
