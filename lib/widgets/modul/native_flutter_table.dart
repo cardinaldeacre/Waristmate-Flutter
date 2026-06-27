@@ -16,18 +16,17 @@ class NativeFlutterTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> tableData = [];
+    final List<List<String>> tableData = [];
     for (final row in tableElement.getElementsByTagName('tr')) {
       final cells = row.getElementsByTagName('td');
-      if (cells.length == 3) {
-        tableData.add({
-          'key': HtmlUtils.cleanText(cells[0].text),
-          'separator': HtmlUtils.cleanText(cells[1].text),
-          'value': HtmlUtils.cleanText(cells[2].text),
-        });
+      if (cells.isNotEmpty) {
+        tableData.add(
+          cells.map((cell) => HtmlUtils.cleanText(cell.text)).toList(),
+        );
       }
     }
 
+    final columnCount = tableData.first.length;
     final double screenWidth = MediaQuery.of(context).size.width - 32;
     final double finalTableWidth = max(screenWidth, fontSize * 70);
 
@@ -50,17 +49,14 @@ class NativeFlutterTable extends StatelessWidget {
                   bottom: BorderSide(color: Colors.grey.shade300, width: 1.0),
                 ),
                 columnWidths: {
-                  0: FlexColumnWidth(1),
-                  1: FlexColumnWidth(0.05),
-                  2: FlexColumnWidth(5),
+                  for (int i = 0; i < columnCount; i++)
+                    i: const IntrinsicColumnWidth(),
                 },
                 children: tableData.map((data) {
                   return TableRow(
-                    children: [
-                      _buildTableCell(data['key']!, isKey: true),
-                      _buildTableCell(data['separator']!, isSeparator: true),
-                      _buildTableCell(data['value']!),
-                    ],
+                    children: data
+                        .map((cell) => _buildTableCell(cell))
+                        .toList(),
                   );
                 }).toList(),
               ),
