@@ -17,6 +17,10 @@ class NativeFlutterTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<List<String>> tableData = [];
+
+    final bool hasBorder = tableElement.classes.contains('table-border');
+    final bool isCentered = tableElement.classes.contains('table-center');
+
     for (final row in tableElement.getElementsByTagName('tr')) {
       final cells = row.getElementsByTagName('td');
       if (cells.isNotEmpty) {
@@ -41,13 +45,14 @@ class NativeFlutterTable extends StatelessWidget {
             child: SizedBox(
               width: finalTableWidth,
               child: Table(
-                border: TableBorder(
-                  horizontalInside: BorderSide(
-                    color: Colors.grey.shade300,
-                    width: 1.0,
-                  ),
-                  bottom: BorderSide(color: Colors.grey.shade300, width: 1.0),
-                ),
+                border: hasBorder
+                    ? TableBorder.all(color: AppColors.primaryGreen, width: 1)
+                    : TableBorder(
+                        horizontalInside: BorderSide(
+                          color: AppColors.primaryGreen,
+                        ),
+                        bottom: BorderSide(color: AppColors.primaryGreen),
+                      ),
                 columnWidths: {
                   for (int i = 0; i < columnCount; i++)
                     i: const IntrinsicColumnWidth(),
@@ -55,7 +60,10 @@ class NativeFlutterTable extends StatelessWidget {
                 children: tableData.map((data) {
                   return TableRow(
                     children: data
-                        .map((cell) => _buildTableCell(cell))
+                        .map(
+                          (cell) =>
+                              _buildTableCell(cell, isCentered: isCentered),
+                        )
                         .toList(),
                   );
                 }).toList(),
@@ -69,6 +77,7 @@ class NativeFlutterTable extends StatelessWidget {
 
   Widget _buildTableCell(
     String text, {
+    bool isCentered = false,
     bool isKey = false,
     bool isSeparator = false,
   }) {
@@ -76,7 +85,11 @@ class NativeFlutterTable extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4),
       child: Text(
         text,
-        textAlign: isSeparator ? TextAlign.center : TextAlign.left,
+        textAlign: isSeparator
+            ? TextAlign.center
+            : isCentered
+            ? TextAlign.center
+            : TextAlign.left,
         style: TextStyle(
           fontSize: fontSize,
           fontWeight: isKey ? FontWeight.bold : FontWeight.normal,
