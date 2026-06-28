@@ -109,7 +109,7 @@
 		</div>
 
 		<h4>Tabel Pembagian Ahli Waris</h4>
-		<table class="table-border table-center">
+		<table class="table-border table-center table-definition">
 			<tr>
 				<td>1/2</td>
 				<td>1/4</td>

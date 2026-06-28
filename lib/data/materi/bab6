@@ -1,0 +1,137 @@
+<div id="bab-6">
+	<div id="header-bab">
+		<h2>
+			BAB 6<br />
+			HAJB
+		</h2>
+	</div>
+
+	<div class="materi6">
+		<h3>Definisi</h3>
+		<table class="table-definition">
+			<tr>
+				<td>Bahasa</td>
+				<td>:</td>
+				<td>Pencegahan dan perampasan.</td>
+			</tr>
+			<tr>
+				<td>Istilah</td>
+				<td>:</td>
+				<td>
+					Mencegah ahli waris untuk mewarisi, seluruhnya atau sebagian, karena kehadiran orang yang
+					menghalangi untuk mendapatkannya.
+				</td>
+			</tr>
+		</table>
+
+		<h3>
+			<br />
+			Pembagiannya
+		</h3>
+		<p class="header-hujub"><i>Hajb </i>terbagi menjadi 2 bagian:</p>
+		<ol class="list-hujub">
+			<li>
+				<i class="span-blue">Hajb bi-l-wasf: </i>terdapat perilaku / sifat yang menjadikan ahli
+				waris tidak mendapatkan warisan, seperti
+				<span class="orange">pembunuhan, budak, perbedaan agama, dan murtad, dll.</span>
+			</li>
+			<li>
+				<i class="span-blue">Hajb bi-l-saksh: </i>terdapat ahli waris yang membuat ahli waris tidak
+				mendapatkan warisan, ini terbagi menjadi 2 katagori:
+				<ol type="a">
+					<li>
+						<i class="span-blue">Hajb nuqshan: </i>Menurunnya bagian ahli waris karena adanya orang
+						lain, seperti pemindahan hak suami dari ½ menjadi ¼ karena terdapat keturunan
+						(anak-anak).
+					</li>
+					<li>
+						<i class="span-blue">Hajb hirman: </i>Terhalangannya bagian ahli waris yang ada karena
+						adanya orang lain yang menghalanginya, seperti pemotongan dari hak warisan kakek karena
+						ada ayah.
+					</li>
+				</ol>
+			</li>
+		</ol>
+
+		<h3>Ahli waris yang tidak terkena hujub</h3>
+		<p>
+			Orang-orang yang <span class="span-blue">tidak terkena <i>hajb hirman </i></span>adalah:
+		</p>
+		<ol style="font-weight: 500" class="span-blue">
+			<li>Ayah.</li>
+			<li>Ibu.</li>
+			<li>Anak laki-laki.</li>
+			<li>Anak perempuan.</li>
+			<li>Suami.</li>
+			<li>Istri.</li>
+		</ol>
+
+		<h3>Ahli waris pria yang terkena hujub hirman</h3>
+		<ol>
+			<li>
+				<span class="orange">Kakek: </span>terhalang oleh ayah, dan kakek dekat menghalang kakek
+				jauh.
+			</li>
+			<li>
+				<span class="orange">Saudara sekandung: </span>terhalang oleh ayah dari keturunan lelaki.
+			</li>
+			<li>
+				<span class="orange">Saudara seayah: </span>terhalang oleh saudara/i sekandung yang Ashabah
+				bi-l-ghair, dan ahli waris yang menghalangi saudara sekandung.
+			</li>
+			<li>
+				<span class="orange">Saudara seibu: </span>terhalang oleh ayah, kakek dan keturunan
+				laki-laki.
+			</li>
+			<li>
+				<span class="orange">Cucu laki-laki: </span>terhalang oleh anak laki-laki, dan cicit
+				laki-laki terhalang oleh cucu laki-laki.
+			</li>
+			<li>
+				<span class="orange">Anak laki-laki dari saudara sekandung: </span>terhalang oleh ayah,
+				kakek, anak laki-laki, cucu laki-laki, saudara sekandung, dan saudara seayah.
+			</li>
+			<li>
+				<span class="orange">Anak laki-laki dari saudara seayah: </span>terhalang oleh anak
+				laki-laki dari saudara sekandung, dan ahli waris yang menghalangi anak laki-laki dari
+				saudara sekandung.
+			</li>
+			<li>
+				<span class="orange">Paman sekandung: </span>terhalang oleh anak laki-laki dari saudara
+				seayah, dan ahli waris yang menghalangi anak laki-laki dari saudara seayah.
+			</li>
+			<li>
+				<span class="orange">Paman seayah: </span>terhalang oleh paman sekandung dan ahli waris yang
+				menghalangi paman sekandung.
+			</li>
+			<li>
+				<span class="orange">Anak laki-laki dari paman sekandung: </span>terhalang oleh paman seayah
+				dan ahli waris yang menghalangi paman seayah.
+			</li>
+			<li>
+				<span class="orange">Anak laki-laki dari paman seayah: </span>terhalang oleh paman seayah
+				dan ahli waris yang menghalangi anak dari paman sekandung.
+			</li>
+		</ol>
+
+		<h3>Ahli waris wanita yang terkena hujub hirman</h3>
+		<ol class="list-hujub">
+			<li><span class="orange">Nenek: </span>terhalang oleh ibu.</li>
+			<li>
+				<span class="orange">Cucu perempuan: </span>terhalang oleh anak laki-laki, dan 2 anak
+				perempuan atau lebih.
+			</li>
+			<li>
+				<span class="orange">Saudari sekandung: </span>terhalang oleh ayah dan keturunan laki-laki.
+			</li>
+			<li>
+				<span class="orange">Saudari seayah: </span>terhalang oleh ayah, keturunan lelaki, saudari
+				sekandung jika dia <i class="span-blue">Ashabah ma'-l-ghoir</i>, dan 2 saudari sekandung
+				jika mereka tidak <i class="span-blue">Ta'shib bi-l-ghoir</i>.
+			</li>
+			<li>
+				<span class="orange">Saudara seibu: </span>terhalang oleh ayah, kakek dan keturunan lelaki.
+			</li>
+		</ol>
+	</div>
+</div>

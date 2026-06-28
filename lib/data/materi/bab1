@@ -6,7 +6,7 @@
 
 	<div class="materi1">
 		<h3>Definisi</h3>
-		<table class="definisi">
+		<table class="table-definition">
 			<tr>
 				<td>Bahasa</td>
 				<td>:</td>
@@ -116,7 +116,7 @@
 		</div>
 		<div class="tirkah">
 			<h3><br>Tirkah</h3>
-			<table class="tabel-tirkah">
+			<table class="table-definition">
 				<tr>
 					<td>Bahasa</td>
 					<td>:</td>
