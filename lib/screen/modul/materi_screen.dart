@@ -4,9 +4,10 @@ import 'package:waristmate_app/core/config/theme.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:waristmate_app/widgets/modul/chapter_modal.dart';
 import 'package:waristmate_app/widgets/modul/floating_menu.dart';
-import 'package:waristmate_app/widgets/modul/native_flutter_table.dart';
+import 'package:waristmate_app/widgets/modul/table_share.dart';
 import 'package:waristmate_app/widgets/modul/materi_header.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:waristmate_app/widgets/modul/table_definition.dart';
 import 'package:waristmate_app/widgets/profile/preference_card.dart';
 
 class MateriScreen extends StatefulWidget {
@@ -125,6 +126,18 @@ class _MateriScreenState extends State<MateriScreen> {
                                 'color': greenHexColor,
                               };
                             }
+                            if (element.classes.contains('span-blue')) {
+                              return {'color': '#0a4fb6', 'font-weight': '500'};
+                            }
+                            if (element.classes.contains('span-green')) {
+                              return {
+                                'color': greenHexColor,
+                                'font-weight': '500',
+                              };
+                            }
+                            if (element.classes.contains('orange')) {
+                              return {'color': '#c5681c', 'font-weight': '500'};
+                            }
                             if (element.localName == 'p') {
                               return {
                                 'text-align': 'justify',
@@ -154,21 +167,18 @@ class _MateriScreenState extends State<MateriScreen> {
                                 'padding': '0px',
                               };
                             }
-                            if (element.classes.contains('span-blue')) {
-                              return {'color': '#0a4fb6'};
-                            }
-                            if (element.classes.contains('span-green')) {
-                              return {'color': greenHexColor};
-                            }
-                            if (element.classes.contains('orange')) {
-                              return {'color': '#c5681c'};
-                            }
                             return null;
                           },
 
                           customWidgetBuilder: (element) {
-                            if (element.localName == 'table') {
-                              return NativeFlutterTable(
+                            if (element.classes.contains('table-definition')) {
+                              return TableDefinition(
+                                tableElement: element,
+                                fontSize: _latinTextSize,
+                              );
+                            }
+                            if (element.classes.contains("table-share")) {
+                              return NativeShareTable(
                                 tableElement: element,
                                 fontSize: _latinTextSize,
                               );
