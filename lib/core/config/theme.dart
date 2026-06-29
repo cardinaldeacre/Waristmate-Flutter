@@ -17,6 +17,8 @@ class AppColors {
   static const Color errorRed = Color(0xFFE53935);
   static const Color warningYellow = Color(0xFFFFC107);
   static const Color gold = Color(0xFFF59E0B);
+  static const Color orange = Color(0xFFC5681C);
+  static const Color spanBlue = Color(0xFF1E88E5);
 }
 
 class AppTheme {
