@@ -27,35 +27,35 @@
 
 		<br />
 		<p>
-			Jadi, <span>'Radd' adalah kebalikan dari 'Aul' (penambahan bagian)</span>. Ketika
+			Jadi, <span class="span-blue">'Radd' adalah kebalikan dari 'Aul' (penambahan bagian)</span>. Ketika
 			<span class="orange">terdapat kelebihan dari warisan</span> setelah ahli waris yang memiliki
 			bagian tertentu menerima bagiannya, dan
 			<span class="orange">tidak ada ahli waris 'Ashabah</span>, maka kelebihan tersebut diberikan
 			kepada ahli waris yang menerima bagian tertentu sesuai dengan besar bagian yang diterimanya.
 		</p>
 
-		<h3><br />Syarat-syarat Radd</h3>
+		<h3>Syarat-syarat Radd</h3>
 		<p>Tidak ada penerapan 'Radd' dalam suatu kasus kecuali jika terpenuhi tiga syarat berikut:</p>
-		<ol class="list-radd">
-			<li>Tidak adanya ahli waris 'Ashabah.</li>
-			<li>Tidak adanya wali Ashabah.</li>
-			<li>Terdapat sisa dari warisan.</li>
+		<ol class="list-radd ">
+			<li><span class="span-blue">Tidak adanya ahli waris 'Ashabah</span></li>
+			<li><span class="span-blue">Tidak adanya wali Ashabah</span></li>
+			<li><span class="span-blue">Terdapat sisa dari warisan</span></li>
 		</ol>
 
-		<h3><br />Penerima Radd</h3>
+		<h3>Penerima Radd</h3>
 		<p>
 			Ahli waris yang mendapat 'Radd' adalah semua ahli waris yang memiliki bagian tetap kecuali
 			pasangan suami istri, yaitu:
 		</p>
-		<ol class="list-radd span-blue" style="font-weight: 500">
-			<li>Anak perempuan</li>
-			<li>Anak perempuan dari anak laki-laki</li>
-			<li>Ibu</li>
-			<li>Nenek (ibu dari ibu)</li>
-			<li>Saudara perempuan seibu</li>
-			<li>Saudara perempuan sekandung</li>
-			<li>Saudara perempuan seayah</li>
-			<li>Anak perempuan dari saudara laki-laki</li>
+		<ol class="list-radd">
+			<li><span class="span-blue">Anak perempuan</span></li>
+			<li><span class="span-blue">Anak perempuan dari anak laki-laki</span></li>
+			<li><span class="span-blue">Ibu</span></li>
+			<li><span class="span-blue">Nenek (ibu dari ibu)</span></li>
+			<li><span class="span-blue">Saudara perempuan seibu</span></li>
+			<li><span class="span-blue">Saudara perempuan sekandung</span></li>
+			<li><span class="span-blue">Saudara perempuan seayah</span></li>
+			<li><span class="span-blue">Anak perempuan dari saudara laki-laki</span></li>
 		</ol>
 		<br />
 		<p>
@@ -70,7 +70,7 @@
 			penerima.
 		</p>
 
-		<h3><br />Pembagian Radd</h3>
+		<h3>Pembagian Radd</h3>
 		<p>
 			Pembagian sisa harta warisan <i>Radd</i> terbagi menjadi empat bagian, namun salah satunya
 			memiliki cara khusus. Bagian-bagian tersebut adalah:
@@ -207,7 +207,7 @@
                             Asl Masalah
                         </td>
                         <td style="font-weight: 600; text-align: center">4</td>
-                        <td colspan="3" class="orange" style="font-weight: 600; text-align: center">4 x <span class="orange">4</span></td>
+                        <td colspan="3" style="font-weight: 600; text-align: center">4 x <span class="span-blue">4</span></td>
                         <td style="font-weight: 600; text-align: center">16</td>
                     </tr>
 					<tr>
@@ -222,8 +222,8 @@
                             Asl Masalah
                         </td>
                         <td style="font-weight: 600; text-align: center">6</td> 
-                        <td style="font-weight: 600; text-align: center"><span class="orange">3</span> + <span class="orange">1</span> = 4</td>
-                        <td colspan="2" style="font-weight: 600; text-align: center">4 x <span class="orange">4</span></td>
+                        <td style="font-weight: 600; text-align: center"><span class="orange">3</span> + <span class="orange">1</span> = <span class="span-blue">4</span></td>
+                        <td colspan="2" style="font-weight: 600; text-align: center"><span class="span-blue">4</span> x <span class="orange">4</span></td>
                         <td colspan="2" style="font-weight: 600; text-align: center">16</td>
                     </tr>
 					<tr>
@@ -252,48 +252,51 @@
 				</p>
 				<table class="table-count table-border">
 					<tr>
+                        <td colspan="3" style="font-weight: 600; text-align: center">
+                            Asl Masalah
+                        </td>
+                        <td style="font-weight: 600; text-align: center">8</td>
+                        <td colspan="3" style="font-weight: 600; text-align: center">8 x <span class="span-blue">5</span></td>
+                        <td style="font-weight: 600; text-align: center">40</td>
+                    </tr>
+					<tr>
 						<td>1</td>
 						<td>Istri</td>
-						<td>1/8</td>
-						<td colspan="2"></td>
-						<td>1/8 x 5/5</td>
-						<td>5/40</td>
-						<td>1/8 total</td>
+						<td style="text-align: center" >1/8 total</td>
+						<td colspan="4" style="text-align: center">1/8</td>
+						<td style="text-align: center">5/40</td>
 					</tr>
+                    <tr>
+                        <td colspan="3" style="font-weight: 600; text-align: center">
+                            Asl Masalah
+                        </td>
+                        <td style="font-weight: 600; text-align: center">6</td> 
+                        <td style="font-weight: 600; text-align: center"><span class="orange">1</span> + <span class="orange">4</span> = <span class="span-blue">5</span></td>
+                        <td colspan="2" style="font-weight: 600; text-align: center"><span class="span-blue">5</span> x <span class="orange">8</span></td>
+                        <td colspan="2" style="font-weight: 600; text-align: center">40</td>
+                    </tr>
 					<tr>
-						<td colspan="8"></td>
+                        <td>2</td>
+                        <td>Ibu</td>
+						<td rowspan="2" style="text-align: center">7/8 sisa</td>
+						<td style="text-align: center">1/6</td>
+						<td style="text-align: center"><span class="orange">1</span>/6</td>
+						<td style="text-align: center">1/5</td>
+						<td rowspan="2" style="text-align: center"> x 7/<span class="orange">8</span></td>
+						<td style="text-align: center">7/40</td>
 					</tr>
 					<tr>
 						<td>1</td>
-						<td>Ibu</td>
-						<td rowspan="2">7/8</td>
-						<td>1/6</td>
-						<td>1/6</td>
-						<td>1/5 x 7/8</td>
-						<td>7/40</td>
-						<td rowspan="2">7/8 sisa</td>
-					</tr>
-					<tr>
-						<td>2</td>
 						<td>Anak Perempuan</td>
-						<td>2/3</td>
-						<td>4/6</td>
-						<td>4/5 x 7/8</td>
-						<td>28/40</td>
-					</tr>
-					<tr>
-						<td colspan="2"></td>
-						<td class="orange">8/8</td>
-						<td class="orange">6</td>
-						<td class="orange">6 => 5</td>
-						<td class="orange">5/5 x 7/8</td>
-						<td class="orange">35/40</td>
-						<td class="orange">40/40</td>
+						<td style="text-align: center">2/3</td>
+						<td style="text-align: center"><span class="orange">4</span>/6</td>
+						<td style="text-align: center">4/5</td>
+						<td style="text-align: center">28/40</td>
 					</tr>
 				</table>
 				<br />
 				<p>
-					Jika kita melihat kedua contoh tersebut, suami/istri mendapat bagian tetap dari total
+					Jika kita melihat kedua contoh tersebut, <span class="span-blue">suami/istri mendapat bagian tetap dari total</span>
 					keseluruhan harta warisan, kemudian yang lain mengalami <i>Radd</i> untuk berbagi sisa
 					harta warisan dari bagian suami/istri.
 				</p>
