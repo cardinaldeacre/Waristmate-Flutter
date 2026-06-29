@@ -1,0 +1,429 @@
+<div id="bab-8">
+	<div id="header-bab">
+		<h2>
+			BAB 8<br />
+			METODE DASAR PEMBAGIAN WARISAN
+		</h2>
+	</div>
+
+	<div class="materi8">
+		<h3>Definisi dan Konsep Dasar</h3>
+		<p>
+			<span class="span-blue">Distribusi </span>adalah menghitung angka terkecil yang dapat
+			digunakan untuk menyelesaikan masalah baik dengan pembagian maupun untuk menghitung
+			bagian-bagiannya.
+		</p>
+		<p>
+			Mengetahui Asl Masalah merupakan hal penting bagi setiap peneliti dalam ilmu waris. Tujuannya
+			adalah untuk mengelompokkan pemilik bagian tertentu sesuai dengan bagiannya masing-masing.
+			Metode ini harus dilakukan dengan teliti.
+		</p>
+		<p>
+			Angka yang digunakan dalam pembagian adalah <span class="span-blue">angka terkecil</span> yang
+			merupakan kelipatan dari penyebut bagian
+			<span class="orange">(1/2, 1/3, 1/4, 1/6, 1/8, 1/12)</span>. Jika terdapat dua atau lebih dari
+			penyebut itu, kita mengambil angka yang paling besar dari angka-angka terbesar tersebut
+			sebagai penyebut utama <span class="span-blue">(KPK)</span>, kemudian menggunakan angka
+			tersebut sebagai dasar dalam pembagian rasio sesuai kebutuhan.
+		</p>
+
+		<h3><br />Metode Distribusi</h3>
+		<p>
+			<span class="span-blue">Jika hasil masalah adalah ganjil atau genap</span>, maka bagiannya
+			dihitung sesuai dengan kebutuhan distribusi, seperti dalam aturan pembagian warisan atau
+			hitungan tertentu. Metode distribusinya yaitu:
+		</p>
+		<ol class="list-distribusi">
+			<li>
+				<i class="span-blue">Jika ahli waris semuanya Ashabah: </i> maka Asl Masalahnya adalah
+				jumlah kepala ahli waris jika hanya lelaki saja, dan jika ahli waris Ashabah-nya lelaki dan
+				wanita, maka
+				<span class="orange"
+					>penghitungannya 1 lelaki dihitung 2 kepala dan 1 wanita dihitung 1 kepala</span
+				>, kemudian Asl Masalahnya adalah hasil jumlah diantaranya. <br /><br />
+			</li>
+			<div class="table-wrapper">
+				<table class="table-count table-border">
+					<tr>
+						<td colspan="2" style="text-align: center">Asl Masalah</td>
+						<td>5</td>
+					</tr>
+					<tr>
+						<td>5 Anak Laki-Laki</td>
+						<td>Ashabah</td>
+						<td>5</td>
+					</tr>
+				</table>
+			</div>
+			<br />
+			<table class="table-count table-border">
+				<tr>
+					<td colspan="2" style="text-align: center">Asl Masalah</td>
+					<td>7</td>
+				</tr>
+				<tr>
+					<td>2 Anak Laki-Laki</td>
+					<td rowspan="2">Ashabah</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>3 Anak Perempuan</td>
+					<td>3</td>
+				</tr>
+			</table>
+			<br />
+			<li>
+				<i class="span-blue">Jika ahli waris semuanya memiliki Furudhnya masing-masing: </i>
+				jika dalam suatu persoalan terdapat <span class="orange">satu Furudh</span>, maka asal
+				masalah persoalannya berasal dari sumbernya yaitu dari asumsi tersebut diatas. Dan jika
+				dalam isu tersebut terdapat <span class="orange">lebih dari satu Furudh</span>, maka asal
+				masalahnya adalah faktor persekutuan diantara Furudh tersebut dengan menggunakan rumus KPK.
+				<br /><br />
+				<ul style="list-style-type: none; padding-left: 0">
+					<li>
+						<span class="span-blue">Saham => 1</span> /
+						<span class="orange">4 <= Asl Masalah </span>
+					</li>
+				</ul>
+			</li>
+		</ol>
+
+		<h3><br />Aturan Penyederhanaan Furudh</h3>
+		<p>
+			Para Ulama' telah mengembangkan aturan yang mudah dan disederhanakan yang dapat diketahui oleh
+			seseorang asal mula permasalahannya tanpa usaha lebih, dengan membagi Furudh menjadi 2 jenis:
+		</p>
+		<ul class="list-distribusi">
+			<li>
+				<i class="span-blue">Tipe pertama: </i>
+				<span class="orange">(1/2, 1/4, 1/8)</span> Setengah, seperempat, seperdelapan.
+			</li>
+			<li>
+				<i class="span-blue">Tipe kedua: </i> <span class="orange">(2/3, 1/3, 1/6)</span> Dua per
+				tiga, sepertiga, seperenam.
+			</li>
+		</ul>
+		<p>
+			Jika Furudh nya tipe pertama saja atau tipe kedua saja, maka yang Asl Masalahnya adalah yang
+			paling besar penyebutnya, misal:
+		</p>
+		<ul class="list-distribusi">
+			<li>
+				Jika permasalahannya <span class="orange">(1/2, 1/4)</span> maka Asl Masalahnya adalah
+				<span class="orange">4</span>.
+			</li>
+			<li>
+				Jika permasalahannya <span class="orange">(2/3, 1/6)</span> maka Asl Masalahnya adalah
+				<span class="orange">6</span>.
+			</li>
+		</ul>
+		<p>
+			Tetapi, jika terdapat dua atau lebih Furudh dengan tipe yang berbeda dalam suatu permasalahan,
+			salah satunya adalah tipe pertama yang lainnya adalah tipe kedua, sebagai berikut:
+		</p>
+		<ul class="list-distribusi">
+			<li>
+				Jika <span class="orange">(1/2)</span> tipe pertama tercampur dengan seluruh atau Sebagian
+				tipe kedua, maka Asl Masalahnya adalah <span class="orange">6</span>.
+			</li>
+			<li>
+				Jika <span class="orange">(1/4)</span> tipe pertama tercampur dengan seluruh atau Sebagian
+				tipe kedua, maka Asl Masalahnya adalah <span class="orange">12</span>.
+			</li>
+			<li>
+				Jika <span class="orange">(1/8)</span> tipe pertama tercampur dengan seluruh atau Sebagian
+				tipe kedua, maka Asl Masalahnya adalah <span class="orange">24</span>.
+			</li>
+		</ul>
+		<br />
+
+		<table class="table-count table-border">
+			<tr>
+				<td colspan="2" style="text-align: center">Asl Masalah</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>Suami</td>
+				<td>1/2</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>Saudari Seibu</td>
+				<td>1/6</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>Ibu</td>
+				<td>1/3</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>Paman Sekandung</td>
+				<td>Ashabah</td>
+				<td>-</td>
+			</tr>
+		</table>
+		<br />
+		<table class="table-count table-border">
+			<tr>
+				<td colspan="2" style="text-align: center">Asl Masalah</td>
+				<td>12</td>
+			</tr>
+			<tr>
+				<td>Istri</td>
+				<td>1/4</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>Ibu</td>
+				<td>1/6</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>2 Saudari Seibu</td>
+				<td>1/3</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>Saudara Sekandung</td>
+				<td>Ashabah</td>
+				<td>3</td>
+			</tr>
+		</table>
+		<br />
+		<table class="table-count table-border">
+			<tr>
+				<td colspan="2" style="text-align: center">Asl Masalah</td>
+				<td>24</td>
+			</tr>
+			<tr>
+				<td>Istri</td>
+				<td>1/8</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>Ibu</td>
+				<td>1/6</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>Cucu Perempuan</td>
+				<td>1/6</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>Anak Perempuan</td>
+				<td>1/2</td>
+				<td>12</td>
+			</tr>
+			<tr>
+				<td>Saudara Kandung</td>
+				<td>Ashabah</td>
+				<td>1</td>
+			</tr>
+		</table>
+
+		<h3><br />Empat Sudut Pandang Distribusi</h3>
+		<p>
+			Untuk menetapkan metode distribusi, perlu diketahui perbandingan antara empat sudut pandang,
+			yaitu: (<i class="span-blue">Tamatsul, Tadakhul, Tawafuq, Tabayyun</i>)
+		</p>
+		<ol class="list-distribusi">
+			<li>
+				<i class="span-blue">Tamatsul: </i> Ketika salah satu dari dua angka tersebut mirip dengan
+				yang lain seperti 3 dengan 3. Cara distribusi:
+				<span class="orange">cukup diambil penyebutnya</span>. <br /><br />
+				<table class="table-count table-border">
+					<tr>
+						<td colspan="2" style="text-align: center">Asl Masalah</td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td>Suami</td>
+						<td>1/2</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>Saudari Kandung</td>
+						<td>1/2</td>
+						<td>1</td>
+					</tr>
+				</table>
+				<br />
+				<table class="table-count table-border">
+					<tr>
+						<td colspan="2" style="text-align: center">Asl Masalah</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>2 Saudari Kandung</td>
+						<td>2/3</td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td>2 Saudara Seibu</td>
+						<td>1/2</td>
+						<td>1</td>
+					</tr>
+				</table>
+			</li>
+			<br />
+			<li>
+				<i class="span-blue">Tadakhul: </i> Ketika salah satu dari dua angka lebih besar dari yang
+				lain, tetapi angka besar ini merupakan dua kali lipat dari angka kecil. Artinya jika yang
+				lebih besar dikurangi dengan yang lebih kecil sebanyak dua kali atau lebih, maka tidak ada
+				yang tersisa. Seperti 2 dengan 4 atau dengan 8. Cara distribusi:
+				<span class="orange"
+					>mengambil angka yang lebih besar dan menempatkan yang lebih kecil di bawah yang lebih
+					besar.</span
+				>
+				<br /><br />
+				<table class="table-count table-border">
+					<tr>
+						<td colspan="2" style="text-align: center">Asl Masalah</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>Istri</td>
+						<td>1/4</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>Saudari Kandung</td>
+						<td>1/2</td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td>Paman</td>
+						<td>Ashabah</td>
+						<td>1</td>
+					</tr>
+				</table>
+				<br />
+				<table class="table-count table-border">
+					<tr>
+						<td colspan="2" style="text-align: center">Asl Masalah</td>
+						<td>6</td>
+					</tr>
+					<tr>
+						<td>Anak Perempuan</td>
+						<td>1/2</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>Ibu</td>
+						<td>1/6</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>Saudara Kandung</td>
+						<td>Ashabah</td>
+						<td>2</td>
+					</tr>
+				</table>
+			</li>
+			<br />
+			<li>
+				<i class="span-blue">Tawafuq: </i> Ketika dua angka sepakat dalam satu bagian bilangan
+				bulat, misalnya 4 dengan 6. Cara distribusi:
+				<span class="orange">mengalikan keseluruhan dengan yang lain.</span>
+				<br /><br />
+				<table class="table-count table-border">
+					<tr>
+						<td colspan="2" style="text-align: center">Asl Masalah</td>
+						<td>12</td>
+					</tr>
+					<tr>
+						<td>Ibu</td>
+						<td>1/6</td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td>Suami</td>
+						<td>1/4</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>Anak Laki-Laki</td>
+						<td>Ashabah</td>
+						<td>7</td>
+					</tr>
+				</table>
+				<br />
+				<table class="table-count table-border">
+					<tr>
+						<td colspan="2" style="text-align: center">Asl Masalah</td>
+						<td>24</td>
+					</tr>
+					<tr>
+						<td>Istri</td>
+						<td>1/8</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>Ibu</td>
+						<td>1/6</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>Anak Laki-Laki</td>
+						<td>Ashabah</td>
+						<td>17</td>
+					</tr>
+				</table>
+			</li>
+			<br />
+			<li>
+				<i class="span-blue">Tabayyun: </i> Tidak ada persamaan antara kedua bilangan tersebut,
+				tidak ada <i class="span-blue">Tamatsul, Tadakhul, </i>dan
+				<i class="span-blue">Tawafuq</i> pada salah satu bagiannya. Artinya salah satu dari dua
+				bilangan tersebut tidak habis dibagi dengan bilangan yang lain. Mereka tidak dibagi dengan
+				nomer lain karena tidak ada hubungannya diantara mereka. Misal 2 dengan 3. Cara distribusi:
+				<span class="orange">mengalikan semua yang satu dengan keseluruhan.</span> <br /><br />
+				<table class="table-count table-border">
+					<tr>
+						<td colspan="2" style="text-align: center">Asl Masalah</td>
+						<td>6</td>
+					</tr>
+					<tr>
+						<td>Ibu</td>
+						<td>1/3</td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td>Saudari Sekandung</td>
+						<td>1/2</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>Paman Kandung</td>
+						<td>Ashabah</td>
+						<td>1</td>
+					</tr>
+				</table>
+				<br />
+				<table class="table-count table-border">
+					<tr>
+						<td colspan="2" style="text-align: center">Asl Masalah</td>
+						<td>12</td>
+					</tr>
+					<tr>
+						<td>Istri</td>
+						<td>1/4</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>Ibu</td>
+						<td>1/3</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>Saudara Sekandung</td>
+						<td>Ashabah</td>
+						<td>5</td>
+					</tr>
+				</table>
+			</li>
+		</ol>
+	</div>
+</div>
