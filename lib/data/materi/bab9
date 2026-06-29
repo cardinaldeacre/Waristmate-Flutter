@@ -1,0 +1,123 @@
+<div id="bab-9">
+	<div id="header-bab">
+		<h2>
+			BAB 9<br />
+			'AUL
+		</h2>
+	</div>
+
+	<div class="materi9">
+		<h3>Definisi</h3>
+		<table class="table-definition">
+			<tr>
+				<td>Bahasa</td>
+				<td>:</td>
+				<td>Peningkatan atau tambahan.</td>
+			</tr>
+			<tr>
+				<td>Istilah</td>
+				<td>:</td>
+				<td>
+					Peningkatan atau penambahan dari asal masalah yang keluar dari aslinya, untuk memenuhi
+					kebutuhan bagian waris yang lebih besar dari jumlah aslinya karena adanya keterkaitan dan
+					ketergantungan dalam bagian.
+				</td>
+			</tr>
+		</table>
+
+		<h3><br />Asal yang dapat mengalami 'Aul</h3>
+		<p>
+			Asal yang mendapatkan 'aul adalah: <span class="orange">[6, 12, 24]</span>. Setiap asal
+			memiliki asal usul jenis ketergantungannya:
+		</p>
+		<ul class="list-aul">
+			<li><i class="span-blue">Asal 6: </i> sampai <span class="orange">7, 8, 9, dan 10</span>.</li>
+			<li><i class="span-blue">Asal 12: </i> sampai <span class="orange">13, 15, dan 17</span>.</li>
+			<li><i class="span-blue">Asal 24: </i> sampai <span class="orange">27</span>.</li>
+		</ul>
+
+		<h3><br />Asal yang tidak mendapatkan 'Aul</h3>
+		<p>
+			<span class="orange">Asal 2, 3, 4, dan seterusnya, tidak dapat mengalami 'Aul</span> karena
+			tidak mungkin jumlah bagian melebihi aslinya.
+		</p>
+
+		<h3><br />Contoh Soal dan Penyelesaian</h3>
+		<p>
+			Seorang <i class="span-blue">wanita</i> meninggal dan meninggalkan
+			<span class="span-blue">4 anak perempuan, seorang ibu</span>, dan
+			<span class="span-blue">seorang suami</span>; serta meninggalkan warisan sebanyak
+			<span class="orange">Rp 260.000.000</span>. Semua hutang & kebutuhan jenazah sudah terlunasi,
+			dan tidak ada wasiat. Berapa bagian masing-masing ahli waris?
+		</p>
+
+		<p class="span-blue" style="font-weight: 500">Penyelesaian Masalah:</p>
+		<p>
+			Masalah ini termasuk dalam kategori aul (permasalahan dengan kelebihan saham) karena jumlah
+			sahamnya meningkat dari 12 menjadi 13. Jadi, asal masalah yang digunakan untuk perhitungan
+			adalah 13. Maka bagian:
+		</p>
+
+		<table class="table-count table-border">
+			<tr>
+				<td colspan="2" style="text-align: center">Asl Masalah</td>
+				<td>(3,6,4)=>12</td>
+				<td>8+2+3=13</td>
+				<td class="span-blue">12 => 13</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Ibu</td>
+				<td style="text-align: center">1/6</td>
+				<td style="text-align: center">2/12</td>
+				<td style="text-align: center">2/13</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Suami</td>
+				<td style="text-align: center">1/4</td>
+				<td style="text-align: center">3/12</td>
+				<td style="text-align: center">3/13</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Anak Perempuan</td>
+				<td style="text-align: center">2/3</td>
+				<td style="text-align: center">8/12</td>
+				<td style="text-align: center">8/13</td>
+			</tr>
+		</table>
+		<br />
+
+		<table class="table-count">
+			<tr>
+				<td>Ibu</td>
+				<td>=></td>
+				<td>2/13 x Rp 260.000.000</td>
+				<td>=</td>
+				<td class="span-blue">Rp 40.000.000</td>
+			</tr>
+			<tr>
+				<td>Suami</td>
+				<td>=></td>
+				<td>3/13 x Rp 260.000.000</td>
+				<td>=</td>
+				<td class="span-blue">Rp 60.000.000</td>
+			</tr>
+			<tr>
+				<td>4 Anak Pr.</td>
+				<td>=></td>
+				<td>8/13 x Rp 260.000.000</td>
+				<td>=</td>
+				<td class="span-blue">Rp 160.000.000</td>
+			</tr>
+			<tr>
+				<td>Masing-masing Anak Pr.</td>
+				<td>=></td>
+				<td>Rp 160.000.000 : 4</td>
+				<td>=</td>
+				<td class="span-blue">Rp 40.000.000</td>
+			</tr>
+		</table>
+	</div>
+</div>

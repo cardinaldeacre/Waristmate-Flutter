@@ -1,0 +1,118 @@
+<div id="bab-10">
+	<div id="header-bab">
+		<h2>
+			BAB 10<br />
+			KOREKSI MASALAH
+		</h2>
+	</div>
+
+	<div class="materi10">
+		<h3>Definisi</h3>
+		<p>
+			<span class="span-blue">Koreksi masalah </span>adalah mencari jumlah terkecil dari angka yang
+			mana setiap bagian dari warisan dapat dibagi darinya <span class="orange">(KPK)</span>. Pada
+			kenyataannya, ini adalah
+			<i class="span-blue"
+				>pembagian dari pembilang pecahan jika bagian tersebut terbagi dengan mudah kepada ahli
+				waris</i
+			>. Jika tidak terbagi dengan mudah, maka butuh dilakukan koreksi masalah untuk menghindari
+			terjadinya pecahan.
+		</p>
+		<p>
+			Koreksi ini
+			<i class="span-blue"
+				>dilakukan ketika saham ahli waris tidak terbagi dengan mudah kepada ahli waris atau terjadi
+				pembagian yang tidak setara, atau pecahan</i
+			>, dalam pembagian warisan. Koreksi ini dilakukan untuk menghindari terjadinya
+			ketidakseimbangan pembagian antara para ahli waris.
+		</p>
+
+		<h3><br />Cara Melakukan Koreksi</h3>
+		<ol class="list-koreksi">
+			<li>
+				Jika terjadi pecahan pada satu kelompok, perhatikan antara kelompok tersebut dan
+				bagian-bagiannya dengan <span class="span-blue">meninjau kesesuaian dan perbedaan</span>.
+			</li>
+			<li>
+				Jika terdapat <span class="orange">kesesuaian</span> dalam bagian, maka
+				<span class="span-blue"
+					>kalikan jumlahnya dengan asal dari bagian tersebut atau jumlah total</span
+				>.
+			</li>
+			<li>
+				Jika terdapat <span class="orange">perbedaan</span> dalam bagian,
+				<span class="span-blue"
+					>kalikan semua ahli waris dalam asal masalah atau total, lalu koreksi masalah dengan hasil
+					perkalian</span
+				>.
+			</li>
+			<li>
+				Jika terjadi <span class="orange">pecahan dalam 2 kelompok atau lebih</span>,
+				<span class="span-blue"
+					>perhatikan perbedaan, dan kesesuaian di antara kelompok tersebut.</span
+				>
+			</li>
+		</ol>
+
+		<h3><br />Contoh Kasus</h3>
+		<table class="table-count table-border">
+			<tr>
+				<td colspan="2" class="span-blue" style="font-weight: 600; text-align: center">
+					Asl Masalah
+				</td>
+				<td class="span-blue" style="font-weight: 600; text-align: center">6</td>
+				<td class="orange" style="font-weight: 600"><span class="orange">x3</span></td>
+				<td class="span-blue" style="font-weight: 600; text-align: center">18</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Ibu</td>
+				<td style="text-align: center">1/6</td>
+				<td style="text-align: center">1/6</td>
+				<td style="text-align: center">3/18</td>
+			</tr>
+			<tr>
+				<td><span class="orange" style="font-weight: 600">6</span></td>
+				<td>Anak Perempuan</td>
+				<td style="text-align: center">2/3</td>
+				<td style="text-align: center"><span class="orange" style="font-weight: 600">4</span>/6</td>
+				<td style="text-align: center">
+					<span class="orange" style="font-weight: 600">12</span>/18
+				</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Cucu Laki-Laki</td>
+				<td>Ashabah</td>
+				<td style="text-align: center">1/6</td>
+				<td style="text-align: center">3/18</td>
+			</tr>
+		</table>
+
+		<br />
+		<p>
+			<span class="span-blue">Asal dari keseluruhan rasio adalah 6</span>, dan di sini nampak
+			terdapat <span class="span-blue">6 Anak Perempuan</span>, namun pembagian
+			<span class="span-blue"
+				>saham Anak Perempuan (4/6) sedikit sulit untuk dibagikan kepada 6 orang</span
+			>
+			secara langsung.
+		</p>
+		<p>
+			Dengan menggunakan <span class="orange">rumus KPK 4 dan 6 (saham, jumlah ahli waris)</span>,
+			maka ditetapkanlah <span class="orange">12 sebagai saham Anak Perempuan</span>. Kemudian kita
+			<span class="orange"
+				>mengalikan keseluruhan rasio saham Ibu dan Cucu Laki-Laki dengan 12/4 = 3 (saham baru/saham
+				lama)</span
+			>.
+		</p>
+		<p>
+			Sehingga, didapatilah hasil akhir:
+			<span class="span-blue">Ibu [3/18], Anak perempuan [12/18], Cucu Laki-Laki [3/18]</span>.
+			Dengan begitu, mudahlah pembagian saham
+			<span class="span-blue"
+				>6 Anak Perempuan [12/18] menjadi [2/18] untuk tiap masing-masing individu</span
+			>.
+		</p>
+	</div>
+</div>
