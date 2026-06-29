@@ -30,6 +30,7 @@ class TableDefinition extends StatelessWidget {
               ".table-wrapper": Style(alignment: Alignment.center),
               ".table-center": Style(textAlign: TextAlign.center),
               ".orange": Style(color: AppColors.orange),
+              ".span-blue": Style(color: AppColors.spanBlue),
               'table': Style(
                 border: hasBorder
                     ? Border.all(color: AppColors.primaryGreen, width: 1)

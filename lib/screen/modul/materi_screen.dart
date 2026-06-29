@@ -150,7 +150,10 @@ class _MateriScreenState extends State<MateriScreen> {
                               return {'padding': '0px 1px 1px 16px'};
                             }
                             if (element.localName == 'li') {
-                              return {'text-align': 'justify'};
+                              return {
+                                'text-align': 'justify',
+                                'padding': '1px',
+                              };
                             }
 
                             if (element.localName == 'i') {
