@@ -17,33 +17,41 @@ class TableDefinition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool hasBorder = tableElement.classes.contains('table-border');
-
     return Scrollbar(
       radius: const Radius.circular(8),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        child: Html(
-          data: tableElement.outerHtml,
-          extensions: [TableHtmlExtension()],
-          style: {
-            'table': Style(
-              border: hasBorder
-                  ? Border.all(color: AppColors.primaryGreen, width: 1)
-                  : Border(bottom: BorderSide(color: AppColors.grey, width: 1)),
-              margin: Margins.zero,
-            ),
-            'td': Style(
-              padding: HtmlPaddings.symmetric(vertical: 4, horizontal: 6),
-              border: hasBorder
-                  ? Border.all(color: AppColors.primaryGreen, width: 1)
-                  : Border(bottom: BorderSide(color: AppColors.grey, width: 1)),
-              margin: Margins.zero,
-              fontSize: FontSize(fontSize),
-              color: AppColors.textDark,
-              verticalAlign: VerticalAlign.middle,
-            ),
-          },
+        child: Center(
+          child: Html(
+            data: tableElement.outerHtml,
+            extensions: [TableHtmlExtension()],
+            style: {
+              ".table-wrapper": Style(alignment: Alignment.center),
+              ".table-center": Style(textAlign: TextAlign.center),
+              ".orange": Style(color: AppColors.orange),
+              'table': Style(
+                border: hasBorder
+                    ? Border.all(color: AppColors.primaryGreen, width: 1)
+                    : Border(
+                        bottom: BorderSide(color: AppColors.grey, width: 1),
+                      ),
+                margin: Margins.zero,
+              ),
+              'td': Style(
+                padding: HtmlPaddings.symmetric(vertical: 4, horizontal: 6),
+                border: hasBorder
+                    ? Border.all(color: AppColors.primaryGreen, width: 1)
+                    : Border(
+                        bottom: BorderSide(color: AppColors.grey, width: 1),
+                      ),
+                margin: Margins.zero,
+                fontSize: FontSize(fontSize),
+                color: AppColors.textDark,
+                verticalAlign: VerticalAlign.middle,
+              ),
+            },
+          ),
         ),
       ),
     );

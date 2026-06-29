@@ -149,6 +149,10 @@ class _MateriScreenState extends State<MateriScreen> {
                                 element.localName == 'ol') {
                               return {'padding': '0px 1px 1px 16px'};
                             }
+                            if (element.localName == 'li') {
+                              return {'text-align': 'justify'};
+                            }
+
                             if (element.localName == 'i') {
                               return {
                                 'font-style': 'italic',
@@ -171,7 +175,8 @@ class _MateriScreenState extends State<MateriScreen> {
                           },
 
                           customWidgetBuilder: (element) {
-                            if (element.classes.contains('table-definition')) {
+                            if (element.classes.contains('table-definition') ||
+                                element.classes.contains('table-count')) {
                               return TableDefinition(
                                 tableElement: element,
                                 fontSize: _latinTextSize,
