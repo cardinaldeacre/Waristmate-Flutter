@@ -51,7 +51,7 @@ class _PreferenceCardState extends State<PreferenceCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * (widget.heightFactor ?? 1.0),
+      height: 300,
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
