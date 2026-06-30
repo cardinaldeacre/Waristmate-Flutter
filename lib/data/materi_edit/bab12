@@ -1,0 +1,403 @@
+<div id="bab-12">
+	<div id="header-bab">
+		<h2>
+			BAB 12<br />
+			PERMASALAHAN PEMBAGIAN YANG TERKENAL
+		</h2>
+	</div>
+
+	<div class="materi12">
+		<div>
+			<h3>Al-'Umriyatain</h3>
+			<p>
+				<span class="span-blue" style="font-weight: 600">Latar Belakang Masalah:</span><br>
+				Ketentuan dasar dalam hukum faraidh menetapkan bahwa apabila <span class="orange">Ibu dan Ayah</span>
+				menjadi satu-satunya ahli waris (tanpa keberadaan anak atau saudara), maka <span class="orange">Ibu
+					berhak memperoleh 1/3 dari seluruh harta peninggalan</span>.
+			</p>
+			<br>
+			<p>
+				Permasalahan muncul ketika <span class="span-blue">Ibu dan Ayah mewarisi bersama-sama dengan seorang
+					Suami atau Istri</span>. Apabila menggunakan ketentuan dasar tersebut (Ibu mendapat 1/3 dari total
+				harta), maka <span class="orange">jatah Ibu akan lebih besar daripada jatah Ayah</span>. Padahal dalam
+				posisi derajat yang setara, ketentuan waris Islam menetapkan bahwa bagian laki-laki (Ayah) tidak boleh
+				lebih kecil daripada bagian perempuan (Ibu).
+			</p>
+			<br>
+			<p>
+				Kasus ini kemudian diajukan kepada <strong>Khalifah Umar bin Khattab</strong> radhiyallahu 'anhu. Beliau
+				kemudian menetapkan sebuah solusi yang disepakati oleh mayoritas sahabat. Karena penetapan hukum ini
+				berasal dari Umar, maka kedua kasus ini dikenal dengan istilah <span class="orange">Al-'Umariyyatan (Dua
+					Kasus Umar)</span>.
+			</p>
+			<br>
+			<p>
+				<span class="span-blue" style="font-weight: 600">Solusi yang Ditetapkan:</span><br>
+				<span class="orange">Ibu tidak lagi memperoleh 1/3 dari total harta, melainkan 1/3 dari SISA harta
+					setelah bagian suami atau istri diambil terlebih dahulu</span>.
+			</p>
+			<br>
+			<p>
+				<span class="span-blue" style="font-weight: 600">Kasus Pertama: Istri Meninggal Dunia</span><br>
+				Seorang wanita (istri) meninggal dunia dengan meninggalkan ahli waris: <span class="span-blue">Suami,
+					Ibu, dan Ayah</span>.<br>
+				Berdasarkan keputusan Umar, <span class="orange">jatah Ibu adalah 1/3 dari sisa harta setelah bagian
+					Suami dikeluarkan</span>.
+			</p>
+
+			<table class="table-count table-border">
+				<tr>
+					<td colspan="2" style="font-weight: 600">Ahli Waris</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">Asal Masalah</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">6</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">6</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">6</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">6</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><span class="span-blue">Suami</span></td>
+					<td style="text-align: center">1/2</td>
+					<td style="text-align: center"><span class="orange">3</span></td>
+					<td style="text-align: center">-</td>
+					<td style="text-align: center">-</td>
+					<td style="text-align: center">3/6</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><span class="span-blue">Ibu</span></td>
+					<td style="text-align: center">1/3 dari sisa</td>
+					<td style="text-align: center">-</td>
+					<td rowspan="2" style="text-align: center">
+						6 - <span class="orange">3</span> = <span class="span-blue">3</span>
+					</td>
+					<td style="text-align: center">1/3 x 3 = <span class="orange">1</span></td>
+					<td style="text-align: center">1/6</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><span class="span-blue">Ayah</span></td>
+					<td style="text-align: center">'Ashabah (sisa)</td>
+					<td style="text-align: center">-</td>
+					<td style="text-align: center">
+						<span class="span-blue">3</span> - <span class="orange">1</span> = 2
+					</td>
+					<td style="text-align: center">2/6</td>
+				</tr>
+				<tr style="background-color: #f8f9fa; font-style: italic">
+					<td colspan="7" style="text-align: center; font-weight: 500">
+						Total: 3/6 + 1/6 + 2/6 = 6/6 (habis)
+					</td>
+				</tr>
+			</table>
+			<br />
+
+			<p>
+				<span class="span-blue" style="font-weight: 600">Kedua: </span>
+				<span class="span-blue">Seorang pria wafat dengan <span class="orange">hanya</span> meninggalkan
+					<strong>istri, ibu, dan ayah</strong>.</span>
+				<span class="orange">Maka ibu mendapat sepertiga (1/3) dari sisa harta setelah bagian istri
+					diambil</span>. Sisanya untuk ayah sebagai 'ashabah. (Lihat tabel di bawah).
+			</p>
+
+			<table class="table-count table-border">
+				<tr>
+					<td colspan="2" style="font-weight: 600">Ahli Waris</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">Asal Masalah</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">4</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">4</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">4</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">4</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><span class="span-blue">Istri</span></td>
+					<td style="text-align: center">1/4</td>
+					<td style="text-align: center"><span class="orange">1</span></td>
+					<td style="text-align: center">-</td>
+					<td style="text-align: center">-</td>
+					<td style="text-align: center">1/4</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><span class="span-blue">Ibu</span></td>
+					<td style="text-align: center">1/3 dari sisa</td>
+					<td style="text-align: center">-</td>
+					<td rowspan="2" style="text-align: center">
+						4-<span class="orange">1</span> = <span class="span-blue">3</span>
+					</td>
+					<td style="text-align: center">1/3 x 3 = <span class="orange">1</span></td>
+					<td style="text-align: center">1/4</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><span class="span-blue">Ayah</span></td>
+					<td style="text-align: center">'Ashabah (sisa)</td>
+					<td style="text-align: center">-</td>
+					<td style="text-align: center">
+						<span class="span-blue">3</span> - <span class="orange">1</span> = 2
+					</td>
+					<td style="text-align: center">2/4</td>
+				</tr>
+				<tr style="background-color: #f8f9fa; font-style: italic">
+					<td colspan="7" style="text-align: center; font-weight: 500">
+						Total: 1/4 + 1/4 + 2/4 = 4/4 (habis)
+					</td>
+				</tr>
+			</table>
+			<br />
+
+			<div
+				style="background-color: #f0f7ff; padding: 12px; border-radius: 8px; border-left: 4px solid #2b7be4; margin-top: 8px;">
+				<p style="margin: 0; font-size: 0.95rem;">
+					<strong>Ringkasan Al-'Umariyyatan:</strong><br>
+					<strong>Al-'Umariyyatan</strong> adalah <span class="orange">menjaga proporsi bagian Ayah</span>
+					agar tidak lebih kecil dari bagian Ibu dalam posisi derajat yang setara.<br>
+					Dengan mengubah ketentuan bagian Ibu menjadi <span class="orange">"1/3 dari sisa"</span>, maka
+					bagian Ayah pada akhirnya akan selalu bernilai <span class="orange">2 kali lipat dari bagian
+						Ibu</span> (sebagaimana terlihat pada kedua tabel, Ibu memperoleh 1 saham, sedangkan Ayah
+					memperoleh 2 saham).<br>
+					<span class="span-blue">Ketentuan ini mencerminkan keadilan dalam pembagian waris.</span>
+				</p>
+			</div>
+		</div>
+		<br>
+		<div>
+			<h3>Al-Musytarakah (Masalah Bersama)</h3>
+			<p>
+				<span class="span-blue" style="font-weight: 600">Definisi Kasus:</span><br>
+				Kasus ini terjadi ketika <span class="span-blue">seorang wanita meninggal dunia dan meninggalkan ahli
+					waris sebagai berikut:</span>
+			<ul style="margin-top: 4px; margin-bottom: 8px;">
+				<li><strong>Suami</strong></li>
+				<li><strong>Ibu</strong> (atau Nenek)</li>
+				<li><strong>Dua orang Saudara Seibu</strong> (atau lebih)</li>
+				<li><strong>Saudara Laki-laki Sekandung</strong></li>
+				<li><strong>Saudara Perempuan Sekandung</strong> (satu atau lebih)</li>
+			</ul>
+			</p>
+
+			<p>
+				<span class="span-blue" style="font-weight: 600">Hitungan Awal (Bikin Saudara Sekandung
+					Nangis)</span><br>
+				Kalau kita murni pakai rumus pembagian dasar, nasib saudara sekandung bakal tragis banget. Rinciannya
+				begini:
+			<ul style="margin-top: 4px; margin-bottom: 8px;">
+				<li><strong>Suami</strong> dapat jatah <span class="orange">1/2</span></li>
+				<li><strong>Ibu</strong> dapat jatah <span class="orange">1/6</span></li>
+				<li><strong>Dua Saudara Seibu</strong> dapat jatah <span class="orange">1/3</span></li>
+				<li><strong>Saudara Sekandung</strong> (Laki & Perempuan) statusnya adalah <span
+						class="orange">'Ashabah</span> (penerima sisa).</li>
+			</ul>
+			Masalahnya: Setelah harta dibagikan ke Suami, Ibu, dan Saudara Seibu <span class="orange">(1/2 + 1/6 + 1/3 =
+				1)</span>, hartanya <span class="orange">HABIS TAK TERSISA</span>. Akibatnya, <span
+				class="orange">Saudara Sekandung tidak mendapat apa-apa</span>!
+			</p>
+
+			<table class="table-count table-border">
+				<tr>
+					<td colspan="2" style="font-weight: 600; text-align: center">Ahli Waris</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">Asal Masalah</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">6</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">6</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">(×2) → 12</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">Hasil Akhir</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><span class="span-blue">Suami</span></td>
+					<td style="text-align: center">1/2</td>
+					<td style="text-align: center">3</td>
+					<td style="text-align: center">-</td>
+					<td style="text-align: center">6/12</td>
+					<td style="text-align: center">6/12</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><span class="span-blue">Ibu</span></td>
+					<td style="text-align: center">1/6</td>
+					<td style="text-align: center">1</td>
+					<td style="text-align: center">-</td>
+					<td style="text-align: center">2/12</td>
+					<td style="text-align: center">2/12</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td><span class="span-blue">Saudara Seibu</span></td>
+					<td style="text-align: center">1/3</td>
+					<td style="text-align: center">2</td>
+					<td style="text-align: center" rowspan="3">Sisa = 6 - (3+1) = 2</td>
+					<td style="text-align: center" rowspan="3">4/12</td>
+					<td style="text-align: center">2/12</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><span class="span-blue">Saudara Kandung (lk)</span></td>
+					<td style="text-align: center">'Ashabah</td>
+					<td style="text-align: center">-</td>
+					<td style="text-align: center">1/12</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><span class="span-blue">Saudari Kandung (pr)</span></td>
+					<td style="text-align: center">'Ashabah</td>
+					<td style="text-align: center">-</td>
+					<td style="text-align: center">1/12</td>
+				</tr>
+				<tr style="background-color: #f8f9fa; font-style: italic;">
+					<td colspan="7" style="text-align: center; font-weight: 500;">
+						Total: 6/12 + 2/12 + 2/12 + 1/12 + 1/12 = 12/12 (habis)
+					</td>
+				</tr>
+			</table>
+			<br />
+
+			<div
+				style="background-color: #f0f7ff; padding: 12px; border-radius: 8px; border-left: 4px solid #2b7be4; margin-top: 8px;">
+				<p style="margin: 0; font-size: 0.95rem;">
+					<strong>Penjelasan Khusus (Al-Musytarakah):</strong><br>
+					1. Dalam kasus ini, <span class="orange">saudara kandung</span> dan <span class="orange">saudara
+						seibu</span> sama-sama hadir sebagai ahli waris. Keduanya <strong>tidak saling
+						menghijab</strong> karena merupakan kelompok yang berbeda.<br>
+					2. Namun, terjadi <strong>perbedaan pendapat</strong> di kalangan sahabat tentang cara
+					pembagiannya:<br>
+					&nbsp;&nbsp;&nbsp;• <strong>Pendapat Umar bin Khattab</strong> radhiyallahu 'anhu: Bagian saudara
+					seibu (1/3) dan bagian saudara kandung ('ashabah) <span class="orange">digabung</span>, lalu <span
+						class="orange">dibagi rata</span> di antara semua saudara (seibu dan kandung) dengan
+					<strong>ketentuan laki-laki mendapat 2 kali lipat perempuan</strong>.<br>
+					&nbsp;&nbsp;&nbsp;• <strong>Pendapat Zaid bin Tsabit</strong> radhiyallahu 'anhu: Saudara seibu
+					tetap mendapat 1/3, dan saudara kandung mendapat sisa ('ashabah) tanpa digabung.<br>
+					3. <strong>Pendapat Umar</strong> inilah yang kemudian dikenal dengan istilah
+					<strong>"Al-Musytarakah"</strong> atau <strong>"Masalah Musytarakah"</strong>.<br>
+					4. Dalam tabel di atas: 4 bagian (dari 12) dibagi untuk 4 orang ahli waris (2 saudara seibu + 1
+					saudara kandung lk + 1 saudari kandung pr) dengan perbandingan 2:1:1.
+				</p>
+			</div>
+		</div>
+		<br>
+		<div>
+			<h3>Al-Akdariyah (Masalah yang Membingungkan)</h3>
+			<p>
+				<span class="span-blue" style="font-weight: 600">Asal-Usul Penamaan</span><br>
+				Kasus waris ini dinamakan <strong>Al-Akdariyah</strong> karena pertama kali terjadi pada <span
+					class="orange">seorang wanita dari kabilah Bani Akdar</span>. Namun, ada pula ulama yang berpendapat
+				bahwa sebutan ini muncul karena kasus ini <span class="orange">"mengeruhkan" (menyalahi kaidah hitungan
+					dasar)</span> pada mazhab sahabat Zaid bin Tsabit radhiyallahu 'anhu.
+			</p>
+			<br>
+			<p>
+				<span class="span-blue" style="font-weight: 600">Kunci Perkara</span><br>
+				Kasus ini membahas pembagian warisan <span class="span-blue">seorang wanita yang meninggal dunia dan
+					meninggalkan ahli waris yang terdiri dari:</span>
+			<ul style="margin-top: 4px; margin-bottom: 8px;">
+				<li><strong>Suami</strong></li>
+				<li><strong>Ibu</strong></li>
+				<li><strong>Kakek</strong></li>
+				<li><strong>Saudara Perempuan Kandung (atau seayah)</strong></li>
+			</ul>
+			</p>
+
+			<p>
+				<span class="span-blue" style="font-weight: 600">Penyelesaian Berdasarkan Aturan Dasar</span><br>
+				Jika menggunakan kaidah dasar pembagian waris, perhitungannya adalah sebagai berikut:
+			<ul style="margin-top: 4px; margin-bottom: 8px;">
+				<li><strong>Suami</strong> mendapat hak <span class="orange">1/2</span> bagian.</li>
+				<li><strong>Ibu</strong> mendapat hak <span class="orange">1/3</span> bagian.</li>
+				<li><strong>Kakek</strong> mendapat hak <span class="orange">1/6</span> bagian.</li>
+			</ul>
+			Berdasarkan perhitungan ini, harta warisan sudah <span class="orange">habis terbagi</span> untuk ketiga ahli
+			waris tersebut. Akibatnya, <span class="orange">Saudara Perempuan Kandung tidak mendapatkan bagian sama
+				sekali</span>.
+			</p>
+			<br>
+			<p>
+				<span class="span-blue" style="font-weight: 600">Penyelesaian Khusus Menurut Zaid bin Tsabit</span><br>
+				Sahabat <strong>Zaid bin Tsabit</strong> radhiyallahu 'anhu mengambil langkah pengecualian dari kaidah
+				dasar di atas. Beliau menetapkan bahwa <span class="orange">Saudara Perempuan Kandung tetap berhak
+					mendapatkan bagian 1/2</span>.
+			</p>
+			<br>
+			<p>
+				Karena total bagian menjadi lebih besar dari jumlah harta, maka angka dasar pembagi (Asal Masalah) yang
+				awalnya 6, <span class="orange">dinaikkan atau di-'aul-kan menjadi 9</span>.
+			</p>
+			<br>
+			<p>
+				Setelah itu, bagian saham milik <span class="orange">Kakek dan Saudara Perempuan Kandung
+					digabungkan</span>. Harta gabungan tersebut kemudian dibagi berdua dengan mengikuti kaidah umum
+				waris Islam, yaitu: <span class="orange">Ahli waris laki-laki (Kakek) mendapatkan bagian dua kali lipat
+					lebih besar dari ahli waris perempuan (Saudara Perempuan)</span>.
+			</p>
+
+			<table class="table-count table-border">
+				<tr>
+					<td colspan="2" style="text-align: center; font-weight: 600">Ahli Waris</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">Asal Masalah</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">6</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">6 → 9</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">×3 → 27</td>
+					<td class="span-blue" style="text-align: center; font-weight: 600">Hasil Akhir</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><span class="span-blue">Suami</span></td>
+					<td style="text-align: center">1/2</td>
+					<td style="text-align: center">3</td>
+					<td style="text-align: center">3/9</td>
+					<td style="text-align: center">9/27</td>
+					<td style="text-align: center">9/27</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td><span class="span-blue">Ibu</span></td>
+					<td style="text-align: center">1/3</td>
+					<td style="text-align: center">2</td>
+					<td style="text-align: center">2/9</td>
+					<td style="text-align: center">6/27</td>
+					<td style="text-align: center">6/27</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td><span class="span-blue">Kakek</span></td>
+					<td style="text-align: center">'Ashabah</td>
+					<td style="text-align: center">-</td>
+					<td style="text-align: center" rowspan="2">4/9</td>
+					<td style="text-align: center"><span class="span-blue">2/3</span> × 4/9 = 8/27</td>
+					<td style="text-align: center">8/27</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td><span class="span-blue">Saudari Kandung</span></td>
+					<td style="text-align: center">1/2</td>
+					<td style="text-align: center">3</td>
+					<td style="text-align: center"><span class="span-blue">1/3</span> × 4/9 = 4/27</td>
+					<td style="text-align: center">4/27</td>
+				</tr>
+				<tr style="background-color: #f8f9fa; font-style: italic;">
+					<td colspan="7" style="text-align: center; font-weight: 500;">
+						Total: 9/27 + 6/27 + 8/27 + 4/27 = 27/27 (habis)
+					</td>
+				</tr>
+			</table>
+			<br />
+			<div
+				style="background-color: #f0f7ff; padding: 12px; border-radius: 8px; border-left: 4px solid #2b7be4; margin-top: 8px;">
+				<p style="margin: 0; font-size: 0.95rem;">
+					<strong>Ringkasan Al-Akdariyah:</strong><br>
+					1. <strong>Asal-usul:</strong> Dinamakan Al-Akdariyah karena terjadi pada <span
+						class="orange">wanita dari Bani Akdar</span> atau karena "mengeruhkan" kaidah dasar Zaid bin
+					Tsabit.<br>
+					2. <strong>Ahli waris:</strong> Suami, Ibu, Kakek, dan Saudari Kandung.<br>
+					3. <strong>Aturan dasar:</strong> Suami (1/2), Ibu (1/3), Kakek (1/6) = <span
+						class="orange">habis</span>, sehingga Saudari Kandung <span class="orange">tidak mendapat
+						apa-apa</span>.<br>
+					4. <strong>Penyelesaian Zaid:</strong> Saudari Kandung tetap diberi 1/2, lalu dilakukan <span
+						class="orange">'aul dari 6 menjadi 9</span>, dan bagian <span class="orange">Kakek : Saudari = 2
+						: 1</span>.<br>
+					5. <strong>Hasil akhir:</strong> Suami (9/27), Ibu (6/27), Kakek (8/27), Saudari (4/27) = <span
+						class="orange">27/27 (habis)</span>.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
