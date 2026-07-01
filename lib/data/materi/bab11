@@ -2,7 +2,7 @@
 	<div id="header-bab">
 		<h2>
 			BAB 11<br />
-			AR-RADD
+			PEMBAGIAN: RADD
 		</h2>
 	</div>
 
@@ -14,7 +14,7 @@
 				<td>:</td>
 				<td>Mengembalikan atau kembali.</td>
 			</tr>
-			<tr>
+		<tr>
 				<td>Istilah</td>
 				<td>:</td>
 				<td>
@@ -33,7 +33,7 @@
 			<span class="orange">tidak ada ahli waris 'Ashabah</span>, maka kelebihan tersebut diberikan
 			kepada ahli waris yang menerima bagian tertentu sesuai dengan besar bagian yang diterimanya.
 		</p>
-
+		<br>
 		<h3>Syarat-syarat Radd</h3>
 		<p>Tidak ada penerapan 'Radd' dalam suatu kasus kecuali jika terpenuhi tiga syarat berikut:</p>
 		<ol class="list-radd ">
@@ -61,21 +61,20 @@
 		<p>
 			Pasangan <span>Suami-Istri</span>
 			<span class="span-red">menerima bagian tetap terlebih dahulu</span>.
-			<span
-				>Jika tidak ada ahli waris lain yang berhak, sebagian dari mereka menjadi ashabah untuk
-				menerima sisa harta</span
-			>. Suami yang awalnya mendapat 1/2 akan memperoleh seluruh sisa harta, sedangkan istri yang
+			<span>Jika tidak ada ahli waris lain yang berhak, sebagian dari mereka menjadi ashabah untuk
+				menerima sisa harta</span>. Suami yang awalnya mendapat 1/2 akan memperoleh seluruh sisa harta,
+			sedangkan istri yang
 			mendapat 1/4 atau 1/8 akan mendapatkan bagian tambahan hingga menghabiskan seluruh sisa harta,
 			disesuaikan dengan jumlah istri. Prinsip ini mencegah adanya harta yang tersisa tanpa
 			penerima.
 		</p>
-
+		<br>
 		<h3>Pembagian Radd</h3>
 		<p>
 			Pembagian sisa harta warisan <i>Radd</i> terbagi menjadi empat bagian, namun salah satunya
 			memiliki cara khusus. Bagian-bagian tersebut adalah:
 		</p>
-		<ol class="list-radd">
+		<ol>
 			<li>
 				<p class="span-green" style="font-weight: 600">
 					Jika ahli waris yang ada hanya satu golongan penerima bagian tetap, tanpa salah satu dari
@@ -110,10 +109,8 @@
 				</p>
 				<p>
 					Cara:
-					<span class="span-red"
-						>Maka warisan dibagi berdasarkan jumlah bagian tetap, bukan berdasarkan jumlah
-						orang</span
-					>.
+					<span class="span-red">Maka warisan dibagi berdasarkan jumlah bagian tetap, bukan berdasarkan jumlah
+						orang</span>.
 				</p>
 				<p>
 					Contoh: Jika seseorang meninggal dengan meninggalkan 1 ibu dan 2 saudara seibu, maka
@@ -152,10 +149,9 @@
 				</p>
 				<p>
 					Cara:
-					<span class="span-red"
-						>Pembagian dilakukan berdasarkan bagian utama dari pasangan suami-istri, yang lain
-						dihitung berdasarkan <span class="orange">sisa dari bagian suami / istri.</span
-					>
+					<span class="span-red">Pembagian dilakukan berdasarkan bagian utama dari pasangan suami-istri, yang
+						lain
+						dihitung berdasarkan <span class="orange">sisa dari bagian suami / istri.</span>
 				</p>
 				<p>
 					Contoh: Jika seorang wanita meninggal dengan meninggalkan 1 suami dan 1 ibu, maka
@@ -192,10 +188,9 @@
 				</p>
 				<p>
 					Cara:
-					<span class="span-red"
-						>Pembagian dilakukan berdasarkan bagian utama dari suami/istri terlebih dahulu, yang lain dihitung
-						berdasarkan sisa dari bagian suami/istri.</span
-					>
+					<span class="span-red">Pembagian dilakukan berdasarkan bagian utama dari suami/istri terlebih
+						dahulu, yang lain dihitung
+						berdasarkan sisa dari bagian suami/istri.</span>
 				</p>
 				<p>
 					Contoh 1: Jika seorang wanita meninggal dengan meninggalkan 1 Suami, 1 Anak Perempuan, dan
@@ -203,32 +198,35 @@
 				</p>
 				<table class="table-count table-border">
 					<tr>
-                        <td colspan="3" style="font-weight: 600; text-align: center">
-                            Asl Masalah
-                        </td>
-                        <td style="font-weight: 600; text-align: center">4</td>
-                        <td colspan="3" style="font-weight: 600; text-align: center">4 x <span class="span-blue">4</span></td>
-                        <td style="font-weight: 600; text-align: center">16</td>
-                    </tr>
+						<td colspan="3" style="font-weight: 600; text-align: center">
+							Asl Masalah
+						</td>
+						<td style="font-weight: 600; text-align: center">4</td>
+						<td colspan="3" style="font-weight: 600; text-align: center">4 x <span
+								class="span-blue">4</span></td>
+						<td style="font-weight: 600; text-align: center">16</td>
+					</tr>
 					<tr>
 						<td>1</td>
 						<td>Suami</td>
-						<td style="text-align: center" >1/4 total</td>
+						<td style="text-align: center">1/4 total</td>
 						<td colspan="4" style="text-align: center">1/4</td>
 						<td style="text-align: center">4/16</td>
 					</tr>
-                    <tr>
-                        <td colspan="3" style="font-weight: 600; text-align: center">
-                            Asl Masalah
-                        </td>
-                        <td style="font-weight: 600; text-align: center">6</td> 
-                        <td style="font-weight: 600; text-align: center"><span class="orange">3</span> + <span class="orange">1</span> = <span class="span-blue">4</span></td>
-                        <td colspan="2" style="font-weight: 600; text-align: center"><span class="span-blue">4</span> x <span class="orange">4</span></td>
-                        <td colspan="2" style="font-weight: 600; text-align: center">16</td>
-                    </tr>
 					<tr>
-                        <td>1</td>
-                        <td>Anak Perempuan</td>
+						<td colspan="3" style="font-weight: 600; text-align: center">
+							Asl Masalah
+						</td>
+						<td style="font-weight: 600; text-align: center">6</td>
+						<td style="font-weight: 600; text-align: center"><span class="orange">3</span> + <span
+								class="orange">1</span> = <span class="span-blue">4</span></td>
+						<td colspan="2" style="font-weight: 600; text-align: center"><span class="span-blue">4</span> x
+							<span class="orange">4</span></td>
+						<td colspan="2" style="font-weight: 600; text-align: center">16</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Anak Perempuan</td>
 						<td rowspan="2" style="text-align: center">3/4 sisa</td>
 						<td style="text-align: center">1/2</td>
 						<td style="text-align: center"><span class="orange">3</span>/6</td>
@@ -252,32 +250,35 @@
 				</p>
 				<table class="table-count table-border">
 					<tr>
-                        <td colspan="3" style="font-weight: 600; text-align: center">
-                            Asl Masalah
-                        </td>
-                        <td style="font-weight: 600; text-align: center">8</td>
-                        <td colspan="3" style="font-weight: 600; text-align: center">8 x <span class="span-blue">5</span></td>
-                        <td style="font-weight: 600; text-align: center">40</td>
-                    </tr>
+						<td colspan="3" style="font-weight: 600; text-align: center">
+							Asl Masalah
+						</td>
+						<td style="font-weight: 600; text-align: center">8</td>
+						<td colspan="3" style="font-weight: 600; text-align: center">8 x <span
+								class="span-blue">5</span></td>
+						<td style="font-weight: 600; text-align: center">40</td>
+					</tr>
 					<tr>
 						<td>1</td>
 						<td>Istri</td>
-						<td style="text-align: center" >1/8 total</td>
+						<td style="text-align: center">1/8 total</td>
 						<td colspan="4" style="text-align: center">1/8</td>
 						<td style="text-align: center">5/40</td>
 					</tr>
-                    <tr>
-                        <td colspan="3" style="font-weight: 600; text-align: center">
-                            Asl Masalah
-                        </td>
-                        <td style="font-weight: 600; text-align: center">6</td> 
-                        <td style="font-weight: 600; text-align: center"><span class="orange">1</span> + <span class="orange">4</span> = <span class="span-blue">5</span></td>
-                        <td colspan="2" style="font-weight: 600; text-align: center"><span class="span-blue">5</span> x <span class="orange">8</span></td>
-                        <td colspan="2" style="font-weight: 600; text-align: center">40</td>
-                    </tr>
 					<tr>
-                        <td>2</td>
-                        <td>Ibu</td>
+						<td colspan="3" style="font-weight: 600; text-align: center">
+							Asl Masalah
+						</td>
+						<td style="font-weight: 600; text-align: center">6</td>
+						<td style="font-weight: 600; text-align: center"><span class="orange">1</span> + <span
+								class="orange">4</span> = <span class="span-blue">5</span></td>
+						<td colspan="2" style="font-weight: 600; text-align: center"><span class="span-blue">5</span> x
+							<span class="orange">8</span></td>
+						<td colspan="2" style="font-weight: 600; text-align: center">40</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Ibu</td>
 						<td rowspan="2" style="text-align: center">7/8 sisa</td>
 						<td style="text-align: center">1/6</td>
 						<td style="text-align: center"><span class="orange">1</span>/6</td>
@@ -296,7 +297,8 @@
 				</table>
 				<br />
 				<p>
-					Jika kita melihat kedua contoh tersebut, <span class="span-blue">suami/istri mendapat bagian tetap dari total</span>
+					Jika kita melihat kedua contoh tersebut, <span class="span-blue">suami/istri mendapat bagian tetap
+						dari total</span>
 					keseluruhan harta warisan, kemudian yang lain mengalami <i>Radd</i> untuk berbagi sisa
 					harta warisan dari bagian suami/istri.
 				</p>
