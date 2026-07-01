@@ -85,6 +85,7 @@ flutter:
     - assets/images/3d_coin.png
     - assets/images/google.png
     - assets/images/user.png
+    - assets/images/welcome_layout.png
     - assets/icons/ic_book.png
     - assets/icons/ic_server_person.png
     - assets/icons/ic_person.png
