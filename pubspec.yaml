@@ -88,6 +88,18 @@ flutter:
     - assets/icons/ic_person.png
     - assets/icons/ic_home.png
     - assets/icons/ic_calculate.png
+    - assets/materi/bab1
+    - assets/materi/bab2
+    - assets/materi/bab3
+    - assets/materi/bab4
+    - assets/materi/bab5
+    - assets/materi/bab6
+    - assets/materi/bab7
+    - assets/materi/bab8
+    - assets/materi/bab9
+    - assets/materi/bab10
+    - assets/materi/bab11
+    - assets/materi/bab12
   
   fonts:
     - family: Gabarito
