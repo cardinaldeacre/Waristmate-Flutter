@@ -53,6 +53,7 @@ dependencies:
   path_provider: ^2.1.6
   flutter_html_table: ^3.0.0
   flutter_html: ^3.0.0
+  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +80,7 @@ flutter:
     - .env
     # images
     - assets/images/logo_white.png
+    - assets/images/logo_rounded.png
     - assets/images/3d_book.png
     - assets/images/3d_coin.png
     - assets/images/google.png
@@ -148,3 +150,14 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+
+  image_path: "assets/images/logo_rounded.png"
+
+  adaptive_icon_foreground: "assets/images/logo_rounded.png"
+  adaptive_icon_background: "#177E68"
+
+  min_sdk_android: 21
