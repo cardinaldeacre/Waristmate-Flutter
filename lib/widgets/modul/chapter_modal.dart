@@ -3,27 +3,20 @@ import 'package:waristmate_app/core/config/theme.dart';
 
 class ChapterModal extends StatelessWidget {
   final String currentChapter;
+  final List<Map<String, dynamic>> chapters;
   final VoidCallback onClose;
 
   const ChapterModal({
     super.key,
     required this.currentChapter,
+    required this.chapters,
     required this.onClose,
   });
 
   @override
   Widget build(BuildContext context) {
-    final List<String> chapters = [
-      'Pendahuluan',
-      'Dasar Hukum',
-      'Harta Warisan',
-      'Ahli Waris',
-      'Pembagian Warisan',
-    ];
-
     return Container(
-      height:
-          MediaQuery.of(context).size.height * 0.7, // Tinggi modal 70% layar
+      height: MediaQuery.of(context).size.height * 0.7,
       decoration: const BoxDecoration(
         color: AppColors.primaryGreen,
         borderRadius: BorderRadius.only(
@@ -68,7 +61,7 @@ class ChapterModal extends StatelessWidget {
                   child: Container(
                     height: 48,
                     decoration: BoxDecoration(
-                      color: AppColors.primaryGreen.withValues(alpha: 0.2),
+                      color: AppColors.darkGreen.withValues(alpha: 0.7),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
@@ -93,7 +86,7 @@ class ChapterModal extends StatelessWidget {
                   height: 48,
                   width: 48,
                   decoration: BoxDecoration(
-                    color: AppColors.primaryGreen.withValues(alpha: 0.2),
+                    color: AppColors.darkGreen.withValues(alpha: 0.7),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: IconButton(
@@ -116,15 +109,20 @@ class ChapterModal extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               itemCount: chapters.length,
               itemBuilder: (context, index) {
-                final isCurrent = chapters[index].startsWith(currentChapter);
+                final String babNumber =
+                    chapters[index]['bab']?.toString() ?? '';
+                final String babTitle =
+                    chapters[index]['title']?.toString() ?? '';
+
+                final isCurrent = babNumber == currentChapter;
 
                 return Container(
                   margin: const EdgeInsets.only(bottom: 12),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryGreen.withValues(alpha: 0.1),
+                    color: AppColors.darkGreen.withValues(alpha: 0.7),
                     borderRadius: BorderRadius.circular(16),
                     border: isCurrent
-                        ? Border.all(color: AppColors.primaryGreen, width: 1.5)
+                        ? Border.all(color: AppColors.grey, width: 1.5)
                         : null,
                   ),
                   child: ListTile(
@@ -133,11 +131,11 @@ class ChapterModal extends StatelessWidget {
                       vertical: 4,
                     ),
                     title: Text(
-                      chapters[index],
+                      "Bab $babNumber - $babTitle",
                       style: TextStyle(
                         color: isCurrent
                             ? AppColors.primaryGreen
-                            : Colors.white,
+                            : AppColors.textLight,
                         fontWeight: isCurrent
                             ? FontWeight.bold
                             : FontWeight.w500,
@@ -145,9 +143,7 @@ class ChapterModal extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      Navigator.pop(context);
-                      // TODO: Navigasi ke bab yang dipilih
-                      print("Pindah ke: ${chapters[index]}");
+                      Navigator.pop(context, index);
                     },
                   ),
                 );

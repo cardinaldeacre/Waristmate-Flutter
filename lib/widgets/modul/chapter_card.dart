@@ -3,9 +3,16 @@ import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/screen/modul/materi_screen.dart';
 
 class ChapterCard extends StatelessWidget {
-  final Map<String, String> chapter;
+  final Map<String, dynamic> chapter;
+  final List<Map<String, dynamic>> chapterList;
+  final int index;
 
-  const ChapterCard({super.key, required this.chapter});
+  const ChapterCard({
+    super.key,
+    required this.chapter,
+    required this.chapterList,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +43,11 @@ class ChapterCard extends StatelessWidget {
           splashColor: AppColors.primaryGreen.withValues(alpha: 0.1),
           highlightColor: AppColors.primaryGreen.withValues(alpha: 0.05),
           onTap: () {
-            String dummyHtml = '''
-            
-            ''';
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MateriScreen(
-                  bab: chapter['bab'] ?? '',
-                  title: chapter['title'] ?? '',
-                  contentHtml: dummyHtml,
-                ),
+                builder: (context) =>
+                    MateriScreen(chapters: chapterList, initialIndex: index),
               ),
             );
           },

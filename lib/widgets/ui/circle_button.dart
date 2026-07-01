@@ -3,13 +3,13 @@ import 'package:waristmate_app/core/config/theme.dart';
 
 class CircleButton extends StatelessWidget {
   final IconData icon;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final double radius;
 
   const CircleButton({
     super.key,
     required this.icon,
-    required this.onTap,
+    this.onTap,
     this.radius = 24,
   });
 

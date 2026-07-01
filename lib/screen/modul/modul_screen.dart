@@ -3,6 +3,7 @@ import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/modul/chapter_card.dart';
 import 'package:waristmate_app/widgets/modul/module_header.dart';
 import 'package:waristmate_app/services/modul/materi_service.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class ModulScreen extends StatefulWidget {
   const ModulScreen({super.key});
@@ -12,13 +13,12 @@ class ModulScreen extends StatefulWidget {
 }
 
 class _ModulScreenState extends State<ModulScreen> {
-  final MateriService materiService = MateriService();
-  late final Future<List<Map<String, dynamic>>> _materiFuture;
+  final _materiService = MateriService();
 
   @override
   void initState() {
     super.initState();
-    _materiFuture = materiService.fetchLearningModules();
+    _materiService.fetchLearningModules();
   }
 
   @override
@@ -33,23 +33,20 @@ class _ModulScreenState extends State<ModulScreen> {
             const SizedBox(height: 5),
 
             Expanded(
-              child: FutureBuilder<List<Map<String, dynamic>>>(
-                future: _materiFuture,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
+              child: ValueListenableBuilder(
+                valueListenable: Hive.box('materiBox').listenable(),
+                builder: (context, Box box, _) {
+                  final localData = box.get('modul_waris');
+
+                  if (localData == null) {
                     return const Center(child: CircularProgressIndicator());
                   }
 
-                  if (snapshot.hasError) {
-                    return Center(
-                      child: Text(
-                        'Error: ${snapshot.error}',
-                        style: const TextStyle(color: Colors.red),
-                      ),
-                    );
-                  }
-
-                  final chapters = snapshot.data ?? [];
+                  final chapters = List<Map<String, dynamic>>.from(
+                    (localData as List).map(
+                      (item) => Map<String, dynamic>.from(item),
+                    ),
+                  );
 
                   if (chapters.isEmpty) {
                     return const Center(
@@ -74,6 +71,8 @@ class _ModulScreenState extends State<ModulScreen> {
                           'content_html': currentChapter['content_html']
                               .toString(),
                         },
+                        index: index,
+                        chapterList: chapters,
                       );
                     },
                   );

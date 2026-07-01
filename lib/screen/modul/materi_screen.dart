@@ -11,22 +11,20 @@ import 'package:waristmate_app/widgets/modul/table_definition.dart';
 import 'package:waristmate_app/widgets/profile/preference_card.dart';
 
 class MateriScreen extends StatefulWidget {
-  final String bab;
-  final String title;
-  final String contentHtml;
+  final List<Map<String, dynamic>> chapters;
+  final int initialIndex;
 
   const MateriScreen({
     super.key,
-    required this.bab,
-    required this.title,
-    required this.contentHtml,
+    required this.chapters,
+    required this.initialIndex,
   });
-
   @override
   State<MateriScreen> createState() => _MateriScreenState();
 }
 
 class _MateriScreenState extends State<MateriScreen> {
+  late int _currentIndex;
   bool isMenuOpen = true;
   bool isLandscape = false;
   bool hasTriggerRotation = false;
@@ -36,6 +34,7 @@ class _MateriScreenState extends State<MateriScreen> {
   @override
   void initState() {
     super.initState();
+    _currentIndex = widget.initialIndex;
     _loadPreferences();
   }
 
@@ -77,6 +76,11 @@ class _MateriScreenState extends State<MateriScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final currentChapter = widget.chapters[_currentIndex];
+    final String bab = currentChapter['bab']?.toString() ?? '';
+    final String title = currentChapter['title']?.toString() ?? '';
+    final String contentHtml = currentChapter['content_html']?.toString() ?? '';
+
     return Scaffold(
       backgroundColor: AppColors.backgroundClean,
       body: SafeArea(
@@ -94,7 +98,7 @@ class _MateriScreenState extends State<MateriScreen> {
             children: [
               Column(
                 children: [
-                  MateriHeader(title: widget.title),
+                  MateriHeader(title: title),
                   const SizedBox(height: 5),
 
                   Expanded(
@@ -102,13 +106,14 @@ class _MateriScreenState extends State<MateriScreen> {
                       onTap: toggleMenu,
                       behavior: HitTestBehavior.opaque,
                       child: SingleChildScrollView(
+                        key: ValueKey(_currentIndex),
                         physics: const BouncingScrollPhysics(),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 12,
                           vertical: 10,
                         ),
                         child: HtmlWidget(
-                          widget.contentHtml,
+                          contentHtml,
                           textStyle: TextStyle(
                             fontSize: _latinTextSize,
                             height: 1.3,
@@ -208,20 +213,40 @@ class _MateriScreenState extends State<MateriScreen> {
                 right: 0,
                 bottom: isMenuOpen ? 30 : -100,
                 child: FloatingMenu(
-                  onPrevious: () => print("Previous"),
-                  onNext: () => print("Next"),
-                  onMenu: () {
-                    showModalBottomSheet(
+                  onPrevious: _currentIndex > 0
+                      ? (() {
+                          setState(() {
+                            _currentIndex--;
+                          });
+                        })
+                      : null,
+                  onNext: _currentIndex < widget.chapters.length - 1
+                      ? (() {
+                          setState(() {
+                            _currentIndex++;
+                          });
+                        })
+                      : null,
+                  onMenu: () async {
+                    final selectedIndex = await showModalBottomSheet<int>(
                       context: context,
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
                       builder: (context) {
                         return ChapterModal(
-                          currentChapter: widget.bab,
+                          currentChapter: bab,
+                          chapters: widget.chapters,
                           onClose: () => Navigator.pop(context),
                         );
                       },
                     );
+
+                    if (selectedIndex != null &&
+                        selectedIndex != _currentIndex) {
+                      setState(() {
+                        _currentIndex = selectedIndex;
+                      });
+                    }
                   },
                   onFontSize: () async {
                     await showModalBottomSheet(

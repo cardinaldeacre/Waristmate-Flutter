@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:waristmate_app/widgets/ui/circle_button.dart';
 
 class FloatingMenu extends StatelessWidget {
-  final VoidCallback onPrevious;
-  final VoidCallback onNext;
+  final VoidCallback? onPrevious;
+  final VoidCallback? onNext;
   final VoidCallback onMenu;
   final VoidCallback onRotate;
   final VoidCallback onFontSize;
 
   const FloatingMenu({
     super.key,
-    required this.onPrevious,
-    required this.onNext,
+    this.onPrevious,
+    this.onNext,
     required this.onMenu,
     required this.onRotate,
     required this.onFontSize,
