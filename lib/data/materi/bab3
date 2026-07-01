@@ -92,7 +92,7 @@
 		<h3>Pembagian ahli waris dari pria dan wanita.</h3>
 		<ul type="square" class="list-ahli-waris">
 			<li>
-				<h4 class="pewaris-pria" style="color: #0a8138; font-weight: 500">
+				<h4 style="font-weight: 500">
 					Pewaris dari kalanagan <span>Pria</span> sebanyak 15 orang, yaitu:
 				</h4>
 				<ul>
@@ -144,7 +144,7 @@
 				</ul>
 			</li>
 			<li>
-				<h4 class="pewaris-wanita" style="color: #0a8138; font-weight: 500">
+				<h4 style="font-weight: 500">
 					Pewaris dari kalangan <span>Wanita</span> sebanyak 10 orang, yaitu:
 				</h4>
 				<ul>
