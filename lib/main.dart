@@ -5,7 +5,7 @@ import 'package:waristmate_app/core/config/theme.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
-import 'screen/main_wrapper.dart';
+import 'package:waristmate_app/screen/welcome/welcome_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -62,7 +62,7 @@ class WaristmateApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       themeMode: ThemeMode.system,
-      home: const MainWrapper(),
+      home: const WelcomeScreen(),
     );
   }
 }
