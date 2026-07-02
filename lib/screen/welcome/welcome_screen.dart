@@ -85,6 +85,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: AppColors.primaryGreen.withAlpha(3000),
       body: SafeArea(
         bottom: false,

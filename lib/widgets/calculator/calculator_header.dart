@@ -9,7 +9,7 @@ class CalculatorHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 14),
+      padding: const EdgeInsets.only(left: 20, right: 16, top: 32, bottom: 14),
       decoration: BoxDecoration(
         color: AppColors.primaryGreen,
         borderRadius: BorderRadius.only(
@@ -45,7 +45,7 @@ class CalculatorHeader extends StatelessWidget {
           const Text(
             "KALKULATOR",
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 23,
               fontWeight: FontWeight.w700,
               color: Colors.white,
             ),

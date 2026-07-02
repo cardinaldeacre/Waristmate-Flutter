@@ -73,63 +73,62 @@ class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundClean,
-      body: SafeArea(
-        child: Column(
-          children: [
-            NoteHeader(),
-            Expanded(
-              child: RefreshIndicator(
-                onRefresh: _refreshData,
-                child: Column(
-                  children: [
-                    NoteCard(isEditMode: _isEditMode),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.cardBackground,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withAlpha(26),
-                            blurRadius: 10,
-                            offset: const Offset(0, 5),
+      extendBodyBehindAppBar: true,
+      body: Column(
+        children: [
+          NoteHeader(),
+          const SizedBox(height: 5),
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: _refreshData,
+              child: Column(
+                children: [
+                  NoteCard(isEditMode: _isEditMode),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.cardBackground,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withAlpha(26),
+                          blurRadius: 10,
+                          offset: const Offset(0, 5),
+                        ),
+                      ],
+                    ),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: _isEditMode
+                              ? AppColors.primaryGreen
+                              : AppColors.gold,
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                        ],
-                      ),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: _isEditMode
-                                ? AppColors.primaryGreen
-                                : AppColors.gold,
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                          onPressed: _isEditMode ? _saveData : _toggleEditMode,
-                          child: Text(
-                            _isEditMode ? 'Simpan Catatan' : 'Edit Catatan',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.textLight,
-                            ),
+                        ),
+                        onPressed: _isEditMode ? _saveData : _toggleEditMode,
+                        child: Text(
+                          _isEditMode ? 'Simpan Catatan' : 'Edit Catatan',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.textLight,
                           ),
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

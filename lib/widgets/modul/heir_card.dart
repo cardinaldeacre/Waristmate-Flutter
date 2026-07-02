@@ -18,6 +18,7 @@ class HeirCard extends StatelessWidget {
         side: BorderSide(color: AppColors.primaryGreen, width: 1),
         borderRadius: BorderRadius.circular(20),
       ),
+      color: AppColors.cardBackground,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

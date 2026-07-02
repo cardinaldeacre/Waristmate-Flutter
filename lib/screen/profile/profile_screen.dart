@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/profile/profile_header.dart';
 import 'package:waristmate_app/widgets/profile/profile_card.dart';
 import 'package:waristmate_app/widgets/profile/preference_card.dart';
@@ -55,55 +54,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
         : "https://ui-avatars.com/api/?name=Fulan&background=cccccc&color=fff";
 
     return Scaffold(
-      backgroundColor: AppColors.backgroundClean,
-      body: SafeArea(
-        child: Column(
-          children: [
-            ProfileHeader(),
-            Expanded(
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    if (isLoggedIn)
-                      ProfileCard(
-                        name: userName,
-                        avatarUrl: userAvatar,
-                        isLoggedIn: isLoggedIn,
-                      )
-                    else
-                      LoginCard(),
+      extendBodyBehindAppBar: true,
+      body: Column(
+        children: [
+          ProfileHeader(),
+          Expanded(
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  if (isLoggedIn)
+                    ProfileCard(
+                      name: userName,
+                      avatarUrl: userAvatar,
+                      isLoggedIn: isLoggedIn,
+                    )
+                  else
+                    LoginCard(),
 
-                    const SizedBox(height: 16),
+                  const SizedBox(height: 16),
 
-                    PreferenceCard(title: "Preferensi", child: Container()),
+                  PreferenceCard(title: "Preferensi", child: Container()),
 
-                    const SizedBox(height: 16),
+                  const SizedBox(height: 16),
 
-                    MenuCard(
-                      title: "Riwayat Aktivitas",
-                      subtitle: "Terakhir diperbarui: 12 Juni 2024",
-                      iconData: Icons.history,
-                    ),
+                  MenuCard(
+                    title: "Riwayat Aktivitas",
+                    subtitle: "Terakhir diperbarui: 12 Juni 2024",
+                    iconData: Icons.history,
+                  ),
 
-                    const SizedBox(height: 16),
+                  const SizedBox(height: 16),
 
-                    MenuCard(
-                      title: "Tentang Waristmate",
-                      subtitle: "Cari tahu lebih lanjut tentang aplikasi ini",
-                      iconData: Icons.info,
-                    ),
+                  MenuCard(
+                    title: "Tentang Waristmate",
+                    subtitle: "Cari tahu lebih lanjut tentang aplikasi ini",
+                    iconData: Icons.info,
+                  ),
 
-                    const SizedBox(height: 16),
+                  const SizedBox(height: 16),
 
-                    if (isLoggedIn) LogoutCard(),
-                  ],
-                ),
+                  if (isLoggedIn) LogoutCard(),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
