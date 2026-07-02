@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+// import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
 import 'package:waristmate_app/logic/hajb_validator.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_header.dart';
@@ -20,11 +20,11 @@ class Step9 extends StatefulWidget {
 
 class _Step9State extends State<Step9> {
   void saveData() async {
-    final calc = Provider.of<CalculatorController>(context, listen: false);
-    final user = Supabase.instance.client.auth.currentUser;
-    if (user != null) {
-      calc.saveCalculationHistory(user.id);
-    }
+    // final calc = Provider.of<CalculatorController>(context, listen: false);
+    // final user = Supabase.instance.client.auth.currentUser;
+    // if (user != null) {
+    //   calc.saveCalculationHistory(user.id);
+    // }
   }
 
   @override
