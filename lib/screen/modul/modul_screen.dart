@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:waristmate_app/controllers/modul_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/modul/chapter_card.dart';
 import 'package:waristmate_app/widgets/modul/module_header.dart';
@@ -19,10 +21,15 @@ class _ModulScreenState extends State<ModulScreen> {
   void initState() {
     super.initState();
     _materiService.fetchLearningModules();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ModulController>().fetchLastReadAndBookmarks();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final modulCtrl = context.watch<ModulController>();
     return Scaffold(
       backgroundColor: AppColors.backgroundClean,
       body: SafeArea(
@@ -63,6 +70,8 @@ class _ModulScreenState extends State<ModulScreen> {
                     itemCount: chapters.length,
                     itemBuilder: (context, index) {
                       final currentChapter = chapters[index];
+                      final String babStr = currentChapter['bab'].toString();
+                      final int babNumber = int.tryParse(babStr) ?? 0;
 
                       return ChapterCard(
                         chapter: {
@@ -73,6 +82,10 @@ class _ModulScreenState extends State<ModulScreen> {
                         },
                         index: index,
                         chapterList: chapters,
+                        isBookmarked: modulCtrl.isLoggedIn
+                            ? modulCtrl.bookmarkedBabs.contains(babNumber)
+                            : false,
+                        isLastRead: modulCtrl.lastReadBab == babNumber,
                       );
                     },
                   );

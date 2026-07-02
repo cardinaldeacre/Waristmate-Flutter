@@ -6,12 +6,16 @@ class ChapterCard extends StatelessWidget {
   final Map<String, dynamic> chapter;
   final List<Map<String, dynamic>> chapterList;
   final int index;
+  final bool isBookmarked;
+  final bool isLastRead;
 
   const ChapterCard({
     super.key,
     required this.chapter,
     required this.chapterList,
     required this.index,
+    this.isBookmarked = false,
+    this.isLastRead = false,
   });
 
   @override
@@ -21,7 +25,9 @@ class ChapterCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        color: AppColors.backgroundClean,
+        color: isLastRead
+            ? AppColors.primaryGreen.withAlpha(30)
+            : AppColors.backgroundClean,
         borderRadius: BorderRadius.circular(cardRadius),
         boxShadow: [
           BoxShadow(
@@ -31,8 +37,10 @@ class ChapterCard extends StatelessWidget {
           ),
         ],
         border: Border.all(
-          color: AppColors.primaryGreen.withValues(alpha: 0.2),
-          width: 1,
+          color: isLastRead
+              ? AppColors.primaryGreen.withAlpha(30)
+              : AppColors.primaryGreen.withAlpha(51),
+          width: isLastRead ? 1.5 : 1,
         ),
       ),
 
@@ -73,13 +81,26 @@ class ChapterCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Bab ${chapter['bab'] ?? ''}",
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.primaryGreen,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            "Bab ${chapter['bab'] ?? ''}",
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.primaryGreen,
+                            ),
+                          ),
+                          if (isBookmarked)
+                            const Padding(
+                              padding: EdgeInsets.only(left: 8),
+                              child: Icon(
+                                Icons.bookmark_rounded,
+                                color: AppColors.gold,
+                                size: 18,
+                              ),
+                            ),
+                        ],
                       ),
                       const SizedBox(height: 4),
                       Text(
@@ -90,6 +111,38 @@ class ChapterCard extends StatelessWidget {
                           color: AppColors.textDark,
                         ),
                       ),
+                      if (isLastRead) ...[
+                        const SizedBox(height: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryGreen.withAlpha(30),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.access_time_filled_rounded,
+                                size: 12,
+                                color: AppColors.primaryGreen,
+                              ),
+                              const SizedBox(width: 4),
+                              const Text(
+                                "Terakhir dibaca",
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w800,
+                                  color: AppColors.primaryGreen,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ],
                   ),
                 ),

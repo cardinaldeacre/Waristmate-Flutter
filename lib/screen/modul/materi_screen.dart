@@ -40,15 +40,10 @@ class _MateriScreenState extends State<MateriScreen> {
     _loadPreferences();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final progressCtrl = Provider.of<ModulController>(context, listen: false);
+      final babString = widget.chapters[_currentIndex]['bab']?.toString() ?? '';
+      final int babNumber = int.tryParse(babString) ?? 1;
 
-      progressCtrl.fetchLastReadAndBookmarks().then((_) {
-        final babString =
-            widget.chapters[_currentIndex]['bab']?.toString() ?? '';
-        final int babNumber = int.tryParse(babString) ?? 1;
-
-        progressCtrl.updateLastReadBab(babNumber);
-      });
+      context.read<ModulController>().updateLastReadBab(babNumber);
     });
   }
 
@@ -63,10 +58,7 @@ class _MateriScreenState extends State<MateriScreen> {
         widget.chapters[newIndex]['bab']?.toString() ?? '1';
     final int babNumber = int.tryParse(babString) ?? 1;
 
-    Provider.of<ModulController>(
-      context,
-      listen: false,
-    ).updateLastReadBab(babNumber);
+    context.read<ModulController>().updateLastReadBab(babNumber);
   }
 
   @override
@@ -303,6 +295,9 @@ class _MateriScreenState extends State<MateriScreen> {
                     final isBookmarked = progressCtrl.bookmarkedBabs.contains(
                       currentBabNumber,
                     );
+                    if (!progressCtrl.isLoggedIn) {
+                      return const SizedBox.shrink();
+                    }
                     return IconButton(
                       icon: Icon(
                         isBookmarked ? Icons.bookmark : Icons.bookmark_border,

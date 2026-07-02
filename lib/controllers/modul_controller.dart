@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ModulController extends ChangeNotifier {
   final _supabase = Supabase.instance.client;
+  final Box progressBox = Hive.box('progressBox');
 
   int lastReadBab = 1;
   List<int> bookmarkedBabs = [];
 
+  bool get isLoggedIn => _supabase.auth.currentUser != null;
+
+  ModulController() {
+    loadProgressFromHive();
+  }
+
+  void loadProgressFromHive() {
+    lastReadBab = progressBox.get('last_read_bab') ?? 1;
+    bookmarkedBabs = List<int>.from(progressBox.get('bookmarked_babs') ?? []);
+    notifyListeners();
+  }
+
   Future<void> fetchLastReadAndBookmarks() async {
+    loadProgressFromHive();
     try {
       final userId = _supabase.auth.currentUser?.id;
       if (userId == null) return;
@@ -22,6 +37,9 @@ class ModulController extends ChangeNotifier {
 
       lastReadBab = progressData?['last_read_bab'] ?? 1;
       bookmarkedBabs = List<int>.from(progressData?['bookmarked_babs'] ?? []);
+
+      progressBox.put('last_read_bab', lastReadBab);
+      progressBox.put('bookmarked_babs', bookmarkedBabs);
       notifyListeners();
     } catch (e) {
       print('Error fetching last read and bookmarks: $e');
@@ -36,8 +54,9 @@ class ModulController extends ChangeNotifier {
         bookmarkedBabs.add(babNumber);
       }
 
+      progressBox.put('bookmarked_babs', bookmarkedBabs);
       notifyListeners();
-      await syncSupabaseData();
+      syncSupabaseData();
     } catch (e) {
       print('Error toggling bookmark: $e');
     }
@@ -46,9 +65,9 @@ class ModulController extends ChangeNotifier {
   Future<void> updateLastReadBab(int babNumber) async {
     try {
       lastReadBab = babNumber;
-
+      progressBox.put('last_read_bab', lastReadBab);
       notifyListeners();
-      await syncSupabaseData();
+      syncSupabaseData();
     } catch (e) {
       print('Error updating last read bab: $e');
     }

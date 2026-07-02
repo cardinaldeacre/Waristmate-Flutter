@@ -20,6 +20,7 @@ void main() async {
   await Hive.openBox('profileBox');
   await Hive.openBox('personalNoteBox');
   await Hive.openBox('calculationHistoryBox');
+  await Hive.openBox('progressBox');
 
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL']!,
@@ -51,6 +52,14 @@ class WaristmateApp extends StatelessWidget {
     return MaterialApp(
       title: 'WARISTMATE',
       debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        final media = MediaQuery.of(context);
+
+        return MediaQuery(
+          data: media.copyWith(textScaler: const TextScaler.linear(1.0)),
+          child: child!,
+        );
+      },
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: AppColors.primaryGreen,
