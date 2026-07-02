@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/controllers/auth_controller.dart';
+import 'package:waristmate_app/controllers/modul_controller.dart';
 import 'package:waristmate_app/controllers/personal_note_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:flutter/services.dart';
@@ -35,6 +36,7 @@ void main() async {
         ChangeNotifierProvider(create: (context) => AuthController()),
         ChangeNotifierProvider(create: (context) => CalculatorController()),
         ChangeNotifierProvider(create: (context) => PersonalNoteController()),
+        ChangeNotifierProvider(create: (context) => ModulController()),
       ],
       child: const WaristmateApp(),
     ),
