@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:waristmate_app/core/config/theme.dart';
 import 'step1.dart';
 import 'step2.dart';
 import 'step3.dart';
@@ -45,7 +46,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.backgroundClean,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: PageView(

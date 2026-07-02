@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'package:waristmate_app/core/extension/context_extension.dart';
 import 'package:waristmate_app/screen/welcome/welcome_screen.dart';
 
 class BottomIntroCard extends StatelessWidget {
@@ -20,14 +21,19 @@ class BottomIntroCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isSmall = context.isSmallScreen;
+
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.bottomCenter,
       children: [
         Container(
           width: double.infinity,
-          margin: const EdgeInsets.only(bottom: 40),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          margin: EdgeInsets.only(bottom: 40),
+          padding: EdgeInsets.symmetric(
+            horizontal: isSmall ? 12 : 16,
+            vertical: isSmall ? 6 : 8,
+          ),
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/welcome_layout.png'),
@@ -44,9 +50,9 @@ class BottomIntroCard extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final slide = slides[index];
                     return Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 32,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isSmall ? 12 : 16,
+                        vertical: isSmall ? 16 : 20,
                       ),
 
                       child: Column(

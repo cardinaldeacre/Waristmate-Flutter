@@ -24,7 +24,9 @@ class _Step3State extends State<Step3> {
 
     return Column(
       children: [
-        CalculatorHeader(stepInfo: "2"),
+        CalculatorHeader(stepInfo: "2 dari 9"),
+
+        const SizedBox(height: 5),
 
         Expanded(
           child: SingleChildScrollView(
@@ -48,7 +50,7 @@ class _Step3State extends State<Step3> {
                           const Text(
                             "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
                             style: TextStyle(
-                              fontSize: 17.5,
+                              fontSize: 17,
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
                             ),
@@ -58,7 +60,7 @@ class _Step3State extends State<Step3> {
                           const Text(
                             "Cucu Kandung",
                             style: TextStyle(
-                              fontSize: 17.5,
+                              fontSize: 17,
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
                             ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
+import 'package:waristmate_app/core/config/theme.dart';
+import 'package:waristmate_app/widgets/calculator/calculator_header.dart';
 
 class CalculationResult extends StatefulWidget {
   final VoidCallback onBack;
@@ -26,62 +28,15 @@ class _CalculationResultState extends State<CalculationResult> {
       symbol: 'Rp ',
       decimalDigits: 0,
     );
-    const Color primaryGreen = Color.fromARGB(255, 23, 126, 104);
-    const Color darkGreen = Color(0xFF105C46);
-    print('results${calc.results}');
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.only(
-                left: 16,
-                right: 16,
-                top: 20,
-                bottom: 14,
-              ),
-              decoration: BoxDecoration(
-                color: primaryGreen,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: darkGreen,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Text(
-                      "Hasil",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ),
-                  const Text(
-                    "Kalkulator",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Image.asset('assets/images/logo_white.png', width: 40),
-                ],
-              ),
-            ),
+            CalculatorHeader(stepInfo: "Hasil"),
+
+            const SizedBox(height: 5),
 
             Expanded(
               child: SingleChildScrollView(
@@ -98,7 +53,7 @@ class _CalculationResultState extends State<CalculationResult> {
                         vertical: 12,
                       ),
                       decoration: BoxDecoration(
-                        color: primaryGreen,
+                        color: AppColors.primaryGreen,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: SingleChildScrollView(
@@ -147,7 +102,7 @@ class _CalculationResultState extends State<CalculationResult> {
                           vertical: 12,
                         ),
                         decoration: BoxDecoration(
-                          color: primaryGreen,
+                          color: AppColors.primaryGreen,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Text(
@@ -221,7 +176,7 @@ class _CalculationResultState extends State<CalculationResult> {
                           Expanded(
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: primaryGreen,
+                                backgroundColor: AppColors.primaryGreen,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 30,
                                   vertical: 12,
@@ -247,7 +202,7 @@ class _CalculationResultState extends State<CalculationResult> {
                           Expanded(
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: primaryGreen,
+                                backgroundColor: AppColors.primaryGreen,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 30,
                                   vertical: 12,
@@ -275,7 +230,7 @@ class _CalculationResultState extends State<CalculationResult> {
 
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: primaryGreen,
+                        backgroundColor: AppColors.primaryGreen,
                         padding: const EdgeInsets.symmetric(
                           vertical: 14,
                           horizontal: 22,

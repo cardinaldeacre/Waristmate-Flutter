@@ -30,7 +30,9 @@ class _Step1State extends State<Step1> {
 
     return Column(
       children: [
-        CalculatorHeader(stepInfo: "1"),
+        CalculatorHeader(stepInfo: "1 dari 9"),
+
+        const SizedBox(height: 5),
 
         Expanded(
           child: SingleChildScrollView(
@@ -55,7 +57,7 @@ class _Step1State extends State<Step1> {
                             "Silahkan isi masing-masing kolom sesuai dengan label keterangan tertulis",
                             style: TextStyle(
                               color: AppColors.textLight,
-                              fontSize: 17.5,
+                              fontSize: 17,
                               fontWeight: FontWeight.w600,
                             ),
                           ),

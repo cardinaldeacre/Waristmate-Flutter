@@ -99,7 +99,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 currentPage: _currentPage,
                 onPageChanged: _onPageChanged,
                 onHomeTap: () {
-                  // Navigasi ke halaman utama aplikasi
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (context) => const MainWrapper(),

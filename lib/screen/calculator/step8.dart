@@ -24,7 +24,9 @@ class _Step8State extends State<Step8> {
 
     return Column(
       children: [
-        CalculatorHeader(stepInfo: "8"),
+        CalculatorHeader(stepInfo: "8 dari 9"),
+
+        const SizedBox(height: 5),
 
         Expanded(
           child: SingleChildScrollView(
@@ -48,7 +50,7 @@ class _Step8State extends State<Step8> {
                           const Text(
                             "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
                             style: TextStyle(
-                              fontSize: 17.5,
+                              fontSize: 17,
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
                             ),
@@ -58,7 +60,7 @@ class _Step8State extends State<Step8> {
                           const Text(
                             "Paman",
                             style: TextStyle(
-                              fontSize: 17.5,
+                              fontSize: 17,
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
                             ),

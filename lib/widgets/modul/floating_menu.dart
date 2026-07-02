@@ -21,10 +21,14 @@ class FloatingMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 12),
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width < 360 ? 8 : 26,
+          vertical: 12,
+        ),
         decoration: BoxDecoration(color: Colors.transparent),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CircleButton(
               icon: Icons.keyboard_arrow_left_rounded,
