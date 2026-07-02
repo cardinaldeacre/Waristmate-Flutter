@@ -26,7 +26,8 @@ class BottomIntroCard extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          margin: const EdgeInsets.all(20),
+          margin: const EdgeInsets.only(bottom: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/welcome_layout.png'),
@@ -72,7 +73,6 @@ class BottomIntroCard extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 16),
-                          // Indikator titik (dot indicator)
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: List.generate(
@@ -104,7 +104,7 @@ class BottomIntroCard extends StatelessWidget {
         ),
 
         Positioned(
-          bottom: 33,
+          bottom: 50,
           child: GestureDetector(
             onTap: onHomeTap,
             child: const Icon(

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/screen/main_wrapper.dart';
 import 'package:waristmate_app/widgets/welcome/bottom_intro_card.dart';
@@ -49,6 +50,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void initState() {
     super.initState();
     _startAutoSlide();
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        systemNavigationBarColor: AppColors.primaryGreen.withAlpha(3000),
+        systemNavigationBarContrastEnforced: false,
+        systemNavigationBarIconBrightness: Brightness.light,
+      ),
+    );
   }
 
   void _startAutoSlide() {

@@ -17,7 +17,7 @@ class HeroWelcome extends StatelessWidget {
           children: [
             Image.asset(
               'assets/images/balance_3d.png',
-              height: 320,
+              height: 280,
               errorBuilder: (context, error, stackTrace) =>
                   Icon(Icons.balance_rounded, size: 160, color: AppColors.gold),
             ),
@@ -53,7 +53,7 @@ class HeroWelcome extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 20),
         const Text(
           'WARISTMATE',
           style: TextStyle(
