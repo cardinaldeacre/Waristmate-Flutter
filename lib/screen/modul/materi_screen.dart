@@ -106,213 +106,209 @@ class _MateriScreenState extends State<MateriScreen> {
     final String contentHtml = currentChapter['content_html']?.toString() ?? '';
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: AppColors.backgroundClean,
-      body: SafeArea(
-        child: GestureDetector(
-          onScaleStart: (details) {
-            hasTriggerRotation = false;
-          },
-          onScaleUpdate: (details) {
-            if (details.pointerCount >= 2 && !hasTriggerRotation) {
-              toggleOrientation();
-              hasTriggerRotation = true;
-            }
-          },
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  MateriHeader(title: title),
-                  const SizedBox(height: 5),
+      body: GestureDetector(
+        onScaleStart: (details) {
+          hasTriggerRotation = false;
+        },
+        onScaleUpdate: (details) {
+          if (details.pointerCount >= 2 && !hasTriggerRotation) {
+            toggleOrientation();
+            hasTriggerRotation = true;
+          }
+        },
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                MateriHeader(title: title),
+                const SizedBox(height: 5),
 
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: toggleMenu,
-                      behavior: HitTestBehavior.opaque,
-                      child: SingleChildScrollView(
-                        key: ValueKey(_currentIndex),
-                        physics: const BouncingScrollPhysics(),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 10,
+                Expanded(
+                  child: GestureDetector(
+                    onTap: toggleMenu,
+                    behavior: HitTestBehavior.opaque,
+                    child: SingleChildScrollView(
+                      key: ValueKey(_currentIndex),
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 10,
+                      ),
+                      child: HtmlWidget(
+                        contentHtml,
+                        textStyle: TextStyle(
+                          fontSize: _latinTextSize,
+                          height: 1.3,
+                          color: AppColors.textDark,
                         ),
-                        child: HtmlWidget(
-                          contentHtml,
-                          textStyle: TextStyle(
-                            fontSize: _latinTextSize,
-                            height: 1.3,
-                            color: AppColors.textDark,
-                          ),
-                          customStylesBuilder: (element) {
-                            String greenHexColor =
-                                '#${AppColors.primaryGreen.toARGB32().toRadixString(16).substring(2).padLeft(6, '0')}';
-                            if (element.attributes['dir'] == 'rtl') {
-                              return {
-                                'font-size': '${_arabicTextSize}px',
-                                'font-family': 'Amiri, serif',
-                                'text-align': 'center',
-                                'line-height': '2',
-                                'color': greenHexColor,
-                              };
-                            }
-                            if (element.classes.contains('span-blue')) {
-                              return {'color': '#0a4fb6', 'font-weight': '500'};
-                            }
-                            if (element.classes.contains('span-green')) {
-                              return {
-                                'color': greenHexColor,
-                                'font-weight': '500',
-                              };
-                            }
-                            if (element.classes.contains('orange')) {
-                              return {'color': '#c5681c', 'font-weight': '500'};
-                            }
-                            if (element.localName == 'p') {
-                              return {
-                                'text-align': 'justify',
-                                'margin': '1px 2px 2px 1px',
-                                'padding': '1px',
-                              };
-                            }
-                            if (element.localName == 'ul' ||
-                                element.localName == 'ol') {
-                              return {'padding': '0px 1px 1px 16px'};
-                            }
-                            if (element.localName == 'li') {
-                              return {
-                                'text-align': 'justify',
-                                'padding': '1px',
-                              };
-                            }
+                        customStylesBuilder: (element) {
+                          String greenHexColor =
+                              '#${AppColors.primaryGreen.toARGB32().toRadixString(16).substring(2).padLeft(6, '0')}';
+                          if (element.attributes['dir'] == 'rtl') {
+                            return {
+                              'font-size': '${_arabicTextSize}px',
+                              'font-family': 'Amiri, serif',
+                              'text-align': 'center',
+                              'line-height': '2',
+                              'color': greenHexColor,
+                            };
+                          }
+                          if (element.classes.contains('span-blue')) {
+                            return {'color': '#0a4fb6', 'font-weight': '500'};
+                          }
+                          if (element.classes.contains('span-green')) {
+                            return {
+                              'color': greenHexColor,
+                              'font-weight': '500',
+                            };
+                          }
+                          if (element.classes.contains('orange')) {
+                            return {'color': '#c5681c', 'font-weight': '500'};
+                          }
+                          if (element.localName == 'p') {
+                            return {
+                              'text-align': 'justify',
+                              'margin': '1px 2px 2px 1px',
+                              'padding': '1px',
+                            };
+                          }
+                          if (element.localName == 'ul' ||
+                              element.localName == 'ol') {
+                            return {'padding': '0px 1px 1px 16px'};
+                          }
+                          if (element.localName == 'li') {
+                            return {'text-align': 'justify', 'padding': '1px'};
+                          }
 
-                            if (element.localName == 'i') {
-                              return {
-                                'font-style': 'italic',
-                                'color': greenHexColor,
-                                'font-weight': '500',
-                              };
-                            }
-                            if (element.localName == 'h2') {
-                              return {'text-align': 'center'};
-                            }
-                            if (element.localName == 'h3' ||
-                                element.localName == 'h4') {
-                              return {
-                                'color': greenHexColor,
-                                'margin': '0px',
-                                'padding': '0px',
-                              };
-                            }
-                            return null;
-                          },
+                          if (element.localName == 'i') {
+                            return {
+                              'font-style': 'italic',
+                              'color': greenHexColor,
+                              'font-weight': '500',
+                            };
+                          }
+                          if (element.localName == 'h2') {
+                            return {'text-align': 'center'};
+                          }
+                          if (element.localName == 'h3' ||
+                              element.localName == 'h4') {
+                            return {
+                              'color': greenHexColor,
+                              'margin': '0px',
+                              'padding': '0px',
+                            };
+                          }
+                          return null;
+                        },
 
-                          customWidgetBuilder: (element) {
-                            if (element.classes.contains('table-definition') ||
-                                element.classes.contains('table-count')) {
-                              return TableDefinition(
-                                tableElement: element,
-                                fontSize: _latinTextSize,
-                              );
-                            }
-                            if (element.classes.contains("table-share")) {
-                              return NativeShareTable(
-                                tableElement: element,
-                                fontSize: _latinTextSize,
-                              );
-                            }
+                        customWidgetBuilder: (element) {
+                          if (element.classes.contains('table-definition') ||
+                              element.classes.contains('table-count')) {
+                            return TableDefinition(
+                              tableElement: element,
+                              fontSize: _latinTextSize,
+                            );
+                          }
+                          if (element.classes.contains("table-share")) {
+                            return NativeShareTable(
+                              tableElement: element,
+                              fontSize: _latinTextSize,
+                            );
+                          }
 
-                            return null;
-                          },
-                        ),
+                          return null;
+                        },
                       ),
                     ),
                   ),
-                ],
-              ),
-
-              AnimatedPositioned(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-                left: 0,
-                right: 0,
-                bottom: isMenuOpen ? 30 : -100,
-                child: Consumer<ModulController>(
-                  builder: (context, progressCtrl, child) {
-                    return FloatingMenu(
-                      onPrevious: _currentIndex > 0
-                          ? () => changeChapter(_currentIndex - 1)
-                          : null,
-                      onNext: _currentIndex < widget.chapters.length - 1
-                          ? () => changeChapter(_currentIndex + 1)
-                          : null,
-                      onMenu: () async {
-                        final selectedIndex = await showModalBottomSheet<int>(
-                          context: context,
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          builder: (context) {
-                            return ChapterModal(
-                              currentChapter: bab,
-                              chapters: widget.chapters,
-                              onClose: () => Navigator.pop(context),
-                            );
-                          },
-                        );
-
-                        if (selectedIndex != null) {
-                          changeChapter(selectedIndex);
-                        }
-                      },
-                      onFontSize: () async {
-                        await showModalBottomSheet(
-                          context: context,
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          builder: (context) {
-                            return PreferenceCard(
-                              title: "Preferensi",
-                              heightFactor: 0.7,
-                              onFontSizeChanged: () {
-                                _loadPreferences();
-                              },
-                              child: Container(),
-                            );
-                          },
-                        );
-                        _loadPreferences();
-                      },
-                      onRotate: () => toggleOrientation(),
-                    );
-                  },
                 ),
-              ),
+              ],
+            ),
 
-              Positioned(
-                top: 56,
-                right: 16,
-                child: Consumer<ModulController>(
-                  builder: (context, progressCtrl, _) {
-                    final isBookmarked = progressCtrl.bookmarkedBabs.contains(
-                      currentBabNumber,
-                    );
-                    if (!progressCtrl.isLoggedIn) {
-                      return const SizedBox.shrink();
-                    }
-                    return IconButton(
-                      icon: Icon(
-                        isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                        color: AppColors.errorRed,
-                        size: 48,
-                      ),
-                      onPressed: () {
-                        progressCtrl.toggleBookmark(currentBabNumber);
-                      },
-                    );
-                  },
-                ),
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              left: 0,
+              right: 0,
+              bottom: isMenuOpen ? 30 : -100,
+              child: Consumer<ModulController>(
+                builder: (context, progressCtrl, child) {
+                  return FloatingMenu(
+                    onPrevious: _currentIndex > 0
+                        ? () => changeChapter(_currentIndex - 1)
+                        : null,
+                    onNext: _currentIndex < widget.chapters.length - 1
+                        ? () => changeChapter(_currentIndex + 1)
+                        : null,
+                    onMenu: () async {
+                      final selectedIndex = await showModalBottomSheet<int>(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (context) {
+                          return ChapterModal(
+                            currentChapter: bab,
+                            chapters: widget.chapters,
+                            onClose: () => Navigator.pop(context),
+                          );
+                        },
+                      );
+
+                      if (selectedIndex != null) {
+                        changeChapter(selectedIndex);
+                      }
+                    },
+                    onFontSize: () async {
+                      await showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (context) {
+                          return PreferenceCard(
+                            title: "Preferensi",
+                            heightFactor: 0.7,
+                            onFontSizeChanged: () {
+                              _loadPreferences();
+                            },
+                            child: Container(),
+                          );
+                        },
+                      );
+                      _loadPreferences();
+                    },
+                    onRotate: () => toggleOrientation(),
+                  );
+                },
               ),
-            ],
-          ),
+            ),
+
+            Positioned(
+              top: 69,
+              right: 16,
+              child: Consumer<ModulController>(
+                builder: (context, progressCtrl, _) {
+                  final isBookmarked = progressCtrl.bookmarkedBabs.contains(
+                    currentBabNumber,
+                  );
+                  if (!progressCtrl.isLoggedIn) {
+                    return const SizedBox.shrink();
+                  }
+                  return IconButton(
+                    icon: Icon(
+                      isBookmarked ? Icons.bookmark : Icons.bookmark,
+                      color: isBookmarked ? AppColors.errorRed : AppColors.grey,
+                      size: 48,
+                    ),
+                    onPressed: () {
+                      progressCtrl.toggleBookmark(currentBabNumber);
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

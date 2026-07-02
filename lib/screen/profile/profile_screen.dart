@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/profile/profile_header.dart';
 import 'package:waristmate_app/widgets/profile/profile_card.dart';
 import 'package:waristmate_app/widgets/profile/preference_card.dart';
@@ -54,6 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         : "https://ui-avatars.com/api/?name=Fulan&background=cccccc&color=fff";
 
     return Scaffold(
+      backgroundColor: AppColors.backgroundClean,
       extendBodyBehindAppBar: true,
       body: Column(
         children: [

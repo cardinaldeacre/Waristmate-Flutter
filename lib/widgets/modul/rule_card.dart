@@ -16,8 +16,8 @@ class RuleCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Colors.amber.shade50,
-          border: Border.all(color: Colors.amber.shade300),
+          color: AppColors.cardBackground,
+          border: Border.all(color: AppColors.primaryGreen),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Text(
@@ -25,7 +25,7 @@ class RuleCard extends StatelessWidget {
           style: TextStyle(
             fontSize: fontSize,
             fontStyle: FontStyle.italic,
-            color: Colors.grey.shade800,
+            color: AppColors.textDark,
             height: 1.4,
           ),
         ),
@@ -38,7 +38,8 @@ class RuleCard extends StatelessWidget {
       padding: const EdgeInsets.all(12),
 
       decoration: BoxDecoration(
-        color: Colors.grey.shade50,
+        color: AppColors.cardBackground,
+        border: Border.all(color: AppColors.primaryGreen),
         borderRadius: BorderRadius.circular(12),
       ),
 
@@ -55,7 +56,7 @@ class RuleCard extends StatelessWidget {
               child: Text(
                 rule.share!,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textLight,
                   fontWeight: FontWeight.bold,
                   fontSize: fontSize,
                 ),
@@ -66,7 +67,11 @@ class RuleCard extends StatelessWidget {
 
           Text(
             rule.condition,
-            style: TextStyle(fontSize: fontSize, height: 1.4),
+            style: TextStyle(
+              fontSize: fontSize,
+              height: 1.4,
+              color: AppColors.textDark,
+            ),
           ),
         ],
       ),

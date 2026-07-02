@@ -73,6 +73,7 @@ class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundClean,
       extendBodyBehindAppBar: true,
       body: Column(
         children: [

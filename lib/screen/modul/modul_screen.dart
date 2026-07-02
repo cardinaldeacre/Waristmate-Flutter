@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/modul_controller.dart';
+import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/modul/chapter_card.dart';
 import 'package:waristmate_app/widgets/modul/module_header.dart';
 import 'package:waristmate_app/services/modul/materi_service.dart';
@@ -30,6 +31,7 @@ class _ModulScreenState extends State<ModulScreen> {
   Widget build(BuildContext context) {
     final modulCtrl = context.watch<ModulController>();
     return Scaffold(
+      backgroundColor: AppColors.backgroundClean,
       extendBodyBehindAppBar: true,
       body: Column(
         children: [

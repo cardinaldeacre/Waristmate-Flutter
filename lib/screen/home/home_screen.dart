@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/home/dalil_card.dart';
 import 'package:waristmate_app/widgets/home/home_header.dart';
 import 'package:waristmate_app/widgets/home/hero_card.dart';
@@ -26,6 +27,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
+      backgroundColor: AppColors.backgroundClean,
       body: Column(
         children: [
           HomeHeader(),

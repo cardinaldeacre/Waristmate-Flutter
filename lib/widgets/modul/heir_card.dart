@@ -34,6 +34,7 @@ class HeirCard extends StatelessWidget {
                   child: Text(
                     heir.heirName,
                     style: TextStyle(
+                      color: AppColors.textDark,
                       fontSize: fontSize + 2,
                       fontWeight: FontWeight.bold,
                     ),
