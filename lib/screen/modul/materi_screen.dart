@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:waristmate_app/controllers/modul_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:waristmate_app/widgets/modul/chapter_modal.dart';
@@ -36,6 +38,35 @@ class _MateriScreenState extends State<MateriScreen> {
     super.initState();
     _currentIndex = widget.initialIndex;
     _loadPreferences();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final progressCtrl = Provider.of<ModulController>(context, listen: false);
+
+      progressCtrl.fetchLastReadAndBookmarks().then((_) {
+        final babString =
+            widget.chapters[_currentIndex]['bab']?.toString() ?? '';
+        final int babNumber = int.tryParse(babString) ?? 1;
+
+        progressCtrl.updateLastReadBab(babNumber);
+      });
+    });
+  }
+
+  void changeChapter(int newIndex) {
+    if (newIndex == _currentIndex) return;
+
+    setState(() {
+      _currentIndex = newIndex;
+    });
+
+    final String babString =
+        widget.chapters[newIndex]['bab']?.toString() ?? '1';
+    final int babNumber = int.tryParse(babString) ?? 1;
+
+    Provider.of<ModulController>(
+      context,
+      listen: false,
+    ).updateLastReadBab(babNumber);
   }
 
   @override
@@ -78,6 +109,7 @@ class _MateriScreenState extends State<MateriScreen> {
   Widget build(BuildContext context) {
     final currentChapter = widget.chapters[_currentIndex];
     final String bab = currentChapter['bab']?.toString() ?? '';
+    final int currentBabNumber = int.tryParse(bab) ?? 1;
     final String title = currentChapter['title']?.toString() ?? '';
     final String contentHtml = currentChapter['content_html']?.toString() ?? '';
 
@@ -212,61 +244,76 @@ class _MateriScreenState extends State<MateriScreen> {
                 left: 0,
                 right: 0,
                 bottom: isMenuOpen ? 30 : -100,
-                child: FloatingMenu(
-                  onPrevious: _currentIndex > 0
-                      ? (() {
-                          setState(() {
-                            _currentIndex--;
-                          });
-                        })
-                      : null,
-                  onNext: _currentIndex < widget.chapters.length - 1
-                      ? (() {
-                          setState(() {
-                            _currentIndex++;
-                          });
-                        })
-                      : null,
-                  onMenu: () async {
-                    final selectedIndex = await showModalBottomSheet<int>(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (context) {
-                        return ChapterModal(
-                          currentChapter: bab,
-                          chapters: widget.chapters,
-                          onClose: () => Navigator.pop(context),
-                        );
-                      },
-                    );
-
-                    if (selectedIndex != null &&
-                        selectedIndex != _currentIndex) {
-                      setState(() {
-                        _currentIndex = selectedIndex;
-                      });
-                    }
-                  },
-                  onFontSize: () async {
-                    await showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (context) {
-                        return PreferenceCard(
-                          title: "Preferensi",
-                          heightFactor: 0.7,
-                          onFontSizeChanged: () {
-                            _loadPreferences();
+                child: Consumer<ModulController>(
+                  builder: (context, progressCtrl, child) {
+                    return FloatingMenu(
+                      onPrevious: _currentIndex > 0
+                          ? () => changeChapter(_currentIndex - 1)
+                          : null,
+                      onNext: _currentIndex < widget.chapters.length - 1
+                          ? () => changeChapter(_currentIndex + 1)
+                          : null,
+                      onMenu: () async {
+                        final selectedIndex = await showModalBottomSheet<int>(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (context) {
+                            return ChapterModal(
+                              currentChapter: bab,
+                              chapters: widget.chapters,
+                              onClose: () => Navigator.pop(context),
+                            );
                           },
-                          child: Container(),
                         );
+
+                        if (selectedIndex != null) {
+                          changeChapter(selectedIndex);
+                        }
+                      },
+                      onFontSize: () async {
+                        await showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (context) {
+                            return PreferenceCard(
+                              title: "Preferensi",
+                              heightFactor: 0.7,
+                              onFontSizeChanged: () {
+                                _loadPreferences();
+                              },
+                              child: Container(),
+                            );
+                          },
+                        );
+                        _loadPreferences();
+                      },
+                      onRotate: () => toggleOrientation(),
+                    );
+                  },
+                ),
+              ),
+
+              Positioned(
+                top: 56,
+                right: 16,
+                child: Consumer<ModulController>(
+                  builder: (context, progressCtrl, _) {
+                    final isBookmarked = progressCtrl.bookmarkedBabs.contains(
+                      currentBabNumber,
+                    );
+                    return IconButton(
+                      icon: Icon(
+                        isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                        color: AppColors.errorRed,
+                        size: 48,
+                      ),
+                      onPressed: () {
+                        progressCtrl.toggleBookmark(currentBabNumber);
                       },
                     );
-                    _loadPreferences();
                   },
-                  onRotate: () => toggleOrientation(),
                 ),
               ),
             ],
