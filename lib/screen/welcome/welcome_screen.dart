@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/screen/main_wrapper.dart';
+import 'package:waristmate_app/widgets/welcome/bottom_intro_card.dart';
+import 'package:waristmate_app/widgets/welcome/hero_welcome.dart';
 
 class WelcomeSlide {
   final String title;
@@ -75,48 +77,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryGreen,
+      backgroundColor: AppColors.primaryGreen.withAlpha(3000),
       body: SafeArea(
         bottom: false,
         child: Column(
           children: [
-            Expanded(
-              flex: 5,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      // koin-koin dekoratif, opsional, bisa dihapus
-                      // kalau sudah pakai file ilustrasi lengkap
-                      Image.asset(
-                        'assets/images/scale_illustration.png',
-                        height: 220,
-                        errorBuilder: (context, error, stackTrace) => Icon(
-                          Icons.balance_rounded,
-                          size: 160,
-                          color: AppColors.gold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    'WARISTMATE',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w900,
-                      color: AppColors.textLight,
-                      letterSpacing: 1.2,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            Expanded(flex: 5, child: HeroWelcome()),
             Expanded(
               flex: 4,
-              child: _BottomIntroCard(
+              child: BottomIntroCard(
                 pageController: _pageController,
                 slides: _slides,
                 currentPage: _currentPage,
@@ -134,131 +103,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class _BottomIntroCard extends StatelessWidget {
-  final PageController pageController;
-  final List<WelcomeSlide> slides;
-  final int currentPage;
-  final ValueChanged<int> onPageChanged;
-  final VoidCallback onHomeTap;
-
-  const _BottomIntroCard({
-    required this.pageController,
-    required this.slides,
-    required this.currentPage,
-    required this.onPageChanged,
-    required this.onHomeTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      alignment: Alignment.bottomCenter,
-      children: [
-        Container(
-          width: double.infinity,
-          margin: const EdgeInsets.all(20),
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/welcome_layout.png'),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Expanded(
-                child: PageView.builder(
-                  controller: pageController,
-                  onPageChanged: onPageChanged,
-                  itemCount: slides.length,
-                  itemBuilder: (context, index) {
-                    final slide = slides[index];
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          slide.title,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w800,
-                            color: AppColors.primaryGreen,
-                            height: 1.25,
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        Text(
-                          slide.description,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: AppColors.primaryGreen,
-                            height: 1.4,
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 16),
-              // Indikator titik (dot indicator)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  slides.length,
-                  (index) => AnimatedContainer(
-                    duration: const Duration(milliseconds: 250),
-                    margin: const EdgeInsets.symmetric(horizontal: 4),
-                    width: currentPage == index ? 20 : 6,
-                    height: 6,
-                    decoration: BoxDecoration(
-                      color: currentPage == index
-                          ? AppColors.primaryGreen
-                          : AppColors.primaryGreen.withOpacity(0.25),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        // 2. Tombol Home
-        Positioned(
-          // ⚠️ PENTING: Atur angka bottom ini biar posisi tombol pas di tengah-tengah lubang gambar
-          bottom: 12,
-          child: GestureDetector(
-            onTap: onHomeTap,
-            child: Container(
-              width: 64,
-              height: 64,
-              padding: const EdgeInsets.all(6),
-              decoration: const BoxDecoration(
-                color: AppColors
-                    .cardBackground, // Bisa diganti putih kalau kurang nyatu
-                shape: BoxShape.circle,
-              ),
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: AppColors.primaryGreen,
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(
-                  Icons.home_rounded,
-                  color: Colors.white,
-                  size: 28,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

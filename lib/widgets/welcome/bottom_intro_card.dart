@@ -56,7 +56,7 @@ class BottomIntroCard extends StatelessWidget {
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w800,
-                              color: AppColors.primaryGreen,
+                              color: AppColors.darkGreen,
                               height: 1.25,
                             ),
                           ),
@@ -66,7 +66,8 @@ class BottomIntroCard extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 16,
-                              color: AppColors.primaryGreen,
+                              color: AppColors.darkGreen,
+                              fontWeight: FontWeight.w600,
                               height: 1.4,
                             ),
                           ),
