@@ -16,6 +16,13 @@ class NoteScreen extends StatefulWidget {
 class _NoteScreenState extends State<NoteScreen> {
   bool _isEditMode = false;
 
+  @override
+  void initState() {
+    super.initState();
+    final noteController = context.read<PersonalNoteController>();
+    noteController.getPersonalNote();
+  }
+
   void _toggleEditMode() {
     setState(() {
       _isEditMode = !_isEditMode;

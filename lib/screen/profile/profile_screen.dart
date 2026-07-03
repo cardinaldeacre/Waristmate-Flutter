@@ -82,14 +82,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(height: 16),
 
                   MenuCard(
-                    title: "Riwayat Aktivitas",
-                    subtitle: "Terakhir diperbarui: 12 Juni 2024",
-                    iconData: Icons.history,
-                  ),
-
-                  const SizedBox(height: 16),
-
-                  MenuCard(
                     title: "Tentang Waristmate",
                     subtitle: "Cari tahu lebih lanjut tentang aplikasi ini",
                     iconData: Icons.info,
@@ -97,7 +89,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                   const SizedBox(height: 16),
 
+                  MenuCard(
+                    title: "Beri Masukan",
+                    subtitle: "Bantu kami meningkatkan aplikasi ini",
+                    iconData: Icons.feedback,
+                  ),
+
+                  const SizedBox(height: 16),
+
                   if (isLoggedIn) LogoutCard(),
+
+                  const SizedBox(height: 100),
                 ],
               ),
             ),

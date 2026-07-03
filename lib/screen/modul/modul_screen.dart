@@ -92,6 +92,7 @@ class _ModulScreenState extends State<ModulScreen> {
               },
             ),
           ),
+          const SizedBox(height: 100),
         ],
       ),
     );
