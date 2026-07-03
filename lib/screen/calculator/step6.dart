@@ -42,156 +42,172 @@ class _Step6State extends State<Step6> {
                       color: AppColors.primaryGreen,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
                           ),
-                          const Divider(color: Colors.white, height: 32),
+                        ),
+                        const Divider(color: Colors.white, height: 32),
 
-                          const Text(
-                            "Saudara Seayah",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
+                        const Text(
+                          "Tarik lingkaran untuk menambah atau mengurangi jumlah anggota keluarga",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.grey,
+                            fontWeight: FontWeight.w500,
                           ),
+                        ),
 
-                          const SizedBox(height: 8),
+                        const SizedBox(height: 8),
 
-                          CounterRow(
-                            label: "Saudara Laki-laki Seayah",
-                            value: calc.nilaiSaudaraLakiSeayah,
-                            max: 50,
-                            onChanged: (v) => calc.updateSaudaraLakiSeayah(v),
-                            isMahjub: HajbValidator.saudaraLakiSeayahTerhalang(
-                              nilaiAyah: calc.nilaiAyah,
-                              jmlAnakLaki: calc.nilaiAnakLaki,
-                              jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                              jmlCucuLaki: calc.nilaiCucuLaki,
-                              jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                              jmlSaudaraLakiKandung:
-                                  calc.nilaiSaudaraLakiKandung,
-                              jmlSaudaraPerempuanKandung:
-                                  calc.nilaiSaudaraPerempuanKandung,
-                            ),
-                            infoHajb: HajbValidator.penghalangSaudaraLakiSeayah(
-                              nilaiAyah: calc.nilaiAyah,
-                              jmlAnakLaki: calc.nilaiAnakLaki,
-                              jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                              jmlCucuLaki: calc.nilaiCucuLaki,
-                              jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                              jmlSaudaraLakiKandung:
-                                  calc.nilaiSaudaraLakiKandung,
-                              jmlSaudaraPerempuanKandung:
-                                  calc.nilaiSaudaraPerempuanKandung,
-                            ),
+                        const Text(
+                          "Saudara Seayah",
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
                           ),
+                        ),
 
-                          CounterRow(
-                            label: "Saudara Perempuan Seayah",
-                            value: calc.nilaiSaudaraPerempuanSeayah,
-                            max: 50,
-                            onChanged: (v) =>
-                                calc.updateSaudaraPerempuanSeayah(v),
-                            isMahjub:
-                                HajbValidator.saudaraPerempuanSeayahTerhalang(
-                                  nilaiAyah: calc.nilaiAyah,
-                                  jmlAnakLaki: calc.nilaiAnakLaki,
-                                  jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                                  jmlCucuLaki: calc.nilaiCucuLaki,
-                                  jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                                  jmlSaudaraLakiKandung:
-                                      calc.nilaiSaudaraLakiKandung,
-                                  jmlSaudaraPerempuanKandung:
-                                      calc.nilaiSaudaraPerempuanKandung,
-                                ),
-                            infoHajb:
-                                HajbValidator.penghalangSaudaraPerempuanSeayah(
-                                  nilaiAyah: calc.nilaiAyah,
-                                  jmlAnakLaki: calc.nilaiAnakLaki,
-                                  jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                                  jmlCucuLaki: calc.nilaiCucuLaki,
-                                  jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                                  jmlSaudaraLakiKandung:
-                                      calc.nilaiSaudaraLakiKandung,
-                                  jmlSaudaraPerempuanKandung:
-                                      calc.nilaiSaudaraPerempuanKandung,
-                                ),
+                        const SizedBox(height: 8),
+
+                        CounterRow(
+                          label: "Saudara Laki-laki Seayah",
+                          value: calc.nilaiSaudaraLakiSeayah,
+                          max: 50,
+                          onChanged: (v) => calc.updateSaudaraLakiSeayah(v),
+                          isMahjub: HajbValidator.saudaraLakiSeayahTerhalang(
+                            nilaiAyah: calc.nilaiAyah,
+                            jmlAnakLaki: calc.nilaiAnakLaki,
+                            jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                            jmlCucuLaki: calc.nilaiCucuLaki,
+                            jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                            jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
+                            jmlSaudaraPerempuanKandung:
+                                calc.nilaiSaudaraPerempuanKandung,
                           ),
-
-                          const Divider(color: Colors.white, height: 32),
-                          const SizedBox(height: 2),
-
-                          const Text(
-                            "Saudara Seibu",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
+                          infoHajb: HajbValidator.penghalangSaudaraLakiSeayah(
+                            nilaiAyah: calc.nilaiAyah,
+                            jmlAnakLaki: calc.nilaiAnakLaki,
+                            jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                            jmlCucuLaki: calc.nilaiCucuLaki,
+                            jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                            jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
+                            jmlSaudaraPerempuanKandung:
+                                calc.nilaiSaudaraPerempuanKandung,
                           ),
+                        ),
 
-                          const SizedBox(height: 8),
+                        CounterRow(
+                          label: "Saudara Perempuan Seayah",
+                          value: calc.nilaiSaudaraPerempuanSeayah,
+                          max: 50,
+                          onChanged: (v) =>
+                              calc.updateSaudaraPerempuanSeayah(v),
+                          isMahjub:
+                              HajbValidator.saudaraPerempuanSeayahTerhalang(
+                                nilaiAyah: calc.nilaiAyah,
+                                jmlAnakLaki: calc.nilaiAnakLaki,
+                                jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                                jmlCucuLaki: calc.nilaiCucuLaki,
+                                jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                                jmlSaudaraLakiKandung:
+                                    calc.nilaiSaudaraLakiKandung,
+                                jmlSaudaraPerempuanKandung:
+                                    calc.nilaiSaudaraPerempuanKandung,
+                              ),
+                          infoHajb:
+                              HajbValidator.penghalangSaudaraPerempuanSeayah(
+                                nilaiAyah: calc.nilaiAyah,
+                                jmlAnakLaki: calc.nilaiAnakLaki,
+                                jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                                jmlCucuLaki: calc.nilaiCucuLaki,
+                                jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                                jmlSaudaraLakiKandung:
+                                    calc.nilaiSaudaraLakiKandung,
+                                jmlSaudaraPerempuanKandung:
+                                    calc.nilaiSaudaraPerempuanKandung,
+                              ),
+                        ),
 
-                          CounterRow(
-                            label: "Saudara Laki-Laki Seibu",
-                            value: calc.nilaiSaudaraLakiSeibu,
-                            max: 50,
-                            onChanged: (v) => calc.updateSaudaraLakiSeibu(v),
-                            isMahjub: HajbValidator.saudaraLakiSeibuTerhalang(
-                              nilaiAyah: calc.nilaiAyah,
-                              jmlAnakLaki: calc.nilaiAnakLaki,
-                              jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                              jmlCucuLaki: calc.nilaiCucuLaki,
-                              jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                            ),
-                            infoHajb: HajbValidator.penghalangSaudaraLakiSeibu(
-                              nilaiAyah: calc.nilaiAyah,
-                              jmlAnakLaki: calc.nilaiAnakLaki,
-                              jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                              jmlCucuLaki: calc.nilaiCucuLaki,
-                              jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                            ),
+                        const Divider(color: Colors.white, height: 32),
+                        const SizedBox(height: 2),
+
+                        const Text(
+                          "Tarik lingkaran untuk menambah atau mengurangi jumlah anggota keluarga",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.grey,
+                            fontWeight: FontWeight.w500,
                           ),
+                        ),
 
-                          CounterRow(
-                            label: "Saudara Perempuan Seibu",
-                            value: calc.nilaiSaudaraPerempuanSeibu,
-                            max: 50,
-                            onChanged: (v) =>
-                                calc.updateSaudaraPerempuanSeibu(v),
-                            isMahjub:
-                                HajbValidator.saudaraPerempuanSeibuTerhalang(
-                                  nilaiAyah: calc.nilaiAyah,
-                                  jmlAnakLaki: calc.nilaiAnakLaki,
-                                  jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                                  jmlCucuLaki: calc.nilaiCucuLaki,
-                                  jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                                ),
-                            infoHajb:
-                                HajbValidator.penghalangSaudaraPerempuanSeibu(
-                                  nilaiAyah: calc.nilaiAyah,
-                                  jmlAnakLaki: calc.nilaiAnakLaki,
-                                  jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                                  jmlCucuLaki: calc.nilaiCucuLaki,
-                                  jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                                ),
+                        const SizedBox(height: 8),
+
+                        const Text(
+                          "Saudara Seibu",
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
                           ),
+                        ),
 
-                          const Divider(color: Colors.white, height: 32),
-                          const SizedBox(height: 2),
-                        ],
-                      ),
+                        const SizedBox(height: 8),
+
+                        CounterRow(
+                          label: "Saudara Laki-Laki Seibu",
+                          value: calc.nilaiSaudaraLakiSeibu,
+                          max: 50,
+                          onChanged: (v) => calc.updateSaudaraLakiSeibu(v),
+                          isMahjub: HajbValidator.saudaraLakiSeibuTerhalang(
+                            nilaiAyah: calc.nilaiAyah,
+                            jmlAnakLaki: calc.nilaiAnakLaki,
+                            jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                            jmlCucuLaki: calc.nilaiCucuLaki,
+                            jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                          ),
+                          infoHajb: HajbValidator.penghalangSaudaraLakiSeibu(
+                            nilaiAyah: calc.nilaiAyah,
+                            jmlAnakLaki: calc.nilaiAnakLaki,
+                            jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                            jmlCucuLaki: calc.nilaiCucuLaki,
+                            jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                          ),
+                        ),
+
+                        CounterRow(
+                          label: "Saudara Perempuan Seibu",
+                          value: calc.nilaiSaudaraPerempuanSeibu,
+                          max: 50,
+                          onChanged: (v) => calc.updateSaudaraPerempuanSeibu(v),
+                          isMahjub:
+                              HajbValidator.saudaraPerempuanSeibuTerhalang(
+                                nilaiAyah: calc.nilaiAyah,
+                                jmlAnakLaki: calc.nilaiAnakLaki,
+                                jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                                jmlCucuLaki: calc.nilaiCucuLaki,
+                                jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                              ),
+                          infoHajb:
+                              HajbValidator.penghalangSaudaraPerempuanSeibu(
+                                nilaiAyah: calc.nilaiAyah,
+                                jmlAnakLaki: calc.nilaiAnakLaki,
+                                jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                                jmlCucuLaki: calc.nilaiCucuLaki,
+                                jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                              ),
+                        ),
+
+                        const Divider(color: Colors.white, height: 32),
+                        const SizedBox(height: 2),
+                      ],
                     ),
                   ),
                 ),
@@ -203,7 +219,7 @@ class _Step6State extends State<Step6> {
                   labelNext: "Lanjut",
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 100),
               ],
             ),
           ),

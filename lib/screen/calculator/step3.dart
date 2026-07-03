@@ -55,7 +55,19 @@ class _Step3State extends State<Step3> {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
+
                           const Divider(color: Colors.white, height: 32),
+
+                          const Text(
+                            "Tarik lingkaran untuk menambah atau mengurangi jumlah anggota keluarga",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: AppColors.grey,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+
+                          const SizedBox(height: 8),
 
                           const Text(
                             "Cucu Kandung",

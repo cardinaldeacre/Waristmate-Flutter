@@ -42,86 +42,103 @@ class _Step2State extends State<Step2> {
                       color: AppColors.primaryGreen,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Silahkan isi masing-masing kolom dengan anggota keluarga mayyit yang masih hidup",
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: AppColors.textLight,
+                            fontWeight: FontWeight.w600,
                           ),
-                          const Divider(color: Colors.white, height: 32),
+                        ),
+                        const Divider(color: AppColors.textLight, height: 32),
 
-                          // const SizedBox(height: 10),
-                          const Text(
-                            "Orang Tua",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
+                        const Text(
+                          "Centang jika anggota keluarga masih hidup",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.grey,
+                            fontWeight: FontWeight.w500,
                           ),
+                        ),
 
-                          CheckboxTile(
-                            title: "Ayah",
-                            value: calc.nilaiAyah == 1,
-                            onChanged: (value) => calc.updateAyah(value!),
+                        const SizedBox(height: 8),
+
+                        const Text(
+                          "Orang Tua",
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: AppColors.textLight,
+                            fontWeight: FontWeight.w600,
                           ),
-                          CheckboxTile(
-                            title: "Ibu",
-                            value: calc.nilaiIbu == 1,
-                            onChanged: (value) => calc.updateIbu(value!),
-                          ),
+                        ),
 
-                          if (calc.muwarrits == 'Laki-laki')
-                            CounterRow(
-                              label: "Jumlah Istri",
-                              value: calc.nilaiIstri,
-                              max: 4,
-                              onChanged: (value) => calc.updateIstri(value),
-                            ),
-                          if (calc.muwarrits == 'Perempuan')
-                            CheckboxTile(
-                              title: "Suami",
-                              value: calc.nilaiSuami == 1,
-                              onChanged: (value) => calc.updateSuami(value!),
-                            ),
+                        CheckboxTile(
+                          title: "Ayah",
+                          value: calc.nilaiAyah == 1,
+                          onChanged: (value) => calc.updateAyah(value!),
+                        ),
+                        CheckboxTile(
+                          title: "Ibu",
+                          value: calc.nilaiIbu == 1,
+                          onChanged: (value) => calc.updateIbu(value!),
+                        ),
 
-                          const Divider(color: Colors.white, height: 32),
-                          const SizedBox(height: 2),
-
-                          const Text(
-                            "Anak Kandung",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-
-                          const SizedBox(height: 8),
+                        if (calc.muwarrits == 'Laki-laki')
                           CounterRow(
-                            label: "Anak Laki-laki",
-                            value: calc.nilaiAnakLaki,
-                            onChanged: (value) => calc.updateAnakLaki(value),
+                            label: "Jumlah Istri",
+                            value: calc.nilaiIstri,
+                            max: 4,
+                            onChanged: (value) => calc.updateIstri(value),
+                          ),
+                        if (calc.muwarrits == 'Perempuan')
+                          CheckboxTile(
+                            title: "Suami",
+                            value: calc.nilaiSuami == 1,
+                            onChanged: (value) => calc.updateSuami(value!),
                           ),
 
-                          CounterRow(
-                            label: "Anak Perempuan",
-                            value: calc.nilaiAnakPerempuan,
-                            onChanged: (value) =>
-                                calc.updateAnakPerempuan(value),
-                          ),
+                        const Divider(color: AppColors.textLight, height: 32),
+                        const SizedBox(height: 2),
 
-                          const Divider(color: Colors.white, height: 32),
-                          const SizedBox(height: 2),
-                        ],
-                      ),
+                        const Text(
+                          "Tarik lingkaran untuk menambah atau mengurangi jumlah anggota keluarga",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.grey,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+
+                        const SizedBox(height: 8),
+
+                        const Text(
+                          "Anak Kandung",
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: AppColors.textLight,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+
+                        const SizedBox(height: 8),
+                        CounterRow(
+                          label: "Anak Laki-laki",
+                          value: calc.nilaiAnakLaki,
+                          onChanged: (value) => calc.updateAnakLaki(value),
+                        ),
+
+                        CounterRow(
+                          label: "Anak Perempuan",
+                          value: calc.nilaiAnakPerempuan,
+                          onChanged: (value) => calc.updateAnakPerempuan(value),
+                        ),
+
+                        const Divider(color: AppColors.textLight, height: 32),
+                        const SizedBox(height: 2),
+                      ],
                     ),
                   ),
                 ),
@@ -133,7 +150,7 @@ class _Step2State extends State<Step2> {
                   labelNext: "Lanjut",
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 100),
               ],
             ),
           ),

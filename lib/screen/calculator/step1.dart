@@ -48,162 +48,176 @@ class _Step1State extends State<Step1> {
                       color: AppColors.primaryGreen,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Silahkan isi masing-masing kolom sesuai dengan label keterangan tertulis",
-                            style: TextStyle(
-                              color: AppColors.textLight,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w600,
-                            ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Silahkan isi masing-masing kolom sesuai dengan label keterangan tertulis",
+                          style: TextStyle(
+                            color: AppColors.textLight,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600,
                           ),
+                        ),
 
-                          // input harta
-                          const InputLabel(label: "Harta yang ditinggalkan"),
-                          CustomTextField(
-                            label: "Harta yang ditinggalkan",
-                            controller: calc.tirkahController,
-                            isCurrency: true,
-                            onChanged: (val) {
-                              String cleanVal = val
-                                  .replaceAll('.', '')
-                                  .replaceAll(',', '');
-                              int parsedVal = int.tryParse(cleanVal) ?? 0;
-                              calc.updateTirkah(parsedVal);
-                            },
-                          ),
+                        // input harta
+                        const InputLabel(label: "Harta yang ditinggalkan"),
+                        CustomTextField(
+                          label: "Harta yang ditinggalkan",
+                          controller: calc.tirkahController,
+                          isCurrency: true,
+                          autofillHints: "100.000.000",
+                          onChanged: (val) {
+                            String cleanVal = val
+                                .replaceAll('.', '')
+                                .replaceAll(',', '');
+                            int parsedVal = int.tryParse(cleanVal) ?? 0;
+                            calc.updateTirkah(parsedVal);
+                          },
+                        ),
 
-                          const InputLabel(label: "Muwarrits (yang meninggal)"),
-                          RadioGroup<String>(
-                            groupValue: calc.muwarrits,
-                            onChanged: (val) {
-                              if (val != null) {
-                                calc.updateMuwarrits(val);
-                              }
-                            },
-                            child: Row(
-                              children: [
-                                Radio<String>(
-                                  value: 'Laki-laki',
-                                  fillColor: WidgetStateProperty.all(
-                                    AppColors.textLight,
-                                  ),
+                        const InputLabel(label: "Muwarrits (yang meninggal)"),
+                        RadioGroup<String>(
+                          groupValue: calc.muwarrits,
+                          onChanged: (val) {
+                            if (val != null) {
+                              calc.updateMuwarrits(val);
+                            }
+                          },
+                          child: Row(
+                            children: [
+                              Radio<String>(
+                                value: 'Laki-laki',
+                                fillColor: WidgetStateProperty.all(
+                                  AppColors.textLight,
                                 ),
-                                const Text(
-                                  "Laki-laki",
-                                  style: TextStyle(
-                                    color: AppColors.textLight,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                              ),
+                              const Text(
+                                "Laki-laki",
+                                style: TextStyle(
+                                  color: AppColors.textLight,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                                const SizedBox(width: 20),
+                              ),
+                              const SizedBox(width: 20),
 
-                                Radio<String>(
-                                  value: 'Perempuan',
-                                  fillColor: WidgetStateProperty.all(
-                                    AppColors.textLight,
-                                  ),
+                              Radio<String>(
+                                value: 'Perempuan',
+                                fillColor: WidgetStateProperty.all(
+                                  AppColors.textLight,
                                 ),
-                                const Text(
-                                  "Perempuan",
-                                  style: TextStyle(
-                                    color: AppColors.textLight,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                              ),
+                              const Text(
+                                "Perempuan",
+                                style: TextStyle(
+                                  color: AppColors.textLight,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
+                        ),
 
-                          const InputLabel(label: "Biaya pengurusan jenazah"),
-                          CustomTextField(
-                            label: "Biaya pengurusan jenazah",
-                            controller: calc.tajhizController,
-                            isCurrency: true,
-                            onChanged: (val) {
-                              String cleanVal = val
-                                  .replaceAll('.', '')
-                                  .replaceAll(',', '');
-                              int parsedVal = int.tryParse(cleanVal) ?? 0;
-                              calc.updateTajhiz(parsedVal);
-                            },
-                          ),
+                        const InputLabel(label: "Biaya pengurusan jenazah"),
+                        CustomTextField(
+                          label: "Biaya pengurusan jenazah",
+                          controller: calc.tajhizController,
+                          isCurrency: true,
+                          autofillHints: "200.000",
+                          onChanged: (val) {
+                            String cleanVal = val
+                                .replaceAll('.', '')
+                                .replaceAll(',', '');
+                            int parsedVal = int.tryParse(cleanVal) ?? 0;
+                            calc.updateTajhiz(parsedVal);
+                          },
+                        ),
 
-                          const InputLabel(label: "Hutang dari muwarrits"),
-                          CustomTextField(
-                            label: "Hutang dari muwarrits",
-                            controller: calc.hutangController,
-                            isCurrency: true,
-                            onChanged: (val) {
-                              String cleanVal = val
-                                  .replaceAll('.', '')
-                                  .replaceAll(',', '');
-                              int parsedVal = int.tryParse(cleanVal) ?? 0;
-                              calc.updateHutang(parsedVal);
-                            },
-                          ),
+                        const InputLabel(label: "Hutang dari muwarrits"),
+                        CustomTextField(
+                          label: "Hutang dari muwarrits",
+                          controller: calc.hutangController,
+                          isCurrency: true,
+                          autofillHints: "700.000",
+                          onChanged: (val) {
+                            String cleanVal = val
+                                .replaceAll('.', '')
+                                .replaceAll(',', '');
+                            int parsedVal = int.tryParse(cleanVal) ?? 0;
+                            calc.updateHutang(parsedVal);
+                          },
+                        ),
 
-                          const InputLabel(
-                            label: "Wasiat (maksimal 1/3 sisa harta)",
-                          ),
-                          CustomTextField(
-                            label: "Wasiat (maksimal 1/3 sisa harta)",
-                            controller: calc.wasiatController,
-                            isCurrency: true,
-                            onChanged: (val) {
-                              String cleanVal = val
-                                  .replaceAll('.', '')
-                                  .replaceAll(',', '');
-                              int parsedVal = int.tryParse(cleanVal) ?? 0;
+                        const InputLabel(
+                          label: "Wasiat (maksimal 1/3 sisa harta)",
+                        ),
+                        CustomTextField(
+                          label: "Wasiat (maksimal 1/3 sisa harta)",
+                          controller: calc.wasiatController,
+                          isCurrency: true,
+                          autofillHints: "5.000.000",
+                          onChanged: (val) {
+                            String cleanVal = val
+                                .replaceAll('.', '')
+                                .replaceAll(',', '');
+                            int parsedVal = int.tryParse(cleanVal) ?? 0;
 
-                              String? notip = calc.updateWasiat(parsedVal);
-                              if (notip != null) {
-                                calc.wasiatController.text = calc.nWasiat
-                                    .toString();
-                                calc
-                                    .wasiatController
-                                    .selection = TextSelection.fromPosition(
-                                  TextPosition(
-                                    offset: calc.wasiatController.text.length,
-                                  ),
-                                );
-
-                                ScaffoldMessenger.of(context).clearSnackBars();
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(notip),
-                                    backgroundColor: Colors.red[700],
-                                    duration: const Duration(seconds: 3),
-                                    behavior: SnackBarBehavior.floating,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
+                            String? notip = calc.updateWasiat(parsedVal);
+                            if (notip != null) {
+                              calc.wasiatController.text = calc.nWasiat
+                                  .toString();
+                              calc.wasiatController.selection =
+                                  TextSelection.fromPosition(
+                                    TextPosition(
+                                      offset: calc.wasiatController.text.length,
                                     ),
-                                    margin: EdgeInsets.only(
-                                      bottom:
-                                          MediaQuery.of(context).size.height -
-                                          17.50,
-                                      left: 20,
-                                      right: 20,
-                                    ),
+                                  );
+
+                              ScaffoldMessenger.of(context).clearSnackBars();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(notip),
+                                  backgroundColor: Colors.red[700],
+                                  duration: const Duration(seconds: 3),
+                                  behavior: SnackBarBehavior.floating,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
                                   ),
-                                );
-                              }
-                            },
-                          ),
+                                  margin: EdgeInsets.only(
+                                    bottom:
+                                        MediaQuery.of(context).size.height -
+                                        17.50,
+                                    left: 20,
+                                    right: 20,
+                                  ),
+                                ),
+                              );
+                            }
+                          },
+                        ),
 
-                          const InputLabel(
-                            label: "Sisa harta yang diwariskan (Irts)",
-                          ),
+                        const SizedBox(height: 16),
+                        const Divider(color: Colors.white, height: 1),
 
-                          ReadOnlyField(value: calc.formatRupiah(calc.nIrst)),
-                        ],
-                      ),
+                        const InputLabel(
+                          label: "Sisa harta yang diwariskan (Irts)",
+                        ),
+                        ReadOnlyField(value: calc.formatRupiah(calc.nIrst)),
+                        const SizedBox(height: 6),
+                        const Text(
+                          "(Tidak perlu diisi, akan dihitung otomatis)",
+                          style: TextStyle(
+                            color: AppColors.textLight,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+
+                        const Divider(color: Colors.white, height: 32),
+                        const SizedBox(height: 2),
+                      ],
                     ),
                   ),
                 ),
@@ -215,7 +229,7 @@ class _Step1State extends State<Step1> {
                   labelNext: "Lanjut",
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 120),
               ],
             ),
           ),

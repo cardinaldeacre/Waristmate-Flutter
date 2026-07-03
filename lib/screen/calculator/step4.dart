@@ -42,72 +42,80 @@ class _Step4State extends State<Step4> {
                       color: AppColors.primaryGreen,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
                           ),
-                          const Divider(color: Colors.white, height: 32),
+                        ),
+                        const Divider(color: Colors.white, height: 32),
 
-                          const Text(
-                            "Kakek & Nenek",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
+                        const Text(
+                          "Centang jika anggota keluarga masih hidup",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.grey,
+                            fontWeight: FontWeight.w500,
                           ),
+                        ),
 
-                          const SizedBox(height: 8),
+                        const SizedBox(height: 8),
 
-                          CheckboxTile(
-                            title: "Kakek dari Ayah",
-                            value: calc.nilaiKakek == 1,
-                            onChanged: (v) => calc.updateKakek(v ?? false),
-                            infoHajb: HajbValidator.penghalangKakek(
-                              nilaiAyah: calc.nilaiAyah,
-                            ),
-                            isMahjub: HajbValidator.kakekTerhalang(
-                              nilaiAyah: calc.nilaiAyah,
-                            ),
+                        const Text(
+                          "Kakek & Nenek",
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
                           ),
+                        ),
 
-                          CheckboxTile(
-                            title: "Nenek dari Ayah",
-                            value: calc.nilaiNenekAyah == 1,
-                            onChanged: (v) => calc.updateNenekAyah(v ?? false),
-                            infoHajb: HajbValidator.penghalangNenek(
-                              nilaiIbu: calc.nilaiIbu,
-                            ),
-                            isMahjub: HajbValidator.nenekTerhalang(
-                              nilaiIbu: calc.nilaiIbu,
-                            ),
+                        const SizedBox(height: 8),
+
+                        CheckboxTile(
+                          title: "Kakek dari Ayah",
+                          value: calc.nilaiKakek == 1,
+                          onChanged: (v) => calc.updateKakek(v ?? false),
+                          infoHajb: HajbValidator.penghalangKakek(
+                            nilaiAyah: calc.nilaiAyah,
                           ),
-
-                          CheckboxTile(
-                            title: "Nenek dari Ibu",
-                            value: calc.nilaiNenekIbu == 1,
-                            onChanged: (v) => calc.updateNenekIbu(v ?? false),
-                            infoHajb: HajbValidator.penghalangNenek(
-                              nilaiIbu: calc.nilaiIbu,
-                            ),
-                            isMahjub: HajbValidator.nenekTerhalang(
-                              nilaiIbu: calc.nilaiIbu,
-                            ),
+                          isMahjub: HajbValidator.kakekTerhalang(
+                            nilaiAyah: calc.nilaiAyah,
                           ),
+                        ),
 
-                          const Divider(color: Colors.white, height: 32),
-                          const SizedBox(height: 2),
-                        ],
-                      ),
+                        CheckboxTile(
+                          title: "Nenek dari Ayah",
+                          value: calc.nilaiNenekAyah == 1,
+                          onChanged: (v) => calc.updateNenekAyah(v ?? false),
+                          infoHajb: HajbValidator.penghalangNenek(
+                            nilaiIbu: calc.nilaiIbu,
+                          ),
+                          isMahjub: HajbValidator.nenekTerhalang(
+                            nilaiIbu: calc.nilaiIbu,
+                          ),
+                        ),
+
+                        CheckboxTile(
+                          title: "Nenek dari Ibu",
+                          value: calc.nilaiNenekIbu == 1,
+                          onChanged: (v) => calc.updateNenekIbu(v ?? false),
+                          infoHajb: HajbValidator.penghalangNenek(
+                            nilaiIbu: calc.nilaiIbu,
+                          ),
+                          isMahjub: HajbValidator.nenekTerhalang(
+                            nilaiIbu: calc.nilaiIbu,
+                          ),
+                        ),
+
+                        const Divider(color: Colors.white, height: 32),
+                        const SizedBox(height: 2),
+                      ],
                     ),
                   ),
                 ),
@@ -119,7 +127,7 @@ class _Step4State extends State<Step4> {
                   labelNext: "Lanjut",
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 100),
               ],
             ),
           ),

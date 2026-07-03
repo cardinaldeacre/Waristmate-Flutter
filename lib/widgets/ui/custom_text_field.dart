@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
   final bool isCurrency;
   final double? height;
   final bool readOnly;
+  final String? autofillHints;
 
   const CustomTextField({
     super.key,
@@ -18,6 +19,7 @@ class CustomTextField extends StatelessWidget {
     this.isCurrency = false,
     this.height = 40,
     this.readOnly = false,
+    this.autofillHints,
   });
 
   @override
@@ -32,16 +34,34 @@ class CustomTextField extends StatelessWidget {
         inputFormatters: isCurrency ? [CurrencyFormatter()] : [],
         style: const TextStyle(
           fontWeight: FontWeight.w600,
-          fontSize: 17.5,
+          fontSize: 17,
           color: AppColors.darkGreen,
         ),
         decoration: InputDecoration(
-          prefixText: isCurrency ? "Rp. " : null,
-          prefixStyle: const TextStyle(
+          hintText: autofillHints,
+          hintStyle: const TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 17.5,
-            color: AppColors.darkGreen,
+            fontSize: 17,
+            color: AppColors.darkGrey,
           ),
+          prefixIcon: isCurrency
+              ? const Padding(
+                  padding: EdgeInsets.only(left: 16, right: 8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Rp.",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 17,
+                          color: AppColors.darkGreen,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : null,
           filled: true,
           fillColor: AppColors.textLight,
           contentPadding: const EdgeInsets.symmetric(
