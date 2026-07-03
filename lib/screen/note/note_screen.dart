@@ -125,6 +125,7 @@ class _NoteScreenState extends State<NoteScreen> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 80),
                 ],
               ),
             ),

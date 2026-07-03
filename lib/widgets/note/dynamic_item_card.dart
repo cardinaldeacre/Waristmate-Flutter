@@ -9,7 +9,9 @@ class DynamicItemCard extends StatelessWidget {
   final TextEditingController amountController;
   final Function(String)? onChanged;
   final bool isEditMode;
-  final String nameHint;
+  final bool? isAsset;
+  final String? nameHint;
+  final String? amountHint;
   final VoidCallback? onRemove;
 
   const DynamicItemCard({
@@ -17,9 +19,11 @@ class DynamicItemCard extends StatelessWidget {
     required this.isEditMode,
     required this.nameController,
     required this.amountController,
-    required this.nameHint,
+    this.nameHint,
+    this.amountHint,
     this.onRemove,
     this.onChanged,
+    this.isAsset,
   });
 
   @override
@@ -64,10 +68,12 @@ class DynamicItemCard extends StatelessWidget {
             const SizedBox(width: 12),
             Text(
               formattedAmount,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
-                color: AppColors.primaryGreen,
+                color: isAsset == true
+                    ? AppColors.primaryGreen
+                    : AppColors.errorRed,
               ),
             ),
           ],
@@ -97,7 +103,7 @@ class DynamicItemCard extends StatelessWidget {
               children: [
                 CustomTextField(
                   controller: nameController,
-                  label: nameHint,
+                  autofillHints: nameHint,
                   isCurrency: false,
                   height: 36,
                   onChanged: onChanged,
@@ -105,7 +111,7 @@ class DynamicItemCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 CustomTextField(
                   controller: amountController,
-                  label: 'nominal',
+                  autofillHints: amountHint,
                   isCurrency: true,
                   height: 36,
                   onChanged: onChanged,

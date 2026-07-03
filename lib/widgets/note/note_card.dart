@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/personal_note_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/note/dynamic_item_card.dart';
+import 'package:waristmate_app/widgets/note/note_info.dart';
 import 'package:waristmate_app/widgets/ui/input_label.dart';
 import 'package:waristmate_app/widgets/ui/custom_text_field.dart';
 import 'package:waristmate_app/widgets/note/add_item_card.dart';
@@ -36,6 +37,8 @@ class _NoteCardState extends State<NoteCard> {
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
           children: [
+            NoteInfo(),
+
             Padding(
               padding: const EdgeInsets.all(20),
               child: Container(
@@ -50,23 +53,23 @@ class _NoteCardState extends State<NoteCard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const InputLabel(label: "Total harta bersih"),
-                    CustomTextField(
-                      label: "Total Harta",
-                      isCurrency: true,
-                      readOnly: true,
-                      controller: TextEditingController(
-                        text: noteController
-                            .formatRupiah(noteController.estimasiHartaBersih)
-                            .replaceAll('Rp ', ''),
+                    const SizedBox(height: 8),
+
+                    const Text(
+                      "(Bagian ini tidak perlu diisi, akan dihitung otomatis)",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        color: AppColors.grey,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
 
                     const InputLabel(label: "Total harta yang saya tinggalkan"),
                     CustomTextField(
-                      label: "Total Harta",
                       isCurrency: true,
                       readOnly: true,
+                      color: AppColors.gold,
                       controller: TextEditingController(
                         text: noteController
                             .formatRupiah(noteController.totalAssetsNominal)
@@ -76,9 +79,9 @@ class _NoteCardState extends State<NoteCard> {
 
                     const InputLabel(label: "Total hutang terkini"),
                     CustomTextField(
-                      label: "Total Hutang",
                       isCurrency: true,
                       readOnly: true,
+                      color: AppColors.errorRed,
                       controller: TextEditingController(
                         text: noteController
                             .formatRupiah(noteController.totalDebtsNominal)
@@ -86,14 +89,37 @@ class _NoteCardState extends State<NoteCard> {
                       ),
                     ),
 
-                    const SizedBox(height: 16),
-                    const Divider(height: 1, color: Colors.white24),
-
-                    const InputLabel(label: "Total aset tunai"),
+                    const InputLabel(label: "Total harta bersih"),
                     CustomTextField(
-                      label: "Total Aset Tunai",
+                      isCurrency: true,
+                      readOnly: true,
+                      color: AppColors.primaryGreen,
+                      controller: TextEditingController(
+                        text: noteController
+                            .formatRupiah(noteController.estimasiHartaBersih)
+                            .replaceAll('Rp ', ''),
+                      ),
+                    ),
+
+                    const SizedBox(height: 16),
+                    const Divider(height: 1, color: AppColors.textLight),
+                    const SizedBox(height: 16),
+
+                    const Text(
+                      "(Silahkan isi bagian ini untuk mencatat aset dan hutang Anda)",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        color: AppColors.grey,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+
+                    const InputLabel(label: "Total aset tunai terkini"),
+                    CustomTextField(
                       isCurrency: true,
                       readOnly: !widget.isEditMode,
+                      autofillHints: "500.000.000",
                       controller: noteController.cashAssetController,
                       onChanged: (val) {
                         String cleanVal = val
@@ -105,7 +131,7 @@ class _NoteCardState extends State<NoteCard> {
                     ),
 
                     const SizedBox(height: 16),
-                    const InputLabel(label: "Daftar aset non-tunai"),
+                    const InputLabel(label: "Daftar aset non-tunai terkini"),
 
                     if (widget.isEditMode || hasValidAssets) ...[
                       ...noteController.nonCashAssets
@@ -126,7 +152,9 @@ class _NoteCardState extends State<NoteCard> {
                               isEditMode: widget.isEditMode,
                               nameController: item.nameController,
                               amountController: item.amountController,
-                              nameHint: "Nama Aset",
+                              nameHint: "Emas 20gr",
+                              amountHint: "54.000.000",
+                              isAsset: true,
                               onRemove: () {
                                 noteController.removeAssetRow(index);
                               },
@@ -168,7 +196,9 @@ class _NoteCardState extends State<NoteCard> {
                               isEditMode: widget.isEditMode,
                               nameController: item.nameController,
                               amountController: item.amountController,
-                              nameHint: "Nama Hutang",
+                              nameHint: "Hutang ke Fulan",
+                              amountHint: "700.000",
+                              isAsset: false,
                               onRemove: () {
                                 noteController.removeDebtRow(index);
                               },
@@ -189,12 +219,26 @@ class _NoteCardState extends State<NoteCard> {
                         label: "Tambah Hutang",
                       ),
 
+                    const SizedBox(height: 16),
+                    const Divider(height: 1, color: AppColors.textLight),
+                    const SizedBox(height: 16),
+
+                    const Text(
+                      "(Apabila nominal melebihi batas maksimal (1/3) maka nominal akan otomatis disesuaikan)",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        color: AppColors.grey,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+
                     const InputLabel(label: "Warisan untuk dibagikan (1/3)"),
                     CustomTextField(
-                      label: "Wasiat (maksimal 1/3 sisa harta)",
                       controller: noteController.wasiatController,
                       isCurrency: true,
                       readOnly: !widget.isEditMode,
+
                       onChanged: (val) {
                         String cleanVal = val
                             .replaceAll('.', '')
@@ -237,9 +281,19 @@ class _NoteCardState extends State<NoteCard> {
                       },
                     ),
 
-                    const SizedBox(height: 24),
-                    const Divider(),
                     const SizedBox(height: 16),
+                    const Divider(),
+                    const SizedBox(height: 12),
+
+                    const Text(
+                      "(Silahkan isi bagian ini untuk mencatat catatan seputar warisan dan wasiat Anda)",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        color: AppColors.grey,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
 
                     const InputLabel(
                       label: "Catatan seputar warisan dan wasiat",

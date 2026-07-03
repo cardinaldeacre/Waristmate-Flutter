@@ -60,10 +60,15 @@ class _Step1State extends State<Step1> {
                           ),
                         ),
 
+                        const SizedBox(height: 12),
+                        const Divider(color: AppColors.textLight, height: 12),
+
                         // input harta
-                        const InputLabel(label: "Harta yang ditinggalkan"),
+                        const InputLabel(
+                          label: "Nominal Harta yang ditinggalkan",
+                        ),
+
                         CustomTextField(
-                          label: "Harta yang ditinggalkan",
                           controller: calc.tirkahController,
                           isCurrency: true,
                           autofillHints: "100.000.000",
@@ -120,9 +125,10 @@ class _Step1State extends State<Step1> {
                           ),
                         ),
 
+                        const Divider(color: AppColors.textLight, height: 12),
+
                         const InputLabel(label: "Biaya pengurusan jenazah"),
                         CustomTextField(
-                          label: "Biaya pengurusan jenazah",
                           controller: calc.tajhizController,
                           isCurrency: true,
                           autofillHints: "200.000",
@@ -137,7 +143,6 @@ class _Step1State extends State<Step1> {
 
                         const InputLabel(label: "Hutang dari muwarrits"),
                         CustomTextField(
-                          label: "Hutang dari muwarrits",
                           controller: calc.hutangController,
                           isCurrency: true,
                           autofillHints: "700.000",
@@ -154,7 +159,6 @@ class _Step1State extends State<Step1> {
                           label: "Wasiat (maksimal 1/3 sisa harta)",
                         ),
                         CustomTextField(
-                          label: "Wasiat (maksimal 1/3 sisa harta)",
                           controller: calc.wasiatController,
                           isCurrency: true,
                           autofillHints: "5.000.000",

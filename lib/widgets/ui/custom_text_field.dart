@@ -3,23 +3,23 @@ import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/logic/formatter.dart';
 
 class CustomTextField extends StatelessWidget {
-  final String? label;
   final Function(String)? onChanged;
   final TextEditingController? controller;
   final bool isCurrency;
   final double? height;
   final bool readOnly;
   final String? autofillHints;
+  final Color? color;
 
   const CustomTextField({
     super.key,
-    this.label,
     this.onChanged,
     this.controller,
     this.isCurrency = false,
     this.height = 40,
     this.readOnly = false,
     this.autofillHints,
+    this.color,
   });
 
   @override
@@ -32,14 +32,14 @@ class CustomTextField extends StatelessWidget {
         onChanged: onChanged,
         readOnly: readOnly,
         inputFormatters: isCurrency ? [CurrencyFormatter()] : [],
-        style: const TextStyle(
+        style: TextStyle(
           fontWeight: FontWeight.w600,
           fontSize: 17,
-          color: AppColors.darkGreen,
+          color: color ?? AppColors.darkGreen,
         ),
         decoration: InputDecoration(
           hintText: autofillHints,
-          hintStyle: const TextStyle(
+          hintStyle: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 17,
             color: AppColors.darkGrey,
