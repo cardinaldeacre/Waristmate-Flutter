@@ -19,7 +19,7 @@ class ReadOnlyField extends StatelessWidget {
         value,
         style: const TextStyle(
           fontWeight: FontWeight.w600,
-          fontSize: 17.5,
+          fontSize: 17,
           color: AppColors.primaryGreen,
         ),
       ),
