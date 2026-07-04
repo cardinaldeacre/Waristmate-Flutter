@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
-import 'package:waristmate_app/logic/hajb_validator.dart';
+// import 'package:waristmate_app/logic/hajb_validator.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_header.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_nav_button.dart';
 import 'package:waristmate_app/widgets/calculator/counter_row.dart';
@@ -82,26 +82,26 @@ class _Step6State extends State<Step6> {
                           value: calc.nilaiSaudaraLakiSeayah,
                           max: 50,
                           onChanged: (v) => calc.updateSaudaraLakiSeayah(v),
-                          isMahjub: HajbValidator.saudaraLakiSeayahTerhalang(
-                            nilaiAyah: calc.nilaiAyah,
-                            jmlAnakLaki: calc.nilaiAnakLaki,
-                            jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                            jmlCucuLaki: calc.nilaiCucuLaki,
-                            jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                            jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
-                            jmlSaudaraPerempuanKandung:
-                                calc.nilaiSaudaraPerempuanKandung,
-                          ),
-                          infoHajb: HajbValidator.penghalangSaudaraLakiSeayah(
-                            nilaiAyah: calc.nilaiAyah,
-                            jmlAnakLaki: calc.nilaiAnakLaki,
-                            jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                            jmlCucuLaki: calc.nilaiCucuLaki,
-                            jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                            jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
-                            jmlSaudaraPerempuanKandung:
-                                calc.nilaiSaudaraPerempuanKandung,
-                          ),
+                          // isMahjub: HajbValidator.saudaraLakiSeayahTerhalang(
+                          //   nilaiAyah: calc.nilaiAyah,
+                          //   jmlAnakLaki: calc.nilaiAnakLaki,
+                          //   jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                          //   jmlCucuLaki: calc.nilaiCucuLaki,
+                          //   jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                          //   jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
+                          //   jmlSaudaraPerempuanKandung:
+                          //       calc.nilaiSaudaraPerempuanKandung,
+                          // ),
+                          // infoHajb: HajbValidator.penghalangSaudaraLakiSeayah(
+                          //   nilaiAyah: calc.nilaiAyah,
+                          //   jmlAnakLaki: calc.nilaiAnakLaki,
+                          //   jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                          //   jmlCucuLaki: calc.nilaiCucuLaki,
+                          //   jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                          //   jmlSaudaraLakiKandung: calc.nilaiSaudaraLakiKandung,
+                          //   jmlSaudaraPerempuanKandung:
+                          //       calc.nilaiSaudaraPerempuanKandung,
+                          // ),
                         ),
 
                         CounterRow(
@@ -110,30 +110,30 @@ class _Step6State extends State<Step6> {
                           max: 50,
                           onChanged: (v) =>
                               calc.updateSaudaraPerempuanSeayah(v),
-                          isMahjub:
-                              HajbValidator.saudaraPerempuanSeayahTerhalang(
-                                nilaiAyah: calc.nilaiAyah,
-                                jmlAnakLaki: calc.nilaiAnakLaki,
-                                jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                                jmlCucuLaki: calc.nilaiCucuLaki,
-                                jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                                jmlSaudaraLakiKandung:
-                                    calc.nilaiSaudaraLakiKandung,
-                                jmlSaudaraPerempuanKandung:
-                                    calc.nilaiSaudaraPerempuanKandung,
-                              ),
-                          infoHajb:
-                              HajbValidator.penghalangSaudaraPerempuanSeayah(
-                                nilaiAyah: calc.nilaiAyah,
-                                jmlAnakLaki: calc.nilaiAnakLaki,
-                                jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                                jmlCucuLaki: calc.nilaiCucuLaki,
-                                jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                                jmlSaudaraLakiKandung:
-                                    calc.nilaiSaudaraLakiKandung,
-                                jmlSaudaraPerempuanKandung:
-                                    calc.nilaiSaudaraPerempuanKandung,
-                              ),
+                          // isMahjub:
+                          //     HajbValidator.saudaraPerempuanSeayahTerhalang(
+                          //       nilaiAyah: calc.nilaiAyah,
+                          //       jmlAnakLaki: calc.nilaiAnakLaki,
+                          //       jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                          //       jmlCucuLaki: calc.nilaiCucuLaki,
+                          //       jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                          //       jmlSaudaraLakiKandung:
+                          //           calc.nilaiSaudaraLakiKandung,
+                          //       jmlSaudaraPerempuanKandung:
+                          //           calc.nilaiSaudaraPerempuanKandung,
+                          //     ),
+                          // infoHajb:
+                          //     HajbValidator.penghalangSaudaraPerempuanSeayah(
+                          //       nilaiAyah: calc.nilaiAyah,
+                          //       jmlAnakLaki: calc.nilaiAnakLaki,
+                          //       jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                          //       jmlCucuLaki: calc.nilaiCucuLaki,
+                          //       jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                          //       jmlSaudaraLakiKandung:
+                          //           calc.nilaiSaudaraLakiKandung,
+                          //       jmlSaudaraPerempuanKandung:
+                          //           calc.nilaiSaudaraPerempuanKandung,
+                          //     ),
                         ),
 
                         const Divider(color: Colors.white, height: 32),
@@ -166,20 +166,20 @@ class _Step6State extends State<Step6> {
                           value: calc.nilaiSaudaraLakiSeibu,
                           max: 50,
                           onChanged: (v) => calc.updateSaudaraLakiSeibu(v),
-                          isMahjub: HajbValidator.saudaraLakiSeibuTerhalang(
-                            nilaiAyah: calc.nilaiAyah,
-                            jmlAnakLaki: calc.nilaiAnakLaki,
-                            jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                            jmlCucuLaki: calc.nilaiCucuLaki,
-                            jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                          ),
-                          infoHajb: HajbValidator.penghalangSaudaraLakiSeibu(
-                            nilaiAyah: calc.nilaiAyah,
-                            jmlAnakLaki: calc.nilaiAnakLaki,
-                            jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                            jmlCucuLaki: calc.nilaiCucuLaki,
-                            jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                          ),
+                          // isMahjub: HajbValidator.saudaraLakiSeibuTerhalang(
+                          //   nilaiAyah: calc.nilaiAyah,
+                          //   jmlAnakLaki: calc.nilaiAnakLaki,
+                          //   jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                          //   jmlCucuLaki: calc.nilaiCucuLaki,
+                          //   jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                          // ),
+                          // infoHajb: HajbValidator.penghalangSaudaraLakiSeibu(
+                          //   nilaiAyah: calc.nilaiAyah,
+                          //   jmlAnakLaki: calc.nilaiAnakLaki,
+                          //   jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                          //   jmlCucuLaki: calc.nilaiCucuLaki,
+                          //   jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                          // ),
                         ),
 
                         CounterRow(
@@ -187,22 +187,22 @@ class _Step6State extends State<Step6> {
                           value: calc.nilaiSaudaraPerempuanSeibu,
                           max: 50,
                           onChanged: (v) => calc.updateSaudaraPerempuanSeibu(v),
-                          isMahjub:
-                              HajbValidator.saudaraPerempuanSeibuTerhalang(
-                                nilaiAyah: calc.nilaiAyah,
-                                jmlAnakLaki: calc.nilaiAnakLaki,
-                                jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                                jmlCucuLaki: calc.nilaiCucuLaki,
-                                jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                              ),
-                          infoHajb:
-                              HajbValidator.penghalangSaudaraPerempuanSeibu(
-                                nilaiAyah: calc.nilaiAyah,
-                                jmlAnakLaki: calc.nilaiAnakLaki,
-                                jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                                jmlCucuLaki: calc.nilaiCucuLaki,
-                                jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                              ),
+                          // isMahjub:
+                          //     HajbValidator.saudaraPerempuanSeibuTerhalang(
+                          //       nilaiAyah: calc.nilaiAyah,
+                          //       jmlAnakLaki: calc.nilaiAnakLaki,
+                          //       jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                          //       jmlCucuLaki: calc.nilaiCucuLaki,
+                          //       jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                          //     ),
+                          // infoHajb:
+                          //     HajbValidator.penghalangSaudaraPerempuanSeibu(
+                          //       nilaiAyah: calc.nilaiAyah,
+                          //       jmlAnakLaki: calc.nilaiAnakLaki,
+                          //       jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                          //       jmlCucuLaki: calc.nilaiCucuLaki,
+                          //       jmlCucuPerempuan: calc.nilaiCucuPerempuan,
+                          //     ),
                         ),
 
                         const Divider(color: Colors.white, height: 32),

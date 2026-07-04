@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/home/dalil_card.dart';
+import 'package:waristmate_app/widgets/home/fun_fact_card.dart';
 import 'package:waristmate_app/widgets/home/home_header.dart';
 import 'package:waristmate_app/widgets/home/hero_card.dart';
 import 'package:waristmate_app/widgets/home/welcome_text.dart';
@@ -48,7 +49,11 @@ class HomeScreen extends StatelessWidget {
                     onStartCalculating: () {},
                   ),
 
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 20),
+
+                  FunFactCard(rotationDuration: const Duration(seconds: 7)),
+
+                  const SizedBox(height: 12),
 
                   ...dalilList.map(
                     (dalil) => DalilCard(

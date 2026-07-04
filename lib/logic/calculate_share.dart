@@ -2,10 +2,6 @@ part of 'main_calculator.dart';
 
 extension CalculateShare on CalculatorController {
   void calculateShare() {
-    print("share");
-    print("hasilKPK: $hasilKPK");
-    print("irst: $nIrst");
-    print("totalWarisan: $totalWarisan");
     if (nilaiSuami > 0) {
       int bagianSuami = totalWarisan * rSuami ~/ hasilKPK;
       sisaWarisan -= bagianSuami;
@@ -231,7 +227,6 @@ extension CalculateShare on CalculatorController {
       }
     }
 
-    print("sisaWarisan: $sisaWarisan");
     if (sisaWarisan > 0) {
       if (totalAshabah == 0) return;
       calculateAshabah();

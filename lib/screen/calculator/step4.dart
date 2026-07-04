@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
-import 'package:waristmate_app/logic/hajb_validator.dart';
+// import 'package:waristmate_app/logic/hajb_validator.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_header.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_nav_button.dart';
 import 'package:waristmate_app/widgets/calculator/checkbox_tile.dart';
@@ -81,36 +81,36 @@ class _Step4State extends State<Step4> {
                           title: "Kakek dari Ayah",
                           value: calc.nilaiKakek == 1,
                           onChanged: (v) => calc.updateKakek(v ?? false),
-                          infoHajb: HajbValidator.penghalangKakek(
-                            nilaiAyah: calc.nilaiAyah,
-                          ),
-                          isMahjub: HajbValidator.kakekTerhalang(
-                            nilaiAyah: calc.nilaiAyah,
-                          ),
+                          // infoHajb: HajbValidator.penghalangKakek(
+                          //   nilaiAyah: calc.nilaiAyah,
+                          // ),
+                          // isMahjub: HajbValidator.kakekTerhalang(
+                          //   nilaiAyah: calc.nilaiAyah,
+                          // ),
                         ),
 
                         CheckboxTile(
                           title: "Nenek dari Ayah",
                           value: calc.nilaiNenekAyah == 1,
                           onChanged: (v) => calc.updateNenekAyah(v ?? false),
-                          infoHajb: HajbValidator.penghalangNenek(
-                            nilaiIbu: calc.nilaiIbu,
-                          ),
-                          isMahjub: HajbValidator.nenekTerhalang(
-                            nilaiIbu: calc.nilaiIbu,
-                          ),
+                          // infoHajb: HajbValidator.penghalangNenek(
+                          //   nilaiIbu: calc.nilaiIbu,
+                          // ),
+                          // isMahjub: HajbValidator.nenekTerhalang(
+                          //   nilaiIbu: calc.nilaiIbu,
+                          // ),
                         ),
 
                         CheckboxTile(
                           title: "Nenek dari Ibu",
                           value: calc.nilaiNenekIbu == 1,
                           onChanged: (v) => calc.updateNenekIbu(v ?? false),
-                          infoHajb: HajbValidator.penghalangNenek(
-                            nilaiIbu: calc.nilaiIbu,
-                          ),
-                          isMahjub: HajbValidator.nenekTerhalang(
-                            nilaiIbu: calc.nilaiIbu,
-                          ),
+                          // infoHajb: HajbValidator.penghalangNenek(
+                          //   nilaiIbu: calc.nilaiIbu,
+                          // ),
+                          // isMahjub: HajbValidator.nenekTerhalang(
+                          //   nilaiIbu: calc.nilaiIbu,
+                          // ),
                         ),
 
                         const Divider(color: Colors.white, height: 32),

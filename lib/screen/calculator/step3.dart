@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
-import 'package:waristmate_app/logic/hajb_validator.dart';
+// import 'package:waristmate_app/logic/hajb_validator.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_header.dart';
 import 'package:waristmate_app/widgets/calculator/counter_row.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_nav_button.dart';
@@ -85,12 +85,12 @@ class _Step3State extends State<Step3> {
                             value: calc.nilaiCucuLaki,
                             max: 50,
                             onChanged: (v) => calc.updateCucuLaki(v),
-                            isMahjub: HajbValidator.cucuLakiTerhalang(
-                              jmlAnakLaki: calc.nilaiAnakLaki,
-                            ),
-                            infoHajb: HajbValidator.penghalangCucuLaki(
-                              jmlAnakLaki: calc.nilaiAnakLaki,
-                            ),
+                            // isMahjub: HajbValidator.cucuLakiTerhalang(
+                            //   jmlAnakLaki: calc.nilaiAnakLaki,
+                            // ),
+                            // infoHajb: HajbValidator.penghalangCucuLaki(
+                            //   jmlAnakLaki: calc.nilaiAnakLaki,
+                            // ),
                           ),
 
                           CounterRow(
@@ -98,14 +98,14 @@ class _Step3State extends State<Step3> {
                             value: calc.nilaiCucuPerempuan,
                             max: 50,
                             onChanged: (v) => calc.updateCucuPerempuan(v),
-                            isMahjub: HajbValidator.cucuPerempuanTerhalang(
-                              jmlAnakLaki: calc.nilaiAnakLaki,
-                              jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                            ),
-                            infoHajb: HajbValidator.penghalangCucuPerempuan(
-                              jmlAnakLaki: calc.nilaiAnakLaki,
-                              jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                            ),
+                            // isMahjub: HajbValidator.cucuPerempuanTerhalang(
+                            //   jmlAnakLaki: calc.nilaiAnakLaki,
+                            //   jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                            // ),
+                            // infoHajb: HajbValidator.penghalangCucuPerempuan(
+                            //   jmlAnakLaki: calc.nilaiAnakLaki,
+                            //   jmlAnakPerempuan: calc.nilaiAnakPerempuan,
+                            // ),
                           ),
 
                           const Divider(color: Colors.white, height: 32),

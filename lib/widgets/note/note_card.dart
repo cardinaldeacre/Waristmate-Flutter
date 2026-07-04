@@ -238,7 +238,7 @@ class _NoteCardState extends State<NoteCard> {
                       controller: noteController.wasiatController,
                       isCurrency: true,
                       readOnly: !widget.isEditMode,
-
+                      autofillHints: widget.isEditMode ? '0' : null,
                       onChanged: (val) {
                         String cleanVal = val
                             .replaceAll('.', '')
