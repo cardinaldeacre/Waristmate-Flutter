@@ -12,7 +12,6 @@ part 'calculate_share.dart';
 extension MainCalculator on CalculatorController {
   void startCounting() {
     masalah.clear();
-    results.clear();
     hasilKPK = 0;
     totalRatio = 0;
     kasus = '';

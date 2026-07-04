@@ -7,7 +7,7 @@ class CounterRow extends StatelessWidget {
   final int value;
   final Function(int) onChanged;
   final int max;
-  final bool isMahjub;
+  final bool? isMahjub;
   final String? infoHajb;
 
   const CounterRow({
@@ -35,7 +35,7 @@ class CounterRow extends StatelessWidget {
         ),
         const SizedBox(height: 8),
 
-        if (isMahjub)
+        if (isMahjub == true)
           Container(
             margin: const EdgeInsets.only(bottom: 8),
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),

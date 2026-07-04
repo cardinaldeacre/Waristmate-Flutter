@@ -167,7 +167,7 @@ class _CalculationResultState extends State<CalculationResult> {
                         ),
                       ),
                     ),
-                    ResultBottom(onBack: widget.onBack, onHome: widget.onHome),
+                    ResultBottom(onHome: widget.onHome),
                   ],
                 ),
               ),

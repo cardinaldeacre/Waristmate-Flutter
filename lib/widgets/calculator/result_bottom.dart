@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 
 class ResultBottom extends StatelessWidget {
-  final VoidCallback onBack;
-  final VoidCallback onHome;
+  final VoidCallback? onBack;
+  final VoidCallback? onHome;
 
-  const ResultBottom({super.key, required this.onBack, required this.onHome});
+  const ResultBottom({super.key, this.onBack, this.onHome});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,31 +16,33 @@ class ResultBottom extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(
             children: [
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryGreen,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 12,
+              if (onBack != null) ...[
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryGreen,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 12,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  onPressed: onBack,
-                  child: const Text(
-                    "Kembali",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15,
+                    onPressed: onBack,
+                    child: const Text(
+                      "Kembali",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15,
+                      ),
                     ),
                   ),
                 ),
-              ),
 
-              const SizedBox(width: 20),
+                const SizedBox(width: 20),
+              ],
 
               Expanded(
                 child: ElevatedButton(

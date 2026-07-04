@@ -5,23 +5,68 @@ extension HajbController on CalculatorController {
   void sinkronisasiHajb() {
     // kakek
     if (HajbValidator.kakekTerhalang(nilaiAyah: nilaiAyah)) {
-      nilaiKakek = 0;
+      if (nilaiKakek > 0) {
+        results.add({
+          'jumlah': nilaiKakek,
+          'ahli_waris': 'Kakek',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiKakek = 0;
+      }
     }
 
     if (HajbValidator.nenekTerhalang(nilaiIbu: nilaiIbu)) {
-      nilaiNenekIbu = 0;
-      nilaiNenekAyah = 0;
+      if (nilaiNenekAyah > 0) {
+        results.add({
+          'jumlah': nilaiNenekAyah,
+          'ahli_waris': 'Nenek Ayah',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiNenekAyah = 0;
+      }
+      if (nilaiNenekIbu > 0) {
+        results.add({
+          'jumlah': nilaiNenekIbu,
+          'ahli_waris': 'Nenek Ibu',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiNenekIbu = 0;
+      }
     }
 
     if (HajbValidator.cucuLakiTerhalang(jmlAnakLaki: nilaiAnakLaki)) {
-      nilaiCucuLaki = 0;
+      if (nilaiCucuLaki > 0) {
+        results.add({
+          'jumlah': nilaiCucuLaki,
+          'ahli_waris': 'Cucu Laki-laki',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiCucuLaki = 0;
+      }
     }
 
     if (HajbValidator.cucuPerempuanTerhalang(
       jmlAnakLaki: nilaiAnakLaki,
       jmlAnakPerempuan: nilaiAnakPerempuan,
     )) {
-      nilaiCucuPerempuan = 0;
+      if (nilaiCucuPerempuan > 0) {
+        results.add({
+          'jumlah': nilaiCucuPerempuan,
+          'ahli_waris': 'Cucu Perempuan',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiCucuPerempuan = 0;
+      }
     }
 
     if (HajbValidator.saudaraLakiKandungTerhalang(
@@ -29,7 +74,16 @@ extension HajbController on CalculatorController {
       jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCucuLaki,
     )) {
-      nilaiSaudaraLakiKandung = 0;
+      if (nilaiSaudaraLakiKandung > 0) {
+        results.add({
+          'jumlah': nilaiSaudaraLakiKandung,
+          'ahli_waris': 'Saudara Laki Kandung',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiSaudaraLakiKandung = 0;
+      }
     }
 
     if (HajbValidator.saudaraPerempuanKandungTerhalang(
@@ -37,7 +91,16 @@ extension HajbController on CalculatorController {
       jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCucuLaki,
     )) {
-      nilaiSaudaraPerempuanKandung = 0;
+      if (nilaiSaudaraPerempuanKandung > 0) {
+        results.add({
+          'jumlah': nilaiSaudaraPerempuanKandung,
+          'ahli_waris': 'Saudara Perempuan Kandung',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiSaudaraPerempuanKandung = 0;
+      }
     }
 
     if (HajbValidator.saudaraLakiSeayahTerhalang(
@@ -49,7 +112,16 @@ extension HajbController on CalculatorController {
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuPerempuan,
     )) {
-      nilaiSaudaraLakiSeayah = 0;
+      if (nilaiSaudaraLakiSeayah > 0) {
+        results.add({
+          'jumlah': nilaiSaudaraLakiSeayah,
+          'ahli_waris': 'Saudara Laki Seayah',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiSaudaraLakiSeayah = 0;
+      }
     }
 
     if (HajbValidator.saudaraPerempuanSeayahTerhalang(
@@ -61,7 +133,16 @@ extension HajbController on CalculatorController {
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuPerempuan,
     )) {
-      nilaiSaudaraPerempuanSeayah = 0;
+      if (nilaiSaudaraPerempuanSeayah > 0) {
+        results.add({
+          'jumlah': nilaiSaudaraPerempuanSeayah,
+          'ahli_waris': 'Saudara Perempuan Seayah',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiSaudaraPerempuanSeayah = 0;
+      }
     }
 
     if (HajbValidator.saudaraLakiSeibuTerhalang(
@@ -71,7 +152,16 @@ extension HajbController on CalculatorController {
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuPerempuan,
     )) {
-      nilaiSaudaraLakiSeibu = 0;
+      if (nilaiSaudaraLakiSeibu > 0) {
+        results.add({
+          'jumlah': nilaiSaudaraLakiSeibu,
+          'ahli_waris': 'Saudara Laki Seibu',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiSaudaraLakiSeibu = 0;
+      }
     }
 
     if (HajbValidator.saudaraPerempuanSeibuTerhalang(
@@ -81,7 +171,16 @@ extension HajbController on CalculatorController {
       jmlAnakPerempuan: nilaiAnakPerempuan,
       jmlCucuPerempuan: nilaiCucuPerempuan,
     )) {
-      nilaiSaudaraPerempuanSeibu = 0;
+      if (nilaiSaudaraPerempuanSeibu > 0) {
+        results.add({
+          'jumlah': nilaiSaudaraPerempuanSeibu,
+          'ahli_waris': 'Saudara Perempuan Seibu',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiSaudaraPerempuanSeibu = 0;
+      }
     }
 
     if (HajbValidator.anakLakiSaudaraKandungTerhalang(
@@ -96,7 +195,16 @@ extension HajbController on CalculatorController {
       jmlSaudaraLakiSeayah: nilaiSaudaraLakiSeayah,
       jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
     )) {
-      nilaiAnakLakiSaudaraKandung = 0;
+      if (nilaiAnakLakiSaudaraKandung > 0) {
+        results.add({
+          'jumlah': nilaiAnakLakiSaudaraKandung,
+          'ahli_waris': 'Anak Laki Saudara Kandung',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiAnakLakiSaudaraKandung = 0;
+      }
     }
 
     if (HajbValidator.anakLakiSaudaraSeayahTerhalang(
@@ -112,7 +220,16 @@ extension HajbController on CalculatorController {
       jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
       jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
     )) {
-      nilaiAnakLakiSaudaraSeayah = 0;
+      if (nilaiAnakLakiSaudaraSeayah > 0) {
+        results.add({
+          'jumlah': nilaiAnakLakiSaudaraSeayah,
+          'ahli_waris': 'Anak Laki Saudara Seayah',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiAnakLakiSaudaraSeayah = 0;
+      }
     }
 
     if (HajbValidator.pamanKandungTerhalang(
@@ -129,7 +246,16 @@ extension HajbController on CalculatorController {
       jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
       jmlAnakLakiSaudaraSeayah: nilaiAnakLakiSaudaraSeayah,
     )) {
-      nilaiPamanKandung = 0;
+      if (nilaiPamanKandung > 0) {
+        results.add({
+          'jumlah': nilaiPamanKandung,
+          'ahli_waris': 'Paman Kandung',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiPamanKandung = 0;
+      }
     }
 
     if (HajbValidator.pamanSekakekTerhalang(
@@ -147,7 +273,16 @@ extension HajbController on CalculatorController {
       jmlAnakLakiSaudaraSeayah: nilaiAnakLakiSaudaraSeayah,
       jmlPamanKandung: nilaiPamanKandung,
     )) {
-      nilaiPamanSekakek = 0;
+      if (nilaiPamanSekakek > 0) {
+        results.add({
+          'jumlah': nilaiPamanSekakek,
+          'ahli_waris': 'Paman Sekakek',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiPamanSekakek = 0;
+      }
     }
 
     if (HajbValidator.anakLakiPamanKandungTerhalang(
@@ -166,7 +301,16 @@ extension HajbController on CalculatorController {
       jmlPamanKandung: nilaiPamanKandung,
       jmlPamanSekakek: nilaiPamanSekakek,
     )) {
-      nilaiAnakLakiPamanKandung = 0;
+      if (nilaiAnakLakiPamanKandung > 0) {
+        results.add({
+          'jumlah': nilaiAnakLakiPamanKandung,
+          'ahli_waris': 'Anak Laki Paman Kandung',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiAnakLakiPamanKandung = 0;
+      }
     }
 
     if (HajbValidator.anakLakiPamanSekakekTerhalang(
@@ -186,7 +330,16 @@ extension HajbController on CalculatorController {
       jmlPamanSekakek: nilaiPamanSekakek,
       jmlAnakLakiPamanSekandung: nilaiAnakLakiPamanKandung,
     )) {
-      nilaiAnakLakiPamanSekakek = 0;
+      if (nilaiAnakLakiPamanSekakek > 0) {
+        results.add({
+          'jumlah': nilaiAnakLakiPamanSekakek,
+          'ahli_waris': 'Anak Laki Paman Sekakek',
+          'porsi': 'Mahjub',
+          'nominal_total': 0,
+          'nominal': 0,
+        });
+        nilaiAnakLakiPamanSekakek = 0;
+      }
     }
   }
 

@@ -160,143 +160,145 @@ class CalculatorController extends ChangeNotifier {
 
   void updateAyah(bool val) {
     nilaiAyah = val ? 1 : 0;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateIbu(bool val) {
     nilaiIbu = val ? 1 : 0;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateSuami(bool val) {
     nilaiSuami = val ? 1 : 0;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateIstri(int val) {
     nilaiIstri = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateAnakLaki(int val) {
     nilaiAnakLaki = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateAnakPerempuan(int val) {
     nilaiAnakPerempuan = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateCucuLaki(int val) {
     nilaiCucuLaki = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateCucuPerempuan(int val) {
     nilaiCucuPerempuan = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateKakek(bool val) {
     nilaiKakek = val ? 1 : 0;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateNenekAyah(bool val) {
     nilaiNenekAyah = val ? 1 : 0;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateNenekIbu(bool val) {
     nilaiNenekIbu = val ? 1 : 0;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateSaudaraLakiKandung(int val) {
     nilaiSaudaraLakiKandung = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateSaudaraPerempuanKandung(int val) {
     nilaiSaudaraPerempuanKandung = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateSaudaraLakiSeayah(int val) {
     nilaiSaudaraLakiSeayah = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateSaudaraPerempuanSeayah(int val) {
     nilaiSaudaraPerempuanSeayah = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateSaudaraLakiSeibu(int val) {
     nilaiSaudaraLakiSeibu = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateSaudaraPerempuanSeibu(int val) {
     nilaiSaudaraPerempuanSeibu = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateAnakLakiSaudaraKandung(int val) {
     nilaiAnakLakiSaudaraKandung = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateAnakLakiSaudaraSeayah(int val) {
     nilaiAnakLakiSaudaraSeayah = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updatePamanKandung(int val) {
     nilaiPamanKandung = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updatePamanSekakek(int val) {
     nilaiPamanSekakek = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateAnakLakiPamanKandung(int val) {
     nilaiAnakLakiPamanKandung = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void updateAnakLakiPamanSekakek(int val) {
     nilaiAnakLakiPamanSekakek = val;
-    sinkronisasiHajb();
+
     notifyListeners();
   }
 
   void runEngine() {
+    results.clear();
+    sinkronisasiHajb();
     startCounting();
 
     notifyListeners();
