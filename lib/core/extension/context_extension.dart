@@ -3,6 +3,7 @@ import 'package:waristmate_app/core/responsive/responsive.dart';
 
 extension ContextExtension on BuildContext {
   Size get screenSize => MediaQuery.of(this).size;
+  bool get isLandscape => Responsive.isLandscape(this);
 
   bool get isSmallScreen => Responsive.isSmallScreen(this);
   bool get isMediumScreen => Responsive.isMedium(this);
