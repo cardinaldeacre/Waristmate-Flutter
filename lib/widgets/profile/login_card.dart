@@ -17,7 +17,7 @@ class _LoginCardState extends State<LoginCard> {
     final authController = context.read<AuthController>();
 
     try {
-      final success = await authController.signInWithGoogle(context);
+      final success = await authController.signInWithGoogle();
       if (success) {
         if (context.mounted) {
           ScaffoldMessenger.of(

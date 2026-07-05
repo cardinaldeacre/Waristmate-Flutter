@@ -1,15 +1,30 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:waristmate_app/controllers/personal_note_controller.dart';
 import 'package:waristmate_app/services/auth/auth_service.dart';
 
 class AuthController extends ChangeNotifier {
-  final AuthService _authService = AuthService();
+  final AuthService _authService;
+  final PersonalNoteController _personalNoteController;
+
+  // Dependency injection dengan default fallback -- gampang di-mock
+  // saat unit test, tapi tetap gampang dipanggil `AuthController()` biasa.
+  AuthController({
+    AuthService? authService,
+    PersonalNoteController? personalNoteController,
+  }) : _authService = authService ?? AuthService(),
+       _personalNoteController =
+           personalNoteController ?? PersonalNoteController();
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
-  Future<bool> signInWithGoogle(BuildContext context) async {
+  String? _errorMessage;
+  String? get errorMessage => _errorMessage;
+
+  Future<bool> signInWithGoogle() async {
     _setLoading(true);
+    _errorMessage = null;
 
     try {
       final response = await _authService.signInWithGoogle();
@@ -18,39 +33,38 @@ class AuthController extends ChangeNotifier {
         return false;
       }
 
-      await syncAll();
+      await _syncAfterAuthChange();
       return true;
     } catch (e) {
-      rethrow;
+      await _authService.signOut();
+      _errorMessage = _mapAuthError(e);
+      notifyListeners();
+      return false;
     } finally {
       _setLoading(false);
     }
   }
 
-  Future<void> signOut(BuildContext context) async {
+  Future<void> signOut() async {
     _setLoading(true);
-
     try {
       await _authService.signOut();
-      await syncAll();
-    } catch (e) {
-      rethrow;
+      await _syncAfterAuthChange();
     } finally {
       _setLoading(false);
     }
   }
 
-  Future<void> syncAll() async {
-    try {
-      final personalNoteController = PersonalNoteController();
-      await personalNoteController.getPersonalNote();
+  Future<void> _syncAfterAuthChange() async {
+    await _personalNoteController.getPersonalNote();
+    notifyListeners();
+  }
 
-      notifyListeners();
-    } catch (e) {
-      rethrow;
-    } finally {
-      _setLoading(false);
+  String _mapAuthError(Object e) {
+    if (e is PlatformException) {
+      return 'Gagal masuk dengan Google. Silakan coba lagi.';
     }
+    return 'Terjadi kesalahan. Silakan coba lagi.';
   }
 
   void _setLoading(bool value) {
