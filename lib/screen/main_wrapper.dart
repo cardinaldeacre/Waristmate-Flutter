@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'package:waristmate_app/core/extension/context_extension.dart';
 import 'home/home_screen.dart';
 import 'calculator/calculator_screen.dart';
 import 'modul/modul_screen.dart';
@@ -37,6 +38,8 @@ class _MainWrapperState extends State<MainWrapper> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isLandscape = context.isLandscape;
+
     final List<Widget> screens = [
       CalculatorScreen(),
       ModulScreen(),
@@ -49,51 +52,124 @@ class _MainWrapperState extends State<MainWrapper> {
       ProfileScreen(),
     ];
     return Scaffold(
-      extendBody: true,
-      body: IndexedStack(index: _selectedIndex, children: screens),
-
-      bottomNavigationBar: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-        child: Material(
-          color: AppColors.darkGreen,
-          child: BottomNavigationBar(
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            type: BottomNavigationBarType.fixed,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white70,
-            items: const [
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/icons/ic_calculate.png')),
-                label: 'Kalkulator',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/icons/ic_book.png')),
-                label: 'Modul',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/icons/ic_home.png')),
-                label: 'Beranda',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(
-                  AssetImage('assets/icons/ic_server_person.png'),
+      body: isLandscape
+          ? Row(
+              children: [
+                Expanded(
+                  child: IndexedStack(index: _selectedIndex, children: screens),
                 ),
-                label: 'Catatan',
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                  ),
+                  child: Container(
+                    width: 72,
+                    decoration: const BoxDecoration(
+                      color: AppColors.darkGreen,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: _buildNavItem(
+                            index: 0,
+                            icon: 'assets/icons/ic_calculate.png',
+                          ),
+                        ),
+                        Expanded(
+                          child: _buildNavItem(
+                            index: 1,
+                            icon: 'assets/icons/ic_book.png',
+                          ),
+                        ),
+                        Expanded(
+                          child: _buildNavItem(
+                            index: 2,
+                            icon: 'assets/icons/ic_home.png',
+                          ),
+                        ),
+                        Expanded(
+                          child: _buildNavItem(
+                            index: 3,
+                            icon: 'assets/icons/ic_server_person.png',
+                          ),
+                        ),
+                        Expanded(
+                          child: _buildNavItem(
+                            index: 4,
+                            icon: 'assets/icons/ic_person.png',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            )
+          : IndexedStack(index: _selectedIndex, children: screens),
+
+      bottomNavigationBar: isLandscape
+          ? null
+          : ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
               ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/icons/ic_person.png')),
-                label: 'Profile',
+              child: Material(
+                color: AppColors.darkGreen,
+                child: BottomNavigationBar(
+                  currentIndex: _selectedIndex,
+                  onTap: _onItemTapped,
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  type: BottomNavigationBarType.fixed,
+                  showSelectedLabels: false,
+                  showUnselectedLabels: false,
+                  selectedItemColor: Colors.white,
+                  unselectedItemColor: Colors.white70,
+                  items: const [
+                    BottomNavigationBarItem(
+                      icon: ImageIcon(
+                        AssetImage('assets/icons/ic_calculate.png'),
+                      ),
+                      label: 'Kalkulator',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: ImageIcon(AssetImage('assets/icons/ic_book.png')),
+                      label: 'Modul',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: ImageIcon(AssetImage('assets/icons/ic_home.png')),
+                      label: 'Beranda',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: ImageIcon(
+                        AssetImage('assets/icons/ic_server_person.png'),
+                      ),
+                      label: 'Catatan',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: ImageIcon(AssetImage('assets/icons/ic_person.png')),
+                      label: 'Profile',
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
+            ),
+    );
+  }
+
+  Widget _buildNavItem({required int index, required String icon}) {
+    final selected = _selectedIndex == index;
+
+    return InkWell(
+      onTap: () => _onItemTapped(index),
+      child: Center(
+        child: ImageIcon(
+          AssetImage(icon),
+          color: selected ? Colors.white : Colors.white70,
         ),
       ),
     );
