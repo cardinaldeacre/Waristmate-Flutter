@@ -17,14 +17,6 @@ class MainWrapper extends StatefulWidget {
 class _MainWrapperState extends State<MainWrapper> {
   int _selectedIndex = 2;
 
-  final List<Widget> _screens = [
-    CalculatorScreen(),
-    ModulScreen(),
-    HomeScreen(),
-    NoteScreen(),
-    ProfileScreen(),
-  ];
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -45,9 +37,20 @@ class _MainWrapperState extends State<MainWrapper> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> screens = [
+      CalculatorScreen(),
+      ModulScreen(),
+      HomeScreen(
+        onNavigateToCalculator: () {
+          _onItemTapped(0);
+        },
+      ),
+      NoteScreen(),
+      ProfileScreen(),
+    ];
     return Scaffold(
       extendBody: true,
-      body: IndexedStack(index: _selectedIndex, children: _screens),
+      body: IndexedStack(index: _selectedIndex, children: screens),
 
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(

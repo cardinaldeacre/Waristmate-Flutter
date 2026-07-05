@@ -1,15 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'package:waristmate_app/controllers/modul_controller.dart';
+import 'package:provider/provider.dart';
+import 'package:waristmate_app/screen/modul/materi_screen.dart';
 
 class HeroCard extends StatelessWidget {
-  final VoidCallback onContinueLearning;
-  final VoidCallback onStartCalculating;
+  final VoidCallback? onNavigateToCalculator;
+  const HeroCard({super.key, this.onNavigateToCalculator});
 
-  const HeroCard({
-    super.key,
-    required this.onContinueLearning,
-    required this.onStartCalculating,
-  });
+  void onContinueLearning(BuildContext context) {
+    final modulController = context.read<ModulController>();
+    final lastRead = modulController.lastReadBab;
+
+    final materiBab = Hive.box('materiBox');
+    final localData = materiBab.get('modul_waris');
+
+    if (localData == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Data modul sedang dimuat, coba buka tab modul dulu ya!',
+          ),
+          backgroundColor: AppColors.primaryGreen,
+        ),
+      );
+      return;
+    }
+
+    final chapters = List<Map<String, dynamic>>.from(
+      (localData as List).map((item) => Map<String, dynamic>.from(item)),
+    );
+
+    int targetIndex = chapters.indexWhere(
+      (chapter) => chapter['bab']?.toString() == lastRead.toString(),
+    );
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            MateriScreen(chapters: chapters, initialIndex: targetIndex),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +126,7 @@ class HeroCard extends StatelessWidget {
                                   shadowColor: Colors.black,
                                   elevation: 4,
                                 ),
-                                onPressed: onContinueLearning,
+                                onPressed: () => onContinueLearning(context),
                                 child: const Text(
                                   "Lanjut Belajar",
                                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -114,7 +148,7 @@ class HeroCard extends StatelessWidget {
                                   shadowColor: Colors.black,
                                   elevation: 4,
                                 ),
-                                onPressed: onStartCalculating,
+                                onPressed: onNavigateToCalculator,
                                 child: const Text(
                                   "Kalkulator Waris",
                                   style: TextStyle(fontWeight: FontWeight.bold),

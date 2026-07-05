@@ -7,25 +7,11 @@ import 'package:waristmate_app/widgets/home/hero_card.dart';
 import 'package:waristmate_app/widgets/home/welcome_text.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final VoidCallback? onNavigateToCalculator;
+  const HomeScreen({super.key, this.onNavigateToCalculator});
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> dalilList = [
-      {
-        "arabic":
-            "لِلرِّجَالِ نَصِيبٌ مِّمَّا تَرَكَ الْوَالِدَانِ وَالْأَقْرَبُونَ...",
-        "translation":
-            "Bagi laki-laki ada hak bagian dari harta peninggalan kedua orang tua dan kerabatnya, dan bagi perempuan ada hak bagian (pula)... [Q.S 4: An-Nisa' (7)]",
-      },
-      {
-        "arabic":
-            "يُوصِيكُمُ اللَّهُ فِي أَوْلَادِكُمْ ۖ لِلذَّكَرِ مِثْلُ حَظِّ الْأُنثَيَيْنِ",
-        "translation":
-            "Allah mensyariatkan (mewajibkan) kepadamu tentang (pembagian warisan untuk) anak-anakmu, (yaitu) bagian seorang anak laki-laki sama dengan bagian dua orang anak perempuan. [Q.S 4: An-Nisa' (11)]",
-      },
-    ];
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: AppColors.backgroundClean,
@@ -44,10 +30,7 @@ class HomeScreen extends StatelessWidget {
 
                   const SizedBox(height: 12),
 
-                  HeroCard(
-                    onContinueLearning: () {},
-                    onStartCalculating: () {},
-                  ),
+                  HeroCard(onNavigateToCalculator: onNavigateToCalculator),
 
                   const SizedBox(height: 20),
 
@@ -55,12 +38,7 @@ class HomeScreen extends StatelessWidget {
 
                   const SizedBox(height: 12),
 
-                  ...dalilList.map(
-                    (dalil) => DalilCard(
-                      arabicText: dalil["arabic"]!,
-                      translation: dalil["translation"]!,
-                    ),
-                  ),
+                  DalilCard(),
                 ],
               ),
             ),
