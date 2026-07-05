@@ -126,10 +126,7 @@ class _MateriScreenState extends State<MateriScreen> {
                     child: SingleChildScrollView(
                       key: ValueKey(_currentIndex),
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 10,
-                      ),
+                      padding: const EdgeInsets.fromLTRB(12, 10, 12, 64),
                       child: HtmlWidget(
                         contentHtml,
                         textStyle: TextStyle(

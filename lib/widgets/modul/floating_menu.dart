@@ -24,7 +24,7 @@ class FloatingMenu extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width < 360 ? 8 : 26,
-          vertical: 12,
+          vertical: 36,
         ),
         decoration: BoxDecoration(color: Colors.transparent),
         child: Row(
