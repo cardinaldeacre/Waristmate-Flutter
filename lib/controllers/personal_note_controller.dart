@@ -196,6 +196,7 @@ class PersonalNoteController extends ChangeNotifier {
           debtList.add(item);
         });
       }
+      notifyListeners();
     } catch (e) {
       throw Exception('Failed to fetch personal note: $e');
     } finally {
