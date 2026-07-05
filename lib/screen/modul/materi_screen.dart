@@ -61,12 +61,6 @@ class _MateriScreenState extends State<MateriScreen> {
     context.read<ModulController>().updateLastReadBab(babNumber);
   }
 
-  @override
-  void dispose() {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    super.dispose();
-  }
-
   Future<void> _loadPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
