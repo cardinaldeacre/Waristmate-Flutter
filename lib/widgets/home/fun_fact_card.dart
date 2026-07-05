@@ -9,7 +9,7 @@ class FunFactCard extends StatefulWidget {
 
   const FunFactCard({
     super.key,
-    this.rotationDuration = const Duration(seconds: 7),
+    this.rotationDuration = const Duration(seconds: 20),
   });
 
   @override
@@ -29,12 +29,15 @@ class _FunFactCardState extends State<FunFactCard>
     _facts = List<String>.from(kFunFacts)..shuffle(Random());
 
     _progressController =
-        AnimationController(vsync: this, duration: widget.rotationDuration)
-          ..addStatusListener((status) {
-            if (status == AnimationStatus.completed) {
-              _goToNext();
-            }
-          });
+        AnimationController(
+          vsync: this,
+          duration: widget.rotationDuration,
+          animationBehavior: AnimationBehavior.preserve,
+        )..addStatusListener((status) {
+          if (status == AnimationStatus.completed) {
+            _goToNext();
+          }
+        });
 
     _progressController.forward();
   }

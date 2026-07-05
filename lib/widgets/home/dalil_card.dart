@@ -8,7 +8,7 @@ class DalilCard extends StatefulWidget {
 
   const DalilCard({
     super.key,
-    this.rotationDuration = const Duration(seconds: 10),
+    this.rotationDuration = const Duration(seconds: 20),
   });
 
   @override
@@ -24,10 +24,13 @@ class _DalilCardState extends State<DalilCard>
   void initState() {
     super.initState();
     _controller =
-        AnimationController(vsync: this, duration: widget.rotationDuration)
-          ..addStatusListener((status) {
-            if (status == AnimationStatus.completed) _goToNext();
-          });
+        AnimationController(
+          vsync: this,
+          duration: widget.rotationDuration,
+          animationBehavior: AnimationBehavior.preserve,
+        )..addStatusListener((status) {
+          if (status == AnimationStatus.completed) _goToNext();
+        });
     _controller.forward();
   }
 
@@ -209,6 +212,22 @@ class _DalilCardState extends State<DalilCard>
                               fontStyle: FontStyle.italic,
                               color: AppColors.textDark,
                               height: 1.6,
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: AnimatedBuilder(
+                              animation: _controller,
+                              builder: (context, _) {
+                                return LinearProgressIndicator(
+                                  value: _controller.value,
+                                  minHeight: 4,
+                                  backgroundColor: AppColors.textLight,
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    AppColors.gold,
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ],
