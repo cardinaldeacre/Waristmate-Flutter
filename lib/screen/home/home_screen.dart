@@ -39,11 +39,11 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 12),
 
                   DalilCard(),
+                  const SizedBox(height: 100),
                 ],
               ),
             ),
           ),
-          const SizedBox(height: 100),
         ],
       ),
     );
