@@ -26,7 +26,7 @@ class CounterRow extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "$label ($value)",
+          "$label (jumlah orang: $value)",
           style: const TextStyle(
             fontSize: 17.5,
             color: Colors.white,

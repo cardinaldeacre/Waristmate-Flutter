@@ -48,9 +48,9 @@ class _Step3State extends State<Step3> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            "Silahkan isi masing-masing kolom dengan anggota keluarga yang masih hidup",
+                            "Silahkan isi masing-masing kolom dengan anggota keluarga almarhum/ah yang masih hidup",
                             style: TextStyle(
-                              fontSize: 17,
+                              fontSize: 16,
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
                             ),
@@ -72,7 +72,7 @@ class _Step3State extends State<Step3> {
                           const Text(
                             "Cucu Kandung",
                             style: TextStyle(
-                              fontSize: 17,
+                              fontSize: 16,
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
                             ),

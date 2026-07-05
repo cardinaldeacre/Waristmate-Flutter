@@ -40,56 +40,61 @@ class _ModulScreenState extends State<ModulScreen> {
           const SizedBox(height: 5),
 
           Expanded(
-            child: ValueListenableBuilder(
-              valueListenable: Hive.box('materiBox').listenable(),
-              builder: (context, Box box, _) {
-                final localData = box.get('modul_waris');
+            child: Column(
+              children: [
+                ValueListenableBuilder(
+                  valueListenable: Hive.box('materiBox').listenable(),
+                  builder: (context, Box box, _) {
+                    final localData = box.get('modul_waris');
 
-                if (localData == null) {
-                  return const Center(child: CircularProgressIndicator());
-                }
+                    if (localData == null) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
 
-                final chapters = List<Map<String, dynamic>>.from(
-                  (localData as List).map(
-                    (item) => Map<String, dynamic>.from(item),
-                  ),
-                );
+                    final chapters = List<Map<String, dynamic>>.from(
+                      (localData as List).map(
+                        (item) => Map<String, dynamic>.from(item),
+                      ),
+                    );
 
-                if (chapters.isEmpty) {
-                  return const Center(
-                    child: Text('Belum ada materi yang tersedia.'),
-                  );
-                }
+                    if (chapters.isEmpty) {
+                      return const Center(
+                        child: Text('Belum ada materi yang tersedia.'),
+                      );
+                    }
 
-                return ListView.builder(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 12,
-                  ),
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: chapters.length,
-                  itemBuilder: (context, index) {
-                    final currentChapter = chapters[index];
-                    final String babStr = currentChapter['bab'].toString();
-                    final int babNumber = int.tryParse(babStr) ?? 0;
+                    return ListView.builder(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: chapters.length,
+                      itemBuilder: (context, index) {
+                        final currentChapter = chapters[index];
+                        final String babStr = currentChapter['bab'].toString();
+                        final int babNumber = int.tryParse(babStr) ?? 0;
 
-                    return ChapterCard(
-                      chapter: {
-                        'bab': currentChapter['bab'].toString(),
-                        'title': currentChapter['title'].toString(),
-                        'content_html': currentChapter['content_html']
-                            .toString(),
+                        return ChapterCard(
+                          chapter: {
+                            'bab': currentChapter['bab'].toString(),
+                            'title': currentChapter['title'].toString(),
+                            'content_html': currentChapter['content_html']
+                                .toString(),
+                          },
+                          index: index,
+                          chapterList: chapters,
+                          isBookmarked: modulCtrl.isLoggedIn
+                              ? modulCtrl.bookmarkedBabs.contains(babNumber)
+                              : false,
+                          isLastRead: modulCtrl.lastReadBab == babNumber,
+                        );
                       },
-                      index: index,
-                      chapterList: chapters,
-                      isBookmarked: modulCtrl.isLoggedIn
-                          ? modulCtrl.bookmarkedBabs.contains(babNumber)
-                          : false,
-                      isLastRead: modulCtrl.lastReadBab == babNumber,
                     );
                   },
-                );
-              },
+                ),
+                const SizedBox(height: 20),
+              ],
             ),
           ),
         ],

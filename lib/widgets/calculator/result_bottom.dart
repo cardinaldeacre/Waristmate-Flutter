@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'package:waristmate_app/core/utils/launcher_helper.dart';
 
 class ResultBottom extends StatelessWidget {
   final VoidCallback? onBack;
@@ -81,9 +82,25 @@ class ResultBottom extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
           ),
-          onPressed: () {},
+          onPressed: () async {
+            try {
+              await LauncherHelper.openWhatsApp();
+            } catch (e) {
+              if (!context.mounted) return;
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    "Gagal membuka WhatsApp: $e",
+                    style: TextStyle(color: AppColors.textLight),
+                  ),
+                  backgroundColor: AppColors.errorRed,
+                ),
+              );
+            }
+          },
           child: const Text(
-            "Bingung dengan hasilsnya? Hubungi ahli",
+            "Bingung dengan hasilnya? Hubungi ahli",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,

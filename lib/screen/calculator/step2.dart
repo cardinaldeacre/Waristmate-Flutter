@@ -46,9 +46,9 @@ class _Step2State extends State<Step2> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          "Silahkan isi masing-masing kolom dengan anggota keluarga mayyit yang masih hidup",
+                          "Silahkan isi masing-masing kolom dengan anggota keluarga almarhum/ah yang masih hidup",
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 16,
                             color: AppColors.textLight,
                             fontWeight: FontWeight.w600,
                           ),
@@ -69,7 +69,7 @@ class _Step2State extends State<Step2> {
                         const Text(
                           "Orang Tua",
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 16,
                             color: AppColors.textLight,
                             fontWeight: FontWeight.w600,
                           ),
@@ -88,7 +88,7 @@ class _Step2State extends State<Step2> {
 
                         if (calc.muwarrits == 'Laki-laki')
                           CounterRow(
-                            label: "Jumlah Istri",
+                            label: "Istri",
                             value: calc.nilaiIstri,
                             max: 4,
                             onChanged: (value) => calc.updateIstri(value),
@@ -117,7 +117,7 @@ class _Step2State extends State<Step2> {
                         const Text(
                           "Anak Kandung",
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 16,
                             color: AppColors.textLight,
                             fontWeight: FontWeight.w600,
                           ),

@@ -34,14 +34,14 @@ class CustomTextField extends StatelessWidget {
         inputFormatters: isCurrency ? [CurrencyFormatter()] : [],
         style: TextStyle(
           fontWeight: FontWeight.w600,
-          fontSize: 17,
+          fontSize: 16,
           color: color ?? AppColors.darkGreen,
         ),
         decoration: InputDecoration(
           hintText: autofillHints,
           hintStyle: TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 17,
+            fontSize: 16,
             color: AppColors.darkGrey,
           ),
           prefixIcon: isCurrency
@@ -54,7 +54,7 @@ class CustomTextField extends StatelessWidget {
                         "Rp.",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 17,
+                          fontSize: 16,
                           color: AppColors.darkGreen,
                         ),
                       ),

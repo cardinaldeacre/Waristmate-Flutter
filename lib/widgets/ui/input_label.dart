@@ -14,7 +14,7 @@ class InputLabel extends StatelessWidget {
         label,
         style: const TextStyle(
           color: AppColors.textLight,
-          fontSize: 17,
+          fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
       ),
