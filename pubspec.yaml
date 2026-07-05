@@ -54,6 +54,7 @@ dependencies:
   flutter_html_table: ^3.0.0
   flutter_html: ^3.0.0
   flutter_launcher_icons: ^0.14.4
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
