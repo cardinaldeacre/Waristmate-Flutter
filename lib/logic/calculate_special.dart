@@ -93,13 +93,13 @@ extension CalculateSpecial on CalculatorController {
       hasilKPK = 12;
       int bagianSuami = totalWarisan * 6 ~/ hasilKPK;
       int bagianIbu = totalWarisan * 2 ~/ hasilKPK;
-      int bagianSaudaraLakiKandung = totalWarisan * 2 ~/ hasilKPK;
+      int bagianSaudaraLakiKandung = totalWarisan * 1 ~/ hasilKPK;
       int bagianSaudaraLakiKandungPerOrang =
           bagianSaudaraLakiKandung ~/ nilaiSaudaraLakiKandung;
       int bagianSaudaraPerempuanKandung = totalWarisan * 1 ~/ hasilKPK;
       int bagianSaudaraPerempuanKandungPerOrang =
           bagianSaudaraPerempuanKandung ~/ nilaiSaudaraPerempuanKandung;
-      int bagianSaudaraSeibu = totalWarisan * 1 ~/ hasilKPK;
+      int bagianSaudaraSeibu = totalWarisan * 2 ~/ hasilKPK;
       int bagianSaudaraSeibuPerOrang = bagianSaudaraSeibu ~/ saudaraSeibu;
 
       results.add({
@@ -119,7 +119,7 @@ extension CalculateSpecial on CalculatorController {
       results.add({
         'jumlah': nilaiSaudaraLakiKandung,
         'ahli_waris': 'Saudara Laki-Kandung',
-        'porsi': '2/12',
+        'porsi': '1/12',
         'nominal_total': bagianSaudaraLakiKandung,
         'nominal': bagianSaudaraLakiKandungPerOrang,
       });
@@ -134,14 +134,14 @@ extension CalculateSpecial on CalculatorController {
         results.add({
           'jumlah': nilaiSaudaraLakiSeibu,
           'ahli_waris': 'Saudara Laki Seibu',
-          'porsi': '1/12 Bersama (sisa)',
+          'porsi': '2/12 Bersama (sisa)',
           'nominal_total': bagianSaudaraSeibu,
           'nominal': bagianSaudaraSeibuPerOrang,
         });
         results.add({
           'jumlah': nilaiSaudaraPerempuanSeibu,
           'ahli_waris': 'Saudara Perempuan Seibu',
-          'porsi': '1/12 Bersama (sisa)',
+          'porsi': '2/12 Bersama (sisa)',
           'nominal_total': bagianSaudaraSeibu,
           'nominal': bagianSaudaraSeibuPerOrang,
         });
@@ -149,7 +149,7 @@ extension CalculateSpecial on CalculatorController {
         results.add({
           'jumlah': nilaiSaudaraLakiSeibu,
           'ahli_waris': 'Saudara Laki Seibu',
-          'porsi': '1/12 (sisa)',
+          'porsi': '2/12 (sisa)',
           'nominal_total': bagianSaudaraSeibu,
           'nominal': bagianSaudaraSeibuPerOrang,
         });
@@ -157,7 +157,7 @@ extension CalculateSpecial on CalculatorController {
         results.add({
           'jumlah': nilaiSaudaraPerempuanSeibu,
           'ahli_waris': 'Saudara Perempuan Seibu',
-          'porsi': '1/12 (sisa)',
+          'porsi': '2/12 (sisa)',
           'nominal_total': bagianSaudaraSeibu,
           'nominal': bagianSaudaraSeibuPerOrang,
         });
@@ -169,13 +169,13 @@ extension CalculateSpecial on CalculatorController {
       hasilKPK = 12;
       int bagianSuami = totalWarisan * 6 ~/ hasilKPK;
       int bagianNenek = totalWarisan * 2 ~/ hasilKPK;
-      int bagianSaudaraLakiKandung = totalWarisan * 2 ~/ hasilKPK;
+      int bagianSaudaraLakiKandung = totalWarisan * 1 ~/ hasilKPK;
       int bagianSaudaraLakiKandungPerOrang =
           bagianSaudaraLakiKandung ~/ nilaiSaudaraLakiKandung;
       int bagianSaudaraPerempuanKandung = totalWarisan * 1 ~/ hasilKPK;
       int bagianSaudaraPerempuanKandungPerOrang =
           bagianSaudaraPerempuanKandung ~/ nilaiSaudaraPerempuanKandung;
-      int bagianSaudaraSeibu = totalWarisan * 1 ~/ hasilKPK;
+      int bagianSaudaraSeibu = totalWarisan * 2 ~/ hasilKPK;
       int bagianSaudaraSeibuPerOrang = bagianSaudaraSeibu ~/ saudaraSeibu;
 
       results.add({
@@ -195,7 +195,7 @@ extension CalculateSpecial on CalculatorController {
       results.add({
         'jumlah': nilaiSaudaraLakiKandung,
         'ahli_waris': 'Saudara Laki-Kandung',
-        'porsi': '2/12',
+        'porsi': '1/12',
         'nominal_total': bagianSaudaraLakiKandung,
         'nominal': bagianSaudaraLakiKandungPerOrang,
       });
@@ -210,14 +210,14 @@ extension CalculateSpecial on CalculatorController {
         results.add({
           'jumlah': nilaiSaudaraLakiSeibu,
           'ahli_waris': 'Saudara Laki Seibu',
-          'porsi': '1/12 Bersama (sisa)',
+          'porsi': '2/12 Bersama (sisa)',
           'nominal_total': bagianSaudaraSeibu,
           'nominal': bagianSaudaraSeibuPerOrang,
         });
         results.add({
           'jumlah': nilaiSaudaraPerempuanSeibu,
           'ahli_waris': 'Saudara Perempuan Seibu',
-          'porsi': '1/12 Bersama (sisa)',
+          'porsi': '2/12 Bersama (sisa)',
           'nominal_total': bagianSaudaraSeibu,
           'nominal': bagianSaudaraSeibuPerOrang,
         });
@@ -225,7 +225,7 @@ extension CalculateSpecial on CalculatorController {
         results.add({
           'jumlah': nilaiSaudaraLakiSeibu,
           'ahli_waris': 'Saudara Laki Seibu',
-          'porsi': '1/12 (sisa)',
+          'porsi': '2/12 (sisa)',
           'nominal_total': bagianSaudaraSeibu,
           'nominal': bagianSaudaraSeibuPerOrang,
         });
@@ -233,7 +233,7 @@ extension CalculateSpecial on CalculatorController {
         results.add({
           'jumlah': nilaiSaudaraPerempuanSeibu,
           'ahli_waris': 'Saudara Perempuan Seibu',
-          'porsi': '1/12 (sisa)',
+          'porsi': '2/12 (sisa)',
           'nominal_total': bagianSaudaraSeibu,
           'nominal': bagianSaudaraSeibuPerOrang,
         });
