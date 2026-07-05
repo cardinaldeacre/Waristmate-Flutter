@@ -72,7 +72,7 @@ class _NoteScreenState extends State<NoteScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Data berhasil disinkronkan'),
-        backgroundColor: AppColors.primaryGreen,
+        backgroundColor: AppColors.spanBlue,
       ),
     );
   }
@@ -132,7 +132,6 @@ class _NoteScreenState extends State<NoteScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 80),
                 ],
               ),
             ),
