@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'package:waristmate_app/widgets/ui/custom_alert.dart';
 import 'package:waristmate_app/widgets/ui/custom_text_field.dart';
 import 'package:waristmate_app/widgets/ui/container_border.dart';
 
@@ -128,7 +129,18 @@ class DynamicItemCard extends StatelessWidget {
               borderRadius: 12,
               child: InkWell(
                 borderRadius: BorderRadius.circular(12),
-                onTap: onRemove,
+                onTap: () => CustomAlert.show(
+                  context,
+                  title: 'Konfirmasi Hapus',
+                  message: 'Apakah Anda yakin ingin menghapus item ini?',
+                  onConfirm: () => onRemove?.call(),
+                  onCancel: () {},
+                  icon: Icons.warning_rounded,
+                  iconColor: AppColors.errorRed,
+                  cancelText: 'Batal',
+                  confirmText: 'Hapus',
+                  confirmColor: AppColors.errorRed,
+                ),
                 child: const Center(
                   child: Icon(Icons.remove, color: Colors.white, size: 17.5),
                 ),
