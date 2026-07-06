@@ -65,7 +65,7 @@ class HeroCard extends StatelessWidget {
                 Positioned(
                   left: -10,
                   bottom: -20,
-                  child: Image.asset('assets/images/3d_book.png', width: 200),
+                  child: Image.asset('assets/images/3d_book.png', width: 172),
                 ),
 
                 Positioned(
@@ -129,7 +129,10 @@ class HeroCard extends StatelessWidget {
                                 onPressed: () => onContinueLearning(context),
                                 child: const Text(
                                   "Lanjut Belajar",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
                                 ),
                               ),
                             ),
@@ -151,7 +154,10 @@ class HeroCard extends StatelessWidget {
                                 onPressed: onNavigateToCalculator,
                                 child: const Text(
                                   "Kalkulator Waris",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
                                 ),
                               ),
                             ),

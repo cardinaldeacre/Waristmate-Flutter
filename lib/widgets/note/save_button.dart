@@ -18,56 +18,31 @@ class SaveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 23),
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: AppColors.darkGrey,
-        borderRadius: BorderRadius.circular(16),
+        color: AppColors.backgroundClean,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha(26),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
+            color: AppColors.darkShadow.withAlpha(120),
+            blurRadius: 12,
+            offset: const Offset(0, -2),
           ),
         ],
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
       ),
-      child: SizedBox(
-        width: double.infinity,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: isEditMode
-                ? AppColors.primaryGreen
-                : AppColors.gold,
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-          ),
-          onPressed: isEditMode ? (canSave ? onSave : null) : onToggle,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                isEditMode
-                    ? (canSave ? Icons.save : Icons.warning_amber_rounded)
-                    : Icons.edit,
-                size: 18,
-                color: AppColors.textLight,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                !isEditMode
-                    ? 'Edit Catatan'
-                    : canSave
-                    ? 'Simpan Catatan'
-                    : 'Lengkapi Data',
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.textLight,
-                ),
-              ),
-            ],
+      child: FloatingActionButton.extended(
+        heroTag: "editButton",
+        onPressed: isEditMode ? (canSave ? onSave : null) : onToggle,
+        backgroundColor: isEditMode ? AppColors.primaryGreen : AppColors.gold,
+        icon: Icon(
+          isEditMode ? Icons.save : Icons.edit,
+          color: AppColors.backgroundClean,
+        ),
+        label: Text(
+          isEditMode ? "Simpan" : "Edit",
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: AppColors.textLight,
           ),
         ),
       ),

@@ -127,9 +127,8 @@ class _NoteScreenState extends State<NoteScreen> {
                       ),
 
                       Positioned(
-                        left: 16,
                         right: 16,
-                        bottom: 23,
+                        bottom: 113,
                         child: SaveButton(
                           onToggle: _toggleEditMode,
                           isEditMode: _isEditMode,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
-// import 'package:waristmate_app/logic/hajb_validator.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_header.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_nav_button.dart';
 import 'package:waristmate_app/widgets/calculator/counter_row.dart';
@@ -83,40 +82,6 @@ class _Step7State extends State<Step7> {
                           max: 50,
                           onChanged: (v) =>
                               calc.updateAnakLakiSaudaraKandung(v),
-                          // isMahjub:
-                          //     HajbValidator.anakLakiSaudaraKandungTerhalang(
-                          //       nilaiAyah: calc.nilaiAyah,
-                          //       nilaiKakek: calc.nilaiKakek,
-                          //       jmlAnakLaki: calc.nilaiAnakLaki,
-                          //       jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                          //       jmlCucuLaki: calc.nilaiCucuLaki,
-                          //       jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                          //       jmlSaudaraLakiKandung:
-                          //           calc.nilaiSaudaraLakiKandung,
-                          //       jmlSaudaraPerempuanKandung:
-                          //           calc.nilaiSaudaraPerempuanKandung,
-                          //       jmlSaudaraLakiSeayah:
-                          //           calc.nilaiSaudaraLakiSeayah,
-                          //       jmlSaudaraPerempuanSeayah:
-                          //           calc.nilaiSaudaraPerempuanSeayah,
-                          //     ),
-                          // infoHajb:
-                          //     HajbValidator.penghalangAnakLakiSaudaraKandung(
-                          //       nilaiAyah: calc.nilaiAyah,
-                          //       nilaiKakek: calc.nilaiKakek,
-                          //       jmlAnakLaki: calc.nilaiAnakLaki,
-                          //       jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                          //       jmlCucuLaki: calc.nilaiCucuLaki,
-                          //       jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                          //       jmlSaudaraLakiKandung:
-                          //           calc.nilaiSaudaraLakiKandung,
-                          //       jmlSaudaraPerempuanKandung:
-                          //           calc.nilaiSaudaraPerempuanKandung,
-                          //       jmlSaudaraLakiSeayah:
-                          //           calc.nilaiSaudaraLakiSeayah,
-                          //       jmlSaudaraPerempuanSeayah:
-                          //           calc.nilaiSaudaraPerempuanSeayah,
-                          //     ),
                         ),
 
                         CounterRow(
@@ -124,44 +89,6 @@ class _Step7State extends State<Step7> {
                           value: calc.nilaiAnakLakiSaudaraSeayah,
                           max: 50,
                           onChanged: (v) => calc.updateAnakLakiSaudaraSeayah(v),
-                          // isMahjub:
-                          //     HajbValidator.anakLakiSaudaraSeayahTerhalang(
-                          //       nilaiAyah: calc.nilaiAyah,
-                          //       nilaiKakek: calc.nilaiKakek,
-                          //       jmlAnakLaki: calc.nilaiAnakLaki,
-                          //       jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                          //       jmlCucuLaki: calc.nilaiCucuLaki,
-                          //       jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                          //       jmlSaudaraLakiKandung:
-                          //           calc.nilaiSaudaraLakiKandung,
-                          //       jmlSaudaraPerempuanKandung:
-                          //           calc.nilaiSaudaraPerempuanKandung,
-                          //       jmlSaudaraLakiSeayah:
-                          //           calc.nilaiSaudaraLakiSeayah,
-                          //       jmlSaudaraPerempuanSeayah:
-                          //           calc.nilaiSaudaraPerempuanSeayah,
-                          //       jmlAnakLakiSaudaraKandung:
-                          //           calc.nilaiAnakLakiSaudaraKandung,
-                          //     ),
-                          // infoHajb:
-                          //     HajbValidator.penghalangAnakLakiSaudaraSeayah(
-                          //       nilaiAyah: calc.nilaiAyah,
-                          //       nilaiKakek: calc.nilaiKakek,
-                          //       jmlAnakLaki: calc.nilaiAnakLaki,
-                          //       jmlAnakPerempuan: calc.nilaiAnakPerempuan,
-                          //       jmlCucuLaki: calc.nilaiCucuLaki,
-                          //       jmlCucuPerempuan: calc.nilaiCucuPerempuan,
-                          //       jmlSaudaraLakiKandung:
-                          //           calc.nilaiSaudaraLakiKandung,
-                          //       jmlSaudaraPerempuanKandung:
-                          //           calc.nilaiSaudaraPerempuanKandung,
-                          //       jmlSaudaraLakiSeayah:
-                          //           calc.nilaiSaudaraLakiSeayah,
-                          //       jmlSaudaraPerempuanSeayah:
-                          //           calc.nilaiSaudaraPerempuanSeayah,
-                          //       jmlAnakLakiSaudaraKandung:
-                          //           calc.nilaiAnakLakiSaudaraKandung,
-                          //     ),
                         ),
 
                         const Divider(color: Colors.white, height: 32),
@@ -178,7 +105,7 @@ class _Step7State extends State<Step7> {
                   labelNext: "Lanjut",
                 ),
 
-                const SizedBox(height: 100),
+                const SizedBox(height: 150),
               ],
             ),
           ),

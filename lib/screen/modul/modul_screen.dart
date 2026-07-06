@@ -62,10 +62,7 @@ class _ModulScreenState extends State<ModulScreen> {
                 }
 
                 return ListView.builder(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 12,
-                  ),
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 120),
                   physics: const BouncingScrollPhysics(),
                   itemCount: chapters.length,
                   itemBuilder: (context, index) {
@@ -91,9 +88,6 @@ class _ModulScreenState extends State<ModulScreen> {
                 );
               },
             ),
-            //   const SizedBox(height: 20),
-            // ],
-            // ),
           ),
         ],
       ),

@@ -162,6 +162,8 @@ class _CalculationResultState extends State<CalculationResult> {
                     ),
                   ),
                   ResultBottom(onHome: widget.onHome),
+
+                  const SizedBox(height: 150),
                 ],
               ),
             ),

@@ -150,7 +150,7 @@ class _Step2State extends State<Step2> {
                   labelNext: "Lanjut",
                 ),
 
-                const SizedBox(height: 100),
+                const SizedBox(height: 150),
               ],
             ),
           ),

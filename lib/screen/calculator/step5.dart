@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/calculator_controller.dart';
-// import 'package:waristmate_app/logic/hajb_validator.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_header.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_nav_button.dart';
 import 'package:waristmate_app/widgets/calculator/counter_row.dart';
@@ -82,16 +81,6 @@ class _Step5State extends State<Step5> {
                           value: calc.nilaiSaudaraLakiKandung,
                           max: 50,
                           onChanged: (v) => calc.updateSaudaraLakiKandung(v),
-                          // isMahjub: HajbValidator.saudaraLakiKandungTerhalang(
-                          //   nilaiAyah: calc.nilaiAyah,
-                          //   jmlAnakLaki: calc.nilaiAnakLaki,
-                          //   jmlCucuLaki: calc.nilaiCucuLaki,
-                          // ),
-                          // infoHajb: HajbValidator.penghalangSaudaraLakiKandung(
-                          //   nilaiAyah: calc.nilaiAyah,
-                          //   jmlAnakLaki: calc.nilaiAnakLaki,
-                          //   jmlCucuLaki: calc.nilaiCucuLaki,
-                          // ),
                         ),
 
                         CounterRow(
@@ -100,18 +89,6 @@ class _Step5State extends State<Step5> {
                           max: 50,
                           onChanged: (v) =>
                               calc.updateSaudaraPerempuanKandung(v),
-                          // isMahjub:
-                          //     HajbValidator.saudaraPerempuanKandungTerhalang(
-                          //       nilaiAyah: calc.nilaiAyah,
-                          //       jmlAnakLaki: calc.nilaiAnakLaki,
-                          //       jmlCucuLaki: calc.nilaiCucuLaki,
-                          //     ),
-                          // infoHajb:
-                          //     HajbValidator.penghalangSaudaraPerempuanKandung(
-                          //       nilaiAyah: calc.nilaiAyah,
-                          //       jmlAnakLaki: calc.nilaiAnakLaki,
-                          //       jmlCucuLaki: calc.nilaiCucuLaki,
-                          //     ),
                         ),
 
                         const Divider(color: Colors.white, height: 32),
@@ -128,7 +105,7 @@ class _Step5State extends State<Step5> {
                   labelNext: "Lanjut",
                 ),
 
-                const SizedBox(height: 100),
+                const SizedBox(height: 150),
               ],
             ),
           ),

@@ -99,7 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                   if (isLoggedIn) LogoutCard(),
 
-                  const SizedBox(height: 100),
+                  const SizedBox(height: 120),
                 ],
               ),
             ),
