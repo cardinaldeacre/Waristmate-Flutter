@@ -1,3 +1,4 @@
+import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:waristmate_app/core/config/theme.dart';
@@ -17,54 +18,49 @@ class DalilCard extends StatefulWidget {
 
 class _DalilCardState extends State<DalilCard>
     with SingleTickerProviderStateMixin {
-  int _currentIndex = 0;
-  late final AnimationController _controller;
+  late final PageController _pageController;
+
+  static const int _loopPages = 100000;
+
+  static int _currentPage = _loopPages ~/ 2;
+
+  int get _currentIndex => _currentPage % kDalilList.length;
 
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(
-          vsync: this,
-          duration: widget.rotationDuration,
-          animationBehavior: AnimationBehavior.preserve,
-        )..addStatusListener((status) {
-          if (status == AnimationStatus.completed) _goToNext();
-        });
-    _controller.forward();
+
+    _currentPage = _loopPages ~/ 2;
+
+    _pageController = PageController(initialPage: _currentPage);
   }
 
-  void _goToNext() {
-    setState(() {
-      _currentIndex = (_currentIndex + 1) % kDalilList.length;
-    });
-    _controller
-      ..reset()
-      ..forward();
+  void _goNext() {
+    _pageController.nextPage(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 
-  void _goToIndex(int index) {
-    if (index == _currentIndex) return;
-    setState(() => _currentIndex = index);
-    _controller
-      ..reset()
-      ..forward();
+  void _goPrevious() {
+    _pageController.previousPage(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final dalil = kDalilList[_currentIndex];
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       child: GestureDetector(
-        onTap: _goToNext,
+        onTap: _goNext,
         behavior: HitTestBehavior.opaque,
         child: DottedBorder(
           options: RoundedRectDottedBorderOptions(
@@ -96,21 +92,23 @@ class _DalilCardState extends State<DalilCard>
                         size: 16,
                       ),
                     ),
+
                     const SizedBox(width: 8),
+
                     const Text(
-                      'Dalil Naqli',
+                      "Dalil Naqli",
                       style: TextStyle(
-                        color: AppColors.textDark,
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
-                        letterSpacing: 0.2,
                       ),
                     ),
+
                     const Spacer(),
+
                     AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 250),
                       child: Container(
-                        key: ValueKey<String>(dalil.source),
+                        key: ValueKey(_currentIndex),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 10,
                           vertical: 4,
@@ -119,144 +117,157 @@ class _DalilCardState extends State<DalilCard>
                           color: AppColors.gold.withAlpha(38),
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
-                            color: AppColors.gold.withAlpha(128),
+                            color: AppColors.gold.withAlpha(120),
                           ),
                         ),
                         child: Text(
-                          dalil.source,
+                          kDalilList[_currentIndex].source,
                           style: const TextStyle(
                             color: AppColors.darkGreen,
                             fontSize: 11,
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                     ),
                   ],
                 ),
+
                 const SizedBox(height: 14),
 
-                Stack(
-                  clipBehavior: Clip.none,
+                Column(
                   children: [
-                    Positioned(
-                      top: -14,
-                      left: -6,
-                      child: Icon(
-                        Icons.format_quote_rounded,
-                        size: 34,
-                        color: AppColors.darkGreen.withAlpha(30),
-                      ),
-                    ),
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 450),
-                      transitionBuilder: (child, animation) => FadeTransition(
-                        opacity: animation,
-                        child: SlideTransition(
-                          position: Tween<Offset>(
-                            begin: const Offset(0, 0.08),
-                            end: Offset.zero,
-                          ).animate(animation),
-                          child: child,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Icon(
+                          Icons.format_quote_rounded,
+                          size: 34,
+                          color: AppColors.darkGreen.withAlpha(35),
                         ),
                       ),
-                      child: Column(
-                        key: ValueKey<int>(_currentIndex),
-                        children: [
-                          Text(
-                            dalil.arabicText,
-                            textAlign: TextAlign.center,
-                            textDirection: TextDirection.rtl,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              height: 1.9,
-                              color: AppColors.textDark,
-                              fontFamily: 'Amiri',
-                            ),
-                          ),
-                          const SizedBox(height: 14),
+                    ),
 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                    const SizedBox(height: 6),
+
+                    ExpandablePageView.builder(
+                      controller: _pageController,
+                      itemCount: _loopPages,
+                      physics: const BouncingScrollPhysics(),
+
+                      onPageChanged: (page) {
+                        setState(() {
+                          _currentPage = page;
+                        });
+                      },
+
+                      itemBuilder: (_, page) {
+                        final dalil = kDalilList[page % kDalilList.length];
+
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 4),
+                          child: Column(
                             children: [
-                              Container(
-                                width: 28,
-                                height: 1,
-                                color: AppColors.darkGreen.withAlpha(77),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.symmetric(
-                                  horizontal: 6,
-                                ),
-                                width: 5,
-                                height: 5,
-                                decoration: const BoxDecoration(
-                                  color: AppColors.gold,
-                                  shape: BoxShape.circle,
+                              Text(
+                                dalil.arabicText,
+                                textAlign: TextAlign.center,
+                                textDirection: TextDirection.rtl,
+                                style: const TextStyle(
+                                  fontSize: 24,
+                                  fontFamily: "Amiri",
+                                  height: 1.9,
                                 ),
                               ),
-                              Container(
-                                width: 28,
-                                height: 1,
-                                color: AppColors.darkGreen.withAlpha(77),
+
+                              const SizedBox(height: 14),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 28,
+                                    height: 1,
+                                    color: AppColors.darkGreen.withAlpha(80),
+                                  ),
+
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: 6,
+                                    ),
+                                    width: 5,
+                                    height: 5,
+                                    decoration: const BoxDecoration(
+                                      color: AppColors.gold,
+                                      shape: BoxShape.circle,
+                                    ),
+                                  ),
+
+                                  Container(
+                                    width: 28,
+                                    height: 1,
+                                    color: AppColors.darkGreen.withAlpha(80),
+                                  ),
+                                ],
+                              ),
+
+                              const SizedBox(height: 14),
+
+                              Text(
+                                dalil.translation,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 13.5,
+                                  height: 1.6,
+                                ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 14),
-
-                          Text(
-                            dalil.translation,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 13.5,
-                              fontStyle: FontStyle.italic,
-                              color: AppColors.textDark,
-                              height: 1.6,
-                            ),
-                          ),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: AnimatedBuilder(
-                              animation: _controller,
-                              builder: (context, _) {
-                                return LinearProgressIndicator(
-                                  value: _controller.value,
-                                  minHeight: 4,
-                                  backgroundColor: AppColors.textLight,
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    AppColors.gold,
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
+                        );
+                      },
                     ),
                   ],
                 ),
+
                 const SizedBox(height: 16),
 
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(kDalilList.length, (index) {
-                    final isActive = index == _currentIndex;
-                    return GestureDetector(
-                      onTap: () => _goToIndex(index),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 250),
-                        margin: const EdgeInsets.symmetric(horizontal: 3),
-                        width: isActive ? 16 : 6,
-                        height: 6,
-                        decoration: BoxDecoration(
-                          color: isActive
-                              ? AppColors.darkGreen
-                              : AppColors.darkGreen.withAlpha(64),
-                          borderRadius: BorderRadius.circular(3),
-                        ),
+                  children: [
+                    IconButton(
+                      onPressed: _goPrevious,
+                      icon: const Icon(Icons.chevron_left_rounded),
+                      color: AppColors.darkGreen,
+                    ),
+
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(5, (i) {
+                          final active = (_currentIndex % 5) == i;
+
+                          return AnimatedContainer(
+                            duration: const Duration(milliseconds: 250),
+                            margin: const EdgeInsets.symmetric(horizontal: 4),
+                            width: active ? 18 : 8,
+                            height: 8,
+                            decoration: BoxDecoration(
+                              color: active
+                                  ? AppColors.darkGreen
+                                  : AppColors.darkGreen.withAlpha(60),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          );
+                        }),
                       ),
-                    );
-                  }),
+                    ),
+
+                    IconButton(
+                      onPressed: _goNext,
+                      icon: const Icon(Icons.chevron_right_rounded),
+                      color: AppColors.darkGreen,
+                    ),
+                  ],
                 ),
               ],
             ),

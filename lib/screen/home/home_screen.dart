@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-                  FunFactCard(rotationDuration: const Duration(seconds: 7)),
+                  FunFactCard(),
 
                   const SizedBox(height: 12),
 
