@@ -16,7 +16,7 @@ class NoteScreen extends StatefulWidget {
   State<NoteScreen> createState() => _NoteScreenState();
 }
 
-class _NoteScreenState extends State<NoteScreen> {
+class _NoteScreenState extends State<NoteScreen> with WidgetsBindingObserver {
   late final StreamSubscription<AuthState> _authSubscription;
   User? _user;
 
@@ -33,6 +33,7 @@ class _NoteScreenState extends State<NoteScreen> {
         _user = data.session?.user;
       });
     });
+
     final noteController = context.read<PersonalNoteController>();
     noteController.getPersonalNote();
   }

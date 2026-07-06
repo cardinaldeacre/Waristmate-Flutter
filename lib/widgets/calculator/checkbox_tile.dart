@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waristmate_app/core/config/theme.dart';
 
 class CheckboxTile extends StatelessWidget {
   final String title;
@@ -28,22 +29,25 @@ class CheckboxTile extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 8),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: Colors.red[400],
-                border: Border.all(color: Colors.red),
+                color: AppColors.errorRed,
+                border: Border.all(color: AppColors.errorRed),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
                 children: [
                   const Icon(
                     Icons.info_outline,
-                    color: Colors.white70,
+                    color: AppColors.textLight,
                     size: 17,
                   ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
                       "$title Terhalang oleh $infoHajb",
-                      style: const TextStyle(color: Colors.white, fontSize: 17),
+                      style: const TextStyle(
+                        color: AppColors.textLight,
+                        fontSize: 17,
+                      ),
                     ),
                   ),
                 ],
@@ -53,7 +57,7 @@ class CheckboxTile extends StatelessWidget {
               title: Text(
                 title,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textLight,
                   fontSize: 17.5,
                   fontWeight: FontWeight.w600,
                 ),
@@ -62,8 +66,8 @@ class CheckboxTile extends StatelessWidget {
               checkboxShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5),
               ),
-              activeColor: Colors.white,
-              checkColor: Colors.teal[600],
+              activeColor: AppColors.textLight,
+              checkColor: AppColors.primaryGreen,
               contentPadding: EdgeInsets.zero,
               visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
               onChanged: onChanged,

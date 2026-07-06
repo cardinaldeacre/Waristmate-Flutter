@@ -4,10 +4,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:waristmate_app/logic/note_item.dart';
 import 'package:waristmate_app/models/note_item.dart';
 import 'package:waristmate_app/models/personal_note.dart';
+import 'package:waristmate_app/services/personal_note/personal_note_draft_service.dart';
 import 'package:waristmate_app/services/personal_note/personal_note_service.dart';
+import 'dart:async';
 
 class PersonalNoteController extends ChangeNotifier {
   final PersonalNoteService _personalNoteService = PersonalNoteService();
+  final PersonalNoteDraftService _draftService = PersonalNoteDraftService();
   final wasiatController = TextEditingController();
   final warisanNoteController = TextEditingController();
   final cashAssetController = TextEditingController();
@@ -20,27 +23,85 @@ class PersonalNoteController extends ChangeNotifier {
   List<DynamicItemModel> debtInputs = [DynamicItemModel()];
   List<DynamicItemModel> wasiatInputs = [DynamicItemModel()];
 
-  List<NoteItemModel> _mapItems(List<DynamicItemModel> items) {
-    return items
-        .where(
-          (item) =>
-              item.nameController.text.trim().isNotEmpty &&
-              parseRupiah(item.amountController.text) > 0,
-        )
-        .map(
-          (item) => NoteItemModel(
-            name: item.nameController.text.trim(),
-            amount: parseRupiah(item.amountController.text),
-            description: item.descriptionController.text.trim(),
-          ),
-        )
-        .toList();
+  List<DynamicItemModel> _buildDynamicItems(List<NoteItemModel> items) {
+    if (items.isEmpty) {
+      return [DynamicItemModel()];
+    }
+
+    return items.map((item) {
+      return DynamicItemModel(
+        name: item.name,
+        description: item.description,
+        amount: item.amount.toString(),
+      );
+    }).toList();
   }
 
+  PersonalNoteModel buildPersonalNote(String userId) {
+    return PersonalNoteModel(
+      userId: userId,
+      totalAssetsNominal: totalAssetsNominal,
+      totalDebtsNominal: totalDebtsNominal,
+      totalWasiatNominal: totalWasiatNominal,
+      assetList: assetInputs
+          .where(
+            (e) =>
+                e.nameController.text.trim().isNotEmpty ||
+                parseRupiah(e.amountController.text) > 0 ||
+                e.descriptionController.text.trim().isNotEmpty,
+          )
+          .map(
+            (e) => NoteItemModel(
+              name: e.nameController.text.trim(),
+              description: e.descriptionController.text.trim(),
+              amount: parseRupiah(e.amountController.text),
+            ),
+          )
+          .toList(),
+
+      debtList: debtInputs
+          .where(
+            (e) =>
+                e.nameController.text.trim().isNotEmpty ||
+                parseRupiah(e.amountController.text) > 0 ||
+                e.descriptionController.text.trim().isNotEmpty,
+          )
+          .map(
+            (e) => NoteItemModel(
+              name: e.nameController.text.trim(),
+              description: e.descriptionController.text.trim(),
+              amount: parseRupiah(e.amountController.text),
+            ),
+          )
+          .toList(),
+
+      wasiatList: wasiatInputs
+          .where(
+            (e) =>
+                e.nameController.text.trim().isNotEmpty ||
+                parseRupiah(e.amountController.text) > 0 ||
+                e.descriptionController.text.trim().isNotEmpty,
+          )
+          .map(
+            (e) => NoteItemModel(
+              name: e.nameController.text.trim(),
+              description: e.descriptionController.text.trim(),
+              amount: parseRupiah(e.amountController.text),
+            ),
+          )
+          .toList(),
+
+      warisanNote: warisanNoteController.text.trim(),
+    );
+  }
+
+  Timer? _draftTimer;
   bool isLoading = false;
   bool isEditMode = false;
-
   bool get isEditModeEnabled => isEditMode;
+  bool hasDraft(String userId) {
+    return _draftService.hasDraft(userId);
+  }
 
   void setEditMode(bool value) {
     isEditMode = value;
@@ -119,6 +180,30 @@ class PersonalNoteController extends ChangeNotifier {
     return !isWasiatExceeded && !isLoading;
   }
 
+  void clearForm() {
+    cashAssetNominal = 0;
+
+    warisanNoteController.clear();
+
+    for (final item in assetInputs) {
+      item.dispose();
+    }
+
+    for (final item in debtInputs) {
+      item.dispose();
+    }
+
+    for (final item in wasiatInputs) {
+      item.dispose();
+    }
+
+    assetInputs = [DynamicItemModel()];
+    debtInputs = [DynamicItemModel()];
+    wasiatInputs = [DynamicItemModel()];
+
+    notifyListeners();
+  }
+
   void addAssetRow() {
     assetInputs.add(DynamicItemModel());
     notifyListeners();
@@ -156,57 +241,40 @@ class PersonalNoteController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void _loadItems(List<DynamicItemModel> target, List<NoteItemModel> source) {
-    for (final item in target) {
-      item.dispose();
-    }
+  void fillFromModel(PersonalNoteModel model) {
+    cashAssetNominal =
+        (model.totalAssetsNominal ?? 0) -
+        model.assetList.fold(0, (sum, item) => sum + item.amount);
 
-    target
-      ..clear()
-      ..addAll(
-        source.map(
-          (e) => DynamicItemModel(
-            name: e.name,
-            amount: e.amount.toString(),
-            description: e.description,
-          ),
-        ),
-      );
+    warisanNoteController.text = model.warisanNote ?? '';
 
-    if (target.isEmpty) {
-      target.add(DynamicItemModel());
-    }
+    assetInputs = _buildDynamicItems(model.assetList);
+
+    debtInputs = _buildDynamicItems(model.debtList);
+
+    wasiatInputs = _buildDynamicItems(model.wasiatList);
+
+    notifyListeners();
   }
 
   Future<void> savePersonalNote(String userId) async {
     isLoading = true;
+    notifyListeners();
 
     try {
-      updateCalculation();
+      final note = buildPersonalNote(userId);
 
-      final personalNote = PersonalNoteModel(
-        userId: userId,
-        totalAssetsNominal: totalAssetsNominal,
-        totalDebtsNominal: totalDebtsNominal,
-        totalWasiatNominal: totalWasiatNominal,
-        assetList: _mapItems(assetInputs),
-        debtList: _mapItems(debtInputs),
-        wasiatList: _mapItems(wasiatInputs),
-        warisanNote: warisanNote,
-      );
+      await _personalNoteService.savePersonalNote(note);
 
-      await _personalNoteService.savePersonalNote(personalNote);
-    } catch (e) {
-      throw Exception('Failed to save personal note: $e');
+      await deleteDraft(userId);
     } finally {
-      notifyListeners();
       isLoading = false;
+      notifyListeners();
     }
   }
 
   Future<void> getPersonalNote() async {
     isLoading = true;
-    notifyListeners();
 
     final user = Supabase.instance.client.auth.currentUser;
 
@@ -222,14 +290,7 @@ class PersonalNoteController extends ChangeNotifier {
       final personalNote = await _personalNoteService.getPersonalNote(userId);
 
       if (personalNote != null) {
-        assetInputs.clear();
-        _loadItems(assetInputs, personalNote.assetList);
-
-        debtInputs.clear();
-        _loadItems(debtInputs, personalNote.debtList);
-
-        wasiatInputs.clear();
-        _loadItems(wasiatInputs, personalNote.wasiatList);
+        fillFromModel(personalNote);
       }
 
       notifyListeners();
@@ -239,6 +300,35 @@ class PersonalNoteController extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     }
+  }
+
+  Future<void> saveDraft() async {
+    final user = Supabase.instance.client.auth.currentUser;
+
+    if (user == null) return;
+    print("SAVE DRAFT");
+    final note = buildPersonalNote(user.id);
+
+    await _draftService.saveDraft(note);
+  }
+
+  Future<void> deleteDraft(String userId) async {
+    await _draftService.deleteDraft(userId);
+  }
+
+  Future<void> loadDraft(String userId) async {
+    final draft = _draftService.loadDraft(userId);
+
+    if (draft == null) return;
+
+    fillFromModel(draft);
+  }
+
+  Future<void> scheduleAutoSaveDraft() async {
+    _draftTimer?.cancel();
+    _draftTimer = Timer(const Duration(seconds: 2), () async {
+      await saveDraft();
+    });
   }
 
   String formatRupiah(int value) {
@@ -252,6 +342,7 @@ class PersonalNoteController extends ChangeNotifier {
 
   @override
   void dispose() {
+    _draftTimer?.cancel();
     wasiatController.dispose();
     warisanNoteController.dispose();
     cashAssetController.dispose();

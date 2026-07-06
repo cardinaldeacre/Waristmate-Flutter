@@ -27,9 +27,9 @@ class PersonalNoteModel {
       'total_assets_nominal': totalAssetsNominal,
       'total_debts_nominal': totalDebtsNominal,
       'total_wasiat_nominal': totalWasiatNominal,
-      'asset_list': assetList,
-      'debt_list': debtList,
-      'wasiat_list': wasiatList,
+      'asset_list': assetList.map((e) => e.toJson()).toList(),
+      'debt_list': debtList.map((e) => e.toJson()).toList(),
+      'wasiat_list': wasiatList.map((e) => e.toJson()).toList(),
       'warisan_note': warisanNote,
     };
   }
@@ -43,17 +43,23 @@ class PersonalNoteModel {
 
       assetList: json['asset_list'] != null
           ? (json['asset_list'] as List)
-                .map((e) => NoteItemModel.fromJson(e))
+                .map(
+                  (e) => NoteItemModel.fromJson(Map<String, dynamic>.from(e)),
+                )
                 .toList()
           : [],
       debtList: json['debt_list'] != null
           ? (json['debt_list'] as List)
-                .map((e) => NoteItemModel.fromJson(e))
+                .map(
+                  (e) => NoteItemModel.fromJson(Map<String, dynamic>.from(e)),
+                )
                 .toList()
           : [],
       wasiatList: json['wasiat_list'] != null
           ? (json['wasiat_list'] as List)
-                .map((e) => NoteItemModel.fromJson(e))
+                .map(
+                  (e) => NoteItemModel.fromJson(Map<String, dynamic>.from(e)),
+                )
                 .toList()
           : [],
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'dart:async';
 
 class CustomAlert extends StatelessWidget {
   final String title;
@@ -9,8 +10,8 @@ class CustomAlert extends StatelessWidget {
   final String cancelText;
   final String confirmText;
   final Color? confirmColor;
-  final VoidCallback onConfirm;
-  final VoidCallback? onCancel;
+  final FutureOr<void> Function()? onConfirm;
+  final FutureOr<void> Function()? onCancel;
 
   const CustomAlert({
     super.key,
@@ -105,7 +106,7 @@ class CustomAlert extends StatelessWidget {
         ElevatedButton(
           onPressed: () {
             Navigator.of(context).pop();
-            onConfirm();
+            onConfirm?.call();
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: confirmColor,

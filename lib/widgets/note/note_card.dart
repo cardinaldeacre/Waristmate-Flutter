@@ -22,20 +22,17 @@ class _NoteCardState extends State<NoteCard> {
     final bool hasValidAssets = noteController.assetInputs.any(
       (item) =>
           item.nameController.text.trim().isNotEmpty &&
-          item.amountController.text.trim().isNotEmpty &&
-          item.descriptionController.text.trim().isNotEmpty,
+          item.amountController.text.trim().isNotEmpty,
     );
     final bool hasValidHutang = noteController.debtInputs.any(
       (item) =>
           item.nameController.text.trim().isNotEmpty &&
-          item.amountController.text.trim().isNotEmpty &&
-          item.descriptionController.text.trim().isNotEmpty,
+          item.amountController.text.trim().isNotEmpty,
     );
     final bool hasValidWasiat = noteController.wasiatInputs.any(
       (item) =>
           item.nameController.text.trim().isNotEmpty &&
-          item.amountController.text.trim().isNotEmpty &&
-          item.descriptionController.text.trim().isNotEmpty,
+          item.amountController.text.trim().isNotEmpty,
     );
 
     if (noteController.wasiatWarning != null) {
@@ -207,8 +204,8 @@ class _NoteCardState extends State<NoteCard> {
                         nameController: item.nameController,
                         amountController: item.amountController,
                         descriptionController: item.descriptionController,
-                        nameHint: "Emas 20gr",
-                        amountHint: "54.000.000",
+                        nameHint: "Nama: contoh Emas 20gr",
+                        amountHint: "Nominal: contoh 54.000.000",
                         descriptionHint: "Deskripsi aset",
                         isAsset: true,
                         onRemove: () {
@@ -216,20 +213,34 @@ class _NoteCardState extends State<NoteCard> {
                         },
                         onChanged: (val) {
                           noteController.updateCalculation();
+                          noteController.scheduleAutoSaveDraft();
                         },
                       );
                     }),
               ],
 
-              const SizedBox(height: 16),
+              if (!noteController.isEditMode && !hasValidAssets) ...[
+                const SizedBox(height: 16),
+                const Text(
+                  "(kolom nama, dan nominal harus diisi)",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
 
-              if (noteController.isEditMode)
+              if (noteController.isEditMode) ...[
+                const SizedBox(height: 16),
                 AddItemCard(
                   onAdd: () {
                     noteController.addAssetRow();
                   },
                   label: "Tambah Aset",
                 ),
+              ],
 
               const SizedBox(height: 16),
               const Divider(height: 1, color: AppColors.textLight),
@@ -287,20 +298,32 @@ class _NoteCardState extends State<NoteCard> {
                         },
                         onChanged: (val) {
                           noteController.updateCalculation();
+                          noteController.scheduleAutoSaveDraft();
                         },
                       );
                     }),
               ],
 
-              const SizedBox(height: 16),
-
-              if (noteController.isEditMode)
-                AddItemCard(
-                  onAdd: () {
-                    noteController.addDebtRow();
-                  },
-                  label: "Tambah Hutang",
+              if (!noteController.isEditMode && !hasValidAssets) ...[
+                const SizedBox(height: 16),
+                const Text(
+                  "(kolom nama, dan nominal harus diisi)",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
+              ],
+              if (noteController.isEditMode) const SizedBox(height: 16),
+
+              AddItemCard(
+                onAdd: () {
+                  noteController.addDebtRow();
+                },
+                label: "Tambah Hutang",
+              ),
 
               const SizedBox(height: 16),
               const Divider(height: 1, color: AppColors.textLight),
@@ -358,6 +381,7 @@ class _NoteCardState extends State<NoteCard> {
                         },
                         onChanged: (_) {
                           noteController.updateCalculation();
+                          noteController.scheduleAutoSaveDraft();
                         },
                       );
                     }),
@@ -403,6 +427,7 @@ class _NoteCardState extends State<NoteCard> {
                   maxLines: 12,
                   onChanged: (val) {
                     noteController.setWarisanNote(val);
+                    noteController.scheduleAutoSaveDraft();
                   },
                   style: const TextStyle(color: AppColors.primaryGreen),
                   decoration: InputDecoration(

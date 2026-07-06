@@ -19,6 +19,7 @@ void main() async {
   await Hive.openBox('materiBox');
   await Hive.openBox('profileBox');
   await Hive.openBox('personalNoteBox');
+  await Hive.openBox('personalDraftBox');
   await Hive.openBox('calculationHistoryBox');
   await Hive.openBox('progressBox');
 

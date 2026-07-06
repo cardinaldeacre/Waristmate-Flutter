@@ -28,7 +28,6 @@ class PersonalNoteService {
 
   Future<void> savePersonalNote(PersonalNoteModel note) async {
     try {
-      print("Saving personal note: ${note.toJson()}");
       final response = await _supabase
           .from('personal_records')
           .upsert(note.toJson(), onConflict: 'user_id');
