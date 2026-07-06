@@ -118,33 +118,35 @@ class ChapterModal extends StatelessWidget {
 
                 return Container(
                   margin: const EdgeInsets.only(bottom: 12),
-                  decoration: BoxDecoration(
+                  child: Material(
                     color: AppColors.darkGreen.withValues(alpha: 0.7),
-                    borderRadius: BorderRadius.circular(16),
-                    border: isCurrent
-                        ? Border.all(color: AppColors.grey, width: 1.5)
-                        : null,
-                  ),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                      side: isCurrent
+                          ? const BorderSide(color: AppColors.grey, width: 1.5)
+                          : BorderSide.none,
                     ),
-                    title: Text(
-                      "Bab $babNumber - $babTitle",
-                      style: TextStyle(
-                        color: isCurrent
-                            ? AppColors.primaryGreen
-                            : AppColors.textLight,
-                        fontWeight: isCurrent
-                            ? FontWeight.bold
-                            : FontWeight.w500,
-                        fontFamily: 'Gabarito',
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 4,
                       ),
+                      title: Text(
+                        "Bab $babNumber - $babTitle",
+                        style: TextStyle(
+                          color: isCurrent
+                              ? AppColors.primaryGreen
+                              : AppColors.textLight,
+                          fontWeight: isCurrent
+                              ? FontWeight.bold
+                              : FontWeight.w500,
+                          fontFamily: 'Gabarito',
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context, index);
+                      },
                     ),
-                    onTap: () {
-                      Navigator.pop(context, index);
-                    },
                   ),
                 );
               },
