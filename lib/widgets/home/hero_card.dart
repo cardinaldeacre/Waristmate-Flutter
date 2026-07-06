@@ -64,7 +64,7 @@ class HeroCard extends StatelessWidget {
               children: [
                 Positioned(
                   left: -10,
-                  bottom: -20,
+                  bottom: -5,
                   child: Image.asset('assets/images/3d_book.png', width: 172),
                 ),
 
@@ -91,9 +91,9 @@ class HeroCard extends StatelessWidget {
 
                 Container(
                   padding: const EdgeInsets.only(
-                    left: 20,
-                    right: 20,
-                    top: 20,
+                    left: 15,
+                    right: 15,
+                    top: 15,
                     bottom: 24,
                   ),
                   child: Column(
@@ -111,7 +111,7 @@ class HeroCard extends StatelessWidget {
 
                       const SizedBox(height: 24),
                       Container(
-                        padding: const EdgeInsets.only(left: 150),
+                        padding: const EdgeInsets.only(left: 120),
                         child: Column(
                           children: [
                             SizedBox(

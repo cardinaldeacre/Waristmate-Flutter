@@ -126,6 +126,7 @@ class _Step1State extends State<Step1> {
                         ),
 
                         const Divider(color: AppColors.textLight, height: 12),
+                        const SizedBox(height: 8),
                         const Text(
                           "(Pastikan mengisi secara berurutan, mulai dari atas ke bawah)",
                           style: TextStyle(
@@ -134,7 +135,6 @@ class _Step1State extends State<Step1> {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        const SizedBox(height: 8),
                         const InputLabel(label: "Biaya pengurusan jenazah"),
                         CustomTextField(
                           controller: calc.tajhizController,
@@ -210,6 +210,8 @@ class _Step1State extends State<Step1> {
                           },
                         ),
 
+                        const SizedBox(height: 8),
+
                         const Text(
                           "(Pastikan wasiat diisi paling akhir, setelah semua kolom di atas terisi)",
                           style: TextStyle(
@@ -219,7 +221,7 @@ class _Step1State extends State<Step1> {
                           ),
                         ),
 
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 8),
                         const Divider(color: Colors.white, height: 1),
 
                         const InputLabel(

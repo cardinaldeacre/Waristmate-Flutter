@@ -219,8 +219,8 @@ class _NoteCardState extends State<NoteCard> {
                     }),
               ],
 
-              if (!noteController.isEditMode && !hasValidAssets) ...[
-                const SizedBox(height: 16),
+              if (noteController.isEditMode) ...[
+                const SizedBox(height: 4),
                 const Text(
                   "(kolom nama, dan nominal harus diisi)",
                   textAlign: TextAlign.justify,
@@ -233,7 +233,7 @@ class _NoteCardState extends State<NoteCard> {
               ],
 
               if (noteController.isEditMode) ...[
-                const SizedBox(height: 16),
+                const SizedBox(height: 8),
                 AddItemCard(
                   onAdd: () {
                     noteController.addAssetRow();
@@ -304,8 +304,8 @@ class _NoteCardState extends State<NoteCard> {
                     }),
               ],
 
-              if (!noteController.isEditMode && !hasValidAssets) ...[
-                const SizedBox(height: 16),
+              if (noteController.isEditMode) ...[
+                const SizedBox(height: 4),
                 const Text(
                   "(kolom nama, dan nominal harus diisi)",
                   textAlign: TextAlign.justify,
@@ -316,14 +316,15 @@ class _NoteCardState extends State<NoteCard> {
                   ),
                 ),
               ],
-              if (noteController.isEditMode) const SizedBox(height: 16),
-
-              AddItemCard(
-                onAdd: () {
-                  noteController.addDebtRow();
-                },
-                label: "Tambah Hutang",
-              ),
+              if (noteController.isEditMode) ...[
+                const SizedBox(height: 8),
+                AddItemCard(
+                  onAdd: () {
+                    noteController.addDebtRow();
+                  },
+                  label: "Tambah Hutang",
+                ),
+              ],
 
               const SizedBox(height: 16),
               const Divider(height: 1, color: AppColors.textLight),
@@ -387,15 +388,28 @@ class _NoteCardState extends State<NoteCard> {
                     }),
               ],
 
-              const SizedBox(height: 16),
+              if (noteController.isEditMode) ...[
+                const SizedBox(height: 4),
+                const Text(
+                  "(kolom nama, dan nominal harus diisi)",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
 
-              if (noteController.isEditMode)
+              if (noteController.isEditMode) ...[
+                const SizedBox(height: 8),
                 AddItemCard(
                   onAdd: () {
                     noteController.addWasiatRow();
                   },
                   label: "Tambah Wasiat",
                 ),
+              ],
 
               const SizedBox(height: 16),
               const Divider(),
