@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:waristmate_app/controllers/personal_note_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 
 class SaveButton extends StatelessWidget {
   final VoidCallback? onToggle;
-  final bool isEditMode;
   final Future<void> Function()? onSave;
-  final bool canSave;
 
-  const SaveButton({
-    super.key,
-    required this.onToggle,
-    required this.isEditMode,
-    required this.canSave,
-    this.onSave,
-  });
+  const SaveButton({super.key, required this.onToggle, this.onSave});
 
   @override
   Widget build(BuildContext context) {
+    final noteController = context.watch<PersonalNoteController>();
+
     return Container(
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
@@ -32,14 +28,18 @@ class SaveButton extends StatelessWidget {
       ),
       child: FloatingActionButton.extended(
         heroTag: "editButton",
-        onPressed: isEditMode ? (canSave ? onSave : null) : onToggle,
-        backgroundColor: isEditMode ? AppColors.primaryGreen : AppColors.gold,
+        onPressed: noteController.isEditMode
+            ? (noteController.canSave ? onSave : null)
+            : onToggle,
+        backgroundColor: noteController.isEditMode
+            ? AppColors.primaryGreen
+            : AppColors.gold,
         icon: Icon(
-          isEditMode ? Icons.save : Icons.edit,
+          noteController.isEditMode ? Icons.save : Icons.edit,
           color: AppColors.backgroundClean,
         ),
         label: Text(
-          isEditMode ? "Simpan" : "Edit",
+          noteController.isEditMode ? "Simpan" : "Edit",
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: AppColors.textLight,

@@ -38,6 +38,14 @@ class PersonalNoteController extends ChangeNotifier {
   }
 
   bool isLoading = false;
+  bool isEditMode = false;
+
+  bool get isEditModeEnabled => isEditMode;
+
+  void setEditMode(bool value) {
+    isEditMode = value;
+    notifyListeners();
+  }
 
   int parseRupiah(String value) {
     if (value.isEmpty) return 0;

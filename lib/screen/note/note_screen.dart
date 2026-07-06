@@ -17,8 +17,6 @@ class NoteScreen extends StatefulWidget {
 }
 
 class _NoteScreenState extends State<NoteScreen> {
-  bool _isEditMode = false;
-
   late final StreamSubscription<AuthState> _authSubscription;
   User? _user;
 
@@ -40,9 +38,9 @@ class _NoteScreenState extends State<NoteScreen> {
   }
 
   void _toggleEditMode() {
-    setState(() {
-      _isEditMode = !_isEditMode;
-    });
+    final controller = context.read<PersonalNoteController>();
+
+    controller.setEditMode(!controller.isEditModeEnabled);
   }
 
   Future<void> _saveData() async {
@@ -104,7 +102,6 @@ class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
     final isLoggedIn = _user != null;
-    final noteController = context.watch<PersonalNoteController>();
 
     return isLoggedIn
         ? Scaffold(
@@ -122,7 +119,7 @@ class _NoteScreenState extends State<NoteScreen> {
                         child: ListView(
                           physics: const AlwaysScrollableScrollPhysics(),
                           padding: const EdgeInsets.only(bottom: 120),
-                          children: [NoteCard(isEditMode: _isEditMode)],
+                          children: [NoteCard()],
                         ),
                       ),
 
@@ -131,9 +128,7 @@ class _NoteScreenState extends State<NoteScreen> {
                         bottom: 113,
                         child: SaveButton(
                           onToggle: _toggleEditMode,
-                          isEditMode: _isEditMode,
                           onSave: _saveData,
-                          canSave: noteController.canSave,
                         ),
                       ),
                     ],

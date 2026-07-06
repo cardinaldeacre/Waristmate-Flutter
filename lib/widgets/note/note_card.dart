@@ -9,9 +9,7 @@ import 'package:waristmate_app/widgets/ui/custom_text_field.dart';
 import 'package:waristmate_app/widgets/note/add_item_card.dart';
 
 class NoteCard extends StatefulWidget {
-  final bool isEditMode;
-
-  const NoteCard({super.key, required this.isEditMode});
+  const NoteCard({super.key});
 
   @override
   State<NoteCard> createState() => _NoteCardState();
@@ -166,7 +164,7 @@ class _NoteCardState extends State<NoteCard> {
               const Divider(height: 1, color: AppColors.textLight),
 
               const InputLabel(label: "Daftar aset terkini"),
-              if (widget.isEditMode)
+              if (noteController.isEditMode)
                 const Text(
                   "(Bisa berisi aset tunai maupun non-tunai, misal: tabungan, emas, tanah, rumah, dsb.)",
                   textAlign: TextAlign.justify,
@@ -177,7 +175,7 @@ class _NoteCardState extends State<NoteCard> {
                   ),
                 ),
 
-              if (!widget.isEditMode && !hasValidAssets)
+              if (!noteController.isEditMode && !hasValidAssets)
                 const Text(
                   "(Belum ada aset yang dicatat)",
                   textAlign: TextAlign.justify,
@@ -188,12 +186,12 @@ class _NoteCardState extends State<NoteCard> {
                   ),
                 ),
 
-              if (widget.isEditMode || hasValidAssets) ...[
+              if (noteController.isEditMode || hasValidAssets) ...[
                 ...noteController.assetInputs
                     .asMap()
                     .entries
                     .where((entry) {
-                      if (widget.isEditMode) return true;
+                      if (noteController.isEditMode) return true;
 
                       final item = entry.value;
                       return item.nameController.text.trim().isNotEmpty ||
@@ -205,7 +203,7 @@ class _NoteCardState extends State<NoteCard> {
                       final item = entry.value;
 
                       return DynamicItemCard(
-                        isEditMode: widget.isEditMode,
+                        isEditMode: noteController.isEditMode,
                         nameController: item.nameController,
                         amountController: item.amountController,
                         descriptionController: item.descriptionController,
@@ -225,7 +223,7 @@ class _NoteCardState extends State<NoteCard> {
 
               const SizedBox(height: 16),
 
-              if (widget.isEditMode)
+              if (noteController.isEditMode)
                 AddItemCard(
                   onAdd: () {
                     noteController.addAssetRow();
@@ -237,7 +235,7 @@ class _NoteCardState extends State<NoteCard> {
               const Divider(height: 1, color: AppColors.textLight),
 
               const InputLabel(label: "Hutang yang saya miliki"),
-              if (widget.isEditMode)
+              if (noteController.isEditMode)
                 const Text(
                   "(Bisa berisi hutang tunai maupun non-tunai, misal: hutang kepada A, tagihan bank, cicilan, dsb.)",
                   textAlign: TextAlign.justify,
@@ -248,7 +246,7 @@ class _NoteCardState extends State<NoteCard> {
                   ),
                 ),
 
-              if (!widget.isEditMode && !hasValidHutang)
+              if (!noteController.isEditMode && !hasValidHutang)
                 const Text(
                   "(Belum ada hutang yang dicatat)",
                   textAlign: TextAlign.justify,
@@ -259,12 +257,12 @@ class _NoteCardState extends State<NoteCard> {
                   ),
                 ),
 
-              if (widget.isEditMode || hasValidHutang) ...[
+              if (noteController.isEditMode || hasValidHutang) ...[
                 ...noteController.debtInputs
                     .asMap()
                     .entries
                     .where((entry) {
-                      if (widget.isEditMode) return true;
+                      if (noteController.isEditMode) return true;
 
                       final item = entry.value;
                       return item.nameController.text.trim().isNotEmpty ||
@@ -276,7 +274,7 @@ class _NoteCardState extends State<NoteCard> {
                       final item = entry.value;
 
                       return DynamicItemCard(
-                        isEditMode: widget.isEditMode,
+                        isEditMode: noteController.isEditMode,
                         nameController: item.nameController,
                         amountController: item.amountController,
                         descriptionController: item.descriptionController,
@@ -296,7 +294,7 @@ class _NoteCardState extends State<NoteCard> {
 
               const SizedBox(height: 16),
 
-              if (widget.isEditMode)
+              if (noteController.isEditMode)
                 AddItemCard(
                   onAdd: () {
                     noteController.addDebtRow();
@@ -308,7 +306,7 @@ class _NoteCardState extends State<NoteCard> {
               const Divider(height: 1, color: AppColors.textLight),
 
               const InputLabel(label: "Daftar wasiat"),
-              if (widget.isEditMode)
+              if (noteController.isEditMode)
                 const Text(
                   "(Bisa berisi wasiat tunai maupun non-tunai, misal: wasiat kepada B, harta yang ditinggalkan, dll)",
                   textAlign: TextAlign.justify,
@@ -319,7 +317,7 @@ class _NoteCardState extends State<NoteCard> {
                   ),
                 ),
 
-              if (!widget.isEditMode && !hasValidWasiat)
+              if (!noteController.isEditMode && !hasValidWasiat)
                 const Text(
                   "(Belum ada wasiat yang dicatat)",
                   textAlign: TextAlign.justify,
@@ -330,12 +328,12 @@ class _NoteCardState extends State<NoteCard> {
                   ),
                 ),
 
-              if (widget.isEditMode || hasValidWasiat) ...[
+              if (noteController.isEditMode || hasValidWasiat) ...[
                 ...noteController.wasiatInputs
                     .asMap()
                     .entries
                     .where((entry) {
-                      if (widget.isEditMode) return true;
+                      if (noteController.isEditMode) return true;
 
                       final item = entry.value;
                       return item.nameController.text.trim().isNotEmpty ||
@@ -347,7 +345,7 @@ class _NoteCardState extends State<NoteCard> {
                       final item = entry.value;
 
                       return DynamicItemCard(
-                        isEditMode: widget.isEditMode,
+                        isEditMode: noteController.isEditMode,
                         nameController: item.nameController,
                         descriptionController: item.descriptionController,
                         amountController: item.amountController,
@@ -367,7 +365,7 @@ class _NoteCardState extends State<NoteCard> {
 
               const SizedBox(height: 16),
 
-              if (widget.isEditMode)
+              if (noteController.isEditMode)
                 AddItemCard(
                   onAdd: () {
                     noteController.addWasiatRow();
@@ -400,7 +398,7 @@ class _NoteCardState extends State<NoteCard> {
                 ),
                 child: TextFormField(
                   controller: noteController.warisanNoteController,
-                  readOnly: !widget.isEditMode,
+                  readOnly: !noteController.isEditMode,
 
                   maxLines: 12,
                   onChanged: (val) {
