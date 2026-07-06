@@ -3,13 +3,15 @@ import 'package:waristmate_app/core/config/theme.dart';
 
 class SaveButton extends StatelessWidget {
   final VoidCallback? onToggle;
-  final Future<void> Function()? onSave;
   final bool isEditMode;
+  final Future<void> Function()? onSave;
+  final bool canSave;
 
   const SaveButton({
     super.key,
     required this.onToggle,
     required this.isEditMode,
+    required this.canSave,
     this.onSave,
   });
 
@@ -41,14 +43,31 @@ class SaveButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
           ),
-          onPressed: isEditMode ? onSave : onToggle,
-          child: Text(
-            isEditMode ? 'Simpan Catatan' : 'Edit Catatan',
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: AppColors.textLight,
-            ),
+          onPressed: isEditMode ? (canSave ? onSave : null) : onToggle,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                isEditMode
+                    ? (canSave ? Icons.save : Icons.warning_amber_rounded)
+                    : Icons.edit,
+                size: 18,
+                color: AppColors.textLight,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                !isEditMode
+                    ? 'Edit Catatan'
+                    : canSave
+                    ? 'Simpan Catatan'
+                    : 'Lengkapi Data',
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textLight,
+                ),
+              ),
+            ],
           ),
         ),
       ),
