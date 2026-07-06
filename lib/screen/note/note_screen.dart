@@ -104,6 +104,7 @@ class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
     final isLoggedIn = _user != null;
+    final noteController = context.watch<PersonalNoteController>();
 
     return isLoggedIn
         ? Scaffold(
@@ -133,6 +134,7 @@ class _NoteScreenState extends State<NoteScreen> {
                           onToggle: _toggleEditMode,
                           isEditMode: _isEditMode,
                           onSave: _saveData,
+                          canSave: noteController.canSave,
                         ),
                       ),
                     ],

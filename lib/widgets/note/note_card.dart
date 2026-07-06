@@ -21,16 +21,41 @@ class _NoteCardState extends State<NoteCard> {
   @override
   Widget build(BuildContext context) {
     final noteController = context.watch<PersonalNoteController>();
-    final bool hasValidAssets = noteController.nonCashAssets.any(
+    final bool hasValidAssets = noteController.assetInputs.any(
       (item) =>
           item.nameController.text.trim().isNotEmpty &&
-          item.amountController.text.trim().isNotEmpty,
+          item.amountController.text.trim().isNotEmpty &&
+          item.descriptionController.text.trim().isNotEmpty,
     );
-    final bool hasValidHutang = noteController.debtList.any(
+    final bool hasValidHutang = noteController.debtInputs.any(
       (item) =>
           item.nameController.text.trim().isNotEmpty &&
-          item.amountController.text.trim().isNotEmpty,
+          item.amountController.text.trim().isNotEmpty &&
+          item.descriptionController.text.trim().isNotEmpty,
     );
+    final bool hasValidWasiat = noteController.wasiatInputs.any(
+      (item) =>
+          item.nameController.text.trim().isNotEmpty &&
+          item.amountController.text.trim().isNotEmpty &&
+          item.descriptionController.text.trim().isNotEmpty,
+    );
+
+    if (noteController.wasiatWarning != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              noteController.wasiatWarning!,
+              style: TextStyle(color: AppColors.textLight),
+            ),
+            backgroundColor: AppColors.errorRed,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        );
+      });
+    }
 
     return Column(
       children: [
@@ -84,6 +109,18 @@ class _NoteCardState extends State<NoteCard> {
                 ),
               ),
 
+              const InputLabel(label: "Total wasiat (1/3) yang saya tuliskan"),
+              CustomTextField(
+                isCurrency: true,
+                readOnly: true,
+                color: AppColors.errorRed,
+                controller: TextEditingController(
+                  text: noteController
+                      .formatRupiah(noteController.totalWasiatNominal)
+                      .replaceAll('Rp ', ''),
+                ),
+              ),
+
               const InputLabel(label: "Total harta bersih"),
               CustomTextField(
                 isCurrency: true,
@@ -125,21 +162,34 @@ class _NoteCardState extends State<NoteCard> {
                 ),
               ),
 
-              const InputLabel(label: "Daftar aset terkini"),
-              const Text(
-                "(Bisa berisi aset tunai maupun non-tunai, misal: emas, tanah, rumah, kendaraan, dll)",
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-
               const SizedBox(height: 8),
+              const Divider(height: 1, color: AppColors.textLight),
+
+              const InputLabel(label: "Daftar aset terkini"),
+              if (widget.isEditMode)
+                const Text(
+                  "(Bisa berisi aset tunai maupun non-tunai, misal: tabungan, emas, tanah, rumah, dsb.)",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+
+              if (!widget.isEditMode && !hasValidAssets)
+                const Text(
+                  "(Belum ada aset yang dicatat)",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
 
               if (widget.isEditMode || hasValidAssets) ...[
-                ...noteController.nonCashAssets
+                ...noteController.assetInputs
                     .asMap()
                     .entries
                     .where((entry) {
@@ -147,7 +197,8 @@ class _NoteCardState extends State<NoteCard> {
 
                       final item = entry.value;
                       return item.nameController.text.trim().isNotEmpty ||
-                          item.amountController.text.trim().isNotEmpty;
+                          item.amountController.text.trim().isNotEmpty ||
+                          item.descriptionController.text.trim().isNotEmpty;
                     })
                     .map((entry) {
                       final index = entry.key;
@@ -157,8 +208,10 @@ class _NoteCardState extends State<NoteCard> {
                         isEditMode: widget.isEditMode,
                         nameController: item.nameController,
                         amountController: item.amountController,
+                        descriptionController: item.descriptionController,
                         nameHint: "Emas 20gr",
                         amountHint: "54.000.000",
+                        descriptionHint: "Deskripsi aset",
                         isAsset: true,
                         onRemove: () {
                           noteController.removeAssetRow(index);
@@ -180,10 +233,34 @@ class _NoteCardState extends State<NoteCard> {
                   label: "Tambah Aset",
                 ),
 
+              const SizedBox(height: 16),
+              const Divider(height: 1, color: AppColors.textLight),
+
               const InputLabel(label: "Hutang yang saya miliki"),
+              if (widget.isEditMode)
+                const Text(
+                  "(Bisa berisi hutang tunai maupun non-tunai, misal: hutang kepada A, tagihan bank, cicilan, dsb.)",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+
+              if (!widget.isEditMode && !hasValidHutang)
+                const Text(
+                  "(Belum ada hutang yang dicatat)",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
 
               if (widget.isEditMode || hasValidHutang) ...[
-                ...noteController.debtList
+                ...noteController.debtInputs
                     .asMap()
                     .entries
                     .where((entry) {
@@ -191,7 +268,8 @@ class _NoteCardState extends State<NoteCard> {
 
                       final item = entry.value;
                       return item.nameController.text.trim().isNotEmpty ||
-                          item.amountController.text.trim().isNotEmpty;
+                          item.amountController.text.trim().isNotEmpty ||
+                          item.descriptionController.text.trim().isNotEmpty;
                     })
                     .map((entry) {
                       final index = entry.key;
@@ -201,8 +279,10 @@ class _NoteCardState extends State<NoteCard> {
                         isEditMode: widget.isEditMode,
                         nameController: item.nameController,
                         amountController: item.amountController,
+                        descriptionController: item.descriptionController,
                         nameHint: "Hutang ke Fulan",
                         amountHint: "700.000",
+                        descriptionHint: "Deskripsi hutang",
                         isAsset: false,
                         onRemove: () {
                           noteController.removeDebtRow(index);
@@ -226,60 +306,74 @@ class _NoteCardState extends State<NoteCard> {
 
               const SizedBox(height: 16),
               const Divider(height: 1, color: AppColors.textLight),
+
+              const InputLabel(label: "Daftar wasiat"),
+              if (widget.isEditMode)
+                const Text(
+                  "(Bisa berisi wasiat tunai maupun non-tunai, misal: wasiat kepada B, harta yang ditinggalkan, dll)",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+
+              if (!widget.isEditMode && !hasValidWasiat)
+                const Text(
+                  "(Belum ada wasiat yang dicatat)",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+
+              if (widget.isEditMode || hasValidWasiat) ...[
+                ...noteController.wasiatInputs
+                    .asMap()
+                    .entries
+                    .where((entry) {
+                      if (widget.isEditMode) return true;
+
+                      final item = entry.value;
+                      return item.nameController.text.trim().isNotEmpty ||
+                          item.amountController.text.trim().isNotEmpty ||
+                          item.descriptionController.text.trim().isNotEmpty;
+                    })
+                    .map((entry) {
+                      final index = entry.key;
+                      final item = entry.value;
+
+                      return DynamicItemCard(
+                        isEditMode: widget.isEditMode,
+                        nameController: item.nameController,
+                        descriptionController: item.descriptionController,
+                        amountController: item.amountController,
+                        nameHint: "Pembangunan Masjid",
+                        descriptionHint: "Deskripsi wasiat",
+                        amountHint: "5.000.000",
+                        isAsset: true,
+                        onRemove: () {
+                          noteController.removeWasiatRow(index);
+                        },
+                        onChanged: (_) {
+                          noteController.updateCalculation();
+                        },
+                      );
+                    }),
+              ],
+
               const SizedBox(height: 16),
 
-              const Text(
-                "(Apabila nominal melebihi batas maksimal (1/3) maka nominal akan otomatis disesuaikan)",
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
+              if (widget.isEditMode)
+                AddItemCard(
+                  onAdd: () {
+                    noteController.addWasiatRow();
+                  },
+                  label: "Tambah Wasiat",
                 ),
-              ),
-
-              const InputLabel(label: "Warisan untuk dibagikan (1/3)"),
-              CustomTextField(
-                controller: noteController.wasiatController,
-                isCurrency: true,
-                readOnly: !widget.isEditMode,
-                autofillHints: widget.isEditMode ? '0' : null,
-                onChanged: (val) {
-                  String cleanVal = val.replaceAll('.', '').replaceAll(',', '');
-                  int parsedVal = int.tryParse(cleanVal) ?? 0;
-
-                  String? notip = noteController.updateWasiat(parsedVal);
-                  if (notip != null) {
-                    noteController.wasiatController.text = noteController
-                        .wasiatNominal
-                        .toString();
-                    noteController.wasiatController.selection =
-                        TextSelection.fromPosition(
-                          TextPosition(
-                            offset: noteController.wasiatController.text.length,
-                          ),
-                        );
-
-                    ScaffoldMessenger.of(context).clearSnackBars();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(notip),
-                        backgroundColor: Colors.red[700],
-                        duration: const Duration(seconds: 3),
-                        behavior: SnackBarBehavior.floating,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        margin: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).size.height - 17.50,
-                          left: 20,
-                          right: 20,
-                        ),
-                      ),
-                    );
-                  }
-                },
-              ),
 
               const SizedBox(height: 16),
               const Divider(),
@@ -305,14 +399,18 @@ class _NoteCardState extends State<NoteCard> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextFormField(
-                  controller: noteController.wasiatNoteController,
+                  controller: noteController.warisanNoteController,
                   readOnly: !widget.isEditMode,
+
                   maxLines: 12,
                   onChanged: (val) {
-                    noteController.setWasiatNote(val);
+                    noteController.setWarisanNote(val);
                   },
                   style: const TextStyle(color: AppColors.primaryGreen),
                   decoration: InputDecoration(
+                    hintText:
+                        'Tuliskan catatan untuk para pewaris Anda di sini...',
+                    hintStyle: const TextStyle(color: AppColors.darkGrey),
                     filled: true,
                     fillColor: AppColors.backgroundClean,
                     contentPadding: const EdgeInsets.all(8),

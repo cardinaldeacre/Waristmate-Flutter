@@ -52,58 +52,55 @@ class _MainWrapperState extends State<MainWrapper> {
       ProfileScreen(),
     ];
     return Scaffold(
+      extendBody: true,
       body: isLandscape
           ? Row(
               children: [
                 Expanded(
                   child: IndexedStack(index: _selectedIndex, children: screens),
                 ),
-                ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
+                Container(
+                  width: 100,
+                  padding: const EdgeInsets.only(right: 20),
+                  decoration: const BoxDecoration(
+                    color: AppColors.darkGreen,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                    ),
                   ),
-                  child: Container(
-                    width: 72,
-                    decoration: const BoxDecoration(
-                      color: AppColors.darkGreen,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: _buildNavItem(
+                          index: 0,
+                          icon: 'assets/icons/ic_calculate.png',
+                        ),
                       ),
-                    ),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: _buildNavItem(
-                            index: 0,
-                            icon: 'assets/icons/ic_calculate.png',
-                          ),
+                      Expanded(
+                        child: _buildNavItem(
+                          index: 1,
+                          icon: 'assets/icons/ic_book.png',
                         ),
-                        Expanded(
-                          child: _buildNavItem(
-                            index: 1,
-                            icon: 'assets/icons/ic_book.png',
-                          ),
+                      ),
+                      Expanded(
+                        child: _buildNavItem(
+                          index: 2,
+                          icon: 'assets/icons/ic_home.png',
                         ),
-                        Expanded(
-                          child: _buildNavItem(
-                            index: 2,
-                            icon: 'assets/icons/ic_home.png',
-                          ),
+                      ),
+                      Expanded(
+                        child: _buildNavItem(
+                          index: 3,
+                          icon: 'assets/icons/ic_server_person.png',
                         ),
-                        Expanded(
-                          child: _buildNavItem(
-                            index: 3,
-                            icon: 'assets/icons/ic_server_person.png',
-                          ),
+                      ),
+                      Expanded(
+                        child: _buildNavItem(
+                          index: 4,
+                          icon: 'assets/icons/ic_person.png',
                         ),
-                        Expanded(
-                          child: _buildNavItem(
-                            index: 4,
-                            icon: 'assets/icons/ic_person.png',
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ],

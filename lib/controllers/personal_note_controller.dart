@@ -2,21 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:waristmate_app/logic/note_item.dart';
+import 'package:waristmate_app/models/note_item.dart';
 import 'package:waristmate_app/models/personal_note.dart';
 import 'package:waristmate_app/services/personal_note/personal_note_service.dart';
 
 class PersonalNoteController extends ChangeNotifier {
   final PersonalNoteService _personalNoteService = PersonalNoteService();
   final wasiatController = TextEditingController();
-  final wasiatNoteController = TextEditingController();
+  final warisanNoteController = TextEditingController();
   final cashAssetController = TextEditingController();
 
   int cashAssetNominal = 0;
   int wasiatNominal = 0;
-  String wasiatNote = '';
+  String warisanNote = '';
 
-  List<DynamicItemModel> nonCashAssets = [DynamicItemModel()];
-  List<DynamicItemModel> debtList = [DynamicItemModel()];
+  List<DynamicItemModel> assetInputs = [DynamicItemModel()];
+  List<DynamicItemModel> debtInputs = [DynamicItemModel()];
+  List<DynamicItemModel> wasiatInputs = [DynamicItemModel()];
+
+  List<NoteItemModel> _mapItems(List<DynamicItemModel> items) {
+    return items
+        .where(
+          (item) =>
+              item.nameController.text.trim().isNotEmpty &&
+              parseRupiah(item.amountController.text) > 0,
+        )
+        .map(
+          (item) => NoteItemModel(
+            name: item.nameController.text.trim(),
+            amount: parseRupiah(item.amountController.text),
+            description: item.descriptionController.text.trim(),
+          ),
+        )
+        .toList();
+  }
 
   bool isLoading = false;
 
@@ -27,7 +46,7 @@ class PersonalNoteController extends ChangeNotifier {
   }
 
   int get totalNonCashAssets {
-    return nonCashAssets.fold(
+    return assetInputs.fold(
       0,
       (sum, item) => sum + parseRupiah(item.amountController.text),
     );
@@ -38,7 +57,14 @@ class PersonalNoteController extends ChangeNotifier {
   }
 
   int get totalDebtsNominal {
-    return debtList.fold(
+    return debtInputs.fold(
+      0,
+      (sum, item) => sum + parseRupiah(item.amountController.text),
+    );
+  }
+
+  int get totalWasiatNominal {
+    return wasiatInputs.fold(
       0,
       (sum, item) => sum + parseRupiah(item.amountController.text),
     );
@@ -48,58 +74,73 @@ class PersonalNoteController extends ChangeNotifier {
     return totalAssetsNominal - totalDebtsNominal;
   }
 
+  int get maksimalWasiat {
+    if (estimasiHartaBersih <= 0) return 0;
+    return estimasiHartaBersih ~/ 3;
+  }
+
+  bool get isWasiatExceeded {
+    return wasiatNominal > maksimalWasiat;
+  }
+
+  int get selisihWasiat {
+    if (isWasiatExceeded) {
+      return wasiatNominal - maksimalWasiat;
+    }
+    return 0;
+  }
+
   void setCashAsset(int value) {
     cashAssetNominal = value;
     notifyListeners();
   }
 
-  void setWasiatNominal(int value) {
-    wasiatNominal = value;
+  void setWarisanNote(String note) {
+    warisanNote = note;
     notifyListeners();
   }
 
-  void setWasiatNote(String note) {
-    wasiatNote = note;
-    notifyListeners();
+  String? get wasiatWarning {
+    if (!isWasiatExceeded) return null;
+
+    return "Total wasiat melebihi batas maksimal 1/3 harta bersih (${formatRupiah(maksimalWasiat)}). "
+        "Silakan kurangi sebesar ${formatRupiah(selisihWasiat)}.";
   }
 
-  String? updateWasiat(int val) {
-    wasiatNominal = val;
-
-    int maxWasiat = estimasiHartaBersih > 0 ? estimasiHartaBersih ~/ 3 : 0;
-
-    String? notip;
-
-    if (wasiatNominal > maxWasiat) {
-      wasiatNominal = maxWasiat;
-
-      notip =
-          "Wasiat tidak boleh lebih dari 1/3 sisa harta (${formatRupiah(wasiatNominal)}).";
-    }
-
-    notifyListeners();
-    return notip;
+  bool get canSave {
+    return !isWasiatExceeded && !isLoading;
   }
 
   void addAssetRow() {
-    nonCashAssets.add(DynamicItemModel());
+    assetInputs.add(DynamicItemModel());
     notifyListeners();
   }
 
   void removeAssetRow(int index) {
-    nonCashAssets[index].dispose();
-    nonCashAssets.removeAt(index);
+    assetInputs[index].dispose();
+    assetInputs.removeAt(index);
     notifyListeners();
   }
 
   void addDebtRow() {
-    debtList.add(DynamicItemModel());
+    debtInputs.add(DynamicItemModel());
     notifyListeners();
   }
 
   void removeDebtRow(int index) {
-    debtList[index].dispose();
-    debtList.removeAt(index);
+    debtInputs[index].dispose();
+    debtInputs.removeAt(index);
+    notifyListeners();
+  }
+
+  void addWasiatRow() {
+    wasiatInputs.add(DynamicItemModel());
+    notifyListeners();
+  }
+
+  void removeWasiatRow(int index) {
+    wasiatInputs[index].dispose();
+    wasiatInputs.removeAt(index);
     notifyListeners();
   }
 
@@ -107,47 +148,51 @@ class PersonalNoteController extends ChangeNotifier {
     notifyListeners();
   }
 
+  void _loadItems(List<DynamicItemModel> target, List<NoteItemModel> source) {
+    for (final item in target) {
+      item.dispose();
+    }
+
+    target
+      ..clear()
+      ..addAll(
+        source.map(
+          (e) => DynamicItemModel(
+            name: e.name,
+            amount: e.amount.toString(),
+            description: e.description,
+          ),
+        ),
+      );
+
+    if (target.isEmpty) {
+      target.add(DynamicItemModel());
+    }
+  }
+
   Future<void> savePersonalNote(String userId) async {
     isLoading = true;
-    notifyListeners();
 
     try {
       updateCalculation();
-      Map<String, int> mappedAssets = {};
-      for (var item in nonCashAssets) {
-        String name = item.nameController.text.trim();
-        int amount = parseRupiah(item.amountController.text);
-        if (name.isNotEmpty && amount > 0) {
-          mappedAssets[name] = amount;
-        }
-      }
-
-      Map<String, int> mappedDebts = {};
-      for (var item in debtList) {
-        String name = item.nameController.text.trim();
-        int amount = parseRupiah(item.amountController.text);
-        if (name.isNotEmpty && amount > 0) {
-          mappedDebts[name] = amount;
-        }
-      }
 
       final personalNote = PersonalNoteModel(
         userId: userId,
         totalAssetsNominal: totalAssetsNominal,
         totalDebtsNominal: totalDebtsNominal,
-        totalWasiatNominal: wasiatNominal,
-        cashAssetNominal: cashAssetNominal,
-        nonCashAssets: mappedAssets,
-        debtList: mappedDebts,
-        wasiatNote: wasiatNote,
+        totalWasiatNominal: totalWasiatNominal,
+        assetList: _mapItems(assetInputs),
+        debtList: _mapItems(debtInputs),
+        wasiatList: _mapItems(wasiatInputs),
+        warisanNote: warisanNote,
       );
 
       await _personalNoteService.savePersonalNote(personalNote);
     } catch (e) {
       throw Exception('Failed to save personal note: $e');
     } finally {
-      isLoading = false;
       notifyListeners();
+      isLoading = false;
     }
   }
 
@@ -158,8 +203,8 @@ class PersonalNoteController extends ChangeNotifier {
     final user = Supabase.instance.client.auth.currentUser;
 
     if (user == null) {
-      isLoading = false;
       notifyListeners();
+      isLoading = false;
       throw Exception('User not logged in');
     }
 
@@ -169,33 +214,16 @@ class PersonalNoteController extends ChangeNotifier {
       final personalNote = await _personalNoteService.getPersonalNote(userId);
 
       if (personalNote != null) {
-        cashAssetNominal = personalNote.cashAssetNominal!;
-        cashAssetController.text = formatRupiah(
-          cashAssetNominal,
-        ).replaceAll('Rp ', '');
-        wasiatNominal = personalNote.totalWasiatNominal!;
-        wasiatController.text = formatRupiah(
-          wasiatNominal,
-        ).replaceAll('Rp ', '');
-        wasiatNote = personalNote.wasiatNote ?? '';
-        wasiatNoteController.text = wasiatNote;
+        assetInputs.clear();
+        _loadItems(assetInputs, personalNote.assetList);
 
-        nonCashAssets.clear();
-        personalNote.nonCashAssets?.forEach((name, amount) {
-          final item = DynamicItemModel();
-          item.nameController.text = name;
-          item.amountController.text = amount.toString();
-          nonCashAssets.add(item);
-        });
+        debtInputs.clear();
+        _loadItems(debtInputs, personalNote.debtList);
 
-        debtList.clear();
-        personalNote.debtList?.forEach((name, amount) {
-          final item = DynamicItemModel();
-          item.nameController.text = name;
-          item.amountController.text = amount.toString();
-          debtList.add(item);
-        });
+        wasiatInputs.clear();
+        _loadItems(wasiatInputs, personalNote.wasiatList);
       }
+
       notifyListeners();
     } catch (e) {
       throw Exception('Failed to fetch personal note: $e');
@@ -203,9 +231,6 @@ class PersonalNoteController extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     }
-
-    isLoading = false;
-    notifyListeners();
   }
 
   String formatRupiah(int value) {
@@ -219,13 +244,19 @@ class PersonalNoteController extends ChangeNotifier {
 
   @override
   void dispose() {
-    for (var item in nonCashAssets) {
-      item.dispose();
-    }
-    for (var item in debtList) {
-      item.dispose();
-    }
+    wasiatController.dispose();
+    warisanNoteController.dispose();
+    cashAssetController.dispose();
 
+    for (var item in assetInputs) {
+      item.dispose();
+    }
+    for (var item in debtInputs) {
+      item.dispose();
+    }
+    for (var item in wasiatInputs) {
+      item.dispose();
+    }
     super.dispose();
   }
 }

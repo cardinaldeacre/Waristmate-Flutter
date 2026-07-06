@@ -8,11 +8,13 @@ import 'package:waristmate_app/widgets/ui/container_border.dart';
 class DynamicItemCard extends StatelessWidget {
   final TextEditingController nameController;
   final TextEditingController amountController;
+  final TextEditingController descriptionController;
   final Function(String)? onChanged;
   final bool isEditMode;
   final bool? isAsset;
   final String? nameHint;
   final String? amountHint;
+  final String? descriptionHint;
   final VoidCallback? onRemove;
 
   const DynamicItemCard({
@@ -20,8 +22,10 @@ class DynamicItemCard extends StatelessWidget {
     required this.isEditMode,
     required this.nameController,
     required this.amountController,
+    required this.descriptionController,
     this.nameHint,
     this.amountHint,
+    this.descriptionHint,
     this.onRemove,
     this.onChanged,
     this.isAsset,
@@ -54,16 +58,31 @@ class DynamicItemCard extends StatelessWidget {
           ],
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Text(
-                nameController.text.isEmpty ? '-' : nameController.text,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.primaryGreen,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    nameController.text.isEmpty ? '-' : nameController.text,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.primaryGreen,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    descriptionController.text.isEmpty
+                        ? '-'
+                        : descriptionController.text,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: AppColors.textDark,
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(width: 12),
@@ -114,6 +133,14 @@ class DynamicItemCard extends StatelessWidget {
                   controller: amountController,
                   autofillHints: amountHint,
                   isCurrency: true,
+                  height: 36,
+                  onChanged: onChanged,
+                ),
+                const SizedBox(height: 4),
+                CustomTextField(
+                  controller: descriptionController,
+                  autofillHints: descriptionHint,
+                  isCurrency: false,
                   height: 36,
                   onChanged: onChanged,
                 ),

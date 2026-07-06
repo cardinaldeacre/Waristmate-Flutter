@@ -1,22 +1,24 @@
+import 'package:waristmate_app/models/note_item.dart';
+
 class PersonalNoteModel {
   final String userId;
   final int? totalAssetsNominal;
   final int? totalDebtsNominal;
   final int? totalWasiatNominal;
-  final int? cashAssetNominal;
-  final Map<String, int>? nonCashAssets;
-  final Map<String, int>? debtList;
-  final String? wasiatNote;
+  final List<NoteItemModel> assetList;
+  final List<NoteItemModel> debtList;
+  final List<NoteItemModel> wasiatList;
+  final String? warisanNote;
 
   PersonalNoteModel({
     required this.userId,
     this.totalAssetsNominal,
     this.totalDebtsNominal,
     this.totalWasiatNominal,
-    this.cashAssetNominal,
-    this.nonCashAssets = const {},
-    this.debtList = const {},
-    this.wasiatNote,
+    this.assetList = const [],
+    this.debtList = const [],
+    this.wasiatList = const [],
+    this.warisanNote,
   });
 
   Map<String, dynamic> toJson() {
@@ -25,10 +27,10 @@ class PersonalNoteModel {
       'total_assets_nominal': totalAssetsNominal,
       'total_debts_nominal': totalDebtsNominal,
       'total_wasiat_nominal': totalWasiatNominal,
-      'cash_asset_nominal': cashAssetNominal,
-      'non_cash_assets': nonCashAssets,
+      'asset_list': assetList,
       'debt_list': debtList,
-      'wasiat_note': wasiatNote,
+      'wasiat_list': wasiatList,
+      'warisan_note': warisanNote,
     };
   }
 
@@ -38,19 +40,24 @@ class PersonalNoteModel {
       totalAssetsNominal: (json['total_assets_nominal'] as num?)?.toInt(),
       totalDebtsNominal: (json['total_debts_nominal'] as num?)?.toInt(),
       totalWasiatNominal: (json['total_wasiat_nominal'] as num?)?.toInt(),
-      cashAssetNominal: (json['cash_asset_nominal'] as num?)?.toInt(),
 
-      nonCashAssets: json['non_cash_assets'] != null
-          ? (json['non_cash_assets'] as Map<String, dynamic>).map(
-              (key, value) => MapEntry(key, (value as num).toInt()),
-            )
-          : null,
+      assetList: json['asset_list'] != null
+          ? (json['asset_list'] as List)
+                .map((e) => NoteItemModel.fromJson(e))
+                .toList()
+          : [],
       debtList: json['debt_list'] != null
-          ? (json['debt_list'] as Map<String, dynamic>).map(
-              (key, value) => MapEntry(key, (value as num).toInt()),
-            )
-          : null,
-      wasiatNote: json['wasiat_note'],
+          ? (json['debt_list'] as List)
+                .map((e) => NoteItemModel.fromJson(e))
+                .toList()
+          : [],
+      wasiatList: json['wasiat_list'] != null
+          ? (json['wasiat_list'] as List)
+                .map((e) => NoteItemModel.fromJson(e))
+                .toList()
+          : [],
+
+      warisanNote: json['warisan_note'],
     );
   }
 }
