@@ -46,24 +46,38 @@ class ResultBottom extends StatelessWidget {
               ],
 
               Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryGreen,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 12,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+                child: Container(
+                  padding: const EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    color: AppColors.backgroundClean,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.darkShadow.withAlpha(120),
+                        blurRadius: 8,
+                        offset: const Offset(0, -2),
+                      ),
+                    ],
+                    borderRadius: const BorderRadius.all(Radius.circular(12)),
                   ),
-                  onPressed: onHome,
-                  child: const Text(
-                    "Hitung Ulang",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryGreen,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 12,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    onPressed: onHome,
+                    child: const Text(
+                      "Hitung Ulang",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15,
+                      ),
                     ),
                   ),
                 ),
@@ -74,38 +88,52 @@ class ResultBottom extends StatelessWidget {
 
         const SizedBox(height: 20),
 
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primaryGreen,
-            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 22),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
+        Container(
+          padding: const EdgeInsets.all(3),
+          decoration: BoxDecoration(
+            color: AppColors.backgroundClean,
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.darkShadow.withAlpha(120),
+                blurRadius: 8,
+                offset: const Offset(0, -2),
+              ),
+            ],
+            borderRadius: const BorderRadius.all(Radius.circular(12)),
           ),
-          onPressed: () async {
-            try {
-              await LauncherHelper.openWhatsApp();
-            } catch (e) {
-              if (!context.mounted) return;
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primaryGreen,
+              padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 22),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            onPressed: () async {
+              try {
+                await LauncherHelper.openWhatsApp();
+              } catch (e) {
+                if (!context.mounted) return;
 
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    "Gagal membuka WhatsApp: $e",
-                    style: TextStyle(color: AppColors.textLight),
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      "Gagal membuka WhatsApp: $e",
+                      style: TextStyle(color: AppColors.textLight),
+                    ),
+                    backgroundColor: AppColors.errorRed,
                   ),
-                  backgroundColor: AppColors.errorRed,
-                ),
-              );
-            }
-          },
-          child: const Text(
-            "Bingung dengan hasilnya? Hubungi ahli",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w600,
-              fontSize: 15,
+                );
+              }
+            },
+            child: const Text(
+              "Bingung dengan hasilnya? Hubungi ahli",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 15,
+              ),
             ),
           ),
         ),

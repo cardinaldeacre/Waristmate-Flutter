@@ -27,21 +27,35 @@ class CalculatorNavButton extends StatelessWidget {
         children: [
           if (onBack != null) ...[
             Expanded(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryGreen,
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 2),
+                decoration: BoxDecoration(
+                  color: AppColors.backgroundClean,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.darkShadow.withAlpha(120),
+                      blurRadius: 8,
+                      offset: const Offset(0, -2),
+                    ),
+                  ],
+                  borderRadius: const BorderRadius.all(Radius.circular(16)),
                 ),
-                onPressed: onBack,
-                child: Text(
-                  labelBack ?? "Kembali",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryGreen,
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: onBack,
+                  child: Text(
+                    labelBack ?? "Kembali",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
@@ -52,31 +66,45 @@ class CalculatorNavButton extends StatelessWidget {
 
           if (onNext != null) ...[
             Expanded(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryGreen,
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 2),
+                decoration: BoxDecoration(
+                  color: AppColors.backgroundClean,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.darkShadow.withAlpha(120),
+                      blurRadius: 8,
+                      offset: const Offset(0, -2),
+                    ),
+                  ],
+                  borderRadius: const BorderRadius.all(Radius.circular(16)),
                 ),
-                onPressed: () {
-                  if (onSave != null) {
-                    onSave?.call();
-                  }
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryGreen,
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (onSave != null) {
+                      onSave?.call();
+                    }
 
-                  if (onCalculate != null) {
-                    onCalculate?.call();
-                  }
+                    if (onCalculate != null) {
+                      onCalculate?.call();
+                    }
 
-                  onNext?.call();
-                },
-                child: Text(
-                  labelNext ?? "Lanjut",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
+                    onNext?.call();
+                  },
+                  child: Text(
+                    labelNext ?? "Lanjut",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
