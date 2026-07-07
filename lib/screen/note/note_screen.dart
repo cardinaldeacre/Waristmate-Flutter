@@ -49,9 +49,17 @@ class _NoteScreenState extends State<NoteScreen> with WidgetsBindingObserver {
     final user = Supabase.instance.client.auth.currentUser;
 
     if (user == null) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Error: User belum login!')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Error: User belum login!'),
+          backgroundColor: AppColors.errorRed,
+          duration: const Duration(seconds: 3),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      );
       return;
     }
 
@@ -59,11 +67,15 @@ class _NoteScreenState extends State<NoteScreen> with WidgetsBindingObserver {
       await noteController.savePersonalNote(user.id);
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
           content: Text('Catatan disimpan!'),
           backgroundColor: AppColors.spanBlue,
           behavior: SnackBarBehavior.floating,
+          duration: const Duration(seconds: 3),
           margin: EdgeInsets.fromLTRB(16, 16, 16, 100),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
         ),
       );
       _toggleEditMode();
@@ -73,6 +85,11 @@ class _NoteScreenState extends State<NoteScreen> with WidgetsBindingObserver {
         SnackBar(
           content: Text('Gagal menyimpan catatan: $e'),
           backgroundColor: AppColors.errorRed,
+          duration: const Duration(seconds: 3),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
         ),
       );
       return;
@@ -87,9 +104,12 @@ class _NoteScreenState extends State<NoteScreen> with WidgetsBindingObserver {
     if (!mounted) return;
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
+      SnackBar(
         content: Text('Data berhasil disinkronkan'),
         backgroundColor: AppColors.spanBlue,
+        duration: Duration(seconds: 3),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
