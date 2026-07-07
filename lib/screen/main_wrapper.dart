@@ -117,62 +117,67 @@ class _MainWrapperState extends State<MainWrapper> {
       NoteScreen(),
       ProfileScreen(),
     ];
+
     return Scaffold(
       extendBody: true,
-      body: isLandscape
-          ? Row(
-              children: [
-                Expanded(
-                  child: IndexedStack(index: _selectedIndex, children: screens),
-                ),
-                Material(
-                  color: AppColors.darkGreen,
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                  ),
-                  child: Container(
-                    width: 100,
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: _buildNavItem(
-                            index: 0,
-                            icon: 'assets/icons/ic_calculate.png',
-                          ),
-                        ),
-                        Expanded(
-                          child: _buildNavItem(
-                            index: 1,
-                            icon: 'assets/icons/ic_book.png',
-                          ),
-                        ),
-                        Expanded(
-                          child: _buildNavItem(
-                            index: 2,
-                            icon: 'assets/icons/ic_home.png',
-                          ),
-                        ),
-                        Expanded(
-                          child: _buildNavItem(
-                            index: 3,
-                            icon: 'assets/icons/ic_server_person.png',
-                          ),
-                        ),
-                        Expanded(
-                          child: _buildNavItem(
-                            index: 4,
-                            icon: 'assets/icons/ic_person.png',
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            )
-          : IndexedStack(index: _selectedIndex, children: screens),
+      // 👇 BODY KITA KUNCI PAKAI ROW SECARA PERMANEN
+      body: Row(
+        children: [
+          // IndexedStack posisinya nggak bakal berubah-ubah lagi!
+          Expanded(
+            child: IndexedStack(index: _selectedIndex, children: screens),
+          ),
 
+          // 👇 SIDEBAR HANYA DI-RENDER KALAU LAYAR LANDSCAPE
+          if (isLandscape)
+            Material(
+              color: AppColors.darkGreen,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+              ),
+              child: Container(
+                width: 100,
+                padding: const EdgeInsets.only(right: 20),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: _buildNavItem(
+                        index: 0,
+                        icon: 'assets/icons/ic_calculate.png',
+                      ),
+                    ),
+                    Expanded(
+                      child: _buildNavItem(
+                        index: 1,
+                        icon: 'assets/icons/ic_book.png',
+                      ),
+                    ),
+                    Expanded(
+                      child: _buildNavItem(
+                        index: 2,
+                        icon: 'assets/icons/ic_home.png',
+                      ),
+                    ),
+                    Expanded(
+                      child: _buildNavItem(
+                        index: 3,
+                        icon: 'assets/icons/ic_server_person.png',
+                      ),
+                    ),
+                    Expanded(
+                      child: _buildNavItem(
+                        index: 4,
+                        icon: 'assets/icons/ic_person.png',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
+      ),
+
+      // 👇 BOTTOM NAVBAR-NYA TETAP SAMA KAYA KODEMU, NGGAK ADA YANG DIUBAH
       bottomNavigationBar: isLandscape
           ? null
           : ClipRRect(
