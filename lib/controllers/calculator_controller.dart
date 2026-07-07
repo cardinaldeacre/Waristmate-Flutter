@@ -299,6 +299,7 @@ class CalculatorController extends ChangeNotifier {
 
   void runEngine() {
     results.clear();
+    penghalang.clear();
     sinkronisasiHajb();
     startCounting();
 
