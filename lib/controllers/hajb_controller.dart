@@ -6,48 +6,30 @@ extension HajbController on CalculatorController {
     // kakek
     if (HajbValidator.kakekTerhalang(nilaiAyah: nilaiAyah)) {
       if (nilaiKakek > 0) {
-        results.add({
-          'jumlah': nilaiKakek,
-          'ahli_waris': 'Kakek',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
-        });
+        penghalang.add({'pewaris': 'Kakek', 'penghalang': penghalangKakek});
         nilaiKakek = 0;
       }
     }
 
     if (HajbValidator.nenekTerhalang(nilaiIbu: nilaiIbu)) {
       if (nilaiNenekAyah > 0) {
-        results.add({
-          'jumlah': nilaiNenekAyah,
-          'ahli_waris': 'Nenek Ayah',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Nenek Ayah',
+          'penghalang': penghalangNenek,
         });
         nilaiNenekAyah = 0;
       }
       if (nilaiNenekIbu > 0) {
-        results.add({
-          'jumlah': nilaiNenekIbu,
-          'ahli_waris': 'Nenek Ibu',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
-        });
+        penghalang.add({'pewaris': 'Nenek Ibu', 'penghalang': penghalangNenek});
         nilaiNenekIbu = 0;
       }
     }
 
     if (HajbValidator.cucuLakiTerhalang(jmlAnakLaki: nilaiAnakLaki)) {
       if (nilaiCucuLaki > 0) {
-        results.add({
-          'jumlah': nilaiCucuLaki,
-          'ahli_waris': 'Cucu Laki-laki',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Cucu Laki-laki',
+          'penghalang': penghalangCucuLaki,
         });
         nilaiCucuLaki = 0;
       }
@@ -58,12 +40,9 @@ extension HajbController on CalculatorController {
       jmlAnakPerempuan: nilaiAnakPerempuan,
     )) {
       if (nilaiCucuPerempuan > 0) {
-        results.add({
-          'jumlah': nilaiCucuPerempuan,
-          'ahli_waris': 'Cucu Perempuan',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Cucu Perempuan',
+          'penghalang': penghalangCucuPerempuan,
         });
         nilaiCucuPerempuan = 0;
       }
@@ -75,12 +54,9 @@ extension HajbController on CalculatorController {
       jmlCucuLaki: nilaiCucuLaki,
     )) {
       if (nilaiSaudaraLakiKandung > 0) {
-        results.add({
-          'jumlah': nilaiSaudaraLakiKandung,
-          'ahli_waris': 'Saudara Laki Kandung',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Saudara Laki Kandung',
+          'penghalang': penghalangSaudaraLakiKandung,
         });
         nilaiSaudaraLakiKandung = 0;
       }
@@ -92,12 +68,9 @@ extension HajbController on CalculatorController {
       jmlCucuLaki: nilaiCucuLaki,
     )) {
       if (nilaiSaudaraPerempuanKandung > 0) {
-        results.add({
-          'jumlah': nilaiSaudaraPerempuanKandung,
-          'ahli_waris': 'Saudara Perempuan Kandung',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Saudara Perempuan Kandung',
+          'penghalang': penghalangSaudaraPerempuanKandung,
         });
         nilaiSaudaraPerempuanKandung = 0;
       }
@@ -113,12 +86,9 @@ extension HajbController on CalculatorController {
       jmlCucuPerempuan: nilaiCucuPerempuan,
     )) {
       if (nilaiSaudaraLakiSeayah > 0) {
-        results.add({
-          'jumlah': nilaiSaudaraLakiSeayah,
-          'ahli_waris': 'Saudara Laki Seayah',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Saudara Laki Seayah',
+          'penghalang': penghalangSaudaraLakiSeayah,
         });
         nilaiSaudaraLakiSeayah = 0;
       }
@@ -134,12 +104,9 @@ extension HajbController on CalculatorController {
       jmlCucuPerempuan: nilaiCucuPerempuan,
     )) {
       if (nilaiSaudaraPerempuanSeayah > 0) {
-        results.add({
-          'jumlah': nilaiSaudaraPerempuanSeayah,
-          'ahli_waris': 'Saudara Perempuan Seayah',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Saudara Perempuan Seayah',
+          'penghalang': penghalangSaudaraPerempuanSeayah,
         });
         nilaiSaudaraPerempuanSeayah = 0;
       }
@@ -153,12 +120,9 @@ extension HajbController on CalculatorController {
       jmlCucuPerempuan: nilaiCucuPerempuan,
     )) {
       if (nilaiSaudaraLakiSeibu > 0) {
-        results.add({
-          'jumlah': nilaiSaudaraLakiSeibu,
-          'ahli_waris': 'Saudara Laki Seibu',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Saudara Laki Seibu',
+          'penghalang': penghalangSaudaraLakiSeibu,
         });
         nilaiSaudaraLakiSeibu = 0;
       }
@@ -172,12 +136,9 @@ extension HajbController on CalculatorController {
       jmlCucuPerempuan: nilaiCucuPerempuan,
     )) {
       if (nilaiSaudaraPerempuanSeibu > 0) {
-        results.add({
-          'jumlah': nilaiSaudaraPerempuanSeibu,
-          'ahli_waris': 'Saudara Perempuan Seibu',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Saudara Perempuan Seibu',
+          'penghalang': penghalangSaudaraPerempuanSeibu,
         });
         nilaiSaudaraPerempuanSeibu = 0;
       }
@@ -196,12 +157,9 @@ extension HajbController on CalculatorController {
       jmlSaudaraPerempuanSeayah: nilaiSaudaraPerempuanSeayah,
     )) {
       if (nilaiAnakLakiSaudaraKandung > 0) {
-        results.add({
-          'jumlah': nilaiAnakLakiSaudaraKandung,
-          'ahli_waris': 'Anak Laki Saudara Kandung',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Anak Laki Saudara Kandung',
+          'penghalang': penghalangAnakLakiSaudaraKandung,
         });
         nilaiAnakLakiSaudaraKandung = 0;
       }
@@ -221,12 +179,9 @@ extension HajbController on CalculatorController {
       jmlAnakLakiSaudaraKandung: nilaiAnakLakiSaudaraKandung,
     )) {
       if (nilaiAnakLakiSaudaraSeayah > 0) {
-        results.add({
-          'jumlah': nilaiAnakLakiSaudaraSeayah,
-          'ahli_waris': 'Anak Laki Saudara Seayah',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Anak Laki Saudara Seayah',
+          'penghalang': penghalangAnakLakiSaudaraSeayah,
         });
         nilaiAnakLakiSaudaraSeayah = 0;
       }
@@ -247,12 +202,9 @@ extension HajbController on CalculatorController {
       jmlAnakLakiSaudaraSeayah: nilaiAnakLakiSaudaraSeayah,
     )) {
       if (nilaiPamanKandung > 0) {
-        results.add({
-          'jumlah': nilaiPamanKandung,
-          'ahli_waris': 'Paman Kandung',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Paman Kandung',
+          'penghalang': penghalangPamanSekakek,
         });
         nilaiPamanKandung = 0;
       }
@@ -274,12 +226,9 @@ extension HajbController on CalculatorController {
       jmlPamanKandung: nilaiPamanKandung,
     )) {
       if (nilaiPamanSekakek > 0) {
-        results.add({
-          'jumlah': nilaiPamanSekakek,
-          'ahli_waris': 'Paman Sekakek',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Paman Sekakek',
+          'penghalang': penghalangPamanSekakek,
         });
         nilaiPamanSekakek = 0;
       }
@@ -302,12 +251,9 @@ extension HajbController on CalculatorController {
       jmlPamanSekakek: nilaiPamanSekakek,
     )) {
       if (nilaiAnakLakiPamanKandung > 0) {
-        results.add({
-          'jumlah': nilaiAnakLakiPamanKandung,
-          'ahli_waris': 'Anak Laki Paman Kandung',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Anak Laki Paman Kandung',
+          'penghalang': penghalangAnakLakiPamanKandung,
         });
         nilaiAnakLakiPamanKandung = 0;
       }
@@ -331,12 +277,9 @@ extension HajbController on CalculatorController {
       jmlAnakLakiPamanSekandung: nilaiAnakLakiPamanKandung,
     )) {
       if (nilaiAnakLakiPamanSekakek > 0) {
-        results.add({
-          'jumlah': nilaiAnakLakiPamanSekakek,
-          'ahli_waris': 'Anak Laki Paman Sekakek',
-          'porsi': 'Mahjub',
-          'nominal_total': 0,
-          'nominal': 0,
+        penghalang.add({
+          'pewaris': 'Anak Laki Paman Sekakek',
+          'penghalang': penghalangAnakLakiPamanSekakek,
         });
         nilaiAnakLakiPamanSekakek = 0;
       }
@@ -412,6 +355,16 @@ extension HajbController on CalculatorController {
   // saudara seibu
   String? get penghalangSaudaraLakiSeibu {
     return HajbValidator.penghalangSaudaraLakiSeibu(
+      nilaiAyah: nilaiAyah,
+      jmlAnakLaki: nilaiAnakLaki,
+      jmlCucuLaki: nilaiCucuLaki,
+      jmlAnakPerempuan: nilaiAnakPerempuan,
+      jmlCucuPerempuan: nilaiCucuPerempuan,
+    );
+  }
+
+  String? get penghalangSaudaraPerempuanSeibu {
+    return HajbValidator.penghalangSaudaraPerempuanSeibu(
       nilaiAyah: nilaiAyah,
       jmlAnakLaki: nilaiAnakLaki,
       jmlCucuLaki: nilaiCucuLaki,

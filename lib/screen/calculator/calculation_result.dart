@@ -109,17 +109,41 @@ class _CalculationResultState extends State<CalculationResult> {
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
-                          color: Colors.white70,
+                          color: AppColors.grey,
                         ),
                       ),
                     ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 16),
+
+                  Container(
+                    constraints: BoxConstraints(
+                      minWidth: MediaQuery.of(context).size.width,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryGreen,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Text(
+                      "Tabel Hasil Perhitungan",
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.textLight,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
 
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
-                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(color: AppColors.darkGrey),
                     ),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -128,7 +152,7 @@ class _CalculationResultState extends State<CalculationResult> {
                         children: [
                           TableRow(
                             decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
+                              color: AppColors.darkGrey,
                             ),
                             children: [
                               _buildTableCell("Ahli Waris", isHeader: true),
@@ -161,6 +185,67 @@ class _CalculationResultState extends State<CalculationResult> {
                       ),
                     ),
                   ),
+
+                  const SizedBox(height: 36),
+
+                  Container(
+                    constraints: BoxConstraints(
+                      minWidth: MediaQuery.of(context).size.width,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryGreen,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Text(
+                      "Ahli Waris yang Terhalang (Mahjub)",
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.textLight,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.darkGrey),
+                    ),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Table(
+                        defaultColumnWidth: const IntrinsicColumnWidth(),
+                        children: [
+                          TableRow(
+                            decoration: BoxDecoration(
+                              color: AppColors.darkGrey,
+                            ),
+                            children: [
+                              _buildTableCell("Ahli Waris", isHeader: true),
+                              _buildTableCell("Penghalang", isHeader: true),
+                            ],
+                          ),
+                          ...calc.penghalang.map((item) {
+                            return TableRow(
+                              children: [
+                                _buildTableCell(item['pewaris'].toString()),
+                                _buildTableCell(
+                                  "${item['pewaris']} terhalang (mahjub) oleh ${item['penghalang']}",
+                                ),
+                              ],
+                            );
+                          }),
+                        ],
+                      ),
+                    ),
+                  ),
+
                   ResultBottom(onHome: widget.onHome),
 
                   const SizedBox(height: 150),
@@ -209,8 +294,8 @@ class _CalculationResultState extends State<CalculationResult> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: isHeader ? const Color(0xFFE0E0E0) : Colors.white,
-        border: Border.all(color: const Color(0xFFBDBDBD)),
+        color: isHeader ? AppColors.primaryGreen : AppColors.cardBackground,
+        border: Border.all(color: AppColors.darkGrey),
       ),
       child: Text(
         text,
@@ -220,7 +305,7 @@ class _CalculationResultState extends State<CalculationResult> {
         style: TextStyle(
           fontSize: 16,
           fontWeight: isHeader ? FontWeight.w600 : FontWeight.w400,
-          color: isHeader ? Colors.black87 : Colors.black54,
+          color: isHeader ? AppColors.textLight : AppColors.textDark,
         ),
       ),
     );

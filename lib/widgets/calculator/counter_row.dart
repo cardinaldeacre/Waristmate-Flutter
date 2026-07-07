@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/widgets/ui/custom_thumb_shape.dart';
 import 'package:waristmate_app/widgets/ui/container_border.dart';
+import 'package:waristmate_app/core/config/theme.dart';
 
 class CounterRow extends StatelessWidget {
   final String label;
@@ -26,10 +27,18 @@ class CounterRow extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "$label (jumlah orang: $value)",
+          label,
           style: const TextStyle(
-            fontSize: 17.5,
-            color: Colors.white,
+            fontSize: 17,
+            color: AppColors.textLight,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        Text(
+          "(jumlah orang: $value)",
+          style: const TextStyle(
+            fontSize: 15,
+            color: AppColors.textLight,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -40,18 +49,21 @@ class CounterRow extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 8),
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: Colors.red[400],
-              border: Border.all(color: Colors.red),
+              color: AppColors.errorRed,
+              border: Border.all(color: AppColors.errorRed),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
               children: [
-                const Icon(Icons.info_outline, color: Colors.white70, size: 17),
+                const Icon(Icons.info_outline, color: AppColors.grey, size: 17),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     "Terhalang oleh $infoHajb",
-                    style: const TextStyle(color: Colors.white, fontSize: 17),
+                    style: const TextStyle(
+                      color: AppColors.textLight,
+                      fontSize: 17,
+                    ),
                   ),
                 ),
               ],
@@ -67,7 +79,11 @@ class CounterRow extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   onTap: value > 0 ? () => onChanged(value - 1) : null,
                   child: const Center(
-                    child: Icon(Icons.remove, color: Colors.white, size: 17.5),
+                    child: Icon(
+                      Icons.remove,
+                      color: AppColors.textLight,
+                      size: 17.5,
+                    ),
                   ),
                 ),
               ),
@@ -98,7 +114,11 @@ class CounterRow extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   onTap: value < max ? () => onChanged(value + 1) : null,
                   child: const Center(
-                    child: Icon(Icons.add, color: Colors.white, size: 17.5),
+                    child: Icon(
+                      Icons.add,
+                      color: AppColors.textLight,
+                      size: 17.5,
+                    ),
                   ),
                 ),
               ),
