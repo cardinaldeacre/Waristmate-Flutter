@@ -39,63 +39,18 @@ class ChapterModal extends StatelessWidget {
                 const Text(
                   "Pilih Bab",
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+                    color: AppColors.textLight,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Gabarito',
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.close_rounded, color: Colors.white),
+                  icon: const Icon(
+                    Icons.close_rounded,
+                    color: AppColors.textLight,
+                  ),
                   onPressed: onClose,
-                ),
-              ],
-            ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 48,
-                    decoration: BoxDecoration(
-                      color: AppColors.darkGreen.withValues(alpha: 0.7),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: TextField(
-                      style: const TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        hintText: "Cari bab...",
-                        hintStyle: TextStyle(color: Colors.grey.shade500),
-                        prefixIcon: Icon(
-                          Icons.search_rounded,
-                          color: Colors.grey.shade500,
-                        ),
-                        border: InputBorder.none,
-                        contentPadding: const EdgeInsets.symmetric(
-                          vertical: 14,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Container(
-                  height: 48,
-                  width: 48,
-                  decoration: BoxDecoration(
-                    color: AppColors.darkGreen.withValues(alpha: 0.7),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.arrow_downward_rounded,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {},
-                  ),
                 ),
               ],
             ),
@@ -152,6 +107,8 @@ class ChapterModal extends StatelessWidget {
               },
             ),
           ),
+
+          const SizedBox(height: 20),
         ],
       ),
     );
