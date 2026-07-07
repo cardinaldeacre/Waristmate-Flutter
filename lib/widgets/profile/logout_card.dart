@@ -14,7 +14,15 @@ class LogoutCard extends StatelessWidget {
 
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Successfully signed out!')),
+          SnackBar(
+            content: Text('Successfully signed out!'),
+            backgroundColor: AppColors.spanBlue,
+            duration: Duration(seconds: 3),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
         );
       }
     } catch (e) {
@@ -22,7 +30,15 @@ class LogoutCard extends StatelessWidget {
       await Supabase.instance.client.auth.signOut();
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Error signing out. Please try again.')),
+          SnackBar(
+            content: Text('Error signing out. Please try again.'),
+            backgroundColor: AppColors.errorRed,
+            duration: Duration(seconds: 3),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
         );
       }
     }

@@ -7,8 +7,6 @@ class AuthController extends ChangeNotifier {
   final AuthService _authService;
   final PersonalNoteController _personalNoteController;
 
-  // Dependency injection dengan default fallback -- gampang di-mock
-  // saat unit test, tapi tetap gampang dipanggil `AuthController()` biasa.
   AuthController({
     AuthService? authService,
     PersonalNoteController? personalNoteController,
