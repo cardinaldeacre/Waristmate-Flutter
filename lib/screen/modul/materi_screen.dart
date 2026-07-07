@@ -128,6 +128,7 @@ class _MateriScreenState extends State<MateriScreen> {
                       physics: const BouncingScrollPhysics(),
                       padding: const EdgeInsets.fromLTRB(12, 10, 12, 100),
                       child: HtmlWidget(
+                        key: ValueKey('html_$_latinTextSize-$_arabicTextSize'),
                         contentHtml,
                         textStyle: TextStyle(
                           fontSize: _latinTextSize,
@@ -137,10 +138,12 @@ class _MateriScreenState extends State<MateriScreen> {
                         customStylesBuilder: (element) {
                           String greenHexColor =
                               '#${AppColors.primaryGreen.toARGB32().toRadixString(16).substring(2).padLeft(6, '0')}';
+
                           if (element.attributes['dir'] == 'rtl') {
                             return {
-                              'font-size': '${_arabicTextSize}px',
-                              'font-family': 'Amiri, serif',
+                              'font-size':
+                                  '${_arabicTextSize.toInt()}px !important',
+                              'font-family': 'Amiri',
                               'text-align': 'center',
                               'line-height': '2',
                               'color': greenHexColor,
