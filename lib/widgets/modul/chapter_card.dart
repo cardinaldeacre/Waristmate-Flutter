@@ -20,20 +20,17 @@ class ChapterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double cardRadius = 20;
-
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 2),
       decoration: BoxDecoration(
-        color: isLastRead
-            ? AppColors.primaryGreen.withAlpha(30)
-            : AppColors.backgroundClean,
-        borderRadius: BorderRadius.circular(cardRadius),
+        color: AppColors.grey,
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
+            color: AppColors.darkShadow.withAlpha(120),
+            blurRadius: 7,
+            offset: const Offset(0, -2),
           ),
         ],
         border: Border.all(
@@ -45,9 +42,12 @@ class ChapterCard extends StatelessWidget {
       ),
 
       child: Material(
-        color: Colors.transparent,
+        color: isLastRead
+            ? AppColors.lightGreen.withAlpha(70)
+            : AppColors.backgroundClean,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: InkWell(
-          borderRadius: BorderRadius.circular(cardRadius),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
           splashColor: AppColors.primaryGreen.withValues(alpha: 0.1),
           highlightColor: AppColors.primaryGreen.withValues(alpha: 0.05),
           onTap: () {
