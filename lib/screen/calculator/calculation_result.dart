@@ -170,6 +170,7 @@ class _CalculationResultState extends State<CalculationResult> {
                               children: [
                                 _buildTableCell(
                                   "${item['jumlah']} ${item['ahli_waris']}",
+                                  isCenter: false,
                                 ),
                                 _buildTableCell(item['porsi'].toString()),
                                 _buildTableCell(
@@ -186,65 +187,71 @@ class _CalculationResultState extends State<CalculationResult> {
                     ),
                   ),
 
-                  const SizedBox(height: 36),
+                  if (calc.penghalang.isNotEmpty) ...[
+                    const SizedBox(height: 36),
 
-                  Container(
-                    constraints: BoxConstraints(
-                      minWidth: MediaQuery.of(context).size.width,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 12,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryGreen,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Text(
-                      "Ahli Waris yang Terhalang (Mahjub)",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.textLight,
+                    Container(
+                      constraints: BoxConstraints(
+                        minWidth: MediaQuery.of(context).size.width,
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryGreen,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Text(
+                        "Ahli Waris yang Terhalang (Mahjub)",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.textLight,
+                        ),
                       ),
                     ),
-                  ),
 
-                  const SizedBox(height: 16),
+                    const SizedBox(height: 16),
 
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.darkGrey),
-                    ),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Table(
-                        defaultColumnWidth: const IntrinsicColumnWidth(),
-                        children: [
-                          TableRow(
-                            decoration: BoxDecoration(
-                              color: AppColors.darkGrey,
-                            ),
-                            children: [
-                              _buildTableCell("Ahli Waris", isHeader: true),
-                              _buildTableCell("Penghalang", isHeader: true),
-                            ],
-                          ),
-                          ...calc.penghalang.map((item) {
-                            return TableRow(
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.darkGrey),
+                      ),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Table(
+                          defaultColumnWidth: const IntrinsicColumnWidth(),
+                          children: [
+                            TableRow(
+                              decoration: BoxDecoration(
+                                color: AppColors.darkGrey,
+                              ),
                               children: [
-                                _buildTableCell(item['pewaris'].toString()),
-                                _buildTableCell(
-                                  "${item['pewaris']} terhalang (mahjub) oleh ${item['penghalang']}",
-                                ),
+                                _buildTableCell("Ahli Waris", isHeader: true),
+                                _buildTableCell("Penghalang", isHeader: true),
                               ],
-                            );
-                          }),
-                        ],
+                            ),
+                            ...calc.penghalang.map((item) {
+                              return TableRow(
+                                children: [
+                                  _buildTableCell(
+                                    item['pewaris'].toString(),
+                                    isCenter: false,
+                                  ),
+                                  _buildTableCell(
+                                    "${item['pewaris']} terhalang (mahjub) oleh ${item['penghalang']}",
+                                    isCenter: false,
+                                  ),
+                                ],
+                              );
+                            }),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
 
                   ResultBottom(onHome: widget.onHome),
 
@@ -290,7 +297,11 @@ class _CalculationResultState extends State<CalculationResult> {
     );
   }
 
-  Widget _buildTableCell(String text, {bool isHeader = false}) {
+  Widget _buildTableCell(
+    String text, {
+    bool isHeader = false,
+    bool isCenter = true,
+  }) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
@@ -299,7 +310,7 @@ class _CalculationResultState extends State<CalculationResult> {
       ),
       child: Text(
         text,
-        textAlign: TextAlign.center,
+        textAlign: isCenter ? TextAlign.center : TextAlign.left,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(

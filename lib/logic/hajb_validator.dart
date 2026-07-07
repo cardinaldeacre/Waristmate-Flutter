@@ -8,7 +8,7 @@ class HajbValidator {
   }
 
   static bool kakekTerhalang({required int nilaiAyah}) {
-    return nilaiAyah > 0;
+    return penghalangKakek(nilaiAyah: nilaiAyah) != null;
   }
 
   // nenek
@@ -20,7 +20,7 @@ class HajbValidator {
   }
 
   static bool nenekTerhalang({required int nilaiIbu}) {
-    return nilaiIbu > 0;
+    return penghalangNenek(nilaiIbu: nilaiIbu) != null;
   }
 
   // cucu laki
@@ -32,7 +32,7 @@ class HajbValidator {
   }
 
   static bool cucuLakiTerhalang({required int jmlAnakLaki}) {
-    return jmlAnakLaki > 0;
+    return penghalangCucuLaki(jmlAnakLaki: jmlAnakLaki) != null;
   }
 
   // cucu perempuan
