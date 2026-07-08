@@ -20,12 +20,42 @@ class _Step1State extends State<Step1> {
   final TextEditingController _wasiatController = TextEditingController();
 
   void _validateAndNext(CalculatorController calc) {
-    if (calc.muwarrits.isEmpty) {
+    if (calc.nTirkah == 0) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text(
+            "Silahkan isi nominal harta yang ditinggalkan sebelum lanjut",
+          ),
+          backgroundColor: AppColors.errorRed,
+          duration: const Duration(seconds: 3),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      );
+    } else if (calc.muwarrits.isEmpty) {
       ScaffoldMessenger.of(context).clearSnackBars();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text(
             "Pilih dulu jenis kelamin Almarhum/ah sebelum lanjut",
+          ),
+          backgroundColor: AppColors.errorRed,
+          duration: const Duration(seconds: 3),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      );
+    } else if (calc.nIrst < 0) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text(
+            "Sisa harta yang diwariskan (Irts) tidak boleh negatif, silahkan cek kembali inputan Anda",
           ),
           backgroundColor: AppColors.errorRed,
           duration: const Duration(seconds: 3),
