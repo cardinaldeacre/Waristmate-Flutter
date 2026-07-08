@@ -5,11 +5,13 @@ class MenuCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData? iconData;
+  final VoidCallback? onTap;
 
   const MenuCard({
     super.key,
     required this.title,
     required this.subtitle,
+    this.onTap,
     this.iconData,
   });
 
@@ -57,7 +59,7 @@ class MenuCard extends StatelessWidget {
           size: 16,
         ),
         onTap: () {
-          print("go to page: $title");
+          onTap?.call();
         },
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'package:waristmate_app/screen/about/about_screen.dart';
 import 'package:waristmate_app/widgets/profile/profile_header.dart';
 import 'package:waristmate_app/widgets/profile/profile_card.dart';
 import 'package:waristmate_app/widgets/profile/preference_card.dart';
@@ -85,6 +86,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     title: "Tentang Waristmate",
                     subtitle: "Cari tahu lebih lanjut tentang aplikasi ini",
                     iconData: Icons.info,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AboutScreen(),
+                        ),
+                      );
+                    },
                   ),
 
                   const SizedBox(height: 16),
