@@ -48,9 +48,7 @@ class LogoutCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
       decoration: BoxDecoration(
-        color: AppColors.errorRed,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -60,34 +58,42 @@ class LogoutCard extends StatelessWidget {
           ),
         ],
       ),
-      child: ListTile(
-        title: const Text(
-          "Keluar Akun",
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: AppColors.textLight,
+      child: Material(
+        color: AppColors.errorRed,
+        borderRadius: BorderRadius.circular(12),
+        clipBehavior: Clip.antiAlias,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+          child: ListTile(
+            title: const Text(
+              "Keluar Akun",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: AppColors.textLight,
+              ),
+            ),
+            leading: const Icon(
+              Icons.logout_rounded,
+              color: AppColors.textLight,
+              size: 24,
+            ),
+            onTap: () {
+              CustomAlert.show(
+                context,
+                title: 'Konfirmasi Keluar',
+                message: 'Apakah Anda yakin ingin keluar dari akun ini?',
+                onConfirm: () => _signOut(context),
+                onCancel: () {},
+                icon: Icons.warning_rounded,
+                iconColor: AppColors.errorRed,
+                cancelText: 'Batal',
+                confirmText: 'Keluar',
+                confirmColor: AppColors.errorRed,
+              );
+            },
           ),
         ),
-        leading: const Icon(
-          Icons.logout_rounded,
-          color: AppColors.textLight,
-          size: 24,
-        ),
-        onTap: () {
-          CustomAlert.show(
-            context,
-            title: 'Konfirmasi Keluar',
-            message: 'Apakah Anda yakin ingin keluar dari akun ini?',
-            onConfirm: () => _signOut(context),
-            onCancel: () {},
-            icon: Icons.warning_rounded,
-            iconColor: AppColors.errorRed,
-            cancelText: 'Batal',
-            confirmText: 'Keluar',
-            confirmColor: AppColors.errorRed,
-          );
-        },
       ),
     );
   }
