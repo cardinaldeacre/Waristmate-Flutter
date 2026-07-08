@@ -9,6 +9,7 @@ import 'package:waristmate_app/widgets/profile/logout_card.dart';
 import 'package:waristmate_app/widgets/profile/login_card.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'dart:async';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -40,6 +41,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void dispose() {
     _authSubscription.cancel();
     super.dispose();
+  }
+
+  Future<void> linkToUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Gagal membuka URL: $url';
+    }
   }
 
   @override
@@ -102,6 +112,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     title: "Beri Masukan",
                     subtitle: "Bantu kami meningkatkan aplikasi ini",
                     iconData: Icons.feedback,
+                    onTap: () {
+                      linkToUrl("https://forms.gle/EEYZNr4hkQxWvBjL9");
+                    },
                   ),
 
                   const SizedBox(height: 16),
