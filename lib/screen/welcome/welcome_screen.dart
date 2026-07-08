@@ -50,6 +50,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void initState() {
     super.initState();
     _startAutoSlide();
+
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         systemNavigationBarColor: AppColors.primaryGreen.withAlpha(3000),
@@ -86,14 +89,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: AppColors.primaryGreen.withAlpha(3000),
+      backgroundColor: AppColors.secondaryGreen,
       body: SafeArea(
         bottom: false,
         child: Column(
           children: [
-            Expanded(flex: 5, child: HeroWelcome()),
+            Expanded(flex: 8, child: HeroWelcome()),
             Expanded(
-              flex: 4,
+              flex: 7,
               child: BottomIntroCard(
                 pageController: _pageController,
                 slides: _slides,
