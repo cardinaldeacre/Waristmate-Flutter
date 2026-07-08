@@ -11,47 +11,50 @@ class NotLoggedIn extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backgroundClean,
       extendBodyBehindAppBar: true,
-      body: Column(
-        children: [
-          NoteHeader(),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 64),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(
-                  Icons.lock_outline_rounded,
-                  size: 72,
-                  color: AppColors.primaryGreen,
-                ),
-
-                const SizedBox(height: 20),
-
-                const Text(
-                  "Silakan login terlebih dahulu",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textDark,
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            NoteHeader(),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 64),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(
+                    Icons.lock_outline_rounded,
+                    size: 72,
+                    color: AppColors.primaryGreen,
                   ),
-                ),
 
-                const SizedBox(height: 8),
+                  const SizedBox(height: 20),
 
-                const Text(
-                  "Masuk ke akun Anda untuk melihat dan mengelola catatan pribadi.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 14, color: AppColors.textDark),
-                ),
+                  const Text(
+                    "Silakan login terlebih dahulu",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textDark,
+                    ),
+                  ),
 
-                const SizedBox(height: 32),
+                  const SizedBox(height: 8),
 
-                const LoginCard(),
-              ],
+                  const Text(
+                    "Masuk ke akun Anda untuk melihat dan mengelola catatan pribadi.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 14, color: AppColors.textDark),
+                  ),
+
+                  const SizedBox(height: 32),
+
+                  const LoginCard(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
