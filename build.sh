@@ -23,4 +23,4 @@ class AppInfo {
 }
 EOF
 
-flutter build apk
+flutter build apk --release --split-per-abi
