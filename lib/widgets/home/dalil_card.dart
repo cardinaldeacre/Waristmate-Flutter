@@ -100,6 +100,7 @@ class _DalilCardState extends State<DalilCard>
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
+                        color: AppColors.darkGreen,
                       ),
                     ),
 
@@ -177,6 +178,7 @@ class _DalilCardState extends State<DalilCard>
                                   fontSize: 24,
                                   fontFamily: "Amiri",
                                   height: 1.9,
+                                  color: AppColors.darkGreen,
                                 ),
                               ),
 
@@ -220,6 +222,7 @@ class _DalilCardState extends State<DalilCard>
                                   fontStyle: FontStyle.italic,
                                   fontSize: 13.5,
                                   height: 1.6,
+                                  color: AppColors.textDark,
                                 ),
                               ),
                             ],

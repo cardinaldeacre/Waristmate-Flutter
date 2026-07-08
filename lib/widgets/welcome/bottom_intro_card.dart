@@ -29,15 +29,19 @@ class BottomIntroCard extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          margin: EdgeInsets.only(bottom: 40),
+          margin: EdgeInsets.fromLTRB(
+            isSmall ? 12 : 20,
+            0,
+            isSmall ? 12 : 20,
+            40,
+          ),
           padding: EdgeInsets.symmetric(
             horizontal: isSmall ? 12 : 16,
             vertical: isSmall ? 6 : 8,
           ),
           decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/welcome_layout.png'),
-            ),
+            color: AppColors.cardBackground,
+            borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -51,8 +55,8 @@ class BottomIntroCard extends StatelessWidget {
                     final slide = slides[index];
                     return Container(
                       padding: EdgeInsets.symmetric(
-                        horizontal: isSmall ? 12 : 16,
-                        vertical: isSmall ? 16 : 20,
+                        horizontal: isSmall ? 8 : 12,
+                        vertical: isSmall ? 12 : 16,
                       ),
 
                       child: Column(
@@ -61,7 +65,7 @@ class BottomIntroCard extends StatelessWidget {
                             slide.title,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
-                              fontSize: 24,
+                              fontSize: 18,
                               fontWeight: FontWeight.w800,
                               color: AppColors.darkGreen,
                               height: 1.25,
@@ -72,10 +76,9 @@ class BottomIntroCard extends StatelessWidget {
                             slide.description,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 14,
                               color: AppColors.darkGreen,
                               fontWeight: FontWeight.w600,
-                              height: 1.4,
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -110,13 +113,40 @@ class BottomIntroCard extends StatelessWidget {
         ),
 
         Positioned(
-          bottom: 50,
+          bottom: 40,
           child: GestureDetector(
             onTap: onHomeTap,
-            child: const Icon(
-              Icons.home_rounded,
-              color: AppColors.primaryGreen,
-              size: 80,
+            child: Container(
+              width: isSmall ? 80 : 100,
+              height: isSmall ? 100 : 120,
+              padding: const EdgeInsets.fromLTRB(8, 0, 8, 12),
+              decoration: BoxDecoration(
+                color: AppColors.secondaryGreen,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(200),
+                  topRight: Radius.circular(200),
+                ),
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: AppColors.cardBackground,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.darkShadow.withAlpha(128),
+                      blurRadius: 8,
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Icon(
+                    Icons.home_rounded,
+                    color: AppColors.primaryGreen,
+                    size: isSmall ? 40 : 60,
+                  ),
+                ),
+              ),
             ),
           ),
         ),

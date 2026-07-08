@@ -20,7 +20,7 @@ class HeroWelcome extends StatelessWidget {
           children: [
             Image.asset(
               'assets/images/balance_3d.png',
-              height: isSmall ? 240 : 280,
+              height: isSmall ? 200 : 240,
               errorBuilder: (context, error, stackTrace) =>
                   Icon(Icons.balance_rounded, size: 160, color: AppColors.gold),
             ),
