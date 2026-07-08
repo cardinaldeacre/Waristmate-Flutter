@@ -5,12 +5,36 @@ import 'package:waristmate_app/widgets/ui/build_card.dart';
 import 'package:waristmate_app/widgets/ui/feature_item.dart';
 import 'package:waristmate_app/widgets/ui/info_row.dart';
 import 'package:waristmate_app/widgets/ui/section_titles.dart';
+import 'package:waristmate_app/core/config/app_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
-class AboutBody extends StatelessWidget {
+class AboutBody extends StatefulWidget {
   const AboutBody({super.key});
 
   @override
+  State<AboutBody> createState() => _AboutBodyState();
+}
+
+class _AboutBodyState extends State<AboutBody> {
+  PackageInfo? packageInfo;
+
+  @override
+  void initState() {
+    super.initState();
+    loadPackageInfo();
+  }
+
+  Future<void> loadPackageInfo() async {
+    packageInfo = await PackageInfo.fromPlatform();
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (packageInfo == null) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       physics: const BouncingScrollPhysics(),
@@ -23,7 +47,7 @@ class AboutBody extends StatelessWidget {
 
         BuildCard(
           child: const Text(
-            'WarisMate adalah aplikasi inovatif yang dirancang untuk membantu umat Islam dalam mempelajari dan menghitung pembagian harta warisan (Faraidh) secara akurat sesuai dengan syariat Islam.',
+            'Waristmate adalah aplikasi inovatif yang dirancang untuk membantu umat Islam dalam mempelajari dan menghitung pembagian harta warisan (Faraidh) secara akurat sesuai dengan syariat Islam.',
             style: TextStyle(
               fontSize: 14,
               height: 1.5,
@@ -63,56 +87,18 @@ class AboutBody extends StatelessWidget {
 
         const SizedBox(height: 24),
 
-        const SectionTitles(title: 'Developer'),
-
-        BuildCard(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                'Iqbal Maulana & Tim (Fauzi)',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.textLight,
-                ),
-              ),
-              SizedBox(height: 4),
-              Text(
-                'Universitas Darussalam Gontor',
-                style: TextStyle(
-                  fontFamily: 'Gabarito',
-                  fontSize: 14,
-                  color: AppColors.textLight,
-                ),
-              ),
-              SizedBox(height: 4),
-              Text(
-                'github.com/iqbalmaulana',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: AppColors.textLight,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        const SizedBox(height: 24),
-
         const SectionTitles(title: 'Informasi Aplikasi'),
 
         BuildCard(
           child: Column(
             children: [
-              InfoRow(label: 'Versi', value: '1.0.0'),
+              InfoRow(label: 'Versi', value: packageInfo!.version),
               const SizedBox(height: 8),
-              InfoRow(label: 'Build', value: '1'),
+              InfoRow(label: 'Build', value: packageInfo!.buildNumber),
+              // const SizedBox(height: 8),
+              // InfoRow(label: 'Tanggal Rilis', value: '8 Juli 2026'),
               const SizedBox(height: 8),
-              InfoRow(label: 'Tanggal Rilis', value: '8 Juli 2026'),
-              const SizedBox(height: 8),
-              InfoRow(label: 'Update Terakhir', value: '8 Juli 2026'),
+              InfoRow(label: 'Update Terakhir', value: AppInfo.buildDate),
             ],
           ),
         ),
@@ -142,7 +128,7 @@ class AboutBody extends StatelessWidget {
         const SizedBox(height: 32),
 
         const Text(
-          'Terima kasih telah menggunakan WarisMate',
+          'Terima kasih telah menggunakan Waristmate',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontWeight: FontWeight.w600,
@@ -153,7 +139,7 @@ class AboutBody extends StatelessWidget {
         const SizedBox(height: 32),
 
         const Text(
-          '© 2026 WarisMate',
+          '© 2026 Waristmate',
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 12, color: Colors.grey),
         ),
