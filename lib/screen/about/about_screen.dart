@@ -12,8 +12,9 @@ class AboutScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Tentang Aplikasi',
-          style: TextStyle(fontFamily: 'Gabarito', fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        shadowColor: AppColors.darkShadow.withAlpha(200),
         backgroundColor: AppColors.primaryGreen,
         foregroundColor: AppColors.textLight,
         elevation: 0,
