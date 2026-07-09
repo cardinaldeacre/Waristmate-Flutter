@@ -51,8 +51,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     super.initState();
     _startAutoSlide();
 
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         systemNavigationBarColor: AppColors.primaryGreen.withAlpha(3000),

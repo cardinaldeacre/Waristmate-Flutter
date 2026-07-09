@@ -29,11 +29,29 @@ void main() async {
   );
 
   await Future.delayed(Duration(seconds: 3));
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeRight,
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.portraitUp,
-  ]);
+
+  final view = WidgetsBinding.instance.platformDispatcher.views.first;
+  final display = view.display;
+
+  final logicalWidth = display.size.width / display.devicePixelRatio;
+  final logicalHeight = display.size.height / display.devicePixelRatio;
+
+  final shortestSide = logicalWidth < logicalHeight
+      ? logicalWidth
+      : logicalHeight;
+
+  final isTablet = shortestSide >= 600;
+
+  if (isTablet) {
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+  } else {
+    await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  }
+
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
   runApp(

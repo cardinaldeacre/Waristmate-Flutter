@@ -116,9 +116,6 @@ class _MateriScreenState extends State<MateriScreen> {
           children: [
             Column(
               children: [
-                MateriHeader(title: title),
-                const SizedBox(height: 5),
-
                 Expanded(
                   child: GestureDetector(
                     onTap: toggleMenu,
@@ -126,7 +123,7 @@ class _MateriScreenState extends State<MateriScreen> {
                     child: SingleChildScrollView(
                       key: ValueKey(_currentIndex),
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.fromLTRB(12, 10, 12, 100),
+                      padding: const EdgeInsets.fromLTRB(12, 120, 12, 100),
                       child: HtmlWidget(
                         key: ValueKey('html_$_latinTextSize-$_arabicTextSize'),
                         contentHtml,
@@ -219,6 +216,15 @@ class _MateriScreenState extends State<MateriScreen> {
                   ),
                 ),
               ],
+            ),
+
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              left: 0,
+              right: 0,
+              top: isMenuOpen ? 0 : -160,
+              child: MateriHeader(title: title),
             ),
 
             AnimatedPositioned(

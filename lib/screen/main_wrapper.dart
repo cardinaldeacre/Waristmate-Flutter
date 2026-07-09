@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:waristmate_app/controllers/personal_note_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
-import 'package:waristmate_app/core/extension/context_extension.dart';
+import 'package:waristmate_app/widgets/ui/bottom_navbar.dart';
 import 'package:waristmate_app/widgets/ui/custom_alert.dart';
 import 'home/home_screen.dart';
 import 'calculator/calculator_screen.dart';
@@ -42,12 +42,6 @@ class _MainWrapperState extends State<MainWrapper> {
   @override
   void initState() {
     super.initState();
-
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.portraitUp,
-    ]);
 
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
@@ -110,8 +104,6 @@ class _MainWrapperState extends State<MainWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isLandscape = context.isLandscape;
-
     final List<Widget> screens = [
       CalculatorScreen(),
       ModulScreen(),
@@ -126,125 +118,11 @@ class _MainWrapperState extends State<MainWrapper> {
 
     return Scaffold(
       extendBody: true,
-      // 👇 BODY KITA KUNCI PAKAI ROW SECARA PERMANEN
-      body: Row(
-        children: [
-          // IndexedStack posisinya nggak bakal berubah-ubah lagi!
-          Expanded(
-            child: IndexedStack(index: _selectedIndex, children: screens),
-          ),
+      body: IndexedStack(index: _selectedIndex, children: screens),
 
-          // 👇 SIDEBAR HANYA DI-RENDER KALAU LAYAR LANDSCAPE
-          if (isLandscape)
-            Material(
-              color: AppColors.darkGreen,
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-              ),
-              child: Container(
-                width: 100,
-                padding: const EdgeInsets.only(right: 20),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: _buildNavItem(
-                        index: 0,
-                        icon: 'assets/icons/ic_calculate.png',
-                      ),
-                    ),
-                    Expanded(
-                      child: _buildNavItem(
-                        index: 1,
-                        icon: 'assets/icons/ic_book.png',
-                      ),
-                    ),
-                    Expanded(
-                      child: _buildNavItem(
-                        index: 2,
-                        icon: 'assets/icons/ic_home.png',
-                      ),
-                    ),
-                    Expanded(
-                      child: _buildNavItem(
-                        index: 3,
-                        icon: 'assets/icons/ic_server_person.png',
-                      ),
-                    ),
-                    Expanded(
-                      child: _buildNavItem(
-                        index: 4,
-                        icon: 'assets/icons/ic_person.png',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-        ],
-      ),
-
-      // 👇 BOTTOM NAVBAR-NYA TETAP SAMA KAYA KODEMU, NGGAK ADA YANG DIUBAH
-      bottomNavigationBar: isLandscape
-          ? null
-          : ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
-              child: Material(
-                color: AppColors.darkGreen,
-                child: BottomNavigationBar(
-                  currentIndex: _selectedIndex,
-                  onTap: _onItemTapped,
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  type: BottomNavigationBarType.fixed,
-                  showSelectedLabels: false,
-                  showUnselectedLabels: false,
-                  selectedItemColor: Colors.white,
-                  unselectedItemColor: Colors.white70,
-                  items: const [
-                    BottomNavigationBarItem(
-                      icon: ImageIcon(
-                        AssetImage('assets/icons/ic_calculate.png'),
-                      ),
-                      label: 'Kalkulator',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: ImageIcon(AssetImage('assets/icons/ic_book.png')),
-                      label: 'Modul',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: ImageIcon(AssetImage('assets/icons/ic_home.png')),
-                      label: 'Beranda',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: ImageIcon(
-                        AssetImage('assets/icons/ic_server_person.png'),
-                      ),
-                      label: 'Catatan',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: ImageIcon(AssetImage('assets/icons/ic_person.png')),
-                      label: 'Profile',
-                    ),
-                  ],
-                ),
-              ),
-            ),
-    );
-  }
-
-  Widget _buildNavItem({required int index, required String icon}) {
-    final selected = _selectedIndex == index;
-
-    return InkWell(
-      onTap: () => _onItemTapped(index),
-      child: Center(
-        child: ImageIcon(
-          AssetImage(icon),
-          color: selected ? Colors.white : Colors.white70,
-        ),
+      bottomNavigationBar: BottomNavbar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }

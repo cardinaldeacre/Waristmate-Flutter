@@ -1,3 +1,3 @@
 class AppInfo {
-  static const String buildDate = '8 Juli 2026';
+  static const String buildDate = '9 Juli 2026';
 }

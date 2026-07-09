@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/controllers/modul_controller.dart';
 import 'package:provider/provider.dart';
@@ -47,6 +48,12 @@ class HeroCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLoggedIn = Supabase.instance.client.auth.currentUser != null;
+    final String welcomeMessage = isLoggedIn ? 'Lanjut' : 'Mulai';
+    final String user =
+        Supabase.instance.client.auth.currentUser?.userMetadata?['name'] ?? '';
+    final userName = user.isNotEmpty ? user : 'Pembelajar Faraidh';
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -99,8 +106,8 @@ class HeroCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        "Hai Pembelajar Faraidh,\nAyo Lanjut Belajar!",
+                      Text(
+                        "Hai $userName,\nAyo $welcomeMessage Belajar!",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -127,8 +134,8 @@ class HeroCard extends StatelessWidget {
                                   elevation: 4,
                                 ),
                                 onPressed: () => onContinueLearning(context),
-                                child: const Text(
-                                  "Lanjut Belajar",
+                                child: Text(
+                                  "$welcomeMessage Belajar",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 13,
