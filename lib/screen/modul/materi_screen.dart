@@ -284,9 +284,11 @@ class _MateriScreenState extends State<MateriScreen> {
               ),
             ),
 
-            Positioned(
-              top: 69,
+            AnimatedPositioned(
+              top: isMenuOpen ? 76 : -160,
               right: 16,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
               child: Consumer<ModulController>(
                 builder: (context, progressCtrl, _) {
                   final isBookmarked = progressCtrl.bookmarkedBabs.contains(
