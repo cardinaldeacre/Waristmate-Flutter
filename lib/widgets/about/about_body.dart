@@ -4,6 +4,7 @@ import 'package:waristmate_app/widgets/about/about_header.dart';
 import 'package:waristmate_app/widgets/ui/build_card.dart';
 import 'package:waristmate_app/widgets/ui/feature_item.dart';
 import 'package:waristmate_app/widgets/ui/info_row.dart';
+import 'package:waristmate_app/widgets/ui/section_item.dart';
 import 'package:waristmate_app/widgets/ui/section_titles.dart';
 import 'package:waristmate_app/core/config/app_info.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -80,6 +81,45 @@ class _AboutBodyState extends State<AboutBody> {
               FeatureItem(
                 icon: Icons.cloud_sync_rounded,
                 title: 'Sinkronisasi Cloud',
+              ),
+            ],
+          ),
+        ),
+
+        const SizedBox(height: 24),
+
+        const SectionTitles(title: 'Para Kreator'),
+
+        BuildCard(
+          padding: EdgeInsets.zero,
+          child: Column(
+            children: [
+              SectionItem(
+                name: 'Iqbal Maulana',
+                title: 'Developer Aplikasi',
+                description:
+                    'Sang kreator di balik Waristmate, menggabungkan keahlian teknis dan pemahaman syariat untuk menciptakan pengalaman pengguna yang mulus',
+              ),
+              const Divider(height: 0, thickness: 4, indent: 8, endIndent: 8),
+              SectionItem(
+                name: 'Indah Puspita Sari',
+                title: 'Ahli Faraidh',
+                description:
+                    'Direktur CMS (Centre of Mawarith Studies), memberikan panduan syariat yang akurat untuk memastikan aplikasi ini sesuai dengan prinsip-prinsip Islam.',
+              ),
+              const Divider(height: 0, thickness: 4, indent: 8, endIndent: 8),
+              SectionItem(
+                name: 'Aziz Musthofa',
+                title: 'Dosen Pembimbing',
+                description:
+                    'Dosen pembimbing yang memberikan arahan dan dukungan serta wawasan berharga selama pengembangan aplikasi, memastikan kualitas dan keberlanjutan proyek.',
+              ),
+              const Divider(height: 0, thickness: 4, indent: 8, endIndent: 8),
+              SectionItem(
+                name: 'Dihin Muryatmoko',
+                title: 'Dosen Pembimbing',
+                description:
+                    'Dosen pembimbing dan pengajar yang memberikan bimbingan akademik selama pengembangan aplikasi, memastikan kesesuaian dengan standar pendidikan tinggi.',
               ),
             ],
           ),
