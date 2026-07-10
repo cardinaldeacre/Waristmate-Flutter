@@ -10,14 +10,16 @@
 		<h3>Definisi</h3>
 		<table class="table-definition">
 			<tr>
-				<td>Bahasa</td>
-				<td>:</td>
-				<td>Mengembalikan atau kembali.</td>
-			</tr>
-		<tr>
-				<td>Istilah</td>
-				<td>:</td>
 				<td>
+					<b>Bahasa</b>
+					<br />
+					Mengembalikan atau kembali.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Istilah</b>
+					<br />
 					Pembagian sisa harta kepada ahli waris yang memiliki hak warisan dengan menyesuaikan
 					bagiannya, jika tidak ada ahli waris 'Ashabah (ahli waris yang mendapatkan bagian tanpa
 					batas).

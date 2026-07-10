@@ -1,49 +1,46 @@
 <div id="bab-1">
 	<div id="header-bab">
-		<h2>BAB 1 </br>
-			PENGENALAN ILMU FARAIDH</h2>
+		<h2>
+			BAB 1 <br />
+			PENGENALAN ILMU FARAIDH
+		</h2>
 	</div>
 
 	<div class="materi1">
 		<h3>Definisi</h3>
 		<table class="table-definition">
 			<tr>
-				<td>Bahasa</td>
-				<td>:</td>
-				<td>jamak dari kata <i>fardhu</i>, artinya kebijakan.</td>
+				<td><b>Bahasa</b> <br />jamak dari kata <i>fardhu</i>, artinya kebijakan.</td>
 			</tr>
 			<tr>
-				<td>Istilah</td>
-				<td>:</td>
-				<td>ilmu yang mempelajari bagaimana cara membagi warisan diantara para ahli waris.</td>
-			</tr>
-			<tr>
-				<td>Subjek</td>
-				<td>:</td>
-				<td>Warisan.</td>
-			</tr>
-			<tr>
-				<td>Tujuan</td>
-				<td>:</td>
-				<td>Menyampaikan hak-hak kepada mereka yang berhak.</td>
-			</tr>
-			<tr>
-				<td>Landasan</td>
-				<td>:</td>
-				<td>Al-Quran, Hadits, dan Ijma'.</td>
-			</tr>
-			<tr>
-				<td>Hukum mempelajarinya</td>
-				<td>:</td>
 				<td>
+					<b>Istilah</b> <br />ilmu yang mempelajari bagaimana cara membagi warisan diantara para
+					ahli waris.
+				</td>
+			</tr>
+			<tr>
+				<td><b>Subjek</b> <br />Warisan.</td>
+			</tr>
+			<tr>
+				<td><b>Tujuan</b> <br />Menyampaikan hak-hak kepada mereka yang berhak.</td>
+			</tr>
+			<tr>
+				<td><b>Landasan</b> <br />Al-Quran, Hadits, dan Ijma'.</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Hukum mempelajarinya</b>
+					<br />
 					<i>Fardhu Kifayah</i>, jika sebagian orang telah memenuhinya, maka beban tersebut menjadi
 					tanggungan yang lain.
 				</td>
 			</tr>
 			<tr>
-				<td>Hukum Pelaksanaannya</td>
-				<td>:</td>
-				<td><i>Wajib</i>, ketika membagi harta warisan.</td>
+				<td>
+					<b>Hukum Pelaksanaannya</b>
+					<br />
+					<i>Wajib</i>, ketika membagi harta warisan.
+				</td>
 			</tr>
 		</table>
 
@@ -87,8 +84,8 @@
 					عَنِ ابْنِ عَبَّاسٍ رَضِيَ اللهُ عَنْهُمَا قَالَ: قَالَ رَسُوْلُ اللهِ صَلَّى اللهُ
 					عَلَيْهِ وَسَلَّمَ:
 					<span>
-						أَلْحِقُوا الفَرائِضَ بأَهْلِها، فَمَا أَبْقَتِ الفَرائِضُ فَلِأَوْلى رَجُلٍ ذَكَرٍ.
-					</span><br />
+						أَلْحِقُوا الفَرائِضَ بأَهْلِها، فَمَا أَبْقَتِ الفَرائِضُ فَلِأَوْلى رَجُلٍ ذَكَرٍ. </span
+					><br />
 					رواه البُخَارِيُّ وَمُسْلِمٌ
 				</p>
 				<p>
@@ -103,7 +100,8 @@
 					عَلَيْهِ وَسَلَّمَ يَقُولُ
 					<br />
 					<span>
-						إِنَّ اللَّهَ قَدْ أَعْطَى كُلَّ ذِي حَقٍّ حَقَّهُ، فَلَا وَصِيَّةَ لِوَارِثٍ </span><br />
+						إِنَّ اللَّهَ قَدْ أَعْطَى كُلَّ ذِي حَقٍّ حَقَّهُ، فَلَا وَصِيَّةَ لِوَارِثٍ </span
+					><br />
 					رواه أبو داود وابن ماجه
 				</p>
 
@@ -115,17 +113,18 @@
 			</div>
 		</div>
 		<div class="tirkah">
-			<h3><br>Tirkah</h3>
+			<h3><br />Tirkah</h3>
 			<table class="table-definition">
 				<tr>
-					<td>Bahasa</td>
-					<td>:</td>
-					<td>sumber kata dari <i>Taraka</i>, berarti yang ditinggalkan.</td>
+					<td>
+						<b>Bahasa</b>
+						<br />
+						sumber kata dari <i>Taraka</i>, berarti yang ditinggalkan.
+					</td>
 				</tr>
 				<tr>
-					<td>Istilah</td>
-					<td>:</td>
 					<td>
+						<b>Istilah</b> <br />
 						Harta yang tidak boleh diberikan kepada ahli waris sebelum hak-hak yang berkaitan dengan
 						harta peninggalan telah terurus seluruhnya.
 					</td>
@@ -133,7 +132,7 @@
 			</table>
 		</div>
 		<div class="hak">
-			<h3><br>Hak-Hak Yang Berkaitan Dengan Tirkah</h3>
+			<h3><br />Hak-Hak Yang Berkaitan Dengan Tirkah</h3>
 			<p>Ada 4 hak yang Berkaitan dengan harta peninggalan si mayit :</p>
 			<div class="list-hak">
 				<ol>

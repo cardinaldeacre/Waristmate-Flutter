@@ -6,6 +6,7 @@ import 'package:waristmate_app/core/config/theme.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:waristmate_app/widgets/modul/chapter_modal.dart';
 import 'package:waristmate_app/widgets/modul/floating_menu.dart';
+import 'package:waristmate_app/widgets/modul/table_count.dart';
 import 'package:waristmate_app/widgets/modul/table_share.dart';
 import 'package:waristmate_app/widgets/modul/materi_header.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -195,9 +196,14 @@ class _MateriScreenState extends State<MateriScreen> {
                         },
 
                         customWidgetBuilder: (element) {
-                          if (element.classes.contains('table-definition') ||
-                              element.classes.contains('table-count')) {
+                          if (element.classes.contains('table-definition')) {
                             return TableDefinition(
+                              tableElement: element,
+                              fontSize: _latinTextSize,
+                            );
+                          }
+                          if (element.classes.contains('table-count')) {
+                            return TableCount(
                               tableElement: element,
                               fontSize: _latinTextSize,
                             );

@@ -10,13 +10,25 @@
 		<h3>Definisi</h3>
 		<table class="table-definition">
 			<tr>
-				<td>Bahasa</td>
-				<td>:</td>
-				<td>Peningkatan atau tambahan.</td>
+				<td>
+					<b>Bahasa</b>
+					<br />
+					Peningkatan atau tambahan.
+				</td>
 			</tr>
 			<tr>
-				<td>Istilah</td>
-				<td>:</td>
+				<td>
+					<b>Istilah</b>
+					<br />
+					Peningkatan atau penambahan dari asal masalah yang keluar dari aslinya, untuk memenuhi
+					kebutuhan bagian waris yang lebih besar dari jumlah aslinya karena adanya keterkaitan dan
+					ketergantungan dalam bagian.
+				</td>
+			</tr>
+		</table>
+
+		<h3><br />Asal yang dapat mengalami 'Aul</h3>
+		<p>
 				<td>
 					Peningkatan atau penambahan dari asal masalah yang keluar dari aslinya, untuk memenuhi
 					kebutuhan bagian waris yang lebih besar dari jumlah aslinya karena adanya keterkaitan dan
