@@ -48,3 +48,6 @@ app.*.map.json
 
 # key properties
 *jks
+
+# app info 
+/lib/core/config/app_info.dart
