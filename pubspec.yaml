@@ -89,6 +89,9 @@ flutter:
     - assets/images/google.png
     - assets/images/user.png
     - assets/images/balance_3d.png
+    - assets/images/logo_ti.png
+    - assets/images/logo_cms.png
+    - assets/images/logo_unida.png
     - assets/icons/ic_book.png
     - assets/icons/ic_server_person.png
     - assets/icons/ic_person.png
