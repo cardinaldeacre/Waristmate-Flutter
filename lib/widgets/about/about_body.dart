@@ -70,14 +70,14 @@ class _AboutBodyState extends State<AboutBody> {
                 icon: Icons.calculate_rounded,
                 title: 'Kalkulator Waris',
               ),
-              const Divider(height: 1),
+              const Divider(height: 1, color: AppColors.grey),
               FeatureItem(icon: Icons.edit_document, title: 'Catatan Harta'),
-              const Divider(height: 1),
+              const Divider(height: 1, color: AppColors.grey),
               FeatureItem(
                 icon: Icons.menu_book_rounded,
                 title: 'Modul Pembelajaran',
               ),
-              const Divider(height: 1),
+              const Divider(height: 1, color: AppColors.grey),
               FeatureItem(
                 icon: Icons.cloud_sync_rounded,
                 title: 'Sinkronisasi Cloud',
@@ -100,28 +100,76 @@ class _AboutBodyState extends State<AboutBody> {
                 description:
                     'Sang kreator di balik Waristmate, menggabungkan keahlian teknis dan pemahaman syariat untuk menciptakan pengalaman pengguna yang mulus',
               ),
-              const Divider(height: 0, thickness: 4, indent: 8, endIndent: 8),
+              const Divider(
+                height: 0,
+                thickness: 4,
+                indent: 8,
+                endIndent: 8,
+                color: AppColors.grey,
+              ),
               SectionItem(
-                name: 'Indah Puspita Sari',
+                name: 'Indah Puspita Sari, S.P., M.E., C.Med.',
                 title: 'Ahli Faraidh',
                 description:
                     'Direktur CMS (Centre of Mawarith Studies), memberikan panduan syariat yang akurat untuk memastikan aplikasi ini sesuai dengan prinsip-prinsip Islam.',
               ),
-              const Divider(height: 0, thickness: 4, indent: 8, endIndent: 8),
+              const Divider(
+                height: 0,
+                thickness: 4,
+                indent: 8,
+                endIndent: 8,
+                color: AppColors.grey,
+              ),
               SectionItem(
-                name: 'Aziz Musthofa',
+                name: 'Aziz Musthafa, S.Kom, M.T.',
                 title: 'Dosen Pembimbing',
                 description:
                     'Dosen pembimbing yang memberikan arahan dan dukungan serta wawasan berharga selama pengembangan aplikasi, memastikan kualitas dan keberlanjutan proyek.',
               ),
-              const Divider(height: 0, thickness: 4, indent: 8, endIndent: 8),
+              const Divider(
+                height: 0,
+                thickness: 4,
+                indent: 8,
+                endIndent: 8,
+                color: AppColors.grey,
+              ),
               SectionItem(
-                name: 'Dihin Muryatmoko',
+                name: 'Dihin Muriyatmoko, S.ST., M.T.',
                 title: 'Dosen Pembimbing',
                 description:
                     'Dosen pembimbing dan pengajar yang memberikan bimbingan akademik selama pengembangan aplikasi, memastikan kesesuaian dengan standar pendidikan tinggi.',
               ),
             ],
+          ),
+        ),
+
+        const SizedBox(height: 24),
+
+        const SectionTitles(title: 'Referensi Utama'),
+
+        BuildCard(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Image.asset(
+                  'assets/images/buku_kmi.png',
+                  height: 400,
+                  fit: BoxFit.contain,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Buku `Ilmu-l-Faraidh',
+                  style: TextStyle(fontSize: 14, color: AppColors.textLight),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  'KMI Gontor',
+                  style: TextStyle(fontSize: 14, color: AppColors.textLight),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ),
 
@@ -145,6 +193,35 @@ class _AboutBodyState extends State<AboutBody> {
 
         const SizedBox(height: 24),
 
+        BuildCard(
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const SizedBox(width: 8),
+                const Image(
+                  image: AssetImage('assets/images/logo_unida.png'),
+                  height: 48,
+                ),
+                const Image(
+                  image: AssetImage('assets/images/logo_saintek.png'),
+                  height: 48,
+                ),
+                const Image(
+                  image: AssetImage('assets/images/logo_ti.png'),
+                  height: 44,
+                ),
+                const Image(
+                  image: AssetImage('assets/images/logo_cms.png'),
+                  height: 48,
+                ),
+                const SizedBox(width: 8),
+              ],
+            ),
+          ),
+        ),
+
+        const SizedBox(height: 24),
         const SectionTitles(title: 'Disclaimer'),
 
         Container(
