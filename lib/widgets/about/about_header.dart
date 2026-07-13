@@ -30,15 +30,6 @@ class AboutHeader extends StatelessWidget {
             color: AppColors.primaryGreen,
           ),
         ),
-        const SizedBox(height: 4),
-        const Text(
-          'v1.0.0',
-          style: TextStyle(
-            fontSize: 14,
-            color: AppColors.lime,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
         const SizedBox(height: 8),
         const Text(
           '"Hitung Warisan dengan Mudah"',
