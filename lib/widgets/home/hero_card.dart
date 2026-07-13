@@ -11,7 +11,7 @@ class HeroCard extends StatelessWidget {
   final VoidCallback? onNavigateToCalculator;
   const HeroCard({super.key, this.onNavigateToCalculator});
 
-  void onContinueLearning(BuildContext context) {
+  void onContinueLearning(BuildContext context) async {
     final modulController = context.read<ModulController>();
     final lastRead = modulController.lastReadBab;
 
@@ -30,18 +30,18 @@ class HeroCard extends StatelessWidget {
       return;
     }
 
-    final chapters = List<LearningModule>.from(
-      (localData as List).map((item) => LearningModule.fromMap(item)),
-    );
+    final chapters = (localData as List)
+        .map((item) => LearningModule.fromMap(Map<String, dynamic>.from(item)))
+        .toList();
 
     int targetIndex = chapters.indexWhere(
       (chapter) => chapter.bab.toString() == lastRead.toString(),
     );
 
-    Navigator.push(
+    await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) =>
+        builder: (_) =>
             MateriScreen(chapters: chapters, initialIndex: targetIndex),
       ),
     );

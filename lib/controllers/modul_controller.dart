@@ -11,38 +11,35 @@ class ModulController extends ChangeNotifier {
 
   bool get isLoggedIn => _supabase.auth.currentUser != null;
 
+  static const _lastReadKey = 'last_read_bab';
+  static const _bookmarkedKey = 'bookmarked_babs';
+  static const _dirtyKey = 'progress_dirty';
+
   ModulController() {
     loadProgressFromHive();
   }
 
   void loadProgressFromHive() {
-    lastReadBab = progressBox.get('last_read_bab') ?? 1;
-    bookmarkedBabs = List<int>.from(progressBox.get('bookmarked_babs') ?? []);
+    lastReadBab = progressBox.get(_lastReadKey, defaultValue: 1);
+    bookmarkedBabs = List<int>.from(
+      progressBox.get(_bookmarkedKey, defaultValue: <int>[]),
+    );
     notifyListeners();
   }
 
   Future<void> fetchLastReadAndBookmarks() async {
     loadProgressFromHive();
     try {
-      final userId = _supabase.auth.currentUser?.id;
-      if (userId == null) return;
+      if (!isLoggedIn) return;
 
-      final response = await _supabase
-          .from('profiles')
-          .select('read_progress')
-          .eq('id', userId)
-          .single();
+      final dirty = progressBox.get(_dirtyKey, defaultValue: false);
+      if (dirty) {
+        await uploadProgress();
+      }
 
-      final progressData = response['read_progress'] as Map<String, dynamic>?;
-
-      lastReadBab = progressData?['last_read_bab'] ?? 1;
-      bookmarkedBabs = List<int>.from(progressData?['bookmarked_babs'] ?? []);
-
-      progressBox.put('last_read_bab', lastReadBab);
-      progressBox.put('bookmarked_babs', bookmarkedBabs);
-      notifyListeners();
+      await getProgress();
     } catch (e) {
-      print('Error fetching last read and bookmarks: $e');
+      debugPrint('Error fetching last read and bookmarks: $e');
     }
   }
 
@@ -54,26 +51,30 @@ class ModulController extends ChangeNotifier {
         bookmarkedBabs.add(babNumber);
       }
 
-      progressBox.put('bookmarked_babs', bookmarkedBabs);
+      await progressBox.put(_bookmarkedKey, bookmarkedBabs);
+      await progressBox.put(_dirtyKey, true);
+
       notifyListeners();
-      syncSupabaseData();
+      uploadProgress();
     } catch (e) {
-      print('Error toggling bookmark: $e');
+      debugPrint('Error toggling bookmark: $e');
     }
   }
 
   Future<void> updateLastReadBab(int babNumber) async {
     try {
       lastReadBab = babNumber;
-      progressBox.put('last_read_bab', lastReadBab);
+      progressBox.put(_lastReadKey, lastReadBab);
+      progressBox.put(_dirtyKey, true);
+
       notifyListeners();
-      syncSupabaseData();
+      uploadProgress();
     } catch (e) {
-      print('Error updating last read bab: $e');
+      debugPrint('Error updating last read bab: $e');
     }
   }
 
-  Future<void> syncSupabaseData() async {
+  Future<void> uploadProgress() async {
     final user = _supabase.auth.currentUser;
     if (user == null) return;
 
@@ -88,9 +89,39 @@ class ModulController extends ChangeNotifier {
           .update({'read_progress': progressData})
           .eq('id', user.id);
 
-      print("Sukses update progress ke Supabase!");
+      await progressBox.put(_dirtyKey, false);
+
+      debugPrint("Sukses update progress ke Supabase!");
     } catch (e) {
-      print("Error update progress: $e");
+      debugPrint("Error update progress: $e");
+    }
+  }
+
+  Future<void> getProgress() async {
+    final userId = _supabase.auth.currentUser?.id;
+    if (userId == null) return;
+
+    try {
+      final response = await _supabase
+          .from('profiles')
+          .select('read_progress')
+          .eq('id', userId)
+          .single();
+
+      final progressData =
+          response['read_progress'] as Map<String, dynamic>? ?? {};
+
+      lastReadBab = progressData['last_read_bab'] ?? 1;
+      bookmarkedBabs = List<int>.from(progressData['bookmarked_babs'] ?? []);
+
+      await progressBox.put(_lastReadKey, lastReadBab);
+      await progressBox.put(_bookmarkedKey, bookmarkedBabs);
+
+      notifyListeners();
+
+      debugPrint("Sukses mengambil progress dari Supabase!");
+    } catch (e) {
+      debugPrint('Error fetching progress: $e');
     }
   }
 }
