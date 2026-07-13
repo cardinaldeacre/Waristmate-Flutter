@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'package:waristmate_app/models/learning_module.dart';
 
 class ChapterModal extends StatelessWidget {
   final String currentChapter;
-  final List<Map<String, dynamic>> chapters;
+  final List<LearningModule> chapters;
   final VoidCallback onClose;
 
   const ChapterModal({
@@ -64,10 +65,8 @@ class ChapterModal extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               itemCount: chapters.length,
               itemBuilder: (context, index) {
-                final String babNumber =
-                    chapters[index]['bab']?.toString() ?? '';
-                final String babTitle =
-                    chapters[index]['title']?.toString() ?? '';
+                final String babNumber = chapters[index].bab.toString();
+                final String babTitle = chapters[index].title.toString();
 
                 final isCurrent = babNumber == currentChapter;
 

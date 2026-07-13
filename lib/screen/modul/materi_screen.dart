@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/modul_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:waristmate_app/models/learning_module.dart';
 import 'package:waristmate_app/widgets/modul/chapter_modal.dart';
 import 'package:waristmate_app/widgets/modul/floating_menu.dart';
 import 'package:waristmate_app/widgets/modul/table_count.dart';
@@ -14,7 +15,7 @@ import 'package:waristmate_app/widgets/modul/table_definition.dart';
 import 'package:waristmate_app/widgets/profile/preference_card.dart';
 
 class MateriScreen extends StatefulWidget {
-  final List<Map<String, dynamic>> chapters;
+  final List<LearningModule> chapters;
   final int initialIndex;
 
   const MateriScreen({
@@ -41,7 +42,7 @@ class _MateriScreenState extends State<MateriScreen> {
     _loadPreferences();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final babString = widget.chapters[_currentIndex]['bab']?.toString() ?? '';
+      final babString = widget.chapters[_currentIndex].bab.toString();
       final int babNumber = int.tryParse(babString) ?? 1;
 
       context.read<ModulController>().updateLastReadBab(babNumber);
@@ -55,8 +56,7 @@ class _MateriScreenState extends State<MateriScreen> {
       _currentIndex = newIndex;
     });
 
-    final String babString =
-        widget.chapters[newIndex]['bab']?.toString() ?? '1';
+    final String babString = widget.chapters[newIndex].bab.toString();
     final int babNumber = int.tryParse(babString) ?? 1;
 
     context.read<ModulController>().updateLastReadBab(babNumber);
@@ -95,10 +95,10 @@ class _MateriScreenState extends State<MateriScreen> {
   @override
   Widget build(BuildContext context) {
     final currentChapter = widget.chapters[_currentIndex];
-    final String bab = currentChapter['bab']?.toString() ?? '';
+    final String bab = currentChapter.bab.toString();
     final int currentBabNumber = int.tryParse(bab) ?? 1;
-    final String title = currentChapter['title']?.toString() ?? '';
-    final String contentHtml = currentChapter['content_html']?.toString() ?? '';
+    final String title = currentChapter.title.toString();
+    final String contentHtml = currentChapter.contentHtml.toString();
 
     return Scaffold(
       extendBodyBehindAppBar: true,

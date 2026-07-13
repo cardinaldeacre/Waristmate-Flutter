@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/controllers/modul_controller.dart';
 import 'package:provider/provider.dart';
+import 'package:waristmate_app/models/learning_module.dart';
 import 'package:waristmate_app/screen/modul/materi_screen.dart';
 
 class HeroCard extends StatelessWidget {
@@ -29,12 +30,12 @@ class HeroCard extends StatelessWidget {
       return;
     }
 
-    final chapters = List<Map<String, dynamic>>.from(
-      (localData as List).map((item) => Map<String, dynamic>.from(item)),
+    final chapters = List<LearningModule>.from(
+      (localData as List).map((item) => LearningModule.fromMap(item)),
     );
 
     int targetIndex = chapters.indexWhere(
-      (chapter) => chapter['bab']?.toString() == lastRead.toString(),
+      (chapter) => chapter.bab.toString() == lastRead.toString(),
     );
 
     Navigator.push(

@@ -1,6 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:waristmate_app/core/utils/html_utils.dart';
+import 'package:waristmate_app/models/learning_module.dart';
 
 class MateriService {
   final _supabase = Supabase.instance.client;
@@ -21,34 +23,53 @@ class MateriService {
     "Permasalahan Pembagian",
   ];
 
-  Future<List<Map<String, dynamic>>> fetchLearningModules() async {
+  String _generateSearchText(String title, String html) {
+    return HtmlUtils.cleanText('$title $html').toLowerCase().trim();
+  }
+
+  Future<List<LearningModule>> fetchLearningModules() async {
     final localData = _materiBox.get('modul_waris');
 
     if (localData != null) {
       _syncMateriInBackground();
 
-      return List<Map<String, dynamic>>.from(
-        (localData as List).map((item) => Map<String, dynamic>.from(item)),
-      );
+      return (localData as List)
+          .map(
+            (item) => LearningModule.fromMap(Map<String, dynamic>.from(item)),
+          )
+          .toList();
     }
 
     try {
       return await _fetchAndSaveFromSupabase();
     } catch (e) {
       print('Error fetching learning modules: $e');
-      return await _seedFromLocalAsset();
+      final seededData = await _seedFromLocalAsset();
+      return seededData;
     }
   }
 
-  Future<List<Map<String, dynamic>>> _fetchAndSaveFromSupabase() async {
+  Future<List<LearningModule>> _fetchAndSaveFromSupabase() async {
     final response = await _supabase
         .from('learning_module')
         .select('bab, title, content_html')
         .order('bab', ascending: true);
 
-    await _materiBox.put('modul_waris', response);
+    final modules = response.map<LearningModule>((item) {
+      return LearningModule(
+        bab: item['bab'],
+        title: item['title'],
+        contentHtml: item['content_html'],
+        searchText: _generateSearchText(item['title'], item['content_html']),
+      );
+    }).toList();
 
-    return response;
+    await _materiBox.put(
+      'modul_waris',
+      modules.map((module) => module.toMap()).toList(),
+    );
+
+    return modules;
   }
 
   Future<void> _syncMateriInBackground() async {
@@ -58,14 +79,26 @@ class MateriService {
           .select('bab, title, content_html')
           .order('bab', ascending: true);
 
-      await _materiBox.put('modul_waris', response);
+      final modules = response.map<LearningModule>((item) {
+        return LearningModule(
+          bab: item['bab'],
+          title: item['title'],
+          contentHtml: item['content_html'],
+          searchText: _generateSearchText(item['title'], item['content_html']),
+        );
+      }).toList();
+
+      await _materiBox.put(
+        'modul_waris',
+        modules.map((module) => module.toMap()).toList(),
+      );
     } catch (e) {
       //
     }
   }
 
-  Future<List<Map<String, dynamic>>> _seedFromLocalAsset() async {
-    List<Map<String, dynamic>> seededData = [];
+  Future<List<LearningModule>> _seedFromLocalAsset() async {
+    List<LearningModule> seededData = [];
 
     for (int i = 0; i < _judulBabLokal.length; i++) {
       int nomorBab = i + 1;
@@ -73,18 +106,24 @@ class MateriService {
         final htmlContent = await rootBundle.loadString(
           'assets/materi/bab$nomorBab',
         );
-        seededData.add({
-          'bab': nomorBab,
-          'title': _judulBabLokal[i],
-          'content_html': htmlContent,
-        });
+        seededData.add(
+          LearningModule(
+            bab: nomorBab,
+            title: _judulBabLokal[i],
+            contentHtml: htmlContent,
+            searchText: _generateSearchText(_judulBabLokal[i], htmlContent),
+          ),
+        );
       } catch (e) {
         print('Error loading local asset for bab $nomorBab: $e');
       }
     }
 
     if (seededData.isNotEmpty) {
-      await _materiBox.put('modul_waris', seededData);
+      await _materiBox.put(
+        'modul_waris',
+        seededData.map((item) => item.toMap()).toList(),
+      );
     }
 
     return seededData;

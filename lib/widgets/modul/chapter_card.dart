@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'package:waristmate_app/models/learning_module.dart';
 import 'package:waristmate_app/screen/modul/materi_screen.dart';
 
 class ChapterCard extends StatelessWidget {
-  final Map<String, dynamic> chapter;
-  final List<Map<String, dynamic>> chapterList;
+  final LearningModule chapter;
+  final List<LearningModule> chapterList;
   final int index;
   final bool isBookmarked;
   final bool isLastRead;
+  final String? snippet;
 
   const ChapterCard({
     super.key,
     required this.chapter,
     required this.chapterList,
     required this.index,
+    this.snippet,
     this.isBookmarked = false,
     this.isLastRead = false,
   });
@@ -84,7 +87,7 @@ class ChapterCard extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "Bab ${chapter['bab'] ?? ''}",
+                            "Bab ${chapter.bab}",
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -102,15 +105,32 @@ class ChapterCard extends StatelessWidget {
                             ),
                         ],
                       ),
+
                       const SizedBox(height: 4),
+
                       Text(
-                        chapter['title'] ?? '',
+                        chapter.title,
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: AppColors.textDark,
                         ),
                       ),
+
+                      if (snippet != null && snippet!.isNotEmpty) ...[
+                        const SizedBox(height: 6),
+                        Text(
+                          snippet!,
+                          style: const TextStyle(
+                            fontSize: 13,
+                            height: 1.3,
+                            color: AppColors.textDark,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+
                       if (isLastRead) ...[
                         const SizedBox(height: 8),
                         Container(

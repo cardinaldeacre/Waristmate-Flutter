@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:waristmate_app/controllers/materi_controller.dart';
 import 'package:waristmate_app/controllers/modul_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/modul/chapter_card.dart';
 import 'package:waristmate_app/widgets/modul/module_header.dart';
-import 'package:waristmate_app/services/modul/materi_service.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:waristmate_app/widgets/modul/module_search_bar.dart';
 
 class ModulScreen extends StatefulWidget {
   const ModulScreen({super.key});
@@ -15,21 +15,23 @@ class ModulScreen extends StatefulWidget {
 }
 
 class _ModulScreenState extends State<ModulScreen> {
-  final _materiService = MateriService();
-
   @override
   void initState() {
     super.initState();
-    _materiService.fetchLearningModules();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<ModulController>().fetchLastReadAndBookmarks();
+      context.read<MateriController>().fetchLearningModules();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final modulCtrl = context.watch<ModulController>();
+    final materiCtrl = context.watch<MateriController>();
+
+    final chapters = materiCtrl.searchResults;
+
     return Scaffold(
       backgroundColor: AppColors.backgroundClean,
       extendBodyBehindAppBar: true,
@@ -38,56 +40,49 @@ class _ModulScreenState extends State<ModulScreen> {
           ModuleHeader(),
 
           const SizedBox(height: 5),
+          const ModuleSearchBar(),
 
           Expanded(
-            child: ValueListenableBuilder(
-              valueListenable: Hive.box('materiBox').listenable(),
-              builder: (context, Box box, _) {
-                final localData = box.get('modul_waris');
+            child: materiCtrl.isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : chapters.isEmpty
+                ? const Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.search_off_rounded,
+                          size: 70,
+                          color: AppColors.darkGrey,
+                        ),
+                        SizedBox(height: 12),
+                        Text(
+                          "Materi tidak ditemukan",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  )
+                : ListView.builder(
+                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 120),
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: chapters.length,
+                    itemBuilder: (context, index) {
+                      final currentChapter = chapters[index];
+                      final babNumber = currentChapter.bab;
 
-                if (localData == null) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-
-                final chapters = List<Map<String, dynamic>>.from(
-                  (localData as List).map(
-                    (item) => Map<String, dynamic>.from(item),
+                      return ChapterCard(
+                        chapter: currentChapter,
+                        index: index,
+                        chapterList: chapters,
+                        snippet: materiCtrl.getSnippet(currentChapter),
+                        isBookmarked: modulCtrl.isLoggedIn
+                            ? modulCtrl.bookmarkedBabs.contains(babNumber)
+                            : false,
+                        isLastRead: modulCtrl.lastReadBab == babNumber,
+                      );
+                    },
                   ),
-                );
-
-                if (chapters.isEmpty) {
-                  return const Center(
-                    child: Text('Belum ada materi yang tersedia.'),
-                  );
-                }
-
-                return ListView.builder(
-                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 120),
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: chapters.length,
-                  itemBuilder: (context, index) {
-                    final currentChapter = chapters[index];
-                    final String babStr = currentChapter['bab'].toString();
-                    final int babNumber = int.tryParse(babStr) ?? 0;
-
-                    return ChapterCard(
-                      chapter: {
-                        'bab': currentChapter['bab'].toString(),
-                        'title': currentChapter['title'].toString(),
-                        'content_html': currentChapter['content_html']
-                            .toString(),
-                      },
-                      index: index,
-                      chapterList: chapters,
-                      isBookmarked: modulCtrl.isLoggedIn
-                          ? modulCtrl.bookmarkedBabs.contains(babNumber)
-                          : false,
-                      isLastRead: modulCtrl.lastReadBab == babNumber,
-                    );
-                  },
-                );
-              },
-            ),
           ),
         ],
       ),
