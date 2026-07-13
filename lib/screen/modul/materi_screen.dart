@@ -242,6 +242,7 @@ class _MateriScreenState extends State<MateriScreen> {
               child: Consumer<ModulController>(
                 builder: (context, progressCtrl, child) {
                   return FloatingMenu(
+                    isLandscape: isLandscape,
                     onPrevious: _currentIndex > 0
                         ? () => changeChapter(_currentIndex - 1)
                         : null,

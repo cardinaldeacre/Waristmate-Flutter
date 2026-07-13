@@ -7,6 +7,7 @@ class FloatingMenu extends StatelessWidget {
   final VoidCallback onMenu;
   final VoidCallback onRotate;
   final VoidCallback onFontSize;
+  final bool isLandscape;
 
   const FloatingMenu({
     super.key,
@@ -15,6 +16,7 @@ class FloatingMenu extends StatelessWidget {
     required this.onMenu,
     required this.onRotate,
     required this.onFontSize,
+    required this.isLandscape,
   });
 
   @override
@@ -24,7 +26,7 @@ class FloatingMenu extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width < 360 ? 8 : 26,
-          vertical: 36,
+          vertical: isLandscape ? 36 : 18,
         ),
         decoration: BoxDecoration(color: Colors.transparent),
         child: Row(
