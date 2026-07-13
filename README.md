@@ -5,13 +5,13 @@ Aplikasi pembelajaran & kalkulator ilmu Faraidh (hukum waris Islam), disusun ber
 ## ✨ Fitur
 
 - **🧮 Kalkulator Waris**
-  Kalkulator bertahap (multi-step) yang memandu pengguna mengisi data harta peninggalan, ahli waris yang masih hidup, hingga menghasilkan rincian bagian tiap ahli waris (dzawil furud, ashabah) lengkap dengan nominal, termasuk penyesuaian otomatis untuk kasus _Al-'Aul_ dan _Ar-Radd_.
+  Kalkulator bertahap (multi-step) yang memandu pengguna mengisi data harta peninggalan, ahli waris yang masih hidup, hingga menghasilkan rincian bagian tiap ahli waris (dzawil furud, ashabah) lengkap dengan nominal, termasuk penyesuaian otomatis untuk kasus _Al-'Aul_ dan _Ar-Radd_, bahkan permasalahan khusus seperti _Masail-Nadirah_ yang terdiri dari _Akdariyah_, _Umriyatain_, dan _Musytarakah_.
 
 - **📖 Modul Pembelajaran**
-  Materi ilmu Faraidh disusun per bab (Pendahuluan Ilmu Waris, Harta Waris, Sebab-sebab Warisan, Ahli Waris, Metode Dasar, hingga Koreksi Masalah), diadaptasi dari kitab Faraidh KMI Gontor, dilengkapi dalil naqli (ayat & hadits) di tiap pembahasan relevan.
+  Materi ilmu Faraidh disusun per bab (Pendahuluan Ilmu Waris, Harta Waris, Sebab-sebab Warisan, Ahli Waris, Metode Dasar, hingga Kasus Khusus), diadaptasi dari kitab Faraidh KMI Gontor, dilengkapi dalil naqli (ayat & hadits) di tiap pembahasan relevan.
 
 - **📝 Catatan Personal**
-  Ruang privat bagi pengguna untuk mencatat estimasi harta, hutang, aset non-tunai, dan simulasi wasiat mereka sendiri. Bersifat sensitif (data finansial pribadi), sehingga direncanakan dilindungi dengan PIN/biometrik terpisah dari lock aplikasi.
+  Ruang privat bagi pengguna untuk mencatat estimasi harta, hutang, aset non-tunai, dan simulasi wasiat mereka sendiri.
 
 - **🕌 Dalil & Fakta Harian**
   Kartu ayat/hadits dan "Tahukah Kamu?" di halaman Home, menampilkan potongan dalil dan fakta seputar Faraidh secara bergantian, agar pengguna mendapat sentuhan edukatif ringan setiap membuka aplikasi.
@@ -19,15 +19,11 @@ Aplikasi pembelajaran & kalkulator ilmu Faraidh (hukum waris Islam), disusun ber
 - **👤 Autentikasi Google**
   Login menggunakan akun Google (via Supabase Auth), memungkinkan sinkronisasi progres belajar dan catatan personal antar perangkat.
 
-- **🧩 Quiz** _(dalam pengembangan)_
-  Uji pemahaman per bab. Fitur ini belum tersedia di versi saat ini — ditandai _"Segera Hadir"_ pada navigasi, prioritas dialihkan ke penyempurnaan kalkulator & modul terlebih dahulu.
-
 ## 🛠️ Tech Stack
 
 - **Flutter** — cross-platform app framework
 - **Supabase** — autentikasi & backend (`signInWithIdToken`)
 - **Google Sign-In** — provider autentikasi
-- **Provider** — state management (`ChangeNotifier`)
 
 ## 🚀 Memulai (Getting Started)
 
@@ -41,7 +37,7 @@ Aplikasi pembelajaran & kalkulator ilmu Faraidh (hukum waris Islam), disusun ber
 ### Instalasi
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/cardinaldeacre/Waristmate-Flutter
 cd waristmate_app
 flutter pub get
 ```
