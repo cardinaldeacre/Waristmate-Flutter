@@ -15,7 +15,7 @@ class ModuleSearchBar extends StatelessWidget {
       child: TextField(
         onChanged: materiCtrl.searchModules,
         decoration: InputDecoration(
-          hintText: "Cari materi...",
+          hintText: "Cari materi berdasarkan kata...",
           prefixIcon: const Icon(Icons.search),
 
           suffixIcon: materiCtrl.searchQuery.isNotEmpty

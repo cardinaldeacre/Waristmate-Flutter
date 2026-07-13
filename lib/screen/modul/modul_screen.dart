@@ -80,6 +80,7 @@ class _ModulScreenState extends State<ModulScreen> {
                             ? modulCtrl.bookmarkedBabs.contains(babNumber)
                             : false,
                         isLastRead: modulCtrl.lastReadBab == babNumber,
+                        searchKeyword: materiCtrl.searchQuery,
                       );
                     },
                   ),

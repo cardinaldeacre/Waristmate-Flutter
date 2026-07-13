@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'package:waristmate_app/core/utils/text_highlight.dart';
 import 'package:waristmate_app/models/learning_module.dart';
 import 'package:waristmate_app/screen/modul/materi_screen.dart';
 
@@ -10,6 +11,7 @@ class ChapterCard extends StatelessWidget {
   final bool isBookmarked;
   final bool isLastRead;
   final String? snippet;
+  final String searchKeyword;
 
   const ChapterCard({
     super.key,
@@ -19,6 +21,7 @@ class ChapterCard extends StatelessWidget {
     this.snippet,
     this.isBookmarked = false,
     this.isLastRead = false,
+    this.searchKeyword = '',
   });
 
   @override
@@ -119,15 +122,19 @@ class ChapterCard extends StatelessWidget {
 
                       if (snippet != null && snippet!.isNotEmpty) ...[
                         const SizedBox(height: 6),
-                        Text(
-                          snippet!,
-                          style: const TextStyle(
-                            fontSize: 13,
-                            height: 1.3,
-                            color: AppColors.textDark,
-                          ),
+                        RichText(
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
+                          text: TextSpan(
+                            children: TextHighlight.build(
+                              text: snippet!,
+                              keyword: searchKeyword,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: AppColors.textDark,
+                              ),
+                            ),
+                          ),
                         ),
                       ],
 
