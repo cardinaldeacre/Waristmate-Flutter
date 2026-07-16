@@ -5,6 +5,7 @@ import 'package:waristmate_app/controllers/calculator_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_header.dart';
 import 'package:waristmate_app/widgets/calculator/result_bottom.dart';
+import 'package:waristmate_app/widgets/calculator/save_history_button.dart';
 
 class CalculationResult extends StatefulWidget {
   final VoidCallback onBack;
@@ -252,6 +253,10 @@ class _CalculationResultState extends State<CalculationResult> {
                       ),
                     ),
                   ],
+
+                  const SizedBox(height: 36),
+
+                  SaveHistoryButton(),
 
                   ResultBottom(onHome: widget.onHome),
 

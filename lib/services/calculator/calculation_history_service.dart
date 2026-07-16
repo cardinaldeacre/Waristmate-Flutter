@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:waristmate_app/models/calculation_history.dart';
@@ -10,9 +11,39 @@ class CalculationHistoryService {
 
   Future<void> saveCalculation(CalculationHistoryModel history) async {
     try {
-      await _calculationHistoryBox.add(history.toJson());
+      final userId = history.userId;
+
+      final existingHistory = await _supabase
+          .from(_tableName)
+          .select('id')
+          .eq('user_id', userId)
+          .order('created_at', ascending: true);
+
+      if (existingHistory.length >= 50) {
+        final oldestId = existingHistory.first['id'];
+
+        await _supabase.from(_tableName).delete().eq('id', oldestId);
+      }
+
       await _supabase.from(_tableName).insert(history.toJson());
-      print('Riwayat perhitungan berhasil disimpan ke Supabase dan Hive.');
+
+      final localData = _calculationHistoryBox.get(userId);
+      List<dynamic> updatedList = [];
+
+      if (localData != null) {
+        updatedList = List<dynamic>.from(localData as List);
+        updatedList.insert(0, history.toJson());
+
+        if (updatedList.length > 50) {
+          updatedList = updatedList.sublist(0, 50);
+        }
+      } else {
+        updatedList = [history.toJson()];
+      }
+
+      await _calculationHistoryBox.put(userId, updatedList);
+
+      debugPrint('Riwayat perhitungan berhasil disimpan ke Supabase dan Hive.');
     } catch (e) {
       throw Exception('Gagal menyimpan riwayat perhitungan: $e');
     }
@@ -34,7 +65,7 @@ class CalculationHistoryService {
           .map((json) => CalculationHistoryModel.fromJson(json))
           .toList();
     } catch (e) {
-      print('Supabase error/offline, mencoba narik dari Hive... ($e)');
+      debugPrint('Supabase error/offline, mencoba narik dari Hive... ($e)');
 
       final localData = _calculationHistoryBox.get(userId);
 
