@@ -6,12 +6,14 @@ class CalculationHistoryModel {
   final int? wasiat;
   final int hartaBersih;
   final List<Map<String, dynamic>> results;
+  final List<Map<String, dynamic>> penghalang;
 
   CalculationHistoryModel({
     required this.userId,
     required this.hartaKotor,
     required this.hartaBersih,
     required this.results,
+    required this.penghalang,
     this.pengurusan,
     this.hutang,
     this.wasiat,
@@ -26,6 +28,7 @@ class CalculationHistoryModel {
       'wasiat': wasiat,
       'harta_bersih': hartaBersih,
       'results': results,
+      'penghalang': penghalang,
     };
   }
 
@@ -37,7 +40,8 @@ class CalculationHistoryModel {
       hutang: (json['hutang'] as num?)?.toInt(),
       wasiat: (json['wasiat'] as num?)?.toInt(),
       hartaBersih: (json['harta_bersih'] as num).toInt(),
-      results: List<Map<String, dynamic>>.from(json['results']),
+      results: List<Map<String, dynamic>>.from(json['results'] ?? []),
+      penghalang: List<Map<String, dynamic>>.from(json['penghalang'] ?? []),
     );
   }
 }

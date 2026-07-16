@@ -315,6 +315,7 @@ class CalculatorController extends ChangeNotifier {
       wasiat: nWasiat,
       hartaBersih: nIrst,
       results: results,
+      penghalang: penghalang,
     );
 
     try {
