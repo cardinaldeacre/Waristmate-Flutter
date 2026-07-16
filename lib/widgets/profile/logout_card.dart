@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
+import 'package:waristmate_app/controllers/auth_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:waristmate_app/widgets/ui/custom_alert.dart';
 
 class LogoutCard extends StatelessWidget {
   const LogoutCard({super.key});
 
   Future<void> _signOut(BuildContext context) async {
+    final authController = context.read<AuthController>();
+
     try {
-      await Supabase.instance.client.auth.signOut();
-      await GoogleSignIn().disconnect();
+      await authController.signOut();
 
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Successfully signed out!'),
+            content: const Text('Successfully signed out!'),
             backgroundColor: AppColors.spanBlue,
-            duration: Duration(seconds: 3),
+            duration: const Duration(seconds: 3),
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -27,13 +28,12 @@ class LogoutCard extends StatelessWidget {
       }
     } catch (e) {
       debugPrint('Error signing out: $e');
-      await Supabase.instance.client.auth.signOut();
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error signing out. Please try again.'),
+            content: const Text('Error signing out. Please try again.'),
             backgroundColor: AppColors.errorRed,
-            duration: Duration(seconds: 3),
+            duration: const Duration(seconds: 3),
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),

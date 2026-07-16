@@ -1,6 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:waristmate_app/core/config/auth_config.dart';
 
 class AuthException implements Exception {
   final String message;
@@ -12,26 +12,26 @@ class AuthException implements Exception {
 
 class AuthService {
   final SupabaseClient _supabase = Supabase.instance.client;
+  final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
 
-  final GoogleSignIn _googleSignIn = GoogleSignIn(
-    serverClientId: AuthConfig.clientIdForPlatform,
-    scopes: ['email', 'profile'],
-  );
+  static const _scopes = ['email', 'profile'];
 
-  Future<AuthResponse?> signInWithGoogle({bool isRetry = false}) async {
+  Future<AuthResponse?> signInWithGoogle() async {
     try {
-      await _googleSignIn.signOut();
+      final googleUser = await _googleSignIn.authenticate();
 
-      final googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) return null;
-
-      final googleAuth = await googleUser.authentication;
-      final idToken = googleAuth.idToken;
-      final accessToken = googleAuth.accessToken;
-
-      if (idToken == null || accessToken == null) {
+      final idToken = googleUser.authentication.idToken;
+      if (idToken == null) {
         throw const AuthException('Token dari Google tidak ditemukan.');
       }
+
+      final authorization =
+          await googleUser.authorizationClient.authorizationForScopes(
+            _scopes,
+          ) ??
+          await googleUser.authorizationClient.authorizeScopes(_scopes);
+
+      final accessToken = authorization.accessToken;
 
       final response = await _supabase.auth.signInWithIdToken(
         provider: OAuthProvider.google,
@@ -44,21 +44,26 @@ class AuthService {
       }
 
       return response;
-    } catch (e) {
-      if (!isRetry && e is! AuthException) {
-        await _googleSignIn.signOut();
-        return signInWithGoogle(isRetry: true);
+    } on GoogleSignInException catch (e) {
+      debugPrint(
+        'GoogleSignInException -> code: ${e.code}, message: ${e.description}',
+      );
+      if (e.code == GoogleSignInExceptionCode.canceled) {
+        return null;
       }
-
-      await _googleSignIn.signOut();
-
-      if (e is AuthException) rethrow;
+      throw AuthException('Gagal dari Google: ${e.description}');
+    } catch (e) {
+      debugPrint('signInWithGoogle unknown error: $e');
       throw const AuthException('Gagal masuk dengan Google. Coba lagi.');
     }
   }
 
   Future<void> signOut() async {
     await _supabase.auth.signOut();
-    await _googleSignIn.signOut();
+    try {
+      await _googleSignIn.signOut();
+    } catch (e) {
+      debugPrint('Google signOut error: $e');
+    }
   }
 }

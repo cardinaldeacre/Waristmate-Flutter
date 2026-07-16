@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:waristmate_app/controllers/auth_controller.dart';
 import 'package:waristmate_app/controllers/materi_controller.dart';
 import 'package:waristmate_app/controllers/modul_controller.dart';
 import 'package:waristmate_app/controllers/personal_note_controller.dart';
+import 'package:waristmate_app/core/config/auth_config.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -24,9 +26,13 @@ void main() async {
   await Hive.openBox('calculationHistoryBox');
   await Hive.openBox('progressBox');
 
+  WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL']!,
     publishableKey: dotenv.env['SUPABASE_PUBLISHABLE_KEY']!,
+  );
+  await GoogleSignIn.instance.initialize(
+    serverClientId: AuthConfig.clientIdForPlatform,
   );
 
   await Future.delayed(Duration(seconds: 3));
