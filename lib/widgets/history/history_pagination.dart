@@ -20,17 +20,7 @@ class HistoryPagination extends StatelessWidget {
     }
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.darkShadow.withAlpha(120),
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
+      decoration: BoxDecoration(color: AppColors.backgroundClean),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

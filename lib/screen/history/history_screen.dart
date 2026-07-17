@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/history_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
+import 'package:waristmate_app/screen/history/history_detail.dart';
 import 'package:waristmate_app/widgets/history/history_card.dart';
 import 'package:waristmate_app/widgets/history/history_filter.dart';
 import 'package:waristmate_app/widgets/history/history_pagination.dart';
@@ -26,12 +27,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundClean,
       appBar: AppBar(
         title: const Text(
           'Riwayat Perhitungan',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        shadowColor: AppColors.darkShadow.withAlpha(200),
         backgroundColor: AppColors.primaryGreen,
         foregroundColor: AppColors.textLight,
         elevation: 0,
@@ -52,37 +53,58 @@ class _HistoryScreenState extends State<HistoryScreen> {
             return buildEmptyState();
           }
 
-          return Column(
-            children: [
-              HistoryFilter(
-                currentPage: controller.currentPage,
-                totalPages: controller.totalPages,
-                isAscending: controller.isAsc,
-                onToggleSort: controller.toggleSortOrder,
-              ),
-              Expanded(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: ListView.builder(
-                    itemCount: controller.histories.length,
-                    itemBuilder: (context, index) {
-                      final history = controller.histories[index];
-                      return HistoryCard(
-                        data: history,
-                        onTap: () {
-                          // Handle card tap if needed
-                        },
-                      );
-                    },
+          return Container(
+            decoration: const BoxDecoration(color: AppColors.backgroundClean),
+            child: Column(
+              children: [
+                HistoryFilter(
+                  currentPage: controller.currentPage,
+                  totalPages: controller.totalPages,
+                  isAscending: controller.isAsc,
+                  onToggleSort: controller.toggleSortOrder,
+                ),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: controller.histories.length + 1,
+                            itemBuilder: (context, index) {
+                              if (index == controller.histories.length) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 76),
+                                  child: HistoryPagination(
+                                    currentPage: controller.currentPage,
+                                    totalPages: controller.totalPages,
+                                    onPageChange: controller.changePage,
+                                  ),
+                                );
+                              }
+
+                              final history = controller.histories[index];
+                              return HistoryCard(
+                                data: history,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          HistoryDetailScreen(data: history),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              HistoryPagination(
-                currentPage: controller.currentPage,
-                totalPages: controller.totalPages,
-                onPageChange: controller.changePage,
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),
