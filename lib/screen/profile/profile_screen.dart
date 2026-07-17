@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/screen/about/about_screen.dart';
+import 'package:waristmate_app/screen/history/history_screen.dart';
 import 'package:waristmate_app/widgets/profile/profile_header.dart';
 import 'package:waristmate_app/widgets/profile/profile_card.dart';
 import 'package:waristmate_app/widgets/profile/preference_card.dart';
@@ -89,6 +90,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(height: 16),
 
                   PreferenceCard(title: "Preferensi", child: Container()),
+
+                  const SizedBox(height: 16),
+
+                  MenuCard(
+                    title: "Riwayat Perhitungan",
+                    subtitle: "Lihat riwayat perhitungan warisan tersimpan",
+                    iconData: Icons.history_rounded,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HistoryScreen(),
+                        ),
+                      );
+                    },
+                  ),
 
                   const SizedBox(height: 16),
 
