@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:waristmate_app/controllers/auth_controller.dart';
+import 'package:waristmate_app/controllers/history_controller.dart';
 import 'package:waristmate_app/controllers/materi_controller.dart';
 import 'package:waristmate_app/controllers/modul_controller.dart';
 import 'package:waristmate_app/controllers/personal_note_controller.dart';
@@ -69,6 +70,7 @@ void main() async {
         ChangeNotifierProvider(create: (context) => PersonalNoteController()),
         ChangeNotifierProvider(create: (context) => ModulController()),
         ChangeNotifierProvider(create: (context) => MateriController()),
+        ChangeNotifierProvider(create: (context) => HistoryController()),
       ],
       child: const WaristmateApp(),
     ),
