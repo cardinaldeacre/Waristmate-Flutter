@@ -44,6 +44,8 @@ class CalculationHistoryService {
       await _calculationHistoryBox.put(userId, updatedList);
 
       debugPrint('Riwayat perhitungan berhasil disimpan ke Supabase dan Hive.');
+    } on PostgrestException {
+      rethrow;
     } catch (e) {
       throw Exception('Gagal menyimpan riwayat perhitungan: $e');
     }
