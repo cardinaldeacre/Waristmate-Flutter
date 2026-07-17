@@ -49,41 +49,78 @@ class CalculationHistoryService {
     }
   }
 
-  Future<List<CalculationHistoryModel>> getCalculationHistory(
-    String userId,
-  ) async {
+  Future<List<CalculationHistoryModel>> getCalculationHistory({
+    required String userId,
+    int page = 1,
+    int limitPerPage = 10,
+    bool isAsc = false,
+  }) async {
+    List<dynamic> historyList = [];
+
     try {
       final response = await _supabase
           .from(_tableName)
           .select()
           .eq('user_id', userId)
-          .order('created_at', ascending: false);
+          .order('created_at', ascending: isAsc);
 
       await _calculationHistoryBox.put(userId, response);
 
-      return (response as List<dynamic>)
-          .map((json) => CalculationHistoryModel.fromJson(json))
-          .toList();
+      historyList = List<dynamic>.from(response);
     } catch (e) {
       debugPrint('Supabase error/offline, mencoba narik dari Hive... ($e)');
 
       final localData = _calculationHistoryBox.get(userId);
 
       if (localData != null) {
-        final List<dynamic> rawList = localData as List<dynamic>;
+        historyList = List<dynamic>.from(localData as List);
+      } else {
+        throw Exception(
+          'Gagal mengambil riwayat perhitungan. Pastikan ada koneksi internet untuk tarikan pertama.',
+        );
+      }
+    }
 
-        return rawList
-            .map(
-              (json) => CalculationHistoryModel.fromJson(
-                Map<String, dynamic>.from(json),
-              ),
-            )
-            .toList();
+    if (isAsc) {
+      historyList = historyList.reversed.toList();
+    }
+
+    final from = (page - 1) * limitPerPage;
+    int to = from + limitPerPage;
+
+    if (from >= historyList.length) {
+      return [];
+    }
+
+    if (to > historyList.length) {
+      to = historyList.length;
+    }
+
+    final pagedList = historyList.sublist(from, to);
+
+    return pagedList
+        .map(
+          (json) =>
+              CalculationHistoryModel.fromJson(Map<String, dynamic>.from(json)),
+        )
+        .toList();
+  }
+
+  Future<int> getTotalHistoryCount(String userId) async {
+    try {
+      final response = await _supabase
+          .from(_tableName)
+          .count(CountOption.exact)
+          .eq('user_id', userId);
+
+      return response;
+    } catch (e) {
+      final localData = _calculationHistoryBox.get(userId);
+      if (localData != null) {
+        return (localData as List).length;
       }
 
-      throw Exception(
-        'Gagal mengambil riwayat perhitungan. Pastikan ada koneksi internet untuk tarikan pertama.',
-      );
+      return 0;
     }
   }
 }
