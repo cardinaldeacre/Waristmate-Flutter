@@ -3,12 +3,22 @@ import 'package:waristmate_app/core/config/theme.dart';
 
 class MateriHeader extends StatelessWidget {
   final String title;
+  final bool isLandscape;
 
-  const MateriHeader({super.key, required this.title});
+  const MateriHeader({
+    super.key,
+    required this.title,
+    required this.isLandscape,
+  });
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 40, bottom: 14),
+      padding: EdgeInsets.only(
+        left: isLandscape ? 56 : 16,
+        right: isLandscape ? 56 : 16,
+        top: 40,
+        bottom: 14,
+      ),
       decoration: BoxDecoration(
         color: AppColors.primaryGreen,
         borderRadius: BorderRadius.only(

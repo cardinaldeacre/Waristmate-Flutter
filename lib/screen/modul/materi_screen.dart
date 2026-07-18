@@ -252,7 +252,7 @@ class _MateriScreenState extends State<MateriScreen> {
               left: 0,
               right: 0,
               top: isMenuOpen ? 0 : -160,
-              child: MateriHeader(title: title),
+              child: MateriHeader(title: title, isLandscape: isLandscape),
             ),
 
             AnimatedPositioned(
@@ -260,7 +260,11 @@ class _MateriScreenState extends State<MateriScreen> {
               curve: Curves.easeInOut,
               left: 0,
               right: 0,
-              bottom: isMenuOpen ? 30 : -100,
+              bottom: isMenuOpen
+                  ? isLandscape
+                        ? 0
+                        : 30
+                  : -100,
               child: Consumer<ModulController>(
                 builder: (context, progressCtrl, child) {
                   return FloatingMenu(
