@@ -86,10 +86,32 @@ class _MateriScreenState extends State<MateriScreen> {
           DeviceOrientation.landscapeRight,
         ]);
       }
-      setState(() {
-        isLandscape = !isLandscape;
-      });
+      isLandscape = !isLandscape;
     });
+  }
+
+  @override
+  void dispose() {
+    final windowData =
+        WidgetsBinding.instance.platformDispatcher.views.isNotEmpty
+        ? WidgetsBinding.instance.platformDispatcher.views.first
+        : null;
+    final size = windowData == null
+        ? Size.zero
+        : windowData.physicalSize / windowData.devicePixelRatio;
+    final isTablet = size.shortestSide >= 600;
+
+    if (!isTablet) {
+      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    } else {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+    }
+
+    super.dispose();
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/materi_controller.dart';
 import 'package:waristmate_app/controllers/modul_controller.dart';
@@ -22,7 +23,30 @@ class _ModulScreenState extends State<ModulScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<ModulController>().fetchLastReadAndBookmarks();
       context.read<MateriController>().fetchLearningModules();
+
+      final shortestSide = MediaQuery.of(context).size.shortestSide;
+      final isTablet = shortestSide >= 600;
+
+      if (!isTablet) {
+        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+      } else {
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.landscapeLeft,
+          DeviceOrientation.landscapeRight,
+        ]);
+      }
     });
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+    super.dispose();
   }
 
   @override
