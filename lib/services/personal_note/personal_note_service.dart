@@ -10,18 +10,28 @@ class PersonalNoteService {
   final _personalNoteBox = Hive.box('personalNoteBox');
 
   final _key = encrypt.Key.fromUtf8('WarisMateSuperSecretKey2026Pasti');
-  final _iv = encrypt.IV.fromLength(16);
 
   String encryptText(String plainText) {
+    final iv = encrypt.IV.fromSecureRandom(16);
     final encrypter = encrypt.Encrypter(encrypt.AES(_key));
-    final encrypted = encrypter.encrypt(plainText, iv: _iv);
-    return encrypted.base64;
+    final encrypted = encrypter.encrypt(plainText, iv: iv);
+    return '${iv.base64}:${encrypted.base64}';
   }
 
   String decryptText(String encryptedText) {
     try {
+      final cleanText = encryptedText.replaceAll(RegExp(r'\s+'), '');
+      final parts = cleanText.split(':');
+
+      if (parts.length != 2) {
+        return encryptedText;
+      }
+
+      final iv = encrypt.IV.fromBase64(parts[0]);
+      final cipherText = parts[1];
+
       final encrypter = encrypt.Encrypter(encrypt.AES(_key));
-      return encrypter.decrypt64(encryptedText, iv: _iv);
+      return encrypter.decrypt64(cipherText, iv: iv);
     } catch (e) {
       return encryptedText;
     }
@@ -45,9 +55,10 @@ class PersonalNoteService {
     if (encryptedData is Map &&
         encryptedData.containsKey('encrypted_payload')) {
       try {
-        final decryptedString = decryptText(
-          encryptedData['encrypted_payload'] as String,
-        );
+        final rawString = encryptedData['encrypted_payload'].toString();
+        final cleanString = rawString.replaceAll(RegExp(r'\s+'), '');
+
+        final decryptedString = decryptText(cleanString);
         return jsonDecode(decryptedString) as List<dynamic>;
       } catch (e) {
         return [];
@@ -74,7 +85,7 @@ class PersonalNoteService {
 
         if (responseData['warisan_note'] != null) {
           responseData['warisan_note'] = decryptText(
-            responseData['warisan_note'],
+            responseData['warisan_note'].toString(),
           );
         }
 
@@ -98,6 +109,8 @@ class PersonalNoteService {
   }
 
   Future<void> savePersonalNote(PersonalNoteModel note) async {
+    await _personalNoteBox.put(note.userId, note.toJson());
+
     try {
       final dataToSupabase = note.toJson();
 
@@ -122,6 +135,13 @@ class PersonalNoteService {
         await _personalNoteBox.put(note.userId, note.toJson());
       }
     } catch (e) {
+      final errorString = e.toString();
+
+      if (errorString.contains('SocketException') ||
+          errorString.contains('Failed host lookup')) {
+        throw Exception('OFFLINE_SAVED');
+      }
+
       throw Exception('Failed to save personal note: $e');
     }
   }
