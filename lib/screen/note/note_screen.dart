@@ -7,6 +7,7 @@ import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/widgets/note/note_header.dart';
 import 'package:waristmate_app/widgets/note/note_card.dart';
 import 'package:waristmate_app/widgets/note/save_button.dart';
+import 'package:waristmate_app/widgets/ui/message_snackbar.dart';
 import 'package:waristmate_app/widgets/ui/not_logged_in.dart';
 
 class NoteScreen extends StatefulWidget {
@@ -35,6 +36,8 @@ class _NoteScreenState extends State<NoteScreen> with WidgetsBindingObserver {
     });
 
     final noteController = context.read<PersonalNoteController>();
+
+    noteController.clearForm();
     noteController.getPersonalNote();
   }
 
@@ -49,16 +52,10 @@ class _NoteScreenState extends State<NoteScreen> with WidgetsBindingObserver {
     final user = Supabase.instance.client.auth.currentUser;
 
     if (user == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Error: User belum login!'),
-          backgroundColor: AppColors.errorRed,
-          duration: const Duration(seconds: 3),
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
+      showMessageSnackbar(
+        context,
+        'Error: Pengguna belum login!',
+        AppColors.errorRed,
       );
       return;
     }
@@ -81,17 +78,21 @@ class _NoteScreenState extends State<NoteScreen> with WidgetsBindingObserver {
       _toggleEditMode();
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Gagal menyimpan catatan: $e'),
-          backgroundColor: AppColors.errorRed,
-          duration: const Duration(seconds: 3),
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-      );
+
+      final errorString = e.toString();
+
+      if (errorString.contains('OFFLINE_SAVED')) {
+        showMessageSnackbar(
+          context,
+          'Internet terputus. Catatan sementara disimpan aman di perangkat Anda.',
+          AppColors.warningYellow,
+        );
+
+        _toggleEditMode();
+        return;
+      }
+
+      showMessageSnackbar(context, 'Gagal menyimpan: $e', AppColors.errorRed);
       return;
     }
   }
@@ -103,14 +104,10 @@ class _NoteScreenState extends State<NoteScreen> with WidgetsBindingObserver {
 
     if (!mounted) return;
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Data berhasil disinkronkan'),
-        backgroundColor: AppColors.spanBlue,
-        duration: Duration(seconds: 3),
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      ),
+    showMessageSnackbar(
+      context,
+      'Data berhasil disinkronkan',
+      AppColors.spanBlue,
     );
   }
 

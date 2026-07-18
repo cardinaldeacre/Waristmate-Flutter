@@ -276,6 +276,7 @@ class PersonalNoteController extends ChangeNotifier {
   Future<void> getPersonalNote() async {
     isLoading = true;
 
+    clearForm();
     final user = Supabase.instance.client.auth.currentUser;
 
     if (user == null) {
@@ -291,8 +292,9 @@ class PersonalNoteController extends ChangeNotifier {
 
       if (personalNote != null) {
         fillFromModel(personalNote);
+      } else {
+        clearState();
       }
-
       notifyListeners();
     } catch (e) {
       throw Exception('Failed to fetch personal note: $e');
@@ -357,5 +359,9 @@ class PersonalNoteController extends ChangeNotifier {
       item.dispose();
     }
     super.dispose();
+  }
+
+  void clearState() {
+    notifyListeners();
   }
 }

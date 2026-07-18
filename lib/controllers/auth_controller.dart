@@ -50,6 +50,7 @@ class AuthController extends ChangeNotifier {
       await _syncAfterAuthChange();
     } finally {
       _setLoading(false);
+      notifyListeners();
     }
   }
 

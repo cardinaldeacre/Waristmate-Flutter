@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waristmate_app/controllers/auth_controller.dart';
+import 'package:waristmate_app/controllers/personal_note_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/services/personal_note/personal_note_service.dart';
 import 'package:waristmate_app/widgets/ui/custom_alert.dart';
@@ -10,10 +11,13 @@ class LogoutCard extends StatelessWidget {
 
   Future<void> _signOut(BuildContext context) async {
     final authController = context.read<AuthController>();
+    final noteController = context.read<PersonalNoteController>();
 
     try {
       await authController.signOut();
       await PersonalNoteService().clearLocalData();
+      noteController.clearForm();
+      noteController.clearState();
 
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
