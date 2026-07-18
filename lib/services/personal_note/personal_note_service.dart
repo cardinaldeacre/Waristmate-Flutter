@@ -88,6 +88,11 @@ class PersonalNoteService {
       }
       return null;
     } catch (e) {
+      final localData = _personalNoteBox.get(userId);
+      if (localData != null) {
+        return PersonalNoteModel.fromJson(Map<String, dynamic>.from(localData));
+      }
+
       throw Exception('Failed to fetch personal note: $e');
     }
   }
@@ -119,5 +124,9 @@ class PersonalNoteService {
     } catch (e) {
       throw Exception('Failed to save personal note: $e');
     }
+  }
+
+  Future<void> clearLocalData() async {
+    await _personalNoteBox.clear();
   }
 }
