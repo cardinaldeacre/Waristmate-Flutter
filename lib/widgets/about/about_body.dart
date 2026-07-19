@@ -108,7 +108,7 @@ class _AboutBodyState extends State<AboutBody> {
                 color: AppColors.grey,
               ),
               SectionItem(
-                name: 'Indah Puspita Sari, S.P., M.E., C.Med.',
+                name: 'Indah Puspitasari, S.P., M.E., CIMM',
                 title: 'Ahli Faraidh',
                 description:
                     'Direktur CMS (Centre of Mawarith Studies), memberikan panduan syariat yang akurat untuk memastikan aplikasi ini sesuai dengan prinsip-prinsip Islam.',
