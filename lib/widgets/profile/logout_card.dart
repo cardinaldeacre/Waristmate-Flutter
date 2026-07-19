@@ -5,6 +5,7 @@ import 'package:waristmate_app/controllers/personal_note_controller.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/services/personal_note/personal_note_service.dart';
 import 'package:waristmate_app/widgets/ui/custom_alert.dart';
+import 'package:waristmate_app/widgets/ui/message_snackbar.dart';
 
 class LogoutCard extends StatelessWidget {
   const LogoutCard({super.key});
@@ -20,32 +21,12 @@ class LogoutCard extends StatelessWidget {
       noteController.clearState();
 
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: const Text('Successfully signed out!'),
-            backgroundColor: AppColors.spanBlue,
-            duration: const Duration(seconds: 3),
-            behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        );
+        showMessageSnackbar(context, 'Berhasil keluar dari akun', AppColors.spanBlue);
       }
     } catch (e) {
       debugPrint('Error signing out: $e');
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: const Text('Error signing out. Please try again.'),
-            backgroundColor: AppColors.errorRed,
-            duration: const Duration(seconds: 3),
-            behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        );
+        showMessageSnackbar(context, 'Gagal keluar dari akun', AppColors.errorRed);
       }
     }
   }

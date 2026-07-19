@@ -70,7 +70,7 @@ class CustomAlert extends StatelessWidget {
           Expanded(
             child: Text(
               title,
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style:  TextStyle(fontSize: 14, color: iconColor, fontWeight: FontWeight.bold),
             ),
           ),
         ],
