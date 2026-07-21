@@ -67,10 +67,10 @@ class AppInfo {
 }
 EOF
 
-flutter build apk --release --split-per-abi --build-name=$NEW_VERSION --build-number=$BUILD_NUMBER
+flutter build appbundle --release --build-name=$NEW_VERSION --build-number=$BUILD_NUMBER
 
-# --- Commit perubahan versi supaya repo tetap sinkron dengan APK yang dirilis ---
+# --- Commit perubahan versi supaya repo tetap sinkron dengan APK/AAB yang dirilis ---
 git add pubspec.yaml lib/core/config/app_info.dart
 git commit -m "chore: bump version to $NEW_VERSION+$BUILD_NUMBER"
 
-echo "Selesai. Versi $NEW_VERSION+$BUILD_NUMBER sudah di-commit."
+echo "Selesai. Versi $NEW_VERSION+$BUILD_NUMBER sudah di-commit dan AAB siap meluncur!"
