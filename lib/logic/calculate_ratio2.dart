@@ -4,8 +4,8 @@ extension CalculateRatio2 on CalculatorController {
   void calculateRatio2() {
     totalRatio = 0;
 
-    print("calculate ratio 2");
-    print("hasilKPK: $hasilKPK");
+    debugPrint("calculate ratio 2");
+    debugPrint("hasilKPK: $hasilKPK");
 
     if (nilaiAyah > 0) {
       rAyah = hasilKPK * 1 ~/ 6;

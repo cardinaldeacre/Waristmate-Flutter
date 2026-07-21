@@ -1,3 +1,4 @@
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -43,7 +44,7 @@ class MateriService {
     try {
       return await _fetchAndSaveFromSupabase();
     } catch (e) {
-      print('Error fetching learning modules: $e');
+      debugPrint('Error fetching learning modules: $e');
       final seededData = await _seedFromLocalAsset();
       return seededData;
     }
@@ -115,7 +116,7 @@ class MateriService {
           ),
         );
       } catch (e) {
-        print('Error loading local asset for bab $nomorBab: $e');
+        debugPrint('Error loading local asset for bab $nomorBab: $e');
       }
     }
 

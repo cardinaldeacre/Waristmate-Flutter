@@ -3,8 +3,8 @@ part of 'main_calculator.dart';
 extension CalculateRaddPasutri on CalculatorController {
   void calculateRaddPasutri() {
     hasilKPK = totalRatio;
-    print("calculate radd pasutri");
-    print("hasilKPK: $hasilKPK");
+    debugPrint("calculate radd pasutri");
+    debugPrint("hasilKPK: $hasilKPK");
     if (nilaiAyah > 0) {
       int bagianAyah = sisaWarisan * rAyah ~/ hasilKPK;
       results.add({

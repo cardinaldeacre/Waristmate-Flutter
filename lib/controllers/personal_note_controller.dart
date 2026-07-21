@@ -308,7 +308,7 @@ class PersonalNoteController extends ChangeNotifier {
     final user = Supabase.instance.client.auth.currentUser;
 
     if (user == null) return;
-    print("SAVE DRAFT");
+    debugPrint("SAVE DRAFT");
     final note = buildPersonalNote(user.id);
 
     await _draftService.saveDraft(note);

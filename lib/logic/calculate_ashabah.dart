@@ -2,9 +2,9 @@ part of 'main_calculator.dart';
 
 extension CalculateAshabah on CalculatorController {
   void calculateAshabah() {
-    print("calculate ashabah");
-    print("sisaWarisan: $sisaWarisan");
-    print("totalAshabah: $totalAshabah");
+    debugPrint("calculate ashabah");
+    debugPrint("sisaWarisan: $sisaWarisan");
+    debugPrint("totalAshabah: $totalAshabah");
     nominalAshabah = sisaWarisan ~/ totalAshabah;
     if (nilaiAyah > 0 && keturunanLaki == 0) {
       if (keturunanPerempuan > 0) {

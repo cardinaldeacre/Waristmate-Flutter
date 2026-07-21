@@ -2,8 +2,8 @@ part of "main_calculator.dart";
 
 extension CalculateRatio on CalculatorController {
   void calculateRatio() {
-    print("calculate ratio");
-    print("hasilKPK: $hasilKPK");
+    debugPrint("calculate ratio");
+    debugPrint("hasilKPK: $hasilKPK");
     if (nilaiSuami > 0) {
       if (keturunan > 0) {
         rSuami = hasilKPK * 1 ~/ 4;
@@ -133,15 +133,15 @@ extension CalculateRatio on CalculatorController {
       }
     }
 
-    print("totalRatio: $totalRatio");
+    debugPrint("totalRatio: $totalRatio");
 
     if ((totalRatio > hasilKPK) ||
         (totalRatio < hasilKPK && totalAshabah == 0)) {
       calculateAulRadd();
-      print("lanjut ke aul radd");
+      debugPrint("lanjut ke aul radd");
     } else if (totalAshabah > 0 || totalRatio == hasilKPK) {
       calculateShare();
-      print("lanjut ke calculate share");
+      debugPrint("lanjut ke calculate share");
     }
   }
 }

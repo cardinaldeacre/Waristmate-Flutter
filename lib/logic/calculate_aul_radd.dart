@@ -8,7 +8,7 @@ extension CalculateAulRadd on CalculatorController {
       // aul
       hasilKPK = totalRatio;
       kasus = 'Aul';
-      print("aul");
+      debugPrint("aul");
 
       if (nilaiSuami > 0) {
         int bagianSuami = totalWarisan * rSuami ~/ hasilKPK;
@@ -207,7 +207,7 @@ extension CalculateAulRadd on CalculatorController {
         totalAshabah == 0) {
       // radd pasutri
       kasus = 'Radd';
-      print("radd pasutri");
+      debugPrint("radd pasutri");
       if (nilaiSuami > 0 &&
           (nilaiAyah > 0 ||
               nilaiIbu > 0 ||
@@ -302,7 +302,7 @@ extension CalculateAulRadd on CalculatorController {
       // radd biasa
       hasilKPK = totalRatio;
       kasus = 'Radd';
-      print("radd biasa");
+      debugPrint("radd biasa");
 
       if (nilaiAyah > 0) {
         if (nilaiAnakLaki > 0 || nilaiCucuLaki > 0) {
