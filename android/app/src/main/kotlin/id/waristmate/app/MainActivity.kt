@@ -1,4 +1,4 @@
-package id.warismate.app
+package id.waristmate.app
 
 import io.flutter.embedding.android.FlutterActivity
 
