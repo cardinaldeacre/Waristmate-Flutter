@@ -125,4 +125,24 @@ class CalculationHistoryService {
       return 0;
     }
   }
+
+  Future<void> deleteCalculation(int historyId) async {
+    try {
+      final user = _supabase.auth.currentUser;
+      if (user == null) return;
+
+      await _supabase.from(_tableName).delete().eq('id', historyId);
+
+      final localData = _calculationHistoryBox.get(user.id);
+      if (localData != null) {
+        List<dynamic> updatedList = List<dynamic>.from(localData as List);
+        updatedList.removeWhere((json) => json['id'] == historyId);
+        await _calculationHistoryBox.put(user.id, updatedList);
+      }
+
+      debugPrint('Riwayat perhitungan berhasil dihapus dari Supabase dan Hive.');
+    } catch (e) {
+      throw Exception('Gagal menghapus riwayat perhitungan: $e');
+    }
+  }
 }

@@ -61,6 +61,15 @@ class HistoryController extends ChangeNotifier {
     }
   }
 
+  Future<void> deleteCalculationHistory(int historyId) async {
+    try {
+      await _service.deleteCalculation(historyId);
+      fetchCalculationHistory();
+    } catch (e) {
+      throw Exception('Gagal menghapus riwayat perhitungan: $e');
+    }
+  }
+
   void changePage(int page) {
     if (page < 1 || page > totalPages) return;
     currentPage = page;

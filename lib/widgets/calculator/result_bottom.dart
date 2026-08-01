@@ -42,11 +42,11 @@ class _ResultBottomState extends State<ResultBottom> {
       final calc = context.read<CalculatorController>();
       final history = CalculationHistoryModel(
         userId: user.id,
-        hartaKotor: calc.totalWarisan,
+        hartaKotor: calc.nTirkah,
         pengurusan: calc.nTajhiz,
         hutang: calc.nHutang,
         wasiat: calc.nWasiat,
-        hartaBersih: calc.sisaWarisan,
+        hartaBersih: calc.nIrst,
         results: calc.results,
         penghalang: calc.penghalang,
         createdAt: DateTime.now().toUtc().toIso8601String(),

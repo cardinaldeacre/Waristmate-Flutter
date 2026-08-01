@@ -1,4 +1,5 @@
 class CalculationHistoryModel {
+  final int? id;
   final String userId;
   final int hartaKotor;
   final int? pengurusan;
@@ -10,6 +11,7 @@ class CalculationHistoryModel {
   final String? createdAt;
 
   CalculationHistoryModel({
+    this.id,
     required this.userId,
     required this.hartaKotor,
     required this.hartaBersih,
@@ -23,6 +25,7 @@ class CalculationHistoryModel {
 
   Map<String, dynamic> toJson() {
     return {
+      if (id != null) 'id': id,
       'user_id': userId,
       'harta_kotor': hartaKotor,
       'pengurusan': pengurusan,
@@ -37,6 +40,7 @@ class CalculationHistoryModel {
 
   factory CalculationHistoryModel.fromJson(Map<String, dynamic> json) {
     return CalculationHistoryModel(
+      id: json['id'] as int?,
       userId: json['user_id'] as String,
       hartaKotor: (json['harta_kotor'] as num).toInt(),
       pengurusan: (json['pengurusan'] as num?)?.toInt(),

@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:waristmate_app/core/config/theme.dart';
 import 'package:waristmate_app/models/calculation_history.dart';
 import 'package:waristmate_app/widgets/calculator/calculator_header.dart';
+import 'package:waristmate_app/widgets/history/delete_button.dart';
 import 'package:waristmate_app/widgets/history/detail_bottom_button.dart';
 
 class HistoryDetailScreen extends StatelessWidget {
@@ -219,6 +220,10 @@ class HistoryDetailScreen extends StatelessWidget {
                   const SizedBox(height: 36),
 
                   DetailBottomButton(),
+
+                  const SizedBox(height: 24),
+
+                  DeleteBottomButton(historyId: data.id!),
 
                   const SizedBox(height: 100),
                 ],
