@@ -4,6 +4,10 @@ extension CalculateSpecial on CalculatorController {
   bool isCalculateSpecial() {
     late int totalWarisan = nIrst;
 
+    bool adaPenghalang(String pewaris) {
+      return penghalang.any((element) => element['pewaris'] == pewaris);
+    }
+
     bool isAkdariyah =
         (nilaiKakek > 0 &&
         nilaiIbu > 0 &&
@@ -35,21 +39,29 @@ extension CalculateSpecial on CalculatorController {
         saudaraSeayah == 0 &&
         pojok == 0);
 
-    bool isUmriyatainSuami =
+    bool isUmariyatainSuami =
         (nilaiSuami > 0 &&
         nilaiIbu > 0 &&
         nilaiAyah > 0 &&
         saudara == 0 &&
         keturunan == 0 &&
-        pojok == 0);
+        pojok == 0 && 
+        !adaPenghalang('Saudara Laki Kandung') &&
+        !adaPenghalang('Saudara Perempuan Kandung') &&
+        !adaPenghalang('Saudara Laki Seibu') &&
+        !adaPenghalang('Saudara Perempuan Seibu'));
 
-    bool isUmriyatainIstri =
+    bool isUmariyatainIstri =
         (nilaiIstri > 0 &&
         nilaiIbu > 0 &&
         nilaiAyah > 0 &&
         saudara == 0 &&
         keturunan == 0 &&
-        pojok == 0);
+        pojok == 0 &&
+        !adaPenghalang('Saudara Laki Kandung') &&
+        !adaPenghalang('Saudara Perempuan Kandung') &&
+        !adaPenghalang('Saudara Laki Seibu') &&
+        !adaPenghalang('Saudara Perempuan Seibu'));
 
     if (isAkdariyah) {
       hasilKPK = 27;
@@ -241,7 +253,7 @@ extension CalculateSpecial on CalculatorController {
       kasus = 'Musytarakah';
 
       return true;
-    } else if (isUmriyatainSuami) {
+    } else if (isUmariyatainSuami) {
       hasilKPK = 6;
       int bagianSuami = totalWarisan * 3 ~/ hasilKPK;
       int bagianAyah = totalWarisan * 2 ~/ hasilKPK;
@@ -268,10 +280,10 @@ extension CalculateSpecial on CalculatorController {
         'nominal_total': bagianIbu,
         'nominal': bagianIbu,
       });
-      kasus = 'Umriyatain';
+      kasus = 'Umariyatain';
 
       return true;
-    } else if (isUmriyatainIstri) {
+    } else if (isUmariyatainIstri) {
       hasilKPK = 12;
       int bagianIstri = totalWarisan * 3 ~/ hasilKPK;
       int bagianIstriPerOrang = bagianIstri ~/ nilaiIstri;
@@ -299,7 +311,7 @@ extension CalculateSpecial on CalculatorController {
         'nominal_total': bagianIbu,
         'nominal': bagianIbu,
       });
-      kasus = 'Umriyatain';
+      kasus = 'Umariyatain';
 
       return true;
     }
