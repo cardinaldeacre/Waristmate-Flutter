@@ -28,25 +28,22 @@ class MateriService {
     return HtmlUtils.cleanText('$title $html').toLowerCase().trim();
   }
 
-  Future<List<LearningModule>> fetchLearningModules() async {
-    final localData = _materiBox.get('modul_waris');
-
-    if (localData != null) {
-      _syncMateriInBackground();
-
-      return (localData as List)
-          .map(
-            (item) => LearningModule.fromMap(Map<String, dynamic>.from(item)),
-          )
-          .toList();
-    }
-
+Future<List<LearningModule>> fetchLearningModules() async {
     try {
       return await _fetchAndSaveFromSupabase();
     } catch (e) {
       debugPrint('Error fetching learning modules: $e');
-      final seededData = await _seedFromLocalAsset();
-      return seededData;
+
+      final localData = _materiBox.get('modul_waris');
+      if (localData != null) {
+        return (localData as List)
+            .map(
+              (item) => LearningModule.fromMap(Map<String, dynamic>.from(item)),
+            )
+            .toList();
+      }
+
+      return await _seedFromLocalAsset();
     }
   }
 
@@ -71,31 +68,6 @@ class MateriService {
     );
 
     return modules;
-  }
-
-  Future<void> _syncMateriInBackground() async {
-    try {
-      final response = await _supabase
-          .from('learning_module')
-          .select('bab, title, content_html')
-          .order('bab', ascending: true);
-
-      final modules = response.map<LearningModule>((item) {
-        return LearningModule(
-          bab: item['bab'],
-          title: item['title'],
-          contentHtml: item['content_html'],
-          searchText: _generateSearchText(item['title'], item['content_html']),
-        );
-      }).toList();
-
-      await _materiBox.put(
-        'modul_waris',
-        modules.map((module) => module.toMap()).toList(),
-      );
-    } catch (e) {
-      //
-    }
   }
 
   Future<List<LearningModule>> _seedFromLocalAsset() async {
